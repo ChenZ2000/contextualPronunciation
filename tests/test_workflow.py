@@ -18,6 +18,33 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WorkflowGuardTests(unittest.TestCase):
+	def test_release_ci_rejects_other_commits_prs_and_incomplete_runs(self):
+		from scripts.require_release_ci import verified_run
+
+		commit = "a" * 40
+		run = {
+			"headSha": commit,
+			"headBranch": "main",
+			"event": "push",
+			"status": "completed",
+			"conclusion": "success",
+			"databaseId": 42,
+			"url": "https://github.com/example/repo/actions/runs/42",
+		}
+		self.assertEqual(42, verified_run([run], commit)["runId"])
+		for change in (
+			{"headSha": "b" * 40},
+			{"headBranch": "other"},
+			{"event": "pull_request"},
+			{"status": "in_progress"},
+			{"conclusion": "failure"},
+			{"conclusion": "cancelled"},
+		):
+			with self.subTest(change=change), self.assertRaises(ValueError):
+				verified_run([{**run, **change}], commit)
+		with self.assertRaises(ValueError):
+			verified_run([], commit)
+
 	def test_cold_cpp_download_checks_upstream_and_windows_bytes(self):
 		from scripts import prepare_cpp
 

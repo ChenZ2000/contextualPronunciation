@@ -11,14 +11,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  verify:
-    uses: ./.github/workflows/regression.yml
   publish:
-    needs: verify
     runs-on: windows-latest
     timeout-minutes: 10
     permissions:
       contents: write
+      actions: read
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -27,6 +25,11 @@ jobs:
         with:
           python-version: '3.13.13'
           architecture: x64
+      - name: Require both native CI targets for this exact main commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python scripts/require_release_ci.py --repository "$env:GH_REPO"
       - name: Check tag and build reproducible release files
         env:
           RELEASE_TAG: ${{ github.ref_name }}
@@ -58,7 +61,7 @@ jobs:
         run: |
           $metadata = Get-Content -LiteralPath dist/release-metadata.json -Raw | ConvertFrom-Json
           $assets = @($metadata.packages | ForEach-Object { Join-Path dist $_.name })
-          $assets += @('dist/SHA256SUMS', 'dist/release-metadata.json')
+          $assets += @('dist/SHA256SUMS', 'dist/release-metadata.json', 'dist/ci-verification.json')
           $releaseArgs = @('release', 'create', $env:RELEASE_TAG, '--verify-tag',
             '--title', "Context-aware Pronunciation $($metadata.version)",
             '--notes-file', "docs/releases/$($metadata.version).md")
