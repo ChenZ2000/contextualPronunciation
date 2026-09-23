@@ -90,6 +90,14 @@ def main() -> int:
 	py = sys.executable
 	try:
 		stage("prepare-nvda", [py, "scripts/prepare_nvda.py", *(["--submodules"] if args.native else [])])
+		if NVDA_VERSION != "2026.2":
+			# Acoustic fixture oracles intentionally bind the stable symbol
+			# processor even when native integration targets a beta build.
+			stage(
+				"prepare-fixture-nvda",
+				[py, "scripts/prepare_nvda.py"],
+				env=dict(os.environ, CONTEXTUAL_PRONUNCIATION_NVDA_VERSION="2026.2"),
+			)
 		stage("prepare-worldvoice", [py, "scripts/prepare_worldvoice.py"])
 		stage("lexicon-reproducibility", [py, "tools/import_cedict.py", "--check"])
 		stage("segmentation-reproducibility", [py, "tools/build_segmentation_data.py", "--check"])

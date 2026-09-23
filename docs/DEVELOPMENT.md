@@ -53,6 +53,8 @@ $env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.2'
 
 The beta has five upstream unimplemented DotPad BLE tests; the validator permits only those exact IDs/reasons and records them as skips. On a local computer with an existing screen color effect, `--allow-external-screen-effect` records only NVDA's own protective screen-curtain skip. Never reset a user's display merely to run this test.
 
+The acoustic fixture oracles intentionally reference the stable 2026.2 symbol processor. A beta workflow therefore prepares that separate stable source checkout as well as its beta native build. It does not assume a stable checkout already exists, and does not silently replace the fixture oracle with beta behavior.
+
 Performance reports separate initialization, per-call measurements and batch-median guardrails. They exclude synthesis, audio playback and device scheduling. Keep the established gates; investigate performance regressions instead of silently relaxing limits.
 
 ## Optional acoustic verification
