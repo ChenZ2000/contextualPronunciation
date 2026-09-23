@@ -33,7 +33,9 @@ The metadata file is prepared locally for validation; the official issue automat
 
 ## Submit and follow up
 
-Use the official [Add-on registration issue form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml). With GitHub CLI, submit the same exact headings and attach the `autoSubmissionFromIssue` label:
+Use the official [Add-on registration issue form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml). It applies the `autoSubmissionFromIssue` label that starts the official workflow. Ordinary outside contributors should use this form: GitHub's API can drop labels when the caller lacks permission to set them. Filling the same text in a plain issue without the label does not start Store validation.
+
+Only if you have label permissions on the official repository, GitHub CLI can submit the same exact headings:
 
 ```powershell
 gh issue create --repo nvaccess/addon-datastore --title "[Submit add-on]: contextualPronunciation 0.7.4" --label autoSubmissionFromIssue --body-file dist/store-submission.md

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -65,17 +66,24 @@ def main() -> None:
 				sys.executable,
 				"tools/benchmark_hot_path.py",
 				"--short-iterations",
-				"1000",
+				"10000",
 				"--long-iterations",
 				"20",
 				"--rounds",
-				"5",
+				"7",
 				"--output",
 				str(base_hot),
 			],
 			[sys.executable, "tools/benchmark_grammar.py", "--output", str(base_grammar)],
 		):
-			subprocess.run(command, cwd=BASE, check=True, stdout=log, stderr=subprocess.STDOUT)
+			subprocess.run(
+				command,
+				cwd=BASE,
+				env=dict(os.environ, PYTHONHASHSEED="0"),
+				check=True,
+				stdout=log,
+				stderr=subprocess.STDOUT,
+			)
 
 	def read(path):
 		return json.loads(path.read_text("utf-8"))

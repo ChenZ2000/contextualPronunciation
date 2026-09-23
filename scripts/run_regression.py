@@ -172,16 +172,21 @@ def main() -> int:
 			record["nativeOutputsSha256"] = {p.relative_to(ROOT).as_posix(): sha256(p) for p in dlls}
 			save()
 		benchmark_args = (
-			["--short-iterations", "1000", "--long-iterations", "20", "--rounds", "5"]
+			["--short-iterations", "10000", "--long-iterations", "20", "--rounds", "7"]
 			if args.hosted_performance
 			else []
 		)
 		stage(
 			"benchmark",
 			[py, "tools/benchmark_hot_path.py", *benchmark_args, "--output", "artifacts/performance-report.json"],
+			env=dict(os.environ, PYTHONHASHSEED="0") if args.hosted_performance else None,
 		)
 		stage("startup-benchmark", [py, "tools/benchmark_startup.py"])
-		stage("grammar-benchmark", [py, "tools/benchmark_grammar.py"])
+		stage(
+			"grammar-benchmark",
+			[py, "tools/benchmark_grammar.py"],
+			env=dict(os.environ, PYTHONHASHSEED="0") if args.hosted_performance else None,
+		)
 		for name, validator in (
 			("performance-report.json", validate_performance),
 			("grammar-performance.json", validate_grammar_performance),

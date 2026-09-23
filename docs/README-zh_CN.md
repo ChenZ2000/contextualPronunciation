@@ -115,7 +115,7 @@ $env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.2'
 
 修改规则后运行 `tools/build_braille_table.py` 和三个声学 fixture 生成命令：`tools/generate_final_renderer_fixture.py`、`tools/boundary_acoustics.py generate`、`tools/sentence_acoustics.py generate`，再执行完整验证；不能只刷新哈希而复用旧音频宣称通过。
 
-Windows CI 使用 2026.2 / 2026.3beta2 双版本矩阵，包含原生编译、测试、数据复现、CPP 和性能门禁。云端性能检查将当前代码与固定基线放在同一台运行器上顺序测量，每项中位耗时不得超过基线的 1.30 倍或基线加 5 微秒两者中的较大值，并检查场景、输入长度和采样数一致；原始报告和超出绝对门限的记录随 CI 保存。热路径测量使用 5 轮、每轮短文本 1,000 次或长文本 20 次，语法场景短文本各 1,000 次、长文本各 100 次；本机严格验收仍使用原来的绝对门限。完整策略见[开发指南](DEVELOPMENT.md)。
+Windows CI 使用 2026.2 / 2026.3beta2 双版本矩阵，包含原生编译、测试、数据复现、CPP 和性能门禁。云端性能检查将当前代码与固定基线放在同一台运行器上顺序测量，每项中位耗时不得超过基线的 1.30 倍或基线加 5 微秒两者中的较大值，并检查场景、输入长度和采样数一致；原始报告和超出绝对门限的记录随 CI 保存。热路径测量使用 7 轮、每轮短文本 10,000 次或长文本 20 次，两边使用相同的固定 Python 哈希种子，语法场景短文本各 1,000 次、长文本各 100 次；本机严格验收仍使用原来的绝对门限。完整策略见[开发指南](DEVELOPMENT.md)。
 
 通过检查的版本标签由发布流程构建正式 GitHub Release；云端不运行专有声库检查，不能据此宣称完成音频验收。Beta 的 5 个 DotPad BLE 测试在上游源码中主动标记未实现；仅对固定版本、具体测试 ID 和相同原因记为跳过，不算通过，不放宽其他跳过。最终证据为 `artifacts/release-verification.json` 与 `artifacts/workflow-report.json`，另一版本的冻结证据保留在 artifacts 子目录。源码包不包含本机音频、配置、专有 DLL 或声库。
 
