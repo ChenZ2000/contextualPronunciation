@@ -18,6 +18,48 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WorkflowGuardTests(unittest.TestCase):
+	def test_hosted_comparison_detects_regression_independent_of_machine_speed(self):
+		from scripts.compare_hosted_performance import compare
+
+		for speed in (1, 2):
+			baseline = {"longText": {"medianUs": 1000 * speed, "samples": 100}}
+			current = {"longText": {"medianUs": 1100 * speed, "samples": 100}}
+			self.assertTrue(compare(current, baseline, "medianUs")[0]["passed"])
+			current["longText"]["medianUs"] = 1400 * speed
+			self.assertFalse(compare(current, baseline, "medianUs")[0]["passed"])
+
+	def test_hosted_comparison_rejects_incomparable_and_invalid_measurements(self):
+		from scripts.compare_hosted_performance import compare
+
+		baseline = {"longText": {"medianUs": 1000, "samples": 100}}
+		for current in (
+			{},
+			{"other": {"medianUs": 1000, "samples": 100}},
+			{"longText": {"medianUs": 1000, "samples": 10}},
+			{"longText": {"medianUs": float("nan"), "samples": 100}},
+			{"longText": {"medianUs": float("inf"), "samples": 100}},
+			{"longText": {"medianUs": 0, "samples": 100}},
+		):
+			with self.subTest(current=current), self.assertRaises(ValueError):
+				compare(current, baseline, "medianUs")
+
+	def test_local_release_cannot_use_hosted_performance_policy(self):
+		result = subprocess.run(
+			[
+				sys.executable,
+				"scripts/run_regression.py",
+				"--native",
+				"--vocalizer",
+				"--release",
+				"--hosted-performance",
+			],
+			cwd=ROOT,
+			capture_output=True,
+			text=True,
+		)
+		self.assertEqual(2, result.returncode)
+		self.assertIn("retains absolute performance gates", result.stderr)
+
 	def test_release_ci_rejects_other_commits_prs_and_incomplete_runs(self):
 		from scripts.require_release_ci import verified_run
 

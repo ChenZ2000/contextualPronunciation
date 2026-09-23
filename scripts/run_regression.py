@@ -24,6 +24,9 @@ def main() -> int:
 	parser.add_argument("--native", action="store_true", help="Compile NVDA source and run all its unit tests")
 	parser.add_argument("--vocalizer", action="store_true", help="Use locally installed/licensed VE in offline mode")
 	parser.add_argument("--release", action="store_true", help="Fail unless every release gate runs successfully")
+	parser.add_argument(
+		"--hosted-performance", action="store_true", help="Use a same-runner fixed baseline for CI timings"
+	)
 	parser.add_argument("--llvm-bin", type=Path)
 	parser.add_argument("--spectre-atl-fallback", action="store_true")
 	parser.add_argument(
@@ -39,6 +42,8 @@ def main() -> int:
 	args = parser.parse_args()
 	if args.release and not (args.native and args.vocalizer):
 		parser.error("--release requires both --native and --vocalizer")
+	if args.release and args.hosted_performance:
+		parser.error("Local --release retains absolute performance gates; hosted comparison is a separate CI policy")
 	if args.jobs < 1:
 		parser.error("--jobs must be positive")
 	if args.cross_engine_probes and not args.native:
@@ -53,6 +58,7 @@ def main() -> int:
 		"nativeRequested": args.native,
 		"vocalizerRequested": args.vocalizer,
 		"releaseRequested": args.release,
+		"performancePolicy": "same-runner-baseline" if args.hosted_performance else "absolute",
 		"allowExternalScreenEffect": args.allow_external_screen_effect,
 		"installedWorldVoiceRequested": args.installed_worldvoice is not None,
 		"crossEngineProbesRequested": args.cross_engine_probes,
@@ -165,11 +171,30 @@ def main() -> int:
 			dlls.extend((NVDA / "source/liblouis.dll", NVDA / "source/synthDrivers/espeak.dll"))
 			record["nativeOutputsSha256"] = {p.relative_to(ROOT).as_posix(): sha256(p) for p in dlls}
 			save()
-		stage("benchmark", [py, "tools/benchmark_hot_path.py", "--output", "artifacts/performance-report.json"])
+		benchmark_args = (
+			["--short-iterations", "1000", "--long-iterations", "20", "--rounds", "5"]
+			if args.hosted_performance
+			else []
+		)
+		stage(
+			"benchmark",
+			[py, "tools/benchmark_hot_path.py", *benchmark_args, "--output", "artifacts/performance-report.json"],
+		)
 		stage("startup-benchmark", [py, "tools/benchmark_startup.py"])
-		validate_performance(json.loads((ARTIFACTS / "performance-report.json").read_text("utf-8")))
 		stage("grammar-benchmark", [py, "tools/benchmark_grammar.py"])
-		validate_grammar_performance(json.loads((ARTIFACTS / "grammar-performance.json").read_text("utf-8")))
+		for name, validator in (
+			("performance-report.json", validate_performance),
+			("grammar-performance.json", validate_grammar_performance),
+		):
+			try:
+				validator(json.loads((ARTIFACTS / name).read_text("utf-8")))
+			except ValueError as error:
+				if not args.hosted_performance:
+					raise
+				record.setdefault("absolutePerformanceObservations", []).append(str(error))
+				print(f"[absolute timing observation] {error}", flush=True)
+		if args.hosted_performance:
+			stage("hosted-performance-comparison", [py, "scripts/compare_hosted_performance.py"])
 		if args.vocalizer:
 			for name, fixture, directory in (
 				("renderer", "final_renderer_regression.json", "final-renderer-ting-ting"),

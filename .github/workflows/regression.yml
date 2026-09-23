@@ -37,7 +37,7 @@ jobs:
           version: '0.11.32'
           enable-cache: false
       - name: Strict regression including native NVDA source build
-        run: python scripts/run_regression.py --native --jobs 2
+        run: python scripts/run_regression.py --native --hosted-performance --jobs 2
       - name: Audit public files and release metadata
         run: python scripts/check_repository.py
       - name: Upload diagnostics (no proprietary engine or voice resources)
@@ -57,6 +57,10 @@ jobs:
             artifacts/cpp-evaluation.json
             artifacts/grammar-evaluation.json
             artifacts/grammar-performance.json
+            artifacts/hosted-performance-comparison.json
+            artifacts/baseline-performance.json
+            artifacts/baseline-grammar-performance.json
+            artifacts/hosted-baseline-benchmark.log
             data/dictionary-sources.json
             vendor/nvda-${{ matrix.nvda }}/testOutput/unit/unitTests.xml
       - name: Upload CI package (no proprietary voice certification)
