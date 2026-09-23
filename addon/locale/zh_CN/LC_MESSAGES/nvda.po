@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: contextualPronunciation 0.3.0\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Translators: Title of the settings panel for this add-on.
+msgid "Context-aware pronunciation"
+msgstr "上下文发音规范化"
+
+#. Translators: Enables context-sensitive text rewriting.
+msgid "Enable contextual pronunciation rewriting"
+msgstr "启用上下文发音改写"
+
+#. Translators: Enables context-aware Chinese polyphone rules.
+msgid "Correct supported Chinese polyphones"
+msgstr "纠正已支持的中文多音字"
+
+#. Translators: Converts a curly apostrophe to ASCII only inside a Latin word.
+msgid "Normalize curly apostrophes inside Latin words"
+msgstr "规范化拉丁单词内的弯撇号"
+
+#. Translators: Prefer leaving ambiguous text unchanged over guessing a pronunciation.
+msgid "Strict mode (leave ambiguous text unchanged)"
+msgstr "严格模式（歧义文本保持原样）"
+
+msgid "Chinese rules apply globally to every voice, regardless of language tags. They specify Mandarin readings; other languages and dialects may sound incorrect."
+msgstr "中文规则全局应用于所有声音，不依赖语言标签。规则指定普通话读音；其他语言或方言的朗读可能不正确。"
+
+msgid "Use extended phrase lexicon (experimental; may introduce wrong readings)"
+msgstr "使用扩展词组库（实验性；可能引入错误读音）"
+
+msgid "Turning off strict mode also prefers yuè in 密钥、公钥、私钥. This is a reading preference, not a proven error."
+msgstr "关闭严格模式后，“密钥、公钥、私钥”会优先读 yuè。这是读音偏好，不是已证实的错误。"
+
+msgid "Custom literal rules (phrase|target|reading ID or keep; one per line)"
+msgstr "自定义固定词规则（短语|目标字|读音 ID 或 keep；每行一条）"
+
+msgid "Reading IDs use numbered pinyin, such as yue4, chang2, lv4; only available homophones are accepted. Example: 仙乐|乐|yue4. To preserve: 盛汤|盛|keep."
+msgstr "读音 ID 使用数字声调拼音，如 yue4、chang2、lv4；仅接受有适配同音字的读音。例如：仙乐|乐|yue4。保持原文：盛汤|盛|keep。"
+
+msgid "Disabled rule IDs (comma or newline separated)"
+msgstr "禁用规则 ID（用英文逗号或换行分隔）"
+
+msgid "Invalid pronunciation rules"
+msgstr "发音规则无效"
+
+msgid "Context templates (one per line, e.g. 仙[乐:yuè]; [盛:chéng]{number}{container})"
+msgstr "上下文模板（每行一条，如 仙[乐:yuè]；[盛:chéng]{number}{container}）"

@@ -1,0 +1,113 @@
+ContextualPronunciation 0.7.0 - attribution and data licensing
+
+Program source: VESpeechDic contributors, GPL-2.0-or-later. See COPYING.txt.
+Separate data licenses below are not replaced by the program's license.
+
+CC-CEDICT: Paul Andrew Denisowski and the CC-CEDICT/MDBG contributors.
+https://www.mdbg.net/chinese/dictionary?page=cedict
+https://cc-cedict.org/wiki/
+Snapshot header: 2026-09-07T08:01:26Z; 125009 entries.
+The downloaded artifact explicitly declares CC-BY-SA-4.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+Full text: globalPlugins/contextualPronunciation/data/CC-BY-SA-4.0.txt
+
+KFCD open Chinese dictionary: © 2009-2020 开放词典 / Kaifang Cidian.
+https://github.com/kfcd/hyzd/tree/04987755b16264636c01d28df4d96fa14dadd210
+Published original and simplified numbered-pinyin TSV snapshots retain CC-BY-3.0:
+https://creativecommons.org/licenses/by/3.0/
+Full supplied notice: globalPlugins/contextualPronunciation/data/KFCD-LICENSE.txt
+Changes: typed character-sense records, original line IDs, numbered pinyin,
+partial example readings, conflicts preserved as unknown positions. No source
+organization endorses this add-on. Runtime data omits glosses.
+
+Modified/derived compilations: globalPlugins/contextualPronunciation/data/
+lexicon_zh_CN.json, readings_zh_CN.json, contributions.toml, brailleTables/zhcn-contextual-2018.ctb,
+and source-bundle data/lexicon_coverage.json, data/braille_coverage.json.
+These data compilations are distributed under CC-BY-SA-4.0. Changes by
+VESpeechDic contributors: exact simplified/traditional headword extraction, ambiguity/ineligible
+entry blocking, Unihan checks, tone-number normalization, candidate homophone
+selection, readable templates and compiled braille contexts. Definitions are
+not included in the runtime lexicon. No endorsement by source organizations.
+
+Source-bundle data/dictionary-records.jsonl.gz and dictionary-sources.json form
+an attributed offline source collection, not a claim of verified readings.
+Each record retains its source license (CC-BY-SA-4.0 or CC-BY-3.0); collection
+changes are available under CC-BY-SA-4.0 without replacing original notices.
+The optional locally generated SQLite file has the same record-level notices.
+
+Unicode Unihan 17.0.0: Unicode, Inc. and contributors.
+https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip
+https://www.unicode.org/reports/tr38/tr38-39.html
+Full license: globalPlugins/contextualPronunciation/data/UNICODE-LICENSE.txt
+Derived reading metadata and source snapshots retain this notice/license.
+Source-bundle tools/import_cedict.py records pins and reproducible changes.
+
+Braille base: the optional table INCLUDES zhcn-cbs.ctb supplied by NVDA/liblouis;
+that base is not copied into the add-on. It retains its LGPL-2.1-or-later license
+and authorship (Frank, Cary-rowen and liblouis contributors). Pronunciation and
+abbreviation facts are implemented from GF 0019-2018. No certification of full
+standard compliance or endorsement by the standard's issuers is claimed.
+
+Development-only dependencies, not shipped in the installed add-on:
+- NVDA 2026.2, NV Access and contributors; GPL-2.0-or-later; prepare_nvda.py pin.
+- WorldVoice 6.2, tsengwoody and contributors, upstream GPL license:
+  https://github.com/tsengwoody/WorldVoice/tree/318bc90bf8a7af9e901bb43cd7da036533f443ea
+- CPP, Kyubyong Park and Seanie Lee, Interspeech 2020 / Kakao Brain g2pM:
+  https://github.com/kakaobrain/g2pM/tree/170526efad0a3ef9b55a9ad4579f73218f9be06c
+  Apache-2.0 repository license. The audit downloader needs only pinned test
+  text/labels/license; no neural model is executed by the regression/runtime path.
+  An optional development-only g2pM comparison tool runs the separately cloned,
+  pinned official model. No model weights/pickle or NumPy is redistributed.
+- Proprietary Vocalizer resources remain in the user's licensed installation.
+  No vendor DLL, voice resource, license or captured WAV is in either package.
+
+cppjieba dictionary frequency data: cppjieba/yanyiwu and contributors (MIT).
+https://github.com/yanyiwu/cppjieba/tree/b3602bef7d1f67521a61788a74fb5801a0e62cd3
+The same commit is pinned by NVDA 2026.3beta2. Source snapshot:
+data/sources/cppjieba-b3602bef-dict.txt (source bundle only).
+Derived runtime: globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json.
+Modifications: counts intersected with our lexical heads plus single characters;
+no POS tags, no HMM data/code, no pronunciation claims or shared NVDA dictionary writes.
+Full MIT notice: globalPlugins/contextualPronunciation/data/CPPJIEBA-LICENSE.txt.
+NVDA 2026.3beta2 source is a development-only GPL dependency; no NVDA code/DLL
+or private segmentation API is embedded in the installed add-on.
+
+OpenHowNet core data: Copyright (c) 2019 THUNLP, MIT.
+Official data/API license statement: https://openhownet.thunlp.org/download
+Full notice, attribution and citations:
+globalPlugins/contextualPronunciation/data/OPENHOWNET-LICENSE.txt
+Official resources.zip (last modified 2021-09-20), acquired 2026-09-15:
+SHA256 daaa31e2627e099e03ce15371f472c6f9ec5b3aac71a4e5e2ab5c4f4f38c44d4
+Source-only projection data/sources/openhownet-core-20210920.json.gz retains
+Chinese heads, original sense IDs, POS and KDML. Runtime syntax_lexicon.json
+retains POS alternatives and conservative noun/food/material/container features.
+Version 0.6.1 includes the archive's unmodified sememe_triples_taxonomy.txt as
+data/sources/openhownet-taxonomy-20210920.txt in the source bundle only; explicit
+hyponym inheritance is compiled offline, not loaded in the speech callback.
+SHA256 d1b44ef0385c243b8f4661b39348df359b764247d2d1d0dd263ad31e6deb73a0
+These projections
+retain MIT; do not imply THUNLP endorsement or pronunciation certification.
+No BabelNet, similarity/synonym data, API code or executable pickle is included.
+syntax_frames.toml is a VESpeechDic-authored reviewed rule compilation under
+CC-BY-SA-4.0, with sources referenced in each frame. It reuses noun classes
+from contributions.toml; OpenHowNet supplies NO inferred pinyin readings.
+
+Version 0.7.0 grammar_lexicon.json combines POS candidates from the same pinned
+OpenHowNet and cppjieba snapshots with explicit infinitive-gloss verb evidence
+from CC-CEDICT, and 重 sense conflicts from CC-CEDICT/KFCD. It retains original
+word forms and per-word source membership masks. Version 0.7.1 distinguishes
+explicit contrary readings from opaque lexical entries; only strong complete
+multi-character verb evidence can override the latter. It also compiles original
+source-authored form pairs, HowNet container/person classifier selection and
+military/human noun features. No definitions or complete sentences are
+distributed in this runtime file. This derived compilation is CC-BY-SA-4.0;
+upstream MIT and CC-BY notices above remain applicable. Reproducible generator:
+tools/build_grammar_data.py in the source bundle. Public MOE entries were read
+as linguistic references, not bulk copied or redistributed as a dictionary:
+https://dict.revised.moe.edu.tw/dictView.jsp?ID=8701
+https://dict.concised.moe.edu.tw/dictView.jsp?ID=23531
+https://dict.revised.moe.edu.tw/dictView.jsp?ID=53102
+https://dict.revised.moe.edu.tw/dictView.jsp?ID=105310
+Constituent relation naming was checked against Universal Dependencies Chinese:
+https://universaldependencies.org/zh/dep/acl.html
+https://universaldependencies.org/zh/dep/advmod.html

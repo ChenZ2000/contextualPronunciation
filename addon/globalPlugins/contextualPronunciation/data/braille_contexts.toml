@@ -1,0 +1,14 @@
+# Reviewed GF 0019-2018 data, CC-BY-SA-4.0. Not speech replacements.
+# A one-character match cannot override liblouis's longer always rule.
+# These entries keep EXACTLY the base table's existing character group; never
+# group a longer phrase merely to force precedence. Native tests verify routing.
+schemaVersion = 1
+
+[[contexts]]
+id = "liang-measure-ti-before-physical-dimension"
+characters = "量体"
+before = ""
+after = ["温", "重", "积"]
+dots = "123-1346-2-2345-24-3"
+baseDots = "123-1346-2345-24-3"
+source = "GF 0019-2018 liang2 + ti3; liblouis zhcn-cbs.ctb always 量体 groups these same two characters with liang4; measurement sense before 温/重/积 only"

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Context-aware Pronunciation 0.7.4</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#context-aware-pronunciation-0-6-1-nvda-2026-2-2026-3beta2">Context-aware Pronunciation 0.7.4 · NVDA 2026.2 / 2026.3beta2</a></li>
+    <li class="toc-level-2"><a href="#section">安装与设置</a></li>
+    <li class="toc-level-2"><a href="#worldvoice-6-2">全局流程与 WorldVoice 6.2</a></li>
+    <li class="toc-level-2"><a href="#section-2">开放词典与规范化数据库</a></li>
+    <li class="toc-level-2"><a href="#section-3">易读规则与贡献</a></li>
+    <li class="toc-level-2"><a href="#2018">国家通用盲文 2018</a></li>
+    <li class="toc-level-2"><a href="#section-4">验证范围与局限</a></li>
+    <li class="toc-level-2"><a href="#section-5">构建与复现</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="context-aware-pronunciation-0-6-1-nvda-2026-2-2026-3beta2">Context-aware Pronunciation 0.7.4 · NVDA 2026.2 / 2026.3beta2</h1>
+<p><strong>0.7.4：</strong>首次公开仓库发布，稳定版 API 声明为 NVDA 2026.2。<a href="https://github.com/ChenZ2000/contextualPronunciation">源码、版本下载与问题反馈</a>。</p>
+<p><strong>0.7.3：</strong>修复“下边缘”“唱和说”“多行”，补充空间名词与并列动词分词、行数量判断及合成队列前检查。1,154 个定向语法案例；默认启用，尊重用户保留设置和字符模式。通过明确的同音输出保护读音，不假定字符串边界能约束所有合成器。</p>
+<p><strong>0.7.0 新增组合句法：</strong>“重转、重编译、重转码、重压缩”可根据独立动词证据读 chóng；嵌套定语、并列形容词和“把／将”前置宾语参与“盛／量／系”读音判断。默认开启，无需实验性词库。357,293 个词性候选保留来源；它们不是正确率。分析限于 512 字、256 词、16 层，并有每次分析和每个语音项的工作预算。超过预算保留原字。不能保证所有汉语语境或零延迟；动态规则进入注音 API，但没有接管静态盲文表。</p>
+<p>上下文发音规范化插件。使用同一套普通话读音规则，全局处理所有语音引擎、声音和语言标签；不读取引擎名称、声音名称或当前语言，不安装 WorldVoice 私有适配器。0.6.1 修复“盛液体／盛装液体”的容纳语义、过强保护、补语分词、量词和定语中心词选择。保留 0.6 的“盛红豆粥”“量小名的身高”组合能力、跨词读音锁定及既有行／系／量等规则。</p>
+<p>这是技术预览：全局处理不等于任意声音、任意场景百分之百正确，也不意味着零 CPU 开销。运行时不联网、不加载神经模型、不查询 SQLite、不记录朗读内容。新能力是有界局部结构分析，不是全句依存分析、任意指代消解或所有多音字的完整语义模型。最新根因、范围和贡献语法见 <a href="containment.html">0.6.1 盛装与容纳结构修复</a>；<a href="syntax.html">0.6.0 设计</a>及更早报告保留作历史参考。</p>
+<h2 id="section">安装与设置</h2>
+<ol>
+<li>安装 <code>contextualPronunciation-0.7.4.nvda-addon</code>，按 NVDA 提示重启。标识不变，可覆盖升级；开发流程不会替你安装、重启或切换语音。</li>
+<li>NVDA 设置 →“上下文发音规范化”：保留“启用上下文发音改写”“纠正已支持的中文多音字”和“严格模式”。已移除语音适配方案下拉框。旧方案为“关闭”时迁移为关闭中文纠正，避免升级擅自重启曾关闭的功能；需要时重新勾选即可。</li>
+<li>普通话规则对所有声音、包括英语、粤语、繁体及日语语言标签下的汉字一视同仁。不会切换声音，也不能让不支持普通话的声音获得普通话能力；方言或其他语言的汉字可能因此被误改。可用中文纠正开关、局部 keep 或 NVDA 配置方案控制。</li>
+<li><strong>扩展词组库为实验性，默认关闭</strong>；勾选后启用大规模候选词库。发现误改可先关闭扩展库，原有审阅规则继续生效。</li>
+<li>本轮新增规则默认生效，不需扩展库：系领结／系了一条领带／把绳子系在树上 → jì；用尺子量长度／身高量了两次／用卷尺重新量一量／量三米布／量杯 → liáng。联系、心系、重量、数量、校量、估量、商量、量体裁衣等另有保护；动词不一定读二声，名词也不一定读四声。原有审阅规则和钥 yuè 的非严格模式可选偏好保留。没有可用同音映射的注音不强制改写语音。</li>
+<li>保留 Doesn't／Doesn’t／Mike's／Mike’s 的词内撇号保护。关闭改写总开关不移除 mandatory 符号字典；彻底恢复需禁用或卸载插件并重启。键入单词回显提前分段的撇号情况仍不在已验证范围内。</li>
+<li>新局部句法默认生效：盛豆角／盛红豆粥／盛刚煮好的红豆粥 → chéng；量小名的身高／量住在隔壁的小名的身高 → liáng；系小名的鞋带 → jì。未知姓名不需逐个入库。宾语中心词不明、歧义或结构超限时保留原字。</li>
+<li>“降调音频”的通用跨词读音锁定属于<strong>扩展词组库</strong>，需要第 4 项开关开启。该句原本已分成“降调／音频”，但默认 diào 没有强制输出；现在发现“调音”跨越已选词边界时，把 diào 也落实到临时语音文本中。“调音师”仍为 tiáo。不新增整句特例，不把所有默认读音一律替换。</li>
+</ol>
+<h2 id="worldvoice-6-2">全局流程与 WorldVoice 6.2</h2>
+<p>注册 NVDA 公开的 <code>filter_speechSequence</code> 和 <code>pre_speechQueued</code>，在原始语音分析和入队前两个阶段处理。命中规则后，在原文位置上先裁决、再一次性生成临时语音文本；所有声音统一使用同一份不可变映射，包括 chéng → 呈。不会反复重写前一次结果。索引、语言、音高等命令原样保留；逐字／拼读模式不做上下文改写，也不跨命令或分段猜测。</p>
+<p>WorldVoice 6.2 把自己的公开词典过滤器移到开头，因此其词典产物可继续参与本插件纠正。已验证词典 <code>测试词 → 仙乐飘飘</code> 后接 <code>仙月飘飘</code>，前置和后置语言检测下各执行一次。不包装 WorldVoice 内部函数，不改其文件、声音实例、用户词典或 NVDA 核心。</p>
+<p>需要注意 WorldVoice 的 Unicode 替换次序：检测为“before”时，其 Unicode 替换先于本插件；检测为“after”时，Unicode 替换晚于本插件。若它要替换的原字已被本插件改写，则后置规则不会再命中。想优先保留原字规则，可在本插件添加局部 keep，或自行选择 WorldVoice 的前置检测；插件不会替你调整设置。</p>
+<p>本机已安装 WorldVoice 6.2；回归使用了该安装目录的真实管线源码，并与固定官方源码核对。用户另在活跃 NVDA 2026.2／插件 0.3.0／WorldVoice 6.2／VE:Ting-Ting 上执行了 10 句固定文本诊断，队列检查通过，并确认试听正常。这是该配置下的人工验收，不是新版所有声音、所有词条的音频验收。开发测试不改变活跃 NVDA 配置。</p>
+<h2 id="section-2">开放词典与规范化数据库</h2>
+<p>数据由 <a href="https://www.mdbg.net/chinese/dictionary?page=cedict">CC-CEDICT</a>、<a href="https://github.com/kfcd/hyzd/tree/04987755b16264636c01d28df4d96fa14dadd210">开放汉语字典 KFCD</a> 和 <a href="https://www.unicode.org/reports/tr38/tr38-39.html">Unicode Unihan</a> 组成。开放许可不意味着国家审音标准，也不存在这些资源已解决任意语义歧义的保证。</p>
+<p>离线源数据库包含 131,436 条词条／字义记录：CC-CEDICT 125,009 条，KFCD 6,427 条。保留原始繁简字形、原始拼音、规范数字调拼音、释义、来源行号与逐条许可。不取异读列表首音，不擅自合并地域读音。开发用 JSONL gzip 与来源清单随源码提供，可另建 SQLite 索引；均不进入朗读热路径。</p>
+<p>编译后的实验性扩展库含 183,244 个词头，其中 147,598 个可提供全部或部分注音，35,646 个为阻断词。覆盖 1,218 个非默认读音目标字，623 个具备当前自动替换政策所需的候选条件，7,903 个词头含可渲染非默认候选。繁体扩展来自源词典原有词形，而非逐字繁简转换。<strong>这些数值是词典候选规模，不是已经证实的引擎错误数或句子准确率。</strong></p>
+<p>新的离线 <code>data/polyphone-coverage.json</code> 完整列出固定 Unihan 字段中具有多个规范拼音的 8,372 个字、19,570 个字音组合，含历史、地域和异体读音，不代表现代常用多音字数量。每个读音记录词头计数、样例、现有规则、同音映射候选和待补上下文状态。清单不进入朗读路径。用户提供的 go-cc/cc-table 常用表经审查仅作候选参考，未将其错行、错误注音或未核实的转载数据直接导入。</p>
+<p>同词异读、专名、儿化不对齐、缺少字音依据及轻声语法风险会阻断或逐位置弃权。字典“某字义下的例词”只能证明目标字，不能替例词其他字补音。例如“薄荷”中来源对“荷”的轻声／本调有差异，只撤回“荷”，保留有依据的“薄”bò。双向最长匹配一致时走快速路径；不一致的小区间才进入词频加权词图。最长词 32 字、分歧区间最多 96 字；不截断超限区间，不覆盖一致词和歧义阻断词。词频采用 NVDA beta 同版本 cppjieba 的开放数据，不是词性预测或读音置信概率。</p>
+<p>NVDA 2026.3beta2 的中文分词主要服务词导航和盲文空格；其内部接口不输出拼音。插件不调用私有分词接口、不修改共享分词词典，在 2026.2 与 beta 上使用同一份固定离线资源和同一裁决流程。</p>
+<p>0.6.1 使用 <a href="https://github.com/thunlp/OpenHowNet">OpenHowNet</a> 固定核心数据及官方义原分类树：215,831 条词性／义原记录、117,464 个汉字词头，其中 2,760 个词头的名词义一致支持食物类别，4,455 个支持容纳物类别，451 个支持容器类别；类别可以重叠，不能相加当作新词数。147 个食物和 291 个容纳物多义候选仍保留歧义。它们不是新增 11 万条拼音规则，也不是语境正确率。仅分发所需词法特征与可审计来源，不包含原 API、可执行 pickle、BabelNet 或神经模型。分类树只在离线编译时遍历，词性集合不冒充句中词性预测。</p>
+<h2 id="section-3">易读规则与贡献</h2>
+<p>设置中一行一个模板，例如：</p>
+<pre><code class="language-text">仙[乐:yuè]
+[盛:chéng]{number}{container}
+仙[乐:keep]
+</code></pre>
+<p>最后一条是局部保留示例，不必与第一条同时输入。支持带调及数字调拼音，ü 不等于 u；每条一个目标，每侧最多 64 字上下文，数字最多 12 位，空格最多 4 位。不执行任意正则或 Python；同级异读冲突时保留原字。旧“短语|目标字|readingId”格式兼容。</p>
+<p>贡献文件为 <code>addon/globalPlugins/contextualPronunciation/data/contributions.toml</code>，每条保留来源、正例和反例。详见 <a href="contributing.html">贡献规则与盲文接口</a> 和 <a href="research.html">0.3.0 全局规范化与开放词典设计</a>。</p>
+<h2 id="2018">国家通用盲文 2018</h2>
+<p>安装重启后，可手动选择盲文输出表 <strong>Chinese common braille 2018 - contextual phrases (experimental)</strong>。沿用 NVDA 的 <code>zhcn-cbs.ctb</code>。审阅模板展开为 12,057 个有限上下文组合（11,697 纠正、360 保护），不是同等数量的独立词条或人工逐句验证结果。生成器合并等价有限选项，连同“量体温／量体重／量体积”的三个基础词组覆盖条件，共输出 455 条匹配指令；避免逐项展开拖慢翻译。0.6.1 仅同步新增繁体“盛裝”的静态保留，不代表动态容纳结构已接入盲文。不会自动切表，不使用语音替代字，不提供盲文输入；选回原表即可恢复。</p>
+<p>这是有限固定语境增强：静态表与语音开关独立，自定义设置、数量结构和实验性词库不会动态同步。支持 beta 分词插入的单个 ASCII 词间空格，不跨换行；“量体”覆盖保留基础表原有的两字路由分组。其他更长基础词仍可能优先。“在光标处展开为计算机盲文”会按 NVDA 的设计绕过上下文规则；插件不替用户关闭该设置。不是完整分词连写或 2018 全条款翻译器。</p>
+<p><code>GlobalPlugin.getReadingAnnotations(text)</code> 和纯 Python API 共享读音裁决，保留原字、来源、Unicode／UTF-16 原文偏移；未知位置不生成假定读音。API 点位预览是全标调注音，不等于正式表的省调结果。不拦截所有盲文区域。</p>
+<p>0.6 的局部句法和跨词锁定已进入这个共享注音 API，但<strong>没有动态接管实际 Liblouis 盲文输出</strong>。静态表维持原有范围；不能把语音中的“呈／梁／吊”送给盲文，也不宣称这些新组合已经自动出现在所有盲文区域。</p>
+<h2 id="section-4">验证范围与局限</h2>
+<p>自动化覆盖原文不可变、命令保留、语言标签无关、逐字模式、旧配置迁移、WorldVoice 词典顺序、句中重复命中、全部 Unicode 标点／符号边界、整库回读、来源冲突、许可溯源、NVDA 原生链路和实际 Liblouis 输出。</p>
+<p>VE Ting-Ting 固定语料仍做完整音素流与独立同音锚点回归；另外有本机 eSpeak 普通话音素和 Microsoft Huihui Desktop 离线 WAV 探测。后两者是观测而非全量准确率门禁：字典缺词、韵律及声学差异必须与真正误读区分，不能按 PCM 是否相同给所有引擎打“正确／错误”标签。新语料仍需实际试听和其他活跃声音验收。</p>
+<p>CPP 测试集审计报告判断覆盖率、已判断项的标注一致率、弃权和主动改写差异，不把弃权计为正确，也不是所有汉语场景准确率。最新数据见 <code>artifacts/cpp-evaluation.json</code>。</p>
+<p>同音字后端不是通用音素 API。Speech Viewer 可能显示临时同音字；原文、剪贴板、无障碍对象不变。严格性能门禁仍生效，但计量的是批量平均耗时的多轮中位数，不是端到端 p99，不包括音频设备、COM、取消和操作系统调度延迟。</p>
+<h2 id="section-5">构建与复现</h2>
+<pre><code class="language-powershell">python scripts/prepare_nvda.py
+python scripts/prepare_worldvoice.py
+python scripts/prepare_cpp.py
+python tools/build_dictionary_database.py --check
+python tools/build_dictionary_database.py --query 盛汤
+# 可选：建立新的离线索引；拒绝覆盖已存在的数据库
+python tools/build_dictionary_database.py --sqlite artifacts/dictionary-review.sqlite3
+python tools/import_cedict.py --check
+python tools/build_segmentation_data.py --check
+python tools/build_syntax_data.py --check
+python tools/build_polyphone_coverage.py --check
+python tools/build_polyphone_coverage.py --query 行
+python tools/build_braille_table.py --check
+python tools/pronunciation.py --check-contributions
+python tools/pronunciation.py &quot;仙乐飘飘，盛汤&quot; --output artifacts/reading-example.json
+python scripts/run_tests.py
+python scripts/build_addon.py
+# 完整发布门禁：需要 C++ 工具链与本机合法 VE 声库
+python scripts/run_regression.py --native --vocalizer --release
+# Beta 原生测试使用独立目录和固定源码，不升级正在运行的 NVDA
+$env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.3beta2'
+python scripts/run_regression.py --native --vocalizer --release
+# 下一次恢复测试稳定版
+$env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.2'
+</code></pre>
+<p>本机还可传 <code>--installed-worldvoice 安装目录</code> 测实际安装的 6.2 源码，传 <code>--cross-engine-probes</code> 记录 eSpeak／SAPI 离线观测；不切换活跃语音，不保存用户配置。原生编译的 LLVM／ATL 参数见构建脚本。</p>
+<p>修改规则后运行 <code>tools/build_braille_table.py</code> 和三个声学 fixture 生成命令：<code>tools/generate_final_renderer_fixture.py</code>、<code>tools/boundary_acoustics.py generate</code>、<code>tools/sentence_acoustics.py generate</code>，再执行完整验证；不能只刷新哈希而复用旧音频宣称通过。</p>
+<p>Windows CI 使用 2026.2 / 2026.3beta2 双版本矩阵，包含原生编译、测试、数据复现、CPP 和性能门禁；通过检查的版本标签由发布流程生成 GitHub Release；云端构建不代表专有声库音频验收。Beta 的 5 个 DotPad BLE 测试在上游源码中主动标记未实现；仅对固定版本、具体测试 ID 和相同原因记为跳过，不算通过，不放宽其他跳过。最终证据为 <code>artifacts/release-verification.json</code> 与 <code>artifacts/workflow-report.json</code>，另一版本的冻结证据保留在 artifacts 子目录。源码包不包含本机音频、配置、专有 DLL 或声库。</p>
+<p>代码 GPL-2.0-or-later；CC-CEDICT 数据 CC-BY-SA-4.0，KFCD 原始数据 CC-BY-3.0，Unicode 数据保留原许可，cppjieba 词频及 OpenHowNet 核心投影保留 MIT；词典集合与既有衍生拼音库按 CC-BY-SA-4.0 提供，同时保留各来源许可。详见 <a href="../../THIRD-PARTY-NOTICES.txt">第三方说明</a>。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: README.md</p>
+</footer>
+  </div>
+</body>
+</html>

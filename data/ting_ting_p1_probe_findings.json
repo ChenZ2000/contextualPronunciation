@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "voice": "Ting-Ting",
+  "driverVersion": "2026.6.6",
+  "engineProductVersion": "2.2.0",
+  "scope": {
+    "characters": 39,
+    "phrases": 178
+  },
+  "markerLimitation": "VE 2.2 usPhoneme 不编码普通话声调；只有声调不同的读音标为 tone_ambiguous，不能据此认定正确或错误。",
+  "definiteMisreads": [
+    {
+      "character": "屏",
+      "word": "屏住呼吸",
+      "expectedReading": "bǐng",
+      "sourceEqualsExpectedAnchor": false,
+      "sourceEqualsOtherReadingAnchor": true,
+      "observedAnchorReadings": [
+        "píng"
+      ],
+      "candidateReplacement": "丙",
+      "candidateRenderedText": "丙住呼吸",
+      "candidateStatus": "stream_verified_common_anchor"
+    },
+    {
+      "character": "弹",
+      "word": "回弹效果",
+      "expectedReading": "tán",
+      "sourceEqualsExpectedAnchor": false,
+      "sourceEqualsOtherReadingAnchor": true,
+      "observedAnchorReadings": [
+        "dàn"
+      ],
+      "candidateReplacement": "谈",
+      "candidateRenderedText": "回谈效果",
+      "candidateStatus": "stream_verified_common_anchor"
+    },
+    {
+      "character": "弹",
+      "word": "弹出窗口",
+      "expectedReading": "tán",
+      "sourceEqualsExpectedAnchor": false,
+      "sourceEqualsOtherReadingAnchor": true,
+      "observedAnchorReadings": [
+        "dàn"
+      ],
+      "candidateReplacement": "谈",
+      "candidateRenderedText": "谈出窗口",
+      "candidateStatus": "stream_verified_common_anchor"
+    },
+    {
+      "character": "弹",
+      "word": "关闭弹窗",
+      "expectedReading": "tán",
+      "sourceEqualsExpectedAnchor": false,
+      "sourceEqualsOtherReadingAnchor": true,
+      "observedAnchorReadings": [
+        "dàn"
+      ],
+      "candidateReplacement": "谈",
+      "candidateRenderedText": "关闭谈窗",
+      "candidateStatus": "stream_verified_common_anchor"
+    }
+  ],
+  "unresolvedCounts": {
+    "readingPreference": 4,
+    "toneAmbiguous": 86,
+    "experimentalAnchorMatches": 8,
+    "otherInconclusive": 0
+  },
+  "fullResults": "artifacts/vocalizer-p1-ting-ting/summary.json",
+  "humanReport": "docs/Ting-Ting-P1多音字实机探测报告.md"
+}

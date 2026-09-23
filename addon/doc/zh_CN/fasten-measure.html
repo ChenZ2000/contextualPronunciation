@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0.5.1：系与量的常见语境扩展</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#0-5-1">0.5.1：系与量的常见语境扩展</a></li>
+    <li class="toc-level-2"><a href="#section">原句核对与读音依据</a></li>
+    <li class="toc-level-2"><a href="#section-2">默认支持的结构</a></li>
+    <li class="toc-level-2"><a href="#section-3">避免误改与明确保留</a></li>
+    <li class="toc-level-2"><a href="#section-4">盲文编译优化</a></li>
+    <li class="toc-level-2"><a href="#section-5">验证与发布</a></li>
+    <li class="toc-level-2"><a href="#section-6">使用</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="0-5-1">0.5.1：系与量的常见语境扩展</h1>
+<p>本轮根据用户原句补充默认规则，并纠正“看到测量对象就把量改成二声”的过度匹配。词库、词频和全局语音入口沿用 0.5.0；不增加引擎判断、网络模型、后台缓存或私有 NVDA 接口。</p>
+<h2 id="section">原句核对与读音依据</h2>
+<p>用户提供的“系鞋带、系绳子、系红领巾、用尺子量长度、量身高”在 0.5.0 已能命中；“系领结”确实漏项。新版将这些原句和句中、符号、重复出现形式全部放入自动回归。</p>
+<p>“校量”不能作为二声正例。汉典的<a href="https://www.zdic.net/hans/校量">校量词条</a>标作 jiào liàng；新版保护这里的“量”，不将它强改成 liáng，也不以此为依据给“校”新增无关规则。<a href="https://www.zdic.net/hans/量">量的字义与词例</a>同时含测量的二声、估量/料想的四声，以及轻声词；量杯、量具等名词仍读二声。因此只看词性不能得出读音。</p>
+<p>“系”的现代口语打结用法与文言、关联、提送用法也必须区分。参考杜永道在《人民日报海外版》的<a href="https://paper.people.com.cn/rmrbhwb/html/2014-04/26/content_1420139.htm">“系”的两种读音</a>，并核对<a href="https://www.zdic.net/hans/系">汉典字义</a>。只引用读音事实与来源；测试句为本项目编写或用户提供，不批量复制网站词典。</p>
+<h2 id="section-2">默认支持的结构</h2>
+<ul>
+<li>捆扎物：领结、领带、绳子、鞋带、红领巾、帽带、皮带、头绳、围裙、丝带等。</li>
+<li>补语和数量：系好了领结、系了一条领带、系上一根绳子、系个活扣、系一个结。</li>
+<li>宾语前置和位置：把鞋带儿系好、把绳子系在树上、把丝带系到盒子上。</li>
+<li>测量对象：原有身高、体温、尺寸等，扩展直径、角度、半径、周长、面积、体积、头围、袖长、裤长、间距、孔径、水深、电压等。</li>
+<li>测量补语及所属关系：量出直径、量不准长度、量孩子的身高、量我的腰围。</li>
+<li>测量对象前置：身高量了两次、尺寸量一下、长度量不准。</li>
+<li>明确工具：用尺子量一下、拿卷尺量这张桌子、用卷尺重新量一量；工具之后只接受列明的有限副词，不跨任意文字寻找目标。</li>
+<li>物理数量：量三米布、量100毫升水；使用已有的 1–12 位数字加有限长度/容量单位语法。</li>
+<li>固定构词：测量、丈量、衡量、称量，以及量杯、量筒、量具、量角器、量规、量程、量尺、量瓶。</li>
+</ul>
+<p>这些结构通过可读模板和语义类组合，不把每种句子拼成单独补丁。命名类的上限从 32 扩至 64 项，以容纳繁简词形；每项长度、上下文窗口和占位符数量上限不变。类的笛卡尔积包含机械组合，不能把组合数当作自然语言覆盖率。</p>
+<h2 id="section-3">避免误改与明确保留</h2>
+<p>修复前，“校量尺寸”和“估量尺寸”都会因右侧的“尺寸”触发二声。新版对校量、估量、计量、考量、较量、裁量、酌量等复合词加入原字保护，不擅自替它们统一指定四声或轻声。</p>
+<p>同句反例包括：</p>
+<pre><code class="language-text">校量尺寸之后用尺子量长度
+商量孩子的身高，然后量孩子的身高
+心系红领巾的孩子正在系红领巾
+用卷尺重新量一量，然后量力而行
+用量角器量角度，记录数量
+</code></pre>
+<p>保护仍只作用于命中的原文字位。量刑、量才录用、量力而行、量体裁衣、心系、确系、解铃还须系铃人、把桶系到井下等不能套用本轮的口语测量/打结规则。</p>
+<p>仍不保证任意语境：孤立“量一量”、跨句或跨语音命令的上下文不推断；“体重量一下／电流量一下”可能含重量/流量词边界，暂保留原字。以“计”结尾的仪器可能与“计量”发生边界冲突，未把它们加入本轮工具泛化类。一般代词后接任意名词、文言、专业异读、地域差异和轻声仍需要专门证据。保留原字不是证明引擎原读音正确。</p>
+<h2 id="section-4">盲文编译优化</h2>
+<p>审阅模板可展开为 12,056 个固定上下文，其中 11,697 个纠正组合、359 个保护组合。若按原生成方式把它们全部变成独立指令，650 字密集测试文本的暖态翻译曾测得约 52 毫秒，不能只看语音热路径就忽略这项成本。</p>
+<p>新版构建器以有限分组选项表示同一集合：只在目标字的非保护输出单一、模板没有动态部分、完整指令低于 Liblouis 行长上限时合并；其他情况维持展开顺序。25 条模板完成合并，连同其他原有规则及三个“量体”基础词组条件，共输出 454 条匹配指令。没有引入无界重复或跨换行匹配。</p>
+<p>原生差分测试生成独立的未合并参照表，对每个展开短语、逐字空格形式以及选定的换行、符号和 emoji 变体比较输出格、字符映射和光标位置。另有 650 字暖态翻译的宽松性能门限；测量结果保存在原生分词报告中。这证明有限规则的编译等价，不证明每个机械组合在所有句子中都有确定语义。</p>
+<p>“量体积”沿用原有“量体温／量体重”的基础词组覆盖机制，仅改变已有两字组的量字读音，不合并额外原字位置。数字结构与扩展词库仍不动态写入静态盲文表。国家通用盲文增强仍是实验性有限上下文表，计算机盲文光标展开仍遵循 NVDA 设置。</p>
+<h2 id="section-5">验证与发布</h2>
+<p>新增用户原句、语义反例、有限类组合、短句/长句性能、语音项目/命令边界、WorldVoice 6.2 词典产物、实际 NVDA 符号处理及 Liblouis 输出测试。</p>
+<p>声学固定参照扩至 43 组；连同已有边界和句中重复测试，共 293 组、1,009 次 VE Ting-Ting 离线渲染。与独立同音锚点比较音素流与 PCM，不以机器比较替代人耳验收或声调学分析。</p>
+<p>本轮 CPP 测试集不用于拟合规则：10,254 条样本中 3,577 条与标注一致、105 条不同、6,572 条不判定；判定覆盖率 35.908%，已判定部分一致率 97.148%。比 0.5.0 少了部分自动判定、增加一条与标注不一致的语音替换；这次是用户场景扩展和保护修复，不宣称全局准确率提升。</p>
+<p>最终验证以 <code>artifacts/workflow-report.json</code>、<code>artifacts/release-verification.json</code>、<code>artifacts/nvda-native-segmentation.json</code> 为准。另一 NVDA 版本验证结果单独冻结。沿用 2026.2 与 2026.3beta2 的本地/CI 双版本流程，不放宽原有失败、跳过和语音性能门限。beta 上游未实现的 5 项 DotPad BLE 测试仍独立记录，不计为通过。</p>
+<p>本轮没有安装到活跃 NVDA、没有变更语音或盲文设置，没有实际 WorldVoice 试听或盲文硬件验收。运行时不联网、不查询数据库、不保存朗读内容。所有延迟数字均为指定机器和固定文本的局部测试，不是端到端零延迟或 p99 保证。</p>
+<h2 id="section-6">使用</h2>
+<p>安装 <code>contextualPronunciation-0.5.1.nvda-addon</code> 并按 NVDA 提示重启。保留中文纠正与严格模式即可使用本轮规则，无需开启实验性扩展词库，也无需升级 NVDA 测试版。新工具/对象可继续通过贡献文件的有限类扩展，但必须同时添加语义反例和位置回归。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/0.5.1-系与量语境扩展.md</p>
+</footer>
+  </div>
+</body>
+</html>

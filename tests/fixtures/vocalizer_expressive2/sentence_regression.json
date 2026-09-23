@@ -1,0 +1,5178 @@
+{
+  "schemaVersion": 1,
+  "purpose": "0.1.2 sentence-position regression with independent text oracles and an old-policy control",
+  "sourceSha256": {
+    "addon/globalPlugins/contextualPronunciation/__init__.py": "0111a10907996b08a04918c92467ff39a60cd1d60982df8bbeb458706c921de3",
+    "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
+    "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
+    "addon/globalPlugins/contextualPronunciation/constituents.py": "f0a788cb987c524a6c8fe45ad839fe92b79991e35d4a670c98953461c83e5a79",
+    "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
+    "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "17f5da785faf8489021d6c312ecb6fc64fbd56a8f9e6328da9701ff3399bd727",
+    "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "e8fef79cba2b1db16ed94b0f5c8c146a008a238dc6ccbd5ad4eedec29478ddd7",
+    "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
+    "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
+    "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "199646f6c7b6113fa8773d79542a4bc9ce346d223b7308a812250530725977e9",
+    "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
+    "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "66aa92ef8a46fb348f4093428bc71799d92c81ae79d2355d1ab03b90f51ea588",
+    "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
+    "addon/globalPlugins/contextualPronunciation/edges.py": "14b7236183e1e3ff592cf15b7848b8d30b0d5b937215c900ab00a672e9b9b7db",
+    "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
+    "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
+    "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
+    "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
+    "addon/globalPlugins/contextualPronunciation/pipeline.py": "89caaeb38214e8529f22f6e3e008ea0815915e276e1c1039af0f36a896d8f069",
+    "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
+    "addon/globalPlugins/contextualPronunciation/rules.py": "8b5b475dee6af3d809cb8d622a626ddf771e1f750509d471cec056797c72ad84",
+    "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
+    "addon/globalPlugins/contextualPronunciation/settings.py": "23186bd9ee5bc9e26ff2b7fa5d9b2a5d5d0ce10611b8abd5a505ec847b8d2886",
+    "addon/globalPlugins/contextualPronunciation/syntax.py": "4257d7133230f56c2589568be08f6d01539730760380e042457b9e26f4f560b0",
+    "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
+    "addon/locale/en/symbols-lexicalApostrophe.dic": "f9df0e7d00d44a0f32b05e766fb4a215245119d3dcb0192fda8fc69f8317d5c1",
+    "addon/locale/zh_CN/symbols-lexicalApostrophe.dic": "1d39881b3f58187ab1935411d7d870265193a27a22928e075a929d6066faa3ce",
+    "tests/sentence_cases.py": "72f6a590432b856d16faecd45f8c9c816e4f51b2482241e5d2930719c7605a04",
+    "tests/test_nvda_symbol_integration.py": "5b7ec32394fb4c4e4f2d9531ccec697217930e836dec4e13aac18d9a73469a2a",
+    "tools/sentence_acoustics.py": "c083c0a7c86e645cf7536b90297b789927f6c28d44d8412c4ef5c02f09957a91",
+    "vendor/nvda-2026.2/source/characterProcessing.py": "d64bae2530368d1988c1bd42bbe4ce76af564495f89ae192f0fc250121eeb8fa",
+    "vendor/nvda-2026.2/source/locale/en/symbols.dic": "6a60536d89f05a88345e7f2886061e5adb8d01f4f8381fa14302768e5c0dda96",
+    "vendor/nvda-2026.2/source/locale/zh_CN/symbols.dic": "5776106d763c8443198e48361872b7ac7c36def1ee2f49a682fe54006790891a"
+  },
+  "groups": [
+    {
+      "id": "sentence_00_raw",
+      "source": "我给孩子盛饭之后盛汤",
+      "expectedBeforeSymbols": "我给孩子呈饭之后呈汤",
+      "oldPolicyBeforeSymbols": "我给孩子盛饭之后呈汤",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_00_none",
+      "source": "我给孩子盛饭之后盛汤",
+      "expectedBeforeSymbols": "我给孩子呈饭之后呈汤",
+      "oldPolicyBeforeSymbols": "我给孩子盛饭之后呈汤",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_00_some",
+      "source": "我给孩子盛饭之后盛汤",
+      "expectedBeforeSymbols": "我给孩子呈饭之后呈汤",
+      "oldPolicyBeforeSymbols": "我给孩子盛饭之后呈汤",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_00_most",
+      "source": "我给孩子盛饭之后盛汤",
+      "expectedBeforeSymbols": "我给孩子呈饭之后呈汤",
+      "oldPolicyBeforeSymbols": "我给孩子盛饭之后呈汤",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_00_all",
+      "source": "我给孩子盛饭之后盛汤",
+      "expectedBeforeSymbols": "我给孩子呈饭之后呈汤",
+      "oldPolicyBeforeSymbols": "我给孩子盛饭之后呈汤",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_01_raw",
+      "source": "我给孩子盛汤之后盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤之后呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤之后呈饭",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_01_none",
+      "source": "我给孩子盛汤之后盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤之后呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤之后呈饭",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_01_some",
+      "source": "我给孩子盛汤之后盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤之后呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤之后呈饭",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_01_most",
+      "source": "我给孩子盛汤之后盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤之后呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤之后呈饭",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_01_all",
+      "source": "我给孩子盛汤之后盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤之后呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤之后呈饭",
+      "targetIndices": [
+        4,
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_02_raw",
+      "source": "盛饭盛汤",
+      "expectedBeforeSymbols": "呈饭呈汤",
+      "oldPolicyBeforeSymbols": "盛饭呈汤",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_02_none",
+      "source": "盛饭盛汤",
+      "expectedBeforeSymbols": "呈饭呈汤",
+      "oldPolicyBeforeSymbols": "盛饭呈汤",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_02_some",
+      "source": "盛饭盛汤",
+      "expectedBeforeSymbols": "呈饭呈汤",
+      "oldPolicyBeforeSymbols": "盛饭呈汤",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_02_most",
+      "source": "盛饭盛汤",
+      "expectedBeforeSymbols": "呈饭呈汤",
+      "oldPolicyBeforeSymbols": "盛饭呈汤",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_02_all",
+      "source": "盛饭盛汤",
+      "expectedBeforeSymbols": "呈饭呈汤",
+      "oldPolicyBeforeSymbols": "盛饭呈汤",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_03_raw",
+      "source": "盛饭盛汤很好",
+      "expectedBeforeSymbols": "呈饭呈汤很好",
+      "oldPolicyBeforeSymbols": "盛饭盛汤很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_03_none",
+      "source": "盛饭盛汤很好",
+      "expectedBeforeSymbols": "呈饭呈汤很好",
+      "oldPolicyBeforeSymbols": "盛饭盛汤很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_03_some",
+      "source": "盛饭盛汤很好",
+      "expectedBeforeSymbols": "呈饭呈汤很好",
+      "oldPolicyBeforeSymbols": "盛饭盛汤很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_03_most",
+      "source": "盛饭盛汤很好",
+      "expectedBeforeSymbols": "呈饭呈汤很好",
+      "oldPolicyBeforeSymbols": "盛饭盛汤很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_03_all",
+      "source": "盛饭盛汤很好",
+      "expectedBeforeSymbols": "呈饭呈汤很好",
+      "oldPolicyBeforeSymbols": "盛饭盛汤很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_04_raw",
+      "source": "盛汤盛饭很好",
+      "expectedBeforeSymbols": "呈汤呈饭很好",
+      "oldPolicyBeforeSymbols": "盛汤盛饭很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_04_none",
+      "source": "盛汤盛饭很好",
+      "expectedBeforeSymbols": "呈汤呈饭很好",
+      "oldPolicyBeforeSymbols": "盛汤盛饭很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_04_some",
+      "source": "盛汤盛饭很好",
+      "expectedBeforeSymbols": "呈汤呈饭很好",
+      "oldPolicyBeforeSymbols": "盛汤盛饭很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_04_most",
+      "source": "盛汤盛饭很好",
+      "expectedBeforeSymbols": "呈汤呈饭很好",
+      "oldPolicyBeforeSymbols": "盛汤盛饭很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_04_all",
+      "source": "盛汤盛饭很好",
+      "expectedBeforeSymbols": "呈汤呈饭很好",
+      "oldPolicyBeforeSymbols": "盛汤盛饭很好",
+      "targetIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_05_raw",
+      "source": "盛汤之后再盛饭然后盛汤很好",
+      "expectedBeforeSymbols": "呈汤之后再呈饭然后呈汤很好",
+      "oldPolicyBeforeSymbols": "盛汤之后再盛饭然后盛汤很好",
+      "targetIndices": [
+        0,
+        5,
+        9
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_05_none",
+      "source": "盛汤之后再盛饭然后盛汤很好",
+      "expectedBeforeSymbols": "呈汤之后再呈饭然后呈汤很好",
+      "oldPolicyBeforeSymbols": "盛汤之后再盛饭然后盛汤很好",
+      "targetIndices": [
+        0,
+        5,
+        9
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_05_some",
+      "source": "盛汤之后再盛饭然后盛汤很好",
+      "expectedBeforeSymbols": "呈汤之后再呈饭然后呈汤很好",
+      "oldPolicyBeforeSymbols": "盛汤之后再盛饭然后盛汤很好",
+      "targetIndices": [
+        0,
+        5,
+        9
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_05_most",
+      "source": "盛汤之后再盛饭然后盛汤很好",
+      "expectedBeforeSymbols": "呈汤之后再呈饭然后呈汤很好",
+      "oldPolicyBeforeSymbols": "盛汤之后再盛饭然后盛汤很好",
+      "targetIndices": [
+        0,
+        5,
+        9
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_05_all",
+      "source": "盛汤之后再盛饭然后盛汤很好",
+      "expectedBeforeSymbols": "呈汤之后再呈饭然后呈汤很好",
+      "oldPolicyBeforeSymbols": "盛汤之后再盛饭然后盛汤很好",
+      "targetIndices": [
+        0,
+        5,
+        9
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_06_raw",
+      "source": "我给孩子盛汤的时候他正在盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤的时候他正在呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤的时候他正在呈饭",
+      "targetIndices": [
+        4,
+        12
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_06_none",
+      "source": "我给孩子盛汤的时候他正在盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤的时候他正在呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤的时候他正在呈饭",
+      "targetIndices": [
+        4,
+        12
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_06_some",
+      "source": "我给孩子盛汤的时候他正在盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤的时候他正在呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤的时候他正在呈饭",
+      "targetIndices": [
+        4,
+        12
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_06_most",
+      "source": "我给孩子盛汤的时候他正在盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤的时候他正在呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤的时候他正在呈饭",
+      "targetIndices": [
+        4,
+        12
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_06_all",
+      "source": "我给孩子盛汤的时候他正在盛饭",
+      "expectedBeforeSymbols": "我给孩子呈汤的时候他正在呈饭",
+      "oldPolicyBeforeSymbols": "我给孩子盛汤的时候他正在呈饭",
+      "targetIndices": [
+        4,
+        12
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_07_raw",
+      "source": "盛饭盛汤盛饭盛汤都可以",
+      "expectedBeforeSymbols": "呈饭呈汤呈饭呈汤都可以",
+      "oldPolicyBeforeSymbols": "盛饭盛汤盛饭盛汤都可以",
+      "targetIndices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_07_none",
+      "source": "盛饭盛汤盛饭盛汤都可以",
+      "expectedBeforeSymbols": "呈饭呈汤呈饭呈汤都可以",
+      "oldPolicyBeforeSymbols": "盛饭盛汤盛饭盛汤都可以",
+      "targetIndices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_07_some",
+      "source": "盛饭盛汤盛饭盛汤都可以",
+      "expectedBeforeSymbols": "呈饭呈汤呈饭呈汤都可以",
+      "oldPolicyBeforeSymbols": "盛饭盛汤盛饭盛汤都可以",
+      "targetIndices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_07_most",
+      "source": "盛饭盛汤盛饭盛汤都可以",
+      "expectedBeforeSymbols": "呈饭呈汤呈饭呈汤都可以",
+      "oldPolicyBeforeSymbols": "盛饭盛汤盛饭盛汤都可以",
+      "targetIndices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_07_all",
+      "source": "盛饭盛汤盛饭盛汤都可以",
+      "expectedBeforeSymbols": "呈饭呈汤呈饭呈汤都可以",
+      "oldPolicyBeforeSymbols": "盛饭盛汤盛饭盛汤都可以",
+      "targetIndices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_08_raw",
+      "source": "盛汤很好，盛饭也很好",
+      "expectedBeforeSymbols": "呈汤很好，呈饭也很好",
+      "oldPolicyBeforeSymbols": "盛汤很好，盛饭也很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_08_none",
+      "source": "盛汤很好，盛饭也很好",
+      "expectedBeforeSymbols": "呈汤很好，呈饭也很好",
+      "oldPolicyBeforeSymbols": "盛汤很好，盛饭也很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_08_some",
+      "source": "盛汤很好，盛饭也很好",
+      "expectedBeforeSymbols": "呈汤很好，呈饭也很好",
+      "oldPolicyBeforeSymbols": "盛汤很好，盛饭也很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_08_most",
+      "source": "盛汤很好，盛饭也很好",
+      "expectedBeforeSymbols": "呈汤很好，呈饭也很好",
+      "oldPolicyBeforeSymbols": "盛汤很好，盛饭也很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_08_all",
+      "source": "盛汤很好，盛饭也很好",
+      "expectedBeforeSymbols": "呈汤很好，呈饭也很好",
+      "oldPolicyBeforeSymbols": "盛汤很好，盛饭也很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_09_raw",
+      "source": "盛汤$之后盛饭|很好",
+      "expectedBeforeSymbols": "呈汤$之后呈饭|很好",
+      "oldPolicyBeforeSymbols": "呈汤$之后呈饭|很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_09_none",
+      "source": "盛汤$之后盛饭|很好",
+      "expectedBeforeSymbols": "呈汤$之后呈饭|很好",
+      "oldPolicyBeforeSymbols": "呈汤$之后呈饭|很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_09_some",
+      "source": "盛汤$之后盛饭|很好",
+      "expectedBeforeSymbols": "呈汤$之后呈饭|很好",
+      "oldPolicyBeforeSymbols": "呈汤$之后呈饭|很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_09_most",
+      "source": "盛汤$之后盛饭|很好",
+      "expectedBeforeSymbols": "呈汤$之后呈饭|很好",
+      "oldPolicyBeforeSymbols": "呈汤$之后呈饭|很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_09_all",
+      "source": "盛汤$之后盛饭|很好",
+      "expectedBeforeSymbols": "呈汤$之后呈饭|很好",
+      "oldPolicyBeforeSymbols": "呈汤$之后呈饭|很好",
+      "targetIndices": [
+        0,
+        5
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_10_raw",
+      "source": "丰盛饭菜端上桌之后再盛汤",
+      "expectedBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "oldPolicyBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "targetIndices": [
+        10
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_10_none",
+      "source": "丰盛饭菜端上桌之后再盛汤",
+      "expectedBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "oldPolicyBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "targetIndices": [
+        10
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_10_some",
+      "source": "丰盛饭菜端上桌之后再盛汤",
+      "expectedBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "oldPolicyBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "targetIndices": [
+        10
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_10_most",
+      "source": "丰盛饭菜端上桌之后再盛汤",
+      "expectedBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "oldPolicyBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "targetIndices": [
+        10
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_10_all",
+      "source": "丰盛饭菜端上桌之后再盛汤",
+      "expectedBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "oldPolicyBeforeSymbols": "丰盛饭菜端上桌之后再呈汤",
+      "targetIndices": [
+        10
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_11_raw",
+      "source": "盛汤之后欣赏盛开的花",
+      "expectedBeforeSymbols": "呈汤之后欣赏盛开的花",
+      "oldPolicyBeforeSymbols": "盛汤之后欣赏盛开的花",
+      "targetIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_11_none",
+      "source": "盛汤之后欣赏盛开的花",
+      "expectedBeforeSymbols": "呈汤之后欣赏盛开的花",
+      "oldPolicyBeforeSymbols": "盛汤之后欣赏盛开的花",
+      "targetIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_11_some",
+      "source": "盛汤之后欣赏盛开的花",
+      "expectedBeforeSymbols": "呈汤之后欣赏盛开的花",
+      "oldPolicyBeforeSymbols": "盛汤之后欣赏盛开的花",
+      "targetIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_11_most",
+      "source": "盛汤之后欣赏盛开的花",
+      "expectedBeforeSymbols": "呈汤之后欣赏盛开的花",
+      "oldPolicyBeforeSymbols": "盛汤之后欣赏盛开的花",
+      "targetIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_11_all",
+      "source": "盛汤之后欣赏盛开的花",
+      "expectedBeforeSymbols": "呈汤之后欣赏盛开的花",
+      "oldPolicyBeforeSymbols": "盛汤之后欣赏盛开的花",
+      "targetIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_12_raw",
+      "source": "盛汤姆去盛饭店之后帮我盛汤",
+      "expectedBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "oldPolicyBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "targetIndices": [
+        11
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_12_none",
+      "source": "盛汤姆去盛饭店之后帮我盛汤",
+      "expectedBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "oldPolicyBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "targetIndices": [
+        11
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_12_some",
+      "source": "盛汤姆去盛饭店之后帮我盛汤",
+      "expectedBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "oldPolicyBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "targetIndices": [
+        11
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_12_most",
+      "source": "盛汤姆去盛饭店之后帮我盛汤",
+      "expectedBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "oldPolicyBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "targetIndices": [
+        11
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_12_all",
+      "source": "盛汤姆去盛饭店之后帮我盛汤",
+      "expectedBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "oldPolicyBeforeSymbols": "盛汤姆去盛饭店之后帮我呈汤",
+      "targetIndices": [
+        11
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_13_raw",
+      "source": "旺盛水草旁边有人盛水浇花",
+      "expectedBeforeSymbols": "旺盛水草旁边有人呈水浇花",
+      "oldPolicyBeforeSymbols": "旺盛水草旁边有人盛水浇花",
+      "targetIndices": [
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_13_none",
+      "source": "旺盛水草旁边有人盛水浇花",
+      "expectedBeforeSymbols": "旺盛水草旁边有人呈水浇花",
+      "oldPolicyBeforeSymbols": "旺盛水草旁边有人盛水浇花",
+      "targetIndices": [
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_13_some",
+      "source": "旺盛水草旁边有人盛水浇花",
+      "expectedBeforeSymbols": "旺盛水草旁边有人呈水浇花",
+      "oldPolicyBeforeSymbols": "旺盛水草旁边有人盛水浇花",
+      "targetIndices": [
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_13_most",
+      "source": "旺盛水草旁边有人盛水浇花",
+      "expectedBeforeSymbols": "旺盛水草旁边有人呈水浇花",
+      "oldPolicyBeforeSymbols": "旺盛水草旁边有人盛水浇花",
+      "targetIndices": [
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_13_all",
+      "source": "旺盛水草旁边有人盛水浇花",
+      "expectedBeforeSymbols": "旺盛水草旁边有人呈水浇花",
+      "oldPolicyBeforeSymbols": "旺盛水草旁边有人盛水浇花",
+      "targetIndices": [
+        8
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_14_raw",
+      "source": "我来盛汤之后就离开",
+      "expectedBeforeSymbols": "我来呈汤之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛汤之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_14_none",
+      "source": "我来盛汤之后就离开",
+      "expectedBeforeSymbols": "我来呈汤之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛汤之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_14_some",
+      "source": "我来盛汤之后就离开",
+      "expectedBeforeSymbols": "我来呈汤之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛汤之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_14_most",
+      "source": "我来盛汤之后就离开",
+      "expectedBeforeSymbols": "我来呈汤之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛汤之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_14_all",
+      "source": "我来盛汤之后就离开",
+      "expectedBeforeSymbols": "我来呈汤之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛汤之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_15_raw",
+      "source": "我来盛饭之后就离开",
+      "expectedBeforeSymbols": "我来呈饭之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛饭之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_15_none",
+      "source": "我来盛饭之后就离开",
+      "expectedBeforeSymbols": "我来呈饭之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛饭之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_15_some",
+      "source": "我来盛饭之后就离开",
+      "expectedBeforeSymbols": "我来呈饭之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛饭之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_15_most",
+      "source": "我来盛饭之后就离开",
+      "expectedBeforeSymbols": "我来呈饭之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛饭之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_15_all",
+      "source": "我来盛饭之后就离开",
+      "expectedBeforeSymbols": "我来呈饭之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛饭之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_16_raw",
+      "source": "我来盛水之后就离开",
+      "expectedBeforeSymbols": "我来呈水之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛水之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_16_none",
+      "source": "我来盛水之后就离开",
+      "expectedBeforeSymbols": "我来呈水之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛水之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_16_some",
+      "source": "我来盛水之后就离开",
+      "expectedBeforeSymbols": "我来呈水之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛水之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_16_most",
+      "source": "我来盛水之后就离开",
+      "expectedBeforeSymbols": "我来呈水之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛水之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_16_all",
+      "source": "我来盛水之后就离开",
+      "expectedBeforeSymbols": "我来呈水之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛水之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_17_raw",
+      "source": "我来盛粥之后就离开",
+      "expectedBeforeSymbols": "我来呈粥之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛粥之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_17_none",
+      "source": "我来盛粥之后就离开",
+      "expectedBeforeSymbols": "我来呈粥之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛粥之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_17_some",
+      "source": "我来盛粥之后就离开",
+      "expectedBeforeSymbols": "我来呈粥之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛粥之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_17_most",
+      "source": "我来盛粥之后就离开",
+      "expectedBeforeSymbols": "我来呈粥之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛粥之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_17_all",
+      "source": "我来盛粥之后就离开",
+      "expectedBeforeSymbols": "我来呈粥之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛粥之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_18_raw",
+      "source": "我来盛菜之后就离开",
+      "expectedBeforeSymbols": "我来呈菜之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛菜之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_18_none",
+      "source": "我来盛菜之后就离开",
+      "expectedBeforeSymbols": "我来呈菜之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛菜之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_18_some",
+      "source": "我来盛菜之后就离开",
+      "expectedBeforeSymbols": "我来呈菜之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛菜之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_18_most",
+      "source": "我来盛菜之后就离开",
+      "expectedBeforeSymbols": "我来呈菜之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛菜之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_18_all",
+      "source": "我来盛菜之后就离开",
+      "expectedBeforeSymbols": "我来呈菜之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛菜之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_19_raw",
+      "source": "我来盛酒之后就离开",
+      "expectedBeforeSymbols": "我来呈酒之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛酒之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_19_none",
+      "source": "我来盛酒之后就离开",
+      "expectedBeforeSymbols": "我来呈酒之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛酒之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_19_some",
+      "source": "我来盛酒之后就离开",
+      "expectedBeforeSymbols": "我来呈酒之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛酒之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_19_most",
+      "source": "我来盛酒之后就离开",
+      "expectedBeforeSymbols": "我来呈酒之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛酒之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_19_all",
+      "source": "我来盛酒之后就离开",
+      "expectedBeforeSymbols": "我来呈酒之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛酒之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_20_raw",
+      "source": "我来盛药之后就离开",
+      "expectedBeforeSymbols": "我来呈药之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛药之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_20_none",
+      "source": "我来盛药之后就离开",
+      "expectedBeforeSymbols": "我来呈药之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛药之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_20_some",
+      "source": "我来盛药之后就离开",
+      "expectedBeforeSymbols": "我来呈药之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛药之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_20_most",
+      "source": "我来盛药之后就离开",
+      "expectedBeforeSymbols": "我来呈药之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛药之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_20_all",
+      "source": "我来盛药之后就离开",
+      "expectedBeforeSymbols": "我来呈药之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛药之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_21_raw",
+      "source": "我来盛茶之后就离开",
+      "expectedBeforeSymbols": "我来呈茶之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛茶之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_21_none",
+      "source": "我来盛茶之后就离开",
+      "expectedBeforeSymbols": "我来呈茶之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛茶之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_21_some",
+      "source": "我来盛茶之后就离开",
+      "expectedBeforeSymbols": "我来呈茶之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛茶之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_21_most",
+      "source": "我来盛茶之后就离开",
+      "expectedBeforeSymbols": "我来呈茶之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛茶之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_21_all",
+      "source": "我来盛茶之后就离开",
+      "expectedBeforeSymbols": "我来呈茶之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛茶之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_22_raw",
+      "source": "我来盛面之后就离开",
+      "expectedBeforeSymbols": "我来呈面之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛面之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_22_none",
+      "source": "我来盛面之后就离开",
+      "expectedBeforeSymbols": "我来呈面之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛面之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_22_some",
+      "source": "我来盛面之后就离开",
+      "expectedBeforeSymbols": "我来呈面之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛面之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_22_most",
+      "source": "我来盛面之后就离开",
+      "expectedBeforeSymbols": "我来呈面之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛面之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_22_all",
+      "source": "我来盛面之后就离开",
+      "expectedBeforeSymbols": "我来呈面之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛面之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_23_raw",
+      "source": "我来盛米之后就离开",
+      "expectedBeforeSymbols": "我来呈米之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛米之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_23_none",
+      "source": "我来盛米之后就离开",
+      "expectedBeforeSymbols": "我来呈米之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛米之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_23_some",
+      "source": "我来盛米之后就离开",
+      "expectedBeforeSymbols": "我来呈米之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛米之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_23_most",
+      "source": "我来盛米之后就离开",
+      "expectedBeforeSymbols": "我来呈米之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛米之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_23_all",
+      "source": "我来盛米之后就离开",
+      "expectedBeforeSymbols": "我来呈米之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛米之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_24_raw",
+      "source": "我来盛土之后就离开",
+      "expectedBeforeSymbols": "我来呈土之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛土之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_24_none",
+      "source": "我来盛土之后就离开",
+      "expectedBeforeSymbols": "我来呈土之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛土之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_24_some",
+      "source": "我来盛土之后就离开",
+      "expectedBeforeSymbols": "我来呈土之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛土之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_24_most",
+      "source": "我来盛土之后就离开",
+      "expectedBeforeSymbols": "我来呈土之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛土之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_24_all",
+      "source": "我来盛土之后就离开",
+      "expectedBeforeSymbols": "我来呈土之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛土之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "sentence_25_raw",
+      "source": "我来盛沙之后就离开",
+      "expectedBeforeSymbols": "我来呈沙之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛沙之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "sentence_25_none",
+      "source": "我来盛沙之后就离开",
+      "expectedBeforeSymbols": "我来呈沙之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛沙之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "sentence_25_some",
+      "source": "我来盛沙之后就离开",
+      "expectedBeforeSymbols": "我来呈沙之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛沙之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "sentence_25_most",
+      "source": "我来盛沙之后就离开",
+      "expectedBeforeSymbols": "我来呈沙之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛沙之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "sentence_25_all",
+      "source": "我来盛沙之后就离开",
+      "expectedBeforeSymbols": "我来呈沙之后就离开",
+      "oldPolicyBeforeSymbols": "我来盛沙之后就离开",
+      "targetIndices": [
+        2
+      ],
+      "expectedReading": "chéng",
+      "symbolLevel": "ALL"
+    }
+  ],
+  "cases": [
+    {
+      "id": "sentence_00_raw_source",
+      "text": "我给孩子盛饭之后盛汤",
+      "role": "source",
+      "compareGroup": "sentence_00_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_raw_old_policy",
+      "text": "我给孩子盛饭之后呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_00_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_raw_transformed",
+      "text": "我给孩子呈饭之后呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_00_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_raw_anchor",
+      "text": "我给孩子乘饭之后乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_00_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_none_source",
+      "text": "我给孩子盛饭之后盛汤",
+      "role": "source",
+      "compareGroup": "sentence_00_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_none_old_policy",
+      "text": "我给孩子盛饭之后呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_00_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_none_transformed",
+      "text": "我给孩子呈饭之后呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_00_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_none_anchor",
+      "text": "我给孩子乘饭之后乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_00_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_some_source",
+      "text": "我给孩子盛饭之后盛汤",
+      "role": "source",
+      "compareGroup": "sentence_00_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_some_old_policy",
+      "text": "我给孩子盛饭之后呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_00_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_some_transformed",
+      "text": "我给孩子呈饭之后呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_00_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_some_anchor",
+      "text": "我给孩子乘饭之后乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_00_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_most_source",
+      "text": "我给孩子盛饭之后盛汤",
+      "role": "source",
+      "compareGroup": "sentence_00_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_most_old_policy",
+      "text": "我给孩子盛饭之后呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_00_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_most_transformed",
+      "text": "我给孩子呈饭之后呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_00_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_most_anchor",
+      "text": "我给孩子乘饭之后乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_00_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_all_source",
+      "text": "我给孩子盛饭之后盛汤",
+      "role": "source",
+      "compareGroup": "sentence_00_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_all_old_policy",
+      "text": "我给孩子盛饭之后呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_00_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_all_transformed",
+      "text": "我给孩子呈饭之后呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_00_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_00_all_anchor",
+      "text": "我给孩子乘饭之后乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_00_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_raw_source",
+      "text": "我给孩子盛汤之后盛饭",
+      "role": "source",
+      "compareGroup": "sentence_01_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_raw_old_policy",
+      "text": "我给孩子盛汤之后呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_01_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_raw_transformed",
+      "text": "我给孩子呈汤之后呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_01_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_raw_anchor",
+      "text": "我给孩子乘汤之后乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_01_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_none_source",
+      "text": "我给孩子盛汤之后盛饭",
+      "role": "source",
+      "compareGroup": "sentence_01_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_none_old_policy",
+      "text": "我给孩子盛汤之后呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_01_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_none_transformed",
+      "text": "我给孩子呈汤之后呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_01_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_none_anchor",
+      "text": "我给孩子乘汤之后乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_01_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_some_source",
+      "text": "我给孩子盛汤之后盛饭",
+      "role": "source",
+      "compareGroup": "sentence_01_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_some_old_policy",
+      "text": "我给孩子盛汤之后呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_01_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_some_transformed",
+      "text": "我给孩子呈汤之后呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_01_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_some_anchor",
+      "text": "我给孩子乘汤之后乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_01_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_most_source",
+      "text": "我给孩子盛汤之后盛饭",
+      "role": "source",
+      "compareGroup": "sentence_01_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_most_old_policy",
+      "text": "我给孩子盛汤之后呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_01_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_most_transformed",
+      "text": "我给孩子呈汤之后呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_01_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_most_anchor",
+      "text": "我给孩子乘汤之后乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_01_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_all_source",
+      "text": "我给孩子盛汤之后盛饭",
+      "role": "source",
+      "compareGroup": "sentence_01_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_all_old_policy",
+      "text": "我给孩子盛汤之后呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_01_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_all_transformed",
+      "text": "我给孩子呈汤之后呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_01_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_01_all_anchor",
+      "text": "我给孩子乘汤之后乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_01_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_raw_source",
+      "text": "盛饭盛汤",
+      "role": "source",
+      "compareGroup": "sentence_02_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_raw_old_policy",
+      "text": "盛饭呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_02_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_raw_transformed",
+      "text": "呈饭呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_02_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_raw_anchor",
+      "text": "乘饭乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_02_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_none_source",
+      "text": "盛饭盛汤",
+      "role": "source",
+      "compareGroup": "sentence_02_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_none_old_policy",
+      "text": "盛饭呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_02_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_none_transformed",
+      "text": "呈饭呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_02_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_none_anchor",
+      "text": "乘饭乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_02_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_some_source",
+      "text": "盛饭盛汤",
+      "role": "source",
+      "compareGroup": "sentence_02_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_some_old_policy",
+      "text": "盛饭呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_02_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_some_transformed",
+      "text": "呈饭呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_02_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_some_anchor",
+      "text": "乘饭乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_02_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_most_source",
+      "text": "盛饭盛汤",
+      "role": "source",
+      "compareGroup": "sentence_02_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_most_old_policy",
+      "text": "盛饭呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_02_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_most_transformed",
+      "text": "呈饭呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_02_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_most_anchor",
+      "text": "乘饭乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_02_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_all_source",
+      "text": "盛饭盛汤",
+      "role": "source",
+      "compareGroup": "sentence_02_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_all_old_policy",
+      "text": "盛饭呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_02_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_all_transformed",
+      "text": "呈饭呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_02_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_02_all_anchor",
+      "text": "乘饭乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_02_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_raw_source",
+      "text": "盛饭盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_03_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_raw_old_policy",
+      "text": "盛饭盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_03_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_raw_transformed",
+      "text": "呈饭呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_03_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_raw_anchor",
+      "text": "乘饭乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_03_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_none_source",
+      "text": "盛饭盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_03_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_none_old_policy",
+      "text": "盛饭盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_03_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_none_transformed",
+      "text": "呈饭呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_03_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_none_anchor",
+      "text": "乘饭乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_03_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_some_source",
+      "text": "盛饭盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_03_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_some_old_policy",
+      "text": "盛饭盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_03_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_some_transformed",
+      "text": "呈饭呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_03_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_some_anchor",
+      "text": "乘饭乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_03_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_most_source",
+      "text": "盛饭盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_03_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_most_old_policy",
+      "text": "盛饭盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_03_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_most_transformed",
+      "text": "呈饭呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_03_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_most_anchor",
+      "text": "乘饭乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_03_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_all_source",
+      "text": "盛饭盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_03_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_all_old_policy",
+      "text": "盛饭盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_03_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_all_transformed",
+      "text": "呈饭呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_03_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_03_all_anchor",
+      "text": "乘饭乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_03_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_raw_source",
+      "text": "盛汤盛饭很好",
+      "role": "source",
+      "compareGroup": "sentence_04_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_raw_old_policy",
+      "text": "盛汤盛饭很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_04_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_raw_transformed",
+      "text": "呈汤呈饭很好",
+      "role": "transformed",
+      "compareGroup": "sentence_04_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_raw_anchor",
+      "text": "乘汤乘饭很好",
+      "role": "anchor",
+      "compareGroup": "sentence_04_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_none_source",
+      "text": "盛汤盛饭很好",
+      "role": "source",
+      "compareGroup": "sentence_04_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_none_old_policy",
+      "text": "盛汤盛饭很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_04_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_none_transformed",
+      "text": "呈汤呈饭很好",
+      "role": "transformed",
+      "compareGroup": "sentence_04_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_none_anchor",
+      "text": "乘汤乘饭很好",
+      "role": "anchor",
+      "compareGroup": "sentence_04_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_some_source",
+      "text": "盛汤盛饭很好",
+      "role": "source",
+      "compareGroup": "sentence_04_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_some_old_policy",
+      "text": "盛汤盛饭很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_04_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_some_transformed",
+      "text": "呈汤呈饭很好",
+      "role": "transformed",
+      "compareGroup": "sentence_04_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_some_anchor",
+      "text": "乘汤乘饭很好",
+      "role": "anchor",
+      "compareGroup": "sentence_04_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_most_source",
+      "text": "盛汤盛饭很好",
+      "role": "source",
+      "compareGroup": "sentence_04_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_most_old_policy",
+      "text": "盛汤盛饭很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_04_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_most_transformed",
+      "text": "呈汤呈饭很好",
+      "role": "transformed",
+      "compareGroup": "sentence_04_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_most_anchor",
+      "text": "乘汤乘饭很好",
+      "role": "anchor",
+      "compareGroup": "sentence_04_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_all_source",
+      "text": "盛汤盛饭很好",
+      "role": "source",
+      "compareGroup": "sentence_04_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_all_old_policy",
+      "text": "盛汤盛饭很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_04_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_all_transformed",
+      "text": "呈汤呈饭很好",
+      "role": "transformed",
+      "compareGroup": "sentence_04_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_04_all_anchor",
+      "text": "乘汤乘饭很好",
+      "role": "anchor",
+      "compareGroup": "sentence_04_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_raw_source",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_05_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_raw_old_policy",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_05_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_raw_transformed",
+      "text": "呈汤之后再呈饭然后呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_05_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_raw_anchor",
+      "text": "乘汤之后再乘饭然后乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_05_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_none_source",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_05_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_none_old_policy",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_05_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_none_transformed",
+      "text": "呈汤之后再呈饭然后呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_05_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_none_anchor",
+      "text": "乘汤之后再乘饭然后乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_05_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_some_source",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_05_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_some_old_policy",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_05_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_some_transformed",
+      "text": "呈汤之后再呈饭然后呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_05_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_some_anchor",
+      "text": "乘汤之后再乘饭然后乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_05_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_most_source",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_05_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_most_old_policy",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_05_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_most_transformed",
+      "text": "呈汤之后再呈饭然后呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_05_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_most_anchor",
+      "text": "乘汤之后再乘饭然后乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_05_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_all_source",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "source",
+      "compareGroup": "sentence_05_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_all_old_policy",
+      "text": "盛汤之后再盛饭然后盛汤很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_05_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_all_transformed",
+      "text": "呈汤之后再呈饭然后呈汤很好",
+      "role": "transformed",
+      "compareGroup": "sentence_05_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_05_all_anchor",
+      "text": "乘汤之后再乘饭然后乘汤很好",
+      "role": "anchor",
+      "compareGroup": "sentence_05_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_raw_source",
+      "text": "我给孩子盛汤的时候他正在盛饭",
+      "role": "source",
+      "compareGroup": "sentence_06_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_raw_old_policy",
+      "text": "我给孩子盛汤的时候他正在呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_06_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_raw_transformed",
+      "text": "我给孩子呈汤的时候他正在呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_06_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_raw_anchor",
+      "text": "我给孩子乘汤的时候他正在乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_06_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_none_source",
+      "text": "我给孩子盛汤的时候他正在盛饭",
+      "role": "source",
+      "compareGroup": "sentence_06_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_none_old_policy",
+      "text": "我给孩子盛汤的时候他正在呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_06_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_none_transformed",
+      "text": "我给孩子呈汤的时候他正在呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_06_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_none_anchor",
+      "text": "我给孩子乘汤的时候他正在乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_06_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_some_source",
+      "text": "我给孩子盛汤的时候他正在盛饭",
+      "role": "source",
+      "compareGroup": "sentence_06_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_some_old_policy",
+      "text": "我给孩子盛汤的时候他正在呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_06_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_some_transformed",
+      "text": "我给孩子呈汤的时候他正在呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_06_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_some_anchor",
+      "text": "我给孩子乘汤的时候他正在乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_06_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_most_source",
+      "text": "我给孩子盛汤的时候他正在盛饭",
+      "role": "source",
+      "compareGroup": "sentence_06_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_most_old_policy",
+      "text": "我给孩子盛汤的时候他正在呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_06_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_most_transformed",
+      "text": "我给孩子呈汤的时候他正在呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_06_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_most_anchor",
+      "text": "我给孩子乘汤的时候他正在乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_06_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_all_source",
+      "text": "我给孩子盛汤的时候他正在盛饭",
+      "role": "source",
+      "compareGroup": "sentence_06_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_all_old_policy",
+      "text": "我给孩子盛汤的时候他正在呈饭",
+      "role": "old_policy",
+      "compareGroup": "sentence_06_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_all_transformed",
+      "text": "我给孩子呈汤的时候他正在呈饭",
+      "role": "transformed",
+      "compareGroup": "sentence_06_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_06_all_anchor",
+      "text": "我给孩子乘汤的时候他正在乘饭",
+      "role": "anchor",
+      "compareGroup": "sentence_06_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_raw_source",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "source",
+      "compareGroup": "sentence_07_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_raw_old_policy",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "old_policy",
+      "compareGroup": "sentence_07_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_raw_transformed",
+      "text": "呈饭呈汤呈饭呈汤都可以",
+      "role": "transformed",
+      "compareGroup": "sentence_07_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_raw_anchor",
+      "text": "乘饭乘汤乘饭乘汤都可以",
+      "role": "anchor",
+      "compareGroup": "sentence_07_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_none_source",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "source",
+      "compareGroup": "sentence_07_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_none_old_policy",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "old_policy",
+      "compareGroup": "sentence_07_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_none_transformed",
+      "text": "呈饭呈汤呈饭呈汤都可以",
+      "role": "transformed",
+      "compareGroup": "sentence_07_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_none_anchor",
+      "text": "乘饭乘汤乘饭乘汤都可以",
+      "role": "anchor",
+      "compareGroup": "sentence_07_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_some_source",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "source",
+      "compareGroup": "sentence_07_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_some_old_policy",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "old_policy",
+      "compareGroup": "sentence_07_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_some_transformed",
+      "text": "呈饭呈汤呈饭呈汤都可以",
+      "role": "transformed",
+      "compareGroup": "sentence_07_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_some_anchor",
+      "text": "乘饭乘汤乘饭乘汤都可以",
+      "role": "anchor",
+      "compareGroup": "sentence_07_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_most_source",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "source",
+      "compareGroup": "sentence_07_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_most_old_policy",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "old_policy",
+      "compareGroup": "sentence_07_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_most_transformed",
+      "text": "呈饭呈汤呈饭呈汤都可以",
+      "role": "transformed",
+      "compareGroup": "sentence_07_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_most_anchor",
+      "text": "乘饭乘汤乘饭乘汤都可以",
+      "role": "anchor",
+      "compareGroup": "sentence_07_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_all_source",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "source",
+      "compareGroup": "sentence_07_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_all_old_policy",
+      "text": "盛饭盛汤盛饭盛汤都可以",
+      "role": "old_policy",
+      "compareGroup": "sentence_07_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_all_transformed",
+      "text": "呈饭呈汤呈饭呈汤都可以",
+      "role": "transformed",
+      "compareGroup": "sentence_07_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_07_all_anchor",
+      "text": "乘饭乘汤乘饭乘汤都可以",
+      "role": "anchor",
+      "compareGroup": "sentence_07_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_raw_source",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "source",
+      "compareGroup": "sentence_08_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_raw_old_policy",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_08_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_raw_transformed",
+      "text": "呈汤很好，呈饭也很好",
+      "role": "transformed",
+      "compareGroup": "sentence_08_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_raw_anchor",
+      "text": "乘汤很好，乘饭也很好",
+      "role": "anchor",
+      "compareGroup": "sentence_08_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_none_source",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "source",
+      "compareGroup": "sentence_08_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_none_old_policy",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_08_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_none_transformed",
+      "text": "呈汤很好，呈饭也很好",
+      "role": "transformed",
+      "compareGroup": "sentence_08_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_none_anchor",
+      "text": "乘汤很好，乘饭也很好",
+      "role": "anchor",
+      "compareGroup": "sentence_08_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_some_source",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "source",
+      "compareGroup": "sentence_08_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_some_old_policy",
+      "text": "盛汤很好，盛饭也很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_08_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_some_transformed",
+      "text": "呈汤很好，呈饭也很好",
+      "role": "transformed",
+      "compareGroup": "sentence_08_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_some_anchor",
+      "text": "乘汤很好，乘饭也很好",
+      "role": "anchor",
+      "compareGroup": "sentence_08_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_most_source",
+      "text": "盛汤很好 全角逗号，盛饭也很好",
+      "role": "source",
+      "compareGroup": "sentence_08_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_most_old_policy",
+      "text": "盛汤很好 全角逗号，盛饭也很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_08_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_most_transformed",
+      "text": "呈汤很好 全角逗号，呈饭也很好",
+      "role": "transformed",
+      "compareGroup": "sentence_08_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_most_anchor",
+      "text": "乘汤很好 全角逗号，乘饭也很好",
+      "role": "anchor",
+      "compareGroup": "sentence_08_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_all_source",
+      "text": "盛汤很好 全角逗号，盛饭也很好",
+      "role": "source",
+      "compareGroup": "sentence_08_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_all_old_policy",
+      "text": "盛汤很好 全角逗号，盛饭也很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_08_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_all_transformed",
+      "text": "呈汤很好 全角逗号，呈饭也很好",
+      "role": "transformed",
+      "compareGroup": "sentence_08_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_08_all_anchor",
+      "text": "乘汤很好 全角逗号，乘饭也很好",
+      "role": "anchor",
+      "compareGroup": "sentence_08_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_raw_source",
+      "text": "盛汤$之后盛饭|很好",
+      "role": "source",
+      "compareGroup": "sentence_09_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_raw_old_policy",
+      "text": "呈汤$之后呈饭|很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_09_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_raw_transformed",
+      "text": "呈汤$之后呈饭|很好",
+      "role": "transformed",
+      "compareGroup": "sentence_09_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_raw_anchor",
+      "text": "乘汤$之后乘饭|很好",
+      "role": "anchor",
+      "compareGroup": "sentence_09_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_none_source",
+      "text": "盛汤$之后盛饭 很好",
+      "role": "source",
+      "compareGroup": "sentence_09_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_none_old_policy",
+      "text": "呈汤$之后呈饭 很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_09_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_none_transformed",
+      "text": "呈汤$之后呈饭 很好",
+      "role": "transformed",
+      "compareGroup": "sentence_09_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_none_anchor",
+      "text": "乘汤$之后乘饭 很好",
+      "role": "anchor",
+      "compareGroup": "sentence_09_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_some_source",
+      "text": "盛汤$之后盛饭 很好",
+      "role": "source",
+      "compareGroup": "sentence_09_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_some_old_policy",
+      "text": "呈汤$之后呈饭 很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_09_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_some_transformed",
+      "text": "呈汤$之后呈饭 很好",
+      "role": "transformed",
+      "compareGroup": "sentence_09_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_some_anchor",
+      "text": "乘汤$之后乘饭 很好",
+      "role": "anchor",
+      "compareGroup": "sentence_09_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_most_source",
+      "text": "盛汤$之后盛饭 竖线 很好",
+      "role": "source",
+      "compareGroup": "sentence_09_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_most_old_policy",
+      "text": "呈汤$之后呈饭 竖线 很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_09_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_most_transformed",
+      "text": "呈汤$之后呈饭 竖线 很好",
+      "role": "transformed",
+      "compareGroup": "sentence_09_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_most_anchor",
+      "text": "乘汤$之后乘饭 竖线 很好",
+      "role": "anchor",
+      "compareGroup": "sentence_09_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_all_source",
+      "text": "盛汤 美元 之后盛饭 竖线 很好",
+      "role": "source",
+      "compareGroup": "sentence_09_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_all_old_policy",
+      "text": "呈汤 美元 之后呈饭 竖线 很好",
+      "role": "old_policy",
+      "compareGroup": "sentence_09_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_all_transformed",
+      "text": "呈汤 美元 之后呈饭 竖线 很好",
+      "role": "transformed",
+      "compareGroup": "sentence_09_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_09_all_anchor",
+      "text": "乘汤 美元 之后乘饭 竖线 很好",
+      "role": "anchor",
+      "compareGroup": "sentence_09_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_raw_source",
+      "text": "丰盛饭菜端上桌之后再盛汤",
+      "role": "source",
+      "compareGroup": "sentence_10_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_raw_old_policy",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_10_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_raw_transformed",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_10_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_raw_anchor",
+      "text": "丰盛饭菜端上桌之后再乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_10_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_none_source",
+      "text": "丰盛饭菜端上桌之后再盛汤",
+      "role": "source",
+      "compareGroup": "sentence_10_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_none_old_policy",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_10_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_none_transformed",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_10_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_none_anchor",
+      "text": "丰盛饭菜端上桌之后再乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_10_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_some_source",
+      "text": "丰盛饭菜端上桌之后再盛汤",
+      "role": "source",
+      "compareGroup": "sentence_10_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_some_old_policy",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_10_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_some_transformed",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_10_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_some_anchor",
+      "text": "丰盛饭菜端上桌之后再乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_10_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_most_source",
+      "text": "丰盛饭菜端上桌之后再盛汤",
+      "role": "source",
+      "compareGroup": "sentence_10_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_most_old_policy",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_10_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_most_transformed",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_10_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_most_anchor",
+      "text": "丰盛饭菜端上桌之后再乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_10_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_all_source",
+      "text": "丰盛饭菜端上桌之后再盛汤",
+      "role": "source",
+      "compareGroup": "sentence_10_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_all_old_policy",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_10_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_all_transformed",
+      "text": "丰盛饭菜端上桌之后再呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_10_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_10_all_anchor",
+      "text": "丰盛饭菜端上桌之后再乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_10_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_raw_source",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "source",
+      "compareGroup": "sentence_11_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_raw_old_policy",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "old_policy",
+      "compareGroup": "sentence_11_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_raw_transformed",
+      "text": "呈汤之后欣赏盛开的花",
+      "role": "transformed",
+      "compareGroup": "sentence_11_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_raw_anchor",
+      "text": "乘汤之后欣赏盛开的花",
+      "role": "anchor",
+      "compareGroup": "sentence_11_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_none_source",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "source",
+      "compareGroup": "sentence_11_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_none_old_policy",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "old_policy",
+      "compareGroup": "sentence_11_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_none_transformed",
+      "text": "呈汤之后欣赏盛开的花",
+      "role": "transformed",
+      "compareGroup": "sentence_11_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_none_anchor",
+      "text": "乘汤之后欣赏盛开的花",
+      "role": "anchor",
+      "compareGroup": "sentence_11_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_some_source",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "source",
+      "compareGroup": "sentence_11_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_some_old_policy",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "old_policy",
+      "compareGroup": "sentence_11_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_some_transformed",
+      "text": "呈汤之后欣赏盛开的花",
+      "role": "transformed",
+      "compareGroup": "sentence_11_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_some_anchor",
+      "text": "乘汤之后欣赏盛开的花",
+      "role": "anchor",
+      "compareGroup": "sentence_11_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_most_source",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "source",
+      "compareGroup": "sentence_11_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_most_old_policy",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "old_policy",
+      "compareGroup": "sentence_11_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_most_transformed",
+      "text": "呈汤之后欣赏盛开的花",
+      "role": "transformed",
+      "compareGroup": "sentence_11_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_most_anchor",
+      "text": "乘汤之后欣赏盛开的花",
+      "role": "anchor",
+      "compareGroup": "sentence_11_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_all_source",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "source",
+      "compareGroup": "sentence_11_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_all_old_policy",
+      "text": "盛汤之后欣赏盛开的花",
+      "role": "old_policy",
+      "compareGroup": "sentence_11_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_all_transformed",
+      "text": "呈汤之后欣赏盛开的花",
+      "role": "transformed",
+      "compareGroup": "sentence_11_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_11_all_anchor",
+      "text": "乘汤之后欣赏盛开的花",
+      "role": "anchor",
+      "compareGroup": "sentence_11_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_raw_source",
+      "text": "盛汤姆去盛饭店之后帮我盛汤",
+      "role": "source",
+      "compareGroup": "sentence_12_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_raw_old_policy",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_12_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_raw_transformed",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_12_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_raw_anchor",
+      "text": "盛汤姆去盛饭店之后帮我乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_12_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_none_source",
+      "text": "盛汤姆去盛饭店之后帮我盛汤",
+      "role": "source",
+      "compareGroup": "sentence_12_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_none_old_policy",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_12_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_none_transformed",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_12_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_none_anchor",
+      "text": "盛汤姆去盛饭店之后帮我乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_12_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_some_source",
+      "text": "盛汤姆去盛饭店之后帮我盛汤",
+      "role": "source",
+      "compareGroup": "sentence_12_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_some_old_policy",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_12_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_some_transformed",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_12_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_some_anchor",
+      "text": "盛汤姆去盛饭店之后帮我乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_12_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_most_source",
+      "text": "盛汤姆去盛饭店之后帮我盛汤",
+      "role": "source",
+      "compareGroup": "sentence_12_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_most_old_policy",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_12_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_most_transformed",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_12_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_most_anchor",
+      "text": "盛汤姆去盛饭店之后帮我乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_12_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_all_source",
+      "text": "盛汤姆去盛饭店之后帮我盛汤",
+      "role": "source",
+      "compareGroup": "sentence_12_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_all_old_policy",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "old_policy",
+      "compareGroup": "sentence_12_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_all_transformed",
+      "text": "盛汤姆去盛饭店之后帮我呈汤",
+      "role": "transformed",
+      "compareGroup": "sentence_12_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_12_all_anchor",
+      "text": "盛汤姆去盛饭店之后帮我乘汤",
+      "role": "anchor",
+      "compareGroup": "sentence_12_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_raw_source",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "source",
+      "compareGroup": "sentence_13_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_raw_old_policy",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "old_policy",
+      "compareGroup": "sentence_13_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_raw_transformed",
+      "text": "旺盛水草旁边有人呈水浇花",
+      "role": "transformed",
+      "compareGroup": "sentence_13_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_raw_anchor",
+      "text": "旺盛水草旁边有人乘水浇花",
+      "role": "anchor",
+      "compareGroup": "sentence_13_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_none_source",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "source",
+      "compareGroup": "sentence_13_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_none_old_policy",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "old_policy",
+      "compareGroup": "sentence_13_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_none_transformed",
+      "text": "旺盛水草旁边有人呈水浇花",
+      "role": "transformed",
+      "compareGroup": "sentence_13_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_none_anchor",
+      "text": "旺盛水草旁边有人乘水浇花",
+      "role": "anchor",
+      "compareGroup": "sentence_13_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_some_source",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "source",
+      "compareGroup": "sentence_13_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_some_old_policy",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "old_policy",
+      "compareGroup": "sentence_13_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_some_transformed",
+      "text": "旺盛水草旁边有人呈水浇花",
+      "role": "transformed",
+      "compareGroup": "sentence_13_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_some_anchor",
+      "text": "旺盛水草旁边有人乘水浇花",
+      "role": "anchor",
+      "compareGroup": "sentence_13_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_most_source",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "source",
+      "compareGroup": "sentence_13_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_most_old_policy",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "old_policy",
+      "compareGroup": "sentence_13_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_most_transformed",
+      "text": "旺盛水草旁边有人呈水浇花",
+      "role": "transformed",
+      "compareGroup": "sentence_13_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_most_anchor",
+      "text": "旺盛水草旁边有人乘水浇花",
+      "role": "anchor",
+      "compareGroup": "sentence_13_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_all_source",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "source",
+      "compareGroup": "sentence_13_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_all_old_policy",
+      "text": "旺盛水草旁边有人盛水浇花",
+      "role": "old_policy",
+      "compareGroup": "sentence_13_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_all_transformed",
+      "text": "旺盛水草旁边有人呈水浇花",
+      "role": "transformed",
+      "compareGroup": "sentence_13_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_13_all_anchor",
+      "text": "旺盛水草旁边有人乘水浇花",
+      "role": "anchor",
+      "compareGroup": "sentence_13_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_raw_source",
+      "text": "我来盛汤之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_14_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_raw_old_policy",
+      "text": "我来盛汤之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_14_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_raw_transformed",
+      "text": "我来呈汤之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_14_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_raw_anchor",
+      "text": "我来乘汤之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_14_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_none_source",
+      "text": "我来盛汤之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_14_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_none_old_policy",
+      "text": "我来盛汤之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_14_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_none_transformed",
+      "text": "我来呈汤之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_14_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_none_anchor",
+      "text": "我来乘汤之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_14_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_some_source",
+      "text": "我来盛汤之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_14_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_some_old_policy",
+      "text": "我来盛汤之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_14_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_some_transformed",
+      "text": "我来呈汤之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_14_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_some_anchor",
+      "text": "我来乘汤之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_14_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_most_source",
+      "text": "我来盛汤之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_14_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_most_old_policy",
+      "text": "我来盛汤之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_14_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_most_transformed",
+      "text": "我来呈汤之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_14_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_most_anchor",
+      "text": "我来乘汤之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_14_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_all_source",
+      "text": "我来盛汤之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_14_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_all_old_policy",
+      "text": "我来盛汤之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_14_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_all_transformed",
+      "text": "我来呈汤之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_14_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_14_all_anchor",
+      "text": "我来乘汤之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_14_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_raw_source",
+      "text": "我来盛饭之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_15_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_raw_old_policy",
+      "text": "我来盛饭之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_15_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_raw_transformed",
+      "text": "我来呈饭之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_15_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_raw_anchor",
+      "text": "我来乘饭之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_15_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_none_source",
+      "text": "我来盛饭之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_15_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_none_old_policy",
+      "text": "我来盛饭之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_15_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_none_transformed",
+      "text": "我来呈饭之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_15_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_none_anchor",
+      "text": "我来乘饭之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_15_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_some_source",
+      "text": "我来盛饭之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_15_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_some_old_policy",
+      "text": "我来盛饭之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_15_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_some_transformed",
+      "text": "我来呈饭之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_15_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_some_anchor",
+      "text": "我来乘饭之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_15_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_most_source",
+      "text": "我来盛饭之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_15_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_most_old_policy",
+      "text": "我来盛饭之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_15_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_most_transformed",
+      "text": "我来呈饭之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_15_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_most_anchor",
+      "text": "我来乘饭之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_15_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_all_source",
+      "text": "我来盛饭之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_15_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_all_old_policy",
+      "text": "我来盛饭之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_15_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_all_transformed",
+      "text": "我来呈饭之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_15_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_15_all_anchor",
+      "text": "我来乘饭之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_15_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_raw_source",
+      "text": "我来盛水之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_16_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_raw_old_policy",
+      "text": "我来盛水之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_16_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_raw_transformed",
+      "text": "我来呈水之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_16_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_raw_anchor",
+      "text": "我来乘水之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_16_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_none_source",
+      "text": "我来盛水之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_16_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_none_old_policy",
+      "text": "我来盛水之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_16_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_none_transformed",
+      "text": "我来呈水之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_16_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_none_anchor",
+      "text": "我来乘水之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_16_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_some_source",
+      "text": "我来盛水之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_16_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_some_old_policy",
+      "text": "我来盛水之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_16_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_some_transformed",
+      "text": "我来呈水之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_16_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_some_anchor",
+      "text": "我来乘水之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_16_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_most_source",
+      "text": "我来盛水之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_16_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_most_old_policy",
+      "text": "我来盛水之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_16_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_most_transformed",
+      "text": "我来呈水之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_16_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_most_anchor",
+      "text": "我来乘水之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_16_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_all_source",
+      "text": "我来盛水之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_16_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_all_old_policy",
+      "text": "我来盛水之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_16_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_all_transformed",
+      "text": "我来呈水之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_16_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_16_all_anchor",
+      "text": "我来乘水之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_16_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_raw_source",
+      "text": "我来盛粥之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_17_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_raw_old_policy",
+      "text": "我来盛粥之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_17_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_raw_transformed",
+      "text": "我来呈粥之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_17_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_raw_anchor",
+      "text": "我来乘粥之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_17_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_none_source",
+      "text": "我来盛粥之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_17_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_none_old_policy",
+      "text": "我来盛粥之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_17_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_none_transformed",
+      "text": "我来呈粥之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_17_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_none_anchor",
+      "text": "我来乘粥之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_17_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_some_source",
+      "text": "我来盛粥之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_17_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_some_old_policy",
+      "text": "我来盛粥之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_17_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_some_transformed",
+      "text": "我来呈粥之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_17_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_some_anchor",
+      "text": "我来乘粥之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_17_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_most_source",
+      "text": "我来盛粥之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_17_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_most_old_policy",
+      "text": "我来盛粥之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_17_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_most_transformed",
+      "text": "我来呈粥之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_17_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_most_anchor",
+      "text": "我来乘粥之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_17_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_all_source",
+      "text": "我来盛粥之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_17_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_all_old_policy",
+      "text": "我来盛粥之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_17_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_all_transformed",
+      "text": "我来呈粥之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_17_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_17_all_anchor",
+      "text": "我来乘粥之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_17_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_raw_source",
+      "text": "我来盛菜之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_18_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_raw_old_policy",
+      "text": "我来盛菜之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_18_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_raw_transformed",
+      "text": "我来呈菜之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_18_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_raw_anchor",
+      "text": "我来乘菜之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_18_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_none_source",
+      "text": "我来盛菜之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_18_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_none_old_policy",
+      "text": "我来盛菜之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_18_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_none_transformed",
+      "text": "我来呈菜之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_18_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_none_anchor",
+      "text": "我来乘菜之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_18_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_some_source",
+      "text": "我来盛菜之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_18_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_some_old_policy",
+      "text": "我来盛菜之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_18_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_some_transformed",
+      "text": "我来呈菜之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_18_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_some_anchor",
+      "text": "我来乘菜之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_18_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_most_source",
+      "text": "我来盛菜之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_18_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_most_old_policy",
+      "text": "我来盛菜之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_18_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_most_transformed",
+      "text": "我来呈菜之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_18_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_most_anchor",
+      "text": "我来乘菜之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_18_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_all_source",
+      "text": "我来盛菜之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_18_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_all_old_policy",
+      "text": "我来盛菜之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_18_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_all_transformed",
+      "text": "我来呈菜之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_18_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_18_all_anchor",
+      "text": "我来乘菜之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_18_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_raw_source",
+      "text": "我来盛酒之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_19_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_raw_old_policy",
+      "text": "我来盛酒之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_19_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_raw_transformed",
+      "text": "我来呈酒之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_19_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_raw_anchor",
+      "text": "我来乘酒之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_19_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_none_source",
+      "text": "我来盛酒之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_19_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_none_old_policy",
+      "text": "我来盛酒之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_19_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_none_transformed",
+      "text": "我来呈酒之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_19_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_none_anchor",
+      "text": "我来乘酒之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_19_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_some_source",
+      "text": "我来盛酒之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_19_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_some_old_policy",
+      "text": "我来盛酒之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_19_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_some_transformed",
+      "text": "我来呈酒之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_19_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_some_anchor",
+      "text": "我来乘酒之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_19_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_most_source",
+      "text": "我来盛酒之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_19_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_most_old_policy",
+      "text": "我来盛酒之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_19_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_most_transformed",
+      "text": "我来呈酒之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_19_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_most_anchor",
+      "text": "我来乘酒之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_19_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_all_source",
+      "text": "我来盛酒之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_19_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_all_old_policy",
+      "text": "我来盛酒之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_19_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_all_transformed",
+      "text": "我来呈酒之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_19_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_19_all_anchor",
+      "text": "我来乘酒之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_19_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_raw_source",
+      "text": "我来盛药之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_20_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_raw_old_policy",
+      "text": "我来盛药之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_20_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_raw_transformed",
+      "text": "我来呈药之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_20_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_raw_anchor",
+      "text": "我来乘药之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_20_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_none_source",
+      "text": "我来盛药之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_20_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_none_old_policy",
+      "text": "我来盛药之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_20_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_none_transformed",
+      "text": "我来呈药之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_20_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_none_anchor",
+      "text": "我来乘药之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_20_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_some_source",
+      "text": "我来盛药之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_20_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_some_old_policy",
+      "text": "我来盛药之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_20_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_some_transformed",
+      "text": "我来呈药之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_20_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_some_anchor",
+      "text": "我来乘药之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_20_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_most_source",
+      "text": "我来盛药之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_20_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_most_old_policy",
+      "text": "我来盛药之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_20_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_most_transformed",
+      "text": "我来呈药之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_20_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_most_anchor",
+      "text": "我来乘药之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_20_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_all_source",
+      "text": "我来盛药之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_20_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_all_old_policy",
+      "text": "我来盛药之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_20_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_all_transformed",
+      "text": "我来呈药之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_20_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_20_all_anchor",
+      "text": "我来乘药之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_20_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_raw_source",
+      "text": "我来盛茶之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_21_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_raw_old_policy",
+      "text": "我来盛茶之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_21_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_raw_transformed",
+      "text": "我来呈茶之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_21_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_raw_anchor",
+      "text": "我来乘茶之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_21_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_none_source",
+      "text": "我来盛茶之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_21_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_none_old_policy",
+      "text": "我来盛茶之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_21_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_none_transformed",
+      "text": "我来呈茶之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_21_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_none_anchor",
+      "text": "我来乘茶之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_21_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_some_source",
+      "text": "我来盛茶之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_21_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_some_old_policy",
+      "text": "我来盛茶之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_21_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_some_transformed",
+      "text": "我来呈茶之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_21_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_some_anchor",
+      "text": "我来乘茶之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_21_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_most_source",
+      "text": "我来盛茶之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_21_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_most_old_policy",
+      "text": "我来盛茶之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_21_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_most_transformed",
+      "text": "我来呈茶之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_21_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_most_anchor",
+      "text": "我来乘茶之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_21_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_all_source",
+      "text": "我来盛茶之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_21_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_all_old_policy",
+      "text": "我来盛茶之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_21_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_all_transformed",
+      "text": "我来呈茶之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_21_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_21_all_anchor",
+      "text": "我来乘茶之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_21_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_raw_source",
+      "text": "我来盛面之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_22_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_raw_old_policy",
+      "text": "我来盛面之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_22_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_raw_transformed",
+      "text": "我来呈面之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_22_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_raw_anchor",
+      "text": "我来乘面之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_22_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_none_source",
+      "text": "我来盛面之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_22_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_none_old_policy",
+      "text": "我来盛面之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_22_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_none_transformed",
+      "text": "我来呈面之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_22_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_none_anchor",
+      "text": "我来乘面之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_22_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_some_source",
+      "text": "我来盛面之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_22_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_some_old_policy",
+      "text": "我来盛面之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_22_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_some_transformed",
+      "text": "我来呈面之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_22_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_some_anchor",
+      "text": "我来乘面之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_22_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_most_source",
+      "text": "我来盛面之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_22_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_most_old_policy",
+      "text": "我来盛面之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_22_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_most_transformed",
+      "text": "我来呈面之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_22_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_most_anchor",
+      "text": "我来乘面之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_22_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_all_source",
+      "text": "我来盛面之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_22_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_all_old_policy",
+      "text": "我来盛面之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_22_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_all_transformed",
+      "text": "我来呈面之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_22_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_22_all_anchor",
+      "text": "我来乘面之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_22_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_raw_source",
+      "text": "我来盛米之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_23_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_raw_old_policy",
+      "text": "我来盛米之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_23_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_raw_transformed",
+      "text": "我来呈米之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_23_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_raw_anchor",
+      "text": "我来乘米之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_23_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_none_source",
+      "text": "我来盛米之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_23_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_none_old_policy",
+      "text": "我来盛米之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_23_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_none_transformed",
+      "text": "我来呈米之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_23_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_none_anchor",
+      "text": "我来乘米之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_23_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_some_source",
+      "text": "我来盛米之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_23_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_some_old_policy",
+      "text": "我来盛米之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_23_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_some_transformed",
+      "text": "我来呈米之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_23_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_some_anchor",
+      "text": "我来乘米之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_23_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_most_source",
+      "text": "我来盛米之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_23_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_most_old_policy",
+      "text": "我来盛米之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_23_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_most_transformed",
+      "text": "我来呈米之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_23_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_most_anchor",
+      "text": "我来乘米之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_23_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_all_source",
+      "text": "我来盛米之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_23_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_all_old_policy",
+      "text": "我来盛米之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_23_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_all_transformed",
+      "text": "我来呈米之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_23_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_23_all_anchor",
+      "text": "我来乘米之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_23_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_raw_source",
+      "text": "我来盛土之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_24_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_raw_old_policy",
+      "text": "我来盛土之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_24_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_raw_transformed",
+      "text": "我来呈土之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_24_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_raw_anchor",
+      "text": "我来乘土之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_24_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_none_source",
+      "text": "我来盛土之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_24_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_none_old_policy",
+      "text": "我来盛土之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_24_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_none_transformed",
+      "text": "我来呈土之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_24_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_none_anchor",
+      "text": "我来乘土之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_24_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_some_source",
+      "text": "我来盛土之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_24_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_some_old_policy",
+      "text": "我来盛土之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_24_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_some_transformed",
+      "text": "我来呈土之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_24_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_some_anchor",
+      "text": "我来乘土之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_24_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_most_source",
+      "text": "我来盛土之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_24_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_most_old_policy",
+      "text": "我来盛土之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_24_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_most_transformed",
+      "text": "我来呈土之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_24_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_most_anchor",
+      "text": "我来乘土之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_24_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_all_source",
+      "text": "我来盛土之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_24_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_all_old_policy",
+      "text": "我来盛土之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_24_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_all_transformed",
+      "text": "我来呈土之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_24_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_24_all_anchor",
+      "text": "我来乘土之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_24_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_raw_source",
+      "text": "我来盛沙之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_25_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_raw_old_policy",
+      "text": "我来盛沙之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_25_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_raw_transformed",
+      "text": "我来呈沙之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_25_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_raw_anchor",
+      "text": "我来乘沙之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_25_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_none_source",
+      "text": "我来盛沙之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_25_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_none_old_policy",
+      "text": "我来盛沙之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_25_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_none_transformed",
+      "text": "我来呈沙之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_25_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_none_anchor",
+      "text": "我来乘沙之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_25_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_some_source",
+      "text": "我来盛沙之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_25_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_some_old_policy",
+      "text": "我来盛沙之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_25_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_some_transformed",
+      "text": "我来呈沙之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_25_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_some_anchor",
+      "text": "我来乘沙之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_25_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_most_source",
+      "text": "我来盛沙之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_25_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_most_old_policy",
+      "text": "我来盛沙之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_25_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_most_transformed",
+      "text": "我来呈沙之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_25_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_most_anchor",
+      "text": "我来乘沙之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_25_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_all_source",
+      "text": "我来盛沙之后就离开",
+      "role": "source",
+      "compareGroup": "sentence_25_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_all_old_policy",
+      "text": "我来盛沙之后就离开",
+      "role": "old_policy",
+      "compareGroup": "sentence_25_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_all_transformed",
+      "text": "我来呈沙之后就离开",
+      "role": "transformed",
+      "compareGroup": "sentence_25_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "sentence_25_all_anchor",
+      "text": "我来乘沙之后就离开",
+      "role": "anchor",
+      "compareGroup": "sentence_25_all",
+      "anchorConfidence": "common"
+    }
+  ]
+}

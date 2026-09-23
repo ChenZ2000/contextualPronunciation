@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Source records for offline review, NOT validated runtime pronunciation rules",
+  "recordCounts": {
+    "cc-cedict": 125009,
+    "kfcd-hyzd": 6427
+  },
+  "recordsSha256": "42fa9059afa823def37d461d585ad3f35573712a83212e393bf1c0bd19cfd3a8",
+  "normalization": [
+    "NFC-compatible numbered pinyin via the same parser as runtime templates",
+    "Preserve original forms, raw pinyin, sense glosses, source lines and licenses",
+    "No silent first-pronunciation choice, default-tone completion or script conversion",
+    "Character-sense readings annotate the target only, never the entire example"
+  ],
+  "sources": {
+    "cc-cedict": {
+      "title": "CC-CEDICT, MDBG snapshot 2026-09-07",
+      "url": "https://www.mdbg.net/chinese/dictionary?page=cedict",
+      "snapshot": "data/sources/cedict-20260907.txt.gz",
+      "sha256": "cd81c0d253c82d4b1dc3ca2cfe4cd5fc46ca10b753743a80d783f3969ae11a23",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "kfcd-hyzd": {
+      "title": "开放汉语字典 / KFCD, © 2009–2020 开放词典",
+      "url": "https://github.com/kfcd/hyzd/blob/04987755b16264636c01d28df4d96fa14dadd210/dist/tsv/简体/汉语字典_(汉语拼音_带数).txt",
+      "commit": "04987755b16264636c01d28df4d96fa14dadd210",
+      "snapshot": "data/sources/hyzd-simplified-0498775.tsv",
+      "sha256": "d01a52ac466f9feb6c24ec28f0eea064556577606b8eb60c6731ed47c08ed1ee",
+      "license": "CC-BY-3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "unihan": {
+      "title": "Unicode Unihan 17.0.0 (character-reading cross-check, not sense records)",
+      "url": "https://www.unicode.org/reports/tr38/tr38-39.html",
+      "snapshot": "data/sources/Unihan_Readings-17.0.0.txt.gz",
+      "uncompressedSha256": "575e69c9ad85a4737a889a4f94cbd987042a90a1a6cc16dd3f4ed995c715b17c",
+      "license": "Unicode-3.0"
+    }
+  },
+  "reviewedButNotImported": [
+    {
+      "source": "mozillazg/phrase-pinyin-data",
+      "url": "https://github.com/mozillazg/phrase-pinyin-data",
+      "reason": "Aggregate lists identify third-party dictionary sources; repository MIT notice alone does not resolve every upstream dataset license."
+    },
+    {
+      "source": "mapull/chinese-dictionary",
+      "url": "https://github.com/mapull/chinese-dictionary",
+      "reason": "Upstream explicitly warns that some original data sources cannot be established."
+    },
+    {
+      "source": "Wiktionary / Kaikki",
+      "url": "https://kaikki.org/zhwiktionary/index.html",
+      "reason": "Useful future source; extraction of regional readings, multi-pronunciation senses and alignment needs a separately tested importer."
+    }
+  ]
+}

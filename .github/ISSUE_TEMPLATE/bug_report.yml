@@ -1,0 +1,24 @@
+name: Bug or pronunciation problem / 问题与误读
+description: Report a reproducible problem using anonymized text.
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Input, expected result and actual result / 原文、预期与实际结果
+      description: Include target pinyin with tone and a contrasting sentence if relevant. Remove private information.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Versions and settings / 版本和设置
+      description: NVDA, add-on, synthesizer/voice, WorldVoice if used, strict mode and extended lexicon.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps / 重现步骤
+      description: Say how the text is read and whether disabling this add-on changes the result.
+    validations:
+      required: true

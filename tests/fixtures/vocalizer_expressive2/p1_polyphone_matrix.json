@@ -1,0 +1,594 @@
+{
+  "schemaVersion": 1,
+  "purpose": "NVDA 桌面高频 P1 多音字的 Ting-Ting 完整音素流对照矩阵",
+  "voice": "Ting-Ting",
+  "method": "每条原词与各读音同音锚字仅替换目标字；同一次 render 的 complete phoneme stream 完全相等时，判定原词命中该锚读音。",
+  "limitations": [
+    "锚字只用于探测和临时 TTS renderer 候选，绝不改写文档或盲文。",
+    "experimental 锚字较生僻；未匹配时只能判为 inconclusive，不能据此认定引擎读错。",
+    "音素编号是 Vocalizer 私有值，只能在同一 voice、声库版本、operating point 和同一次运行内比较。"
+  ],
+  "entries": [
+    {
+      "id": "chang-zhang",
+      "character": "长",
+      "readings": [
+        {"id": "chang2", "display": "cháng", "anchor": "常", "anchorConfidence": "common", "phrases": [
+          {"id": "length", "text": "文本长度"},
+          {"id": "long_press", "text": "请长按按钮"}
+        ]},
+        {"id": "zhang3", "display": "zhǎng", "anchor": "掌", "anchorConfidence": "common", "phrases": [
+          {"id": "growth", "text": "用户增长"},
+          {"id": "team_lead", "text": "打开组长名单"}
+        ]}
+      ]
+    },
+    {
+      "id": "chu",
+      "character": "处",
+      "readings": [
+        {"id": "chu3", "display": "chǔ", "anchor": "楚", "anchorConfidence": "common", "phrases": [
+          {"id": "process", "text": "处理文件"},
+          {"id": "dispose", "text": "打开处置菜单"}
+        ]},
+        {"id": "chu4", "display": "chù", "anchor": "触", "anchorConfidence": "common", "phrases": [
+          {"id": "here", "text": "点击此处"},
+          {"id": "source", "text": "查看出处"}
+        ]}
+      ]
+    },
+    {
+      "id": "diao-tiao",
+      "character": "调",
+      "readings": [
+        {"id": "diao4", "display": "diào", "anchor": "吊", "anchorConfidence": "common", "phrases": [
+          {"id": "invoke", "text": "调用接口"},
+          {"id": "dispatch", "text": "调度任务"},
+          {"id": "tone", "text": "声调设置"}
+        ]},
+        {"id": "tiao2", "display": "tiáo", "anchor": "条", "anchorConfidence": "common", "phrases": [
+          {"id": "debug", "text": "打开调试器"},
+          {"id": "adjust", "text": "调整音量"},
+          {"id": "rate", "text": "调节语速"}
+        ]}
+      ]
+    },
+    {
+      "id": "zai",
+      "character": "载",
+      "readings": [
+        {"id": "zai4", "display": "zài", "anchor": "再", "anchorConfidence": "common", "phrases": [
+          {"id": "load", "text": "正在加载"},
+          {"id": "download", "text": "下载文件"}
+        ]},
+        {"id": "zai3", "display": "zǎi", "anchor": "宰", "anchorConfidence": "common", "phrases": [
+          {"id": "record", "text": "记载内容"},
+          {"id": "reprint", "text": "转载文章"}
+        ]}
+      ]
+    },
+    {
+      "id": "chuan-zhuan",
+      "character": "传",
+      "readings": [
+        {"id": "chuan2", "display": "chuán", "anchor": "船", "anchorConfidence": "common", "phrases": [
+          {"id": "transfer", "text": "传输文件"},
+          {"id": "upload", "text": "上传数据"}
+        ]},
+        {"id": "zhuan4", "display": "zhuàn", "anchor": "撰", "anchorConfidence": "common", "phrases": [
+          {"id": "biography", "text": "打开传记"},
+          {"id": "autobiography", "text": "阅读自传"}
+        ]}
+      ]
+    },
+    {
+      "id": "tan-dan",
+      "character": "弹",
+      "readings": [
+        {"id": "tan2", "display": "tán", "anchor": "谈", "anchorConfidence": "common", "phrases": [
+          {"id": "popup", "text": "弹出窗口"},
+          {"id": "bounce", "text": "回弹效果"},
+          {"id": "popup_window", "text": "关闭弹窗"},
+          {"id": "elastic", "text": "弹性滚动"}
+        ]},
+        {"id": "dan4", "display": "dàn", "anchor": "蛋", "anchorConfidence": "common", "phrases": [
+          {"id": "bullet_comment", "text": "关闭弹幕"},
+          {"id": "bullet", "text": "子弹数量"}
+        ]}
+      ]
+    },
+    {
+      "id": "jin",
+      "character": "禁",
+      "readings": [
+        {"id": "jin4", "display": "jìn", "anchor": "近", "anchorConfidence": "common", "phrases": [
+          {"id": "disable", "text": "禁用按钮"},
+          {"id": "prohibit", "text": "禁止访问"}
+        ]},
+        {"id": "jin1", "display": "jīn", "anchor": "金", "anchorConfidence": "common", "phrases": [
+          {"id": "cannot_help", "text": "不禁一笑"},
+          {"id": "emotion", "text": "情不自禁"}
+        ]}
+      ]
+    },
+    {
+      "id": "geng",
+      "character": "更",
+      "readings": [
+        {"id": "geng1", "display": "gēng", "anchor": "耕", "anchorConfidence": "common", "phrases": [
+          {"id": "update", "text": "更新完成"},
+          {"id": "modify", "text": "更改设置"}
+        ]},
+        {"id": "geng4", "display": "gèng", "anchor": "暅", "anchorConfidence": "experimental", "phrases": [
+          {"id": "larger", "text": "选择更大字体"},
+          {"id": "faster", "text": "运行更快"}
+        ]}
+      ]
+    },
+    {
+      "id": "le-yue",
+      "character": "乐",
+      "readings": [
+        {"id": "le4", "display": "lè", "anchor": "叻", "anchorConfidence": "experimental", "phrases": [
+          {"id": "happy", "text": "快乐模式"},
+          {"id": "entertainment", "text": "娱乐内容"}
+        ]},
+        {"id": "yue4", "display": "yuè", "anchor": "月", "anchorConfidence": "common", "phrases": [
+          {"id": "music", "text": "音乐播放器"},
+          {"id": "instrument", "text": "选择乐器"}
+        ]}
+      ]
+    },
+    {
+      "id": "ying",
+      "character": "应",
+      "readings": [
+        {"id": "ying1", "display": "yīng", "anchor": "鹰", "anchorConfidence": "common", "phrases": [
+          {"id": "should", "text": "应该启用"},
+          {"id": "ought", "text": "应当继续"}
+        ]},
+        {"id": "ying4", "display": "yìng", "anchor": "硬", "anchorConfidence": "common", "phrases": [
+          {"id": "application", "text": "打开应用"},
+          {"id": "response", "text": "没有响应"}
+        ]}
+      ]
+    },
+    {
+      "id": "mo-mu",
+      "character": "模",
+      "readings": [
+        {"id": "mo2", "display": "mó", "anchor": "膜", "anchorConfidence": "common", "phrases": [
+          {"id": "mode", "text": "切换模式"},
+          {"id": "model", "text": "打开模型"}
+        ]},
+        {"id": "mu2", "display": "mú", "anchor": "毪", "anchorConfidence": "experimental", "phrases": [
+          {"id": "template", "text": "选择模板"},
+          {"id": "appearance", "text": "查看模样"}
+        ]}
+      ]
+    },
+    {
+      "id": "cha",
+      "character": "差",
+      "readings": [
+        {"id": "cha1", "display": "chā", "anchor": "插", "anchorConfidence": "common", "phrases": [
+          {"id": "difference", "text": "计算差值"},
+          {"id": "error", "text": "显示误差"}
+        ]},
+        {"id": "cha4", "display": "chà", "anchor": "岔", "anchorConfidence": "common", "phrases": [
+          {"id": "network_bad", "text": "网络很差"},
+          {"id": "quality_bad", "text": "质量较差"}
+        ]},
+        {"id": "chai1", "display": "chāi", "anchor": "拆", "anchorConfidence": "common", "phrases": [
+          {"id": "business_trip", "text": "出差日历"},
+          {"id": "dispatch", "text": "差遣任务"}
+        ]},
+        {"id": "ci1", "display": "cī", "anchor": "疵", "anchorConfidence": "common", "phrases": [
+          {"id": "uneven", "text": "参差排列", "anchorOverrides": {"cha1": "岑插排列", "cha4": "岑岔排列", "chai1": "岑拆排列", "ci1": "岑疵排列"}},
+          {"id": "irregular", "text": "结果参差不齐", "anchorOverrides": {"cha1": "结果岑插不齐", "cha4": "结果岑岔不齐", "chai1": "结果岑拆不齐", "ci1": "结果岑疵不齐"}}
+        ]}
+      ]
+    },
+    {
+      "id": "lv-shuai",
+      "character": "率",
+      "readings": [
+        {"id": "lv4", "display": "lǜ", "anchor": "绿", "anchorConfidence": "common", "phrases": [
+          {"id": "frame_rate", "text": "显示帧率"},
+          {"id": "refresh_rate", "text": "设置刷新率"}
+        ]},
+        {"id": "shuai4", "display": "shuài", "anchor": "帅", "anchorConfidence": "common", "phrases": [
+          {"id": "take_lead", "text": "率先启用"},
+          {"id": "lead_team", "text": "率领队伍"}
+        ]}
+      ]
+    },
+    {
+      "id": "cang-zang",
+      "character": "藏",
+      "readings": [
+        {"id": "cang2", "display": "cáng", "anchor": "鑶", "anchorConfidence": "experimental", "phrases": [
+          {"id": "hide", "text": "隐藏按钮"},
+          {"id": "favorite", "text": "收藏项目"}
+        ]},
+        {"id": "zang4", "display": "zàng", "anchor": "葬", "anchorConfidence": "common", "phrases": [
+          {"id": "tibet", "text": "西藏时区"},
+          {"id": "treasure", "text": "打开宝藏"}
+        ]}
+      ]
+    },
+    {
+      "id": "qie",
+      "character": "切",
+      "readings": [
+        {"id": "qie1", "display": "qiē", "anchor": "苆", "anchorConfidence": "experimental", "phrases": [
+          {"id": "cut", "text": "剪切文本"},
+          {"id": "switch", "text": "切换窗口"},
+          {"id": "slice", "text": "切片工具"},
+          {"id": "crop", "text": "切割图片"}
+        ]},
+        {"id": "qie4", "display": "qiè", "anchor": "妾", "anchorConfidence": "common", "phrases": [
+          {"id": "everything", "text": "选择一切"},
+          {"id": "exact", "text": "确切结果"}
+        ]}
+      ]
+    },
+    {
+      "id": "xiao-jiao",
+      "character": "校",
+      "readings": [
+        {"id": "xiao4", "display": "xiào", "anchor": "笑", "anchorConfidence": "common", "phrases": [
+          {"id": "school", "text": "学校网站"},
+          {"id": "campus", "text": "校内网络"}
+        ]},
+        {"id": "jiao4", "display": "jiào", "anchor": "叫", "anchorConfidence": "common", "phrases": [
+          {"id": "verify", "text": "开始校验"},
+          {"id": "proofread", "text": "执行校对"}
+        ]}
+      ]
+    },
+    {
+      "id": "jiao-jue",
+      "character": "角",
+      "readings": [
+        {"id": "jiao3", "display": "jiǎo", "anchor": "饺", "anchorConfidence": "common", "phrases": [
+          {"id": "rounded_corner", "text": "设置圆角"},
+          {"id": "angle", "text": "调整角度"}
+        ]},
+        {"id": "jue2", "display": "jué", "anchor": "绝", "anchorConfidence": "common", "phrases": [
+          {"id": "role", "text": "选择角色", "anchorOverrides": {"jiao3": "选择饺色", "jue2": "选择绝色"}},
+          {"id": "protagonist", "text": "主角名称"}
+        ]}
+      ]
+    },
+    {
+      "id": "liang",
+      "character": "量",
+      "readings": [
+        {"id": "liang4", "display": "liàng", "anchor": "亮", "anchorConfidence": "common", "phrases": [
+          {"id": "volume", "text": "调整音量"},
+          {"id": "quantity", "text": "显示数量"}
+        ]},
+        {"id": "liang2", "display": "liáng", "anchor": "梁", "anchorConfidence": "common", "phrases": [
+          {"id": "measure", "text": "测量距离"},
+          {"id": "measure_out", "text": "量取尺寸"}
+        ]}
+      ]
+    },
+    {
+      "id": "cheng-chen",
+      "character": "称",
+      "readings": [
+        {"id": "cheng1", "display": "chēng", "anchor": "撑", "anchorConfidence": "common", "phrases": [
+          {"id": "name", "text": "名称字段"},
+          {"id": "abbreviation", "text": "简称选项"}
+        ]},
+        {"id": "chen4", "display": "chèn", "anchor": "趁", "anchorConfidence": "common", "phrases": [
+          {"id": "symmetry", "text": "对称布局"},
+          {"id": "well_proportioned", "text": "界面匀称"}
+        ]}
+      ]
+    },
+    {
+      "id": "jiang-xiang",
+      "character": "降",
+      "readings": [
+        {"id": "jiang4", "display": "jiàng", "anchor": "酱", "anchorConfidence": "common", "phrases": [
+          {"id": "lower", "text": "降低音量"},
+          {"id": "descending", "text": "按降序排列"}
+        ]},
+        {"id": "xiang2", "display": "xiáng", "anchor": "翔", "anchorConfidence": "common", "phrases": [
+          {"id": "surrender", "text": "请求投降"},
+          {"id": "subdue", "text": "降服敌人"}
+        ]}
+      ]
+    },
+    {
+      "id": "heng",
+      "character": "横",
+      "readings": [
+        {"id": "heng2", "display": "héng", "anchor": "衡", "anchorConfidence": "common", "phrases": [
+          {"id": "horizontal", "text": "横向滚动"},
+          {"id": "line", "text": "显示横线"}
+        ]},
+        {"id": "heng4", "display": "hèng", "anchor": "堼", "anchorConfidence": "experimental", "phrases": [
+          {"id": "rude", "text": "态度蛮横"},
+          {"id": "overbearing", "text": "行为强横"}
+        ]}
+      ]
+    },
+    {
+      "id": "hui-kuai",
+      "character": "会",
+      "readings": [
+        {"id": "hui4", "display": "huì", "anchor": "汇", "anchorConfidence": "common", "phrases": [
+          {"id": "meeting", "text": "打开会议"},
+          {"id": "session", "text": "会话窗口"}
+        ]},
+        {"id": "kuai4", "display": "kuài", "anchor": "快", "anchorConfidence": "common", "phrases": [
+          {"id": "accounting", "text": "会计软件"},
+          {"id": "finance", "text": "财会报表"}
+        ]}
+      ]
+    },
+    {
+      "id": "qi-ji",
+      "character": "奇",
+      "readings": [
+        {"id": "qi2", "display": "qí", "anchor": "齐", "anchorConfidence": "common", "phrases": [
+          {"id": "strange", "text": "奇怪错误"},
+          {"id": "unusual", "text": "显示奇特符号"}
+        ]},
+        {"id": "ji1", "display": "jī", "anchor": "鸡", "anchorConfidence": "common", "phrases": [
+          {"id": "odd_rows", "text": "选择奇数行"},
+          {"id": "parity", "text": "奇偶校验"}
+        ]}
+      ]
+    },
+    {
+      "id": "yao-yue",
+      "character": "钥",
+      "readingPolicy": "literary_preference",
+      "readings": [
+        {"id": "yao4", "display": "yào", "anchor": "药", "anchorConfidence": "common", "phrases": [
+          {"id": "key", "text": "插入钥匙", "anchorOverrides": {"yao4": "插入药师", "yue4": "插入月师"}},
+          {"id": "key_manager", "text": "钥匙管理", "anchorOverrides": {"yao4": "药师管理", "yue4": "月师管理"}}
+        ]},
+        {"id": "yue4", "display": "yuè", "anchor": "月", "anchorConfidence": "common", "phrases": [
+          {"id": "secret_key", "text": "输入密钥"},
+          {"id": "public_key", "text": "公钥文件"},
+          {"id": "private_key", "text": "私钥文件"},
+          {"id": "key_store", "text": "密钥库设置"}
+        ]}
+      ]
+    },
+    {
+      "id": "zhong",
+      "character": "中",
+      "readings": [
+        {"id": "zhong1", "display": "zhōng", "anchor": "钟", "anchorConfidence": "common", "phrases": [
+          {"id": "chinese", "text": "中文界面"},
+          {"id": "interrupt", "text": "中断操作"}
+        ]},
+        {"id": "zhong4", "display": "zhòng", "anchor": "众", "anchorConfidence": "common", "phrases": [
+          {"id": "selected", "text": "选中项目"},
+          {"id": "hit", "text": "命中结果"}
+        ]}
+      ]
+    },
+    {
+      "id": "jin-jin3",
+      "character": "尽",
+      "readings": [
+        {"id": "jin4", "display": "jìn", "anchor": "近", "anchorConfidence": "common", "phrases": [
+          {"id": "memory_exhausted", "text": "内存用尽"},
+          {"id": "battery_exhausted", "text": "电量耗尽"}
+        ]},
+        {"id": "jin3", "display": "jǐn", "anchor": "紧", "anchorConfidence": "common", "phrases": [
+          {"id": "asap", "text": "请尽快更新"},
+          {"id": "as_much_as_possible", "text": "尽量减少"}
+        ]}
+      ]
+    },
+    {
+      "id": "hai-huan",
+      "character": "还",
+      "readings": [
+        {"id": "hai2", "display": "hái", "anchor": "孩", "anchorConfidence": "common", "phrases": [
+          {"id": "still_enabled", "text": "还是启用"},
+          {"id": "not_yet", "text": "还未完成"}
+        ]},
+        {"id": "huan2", "display": "huán", "anchor": "环", "anchorConfidence": "common", "phrases": [
+          {"id": "return_device", "text": "归还设备"},
+          {"id": "restore", "text": "还原设置"}
+        ]}
+      ]
+    },
+    {
+      "id": "gong-gong4",
+      "character": "供",
+      "readings": [
+        {"id": "gong1", "display": "gōng", "anchor": "工", "anchorConfidence": "common", "phrases": [
+          {"id": "provide", "text": "提供帮助"},
+          {"id": "supply", "text": "供应状态"}
+        ]},
+        {"id": "gong4", "display": "gòng", "anchor": "共", "anchorConfidence": "common", "phrases": [
+          {"id": "confession", "text": "查看口供"},
+          {"id": "offering", "text": "供奉图片"}
+        ]}
+      ]
+    },
+    {
+      "id": "xing-xing4",
+      "character": "兴",
+      "readings": [
+        {"id": "xing1", "display": "xīng", "anchor": "星", "anchorConfidence": "common", "phrases": [
+          {"id": "emerging", "text": "新兴技术"},
+          {"id": "build", "text": "兴建项目"}
+        ]},
+        {"id": "xing4", "display": "xìng", "anchor": "杏", "anchorConfidence": "common", "phrases": [
+          {"id": "interest", "text": "兴趣设置"},
+          {"id": "improvise", "text": "即兴播放"}
+        ]}
+      ]
+    },
+    {
+      "id": "qu",
+      "character": "曲",
+      "readings": [
+        {"id": "qu1", "display": "qū", "anchor": "区", "anchorConfidence": "common", "phrases": [
+          {"id": "curve", "text": "显示曲线"},
+          {"id": "surface", "text": "选择曲面"}
+        ]},
+        {"id": "qu3", "display": "qǔ", "anchor": "取", "anchorConfidence": "common", "phrases": [
+          {"id": "song", "text": "播放歌曲"},
+          {"id": "track", "text": "选择曲目"}
+        ]}
+      ]
+    },
+    {
+      "id": "zheng",
+      "character": "正",
+      "readings": [
+        {"id": "zheng4", "display": "zhèng", "anchor": "郑", "anchorConfidence": "common", "phrases": [
+          {"id": "normal", "text": "正常模式"},
+          {"id": "ongoing", "text": "正在加载"}
+        ]},
+        {"id": "zheng1", "display": "zhēng", "anchor": "征", "anchorConfidence": "common", "phrases": [
+          {"id": "first_month", "text": "正月日历"},
+          {"id": "new_year", "text": "正月初一"}
+        ]}
+      ]
+    },
+    {
+      "id": "ping-bing",
+      "character": "屏",
+      "readings": [
+        {"id": "ping2", "display": "píng", "anchor": "平", "anchorConfidence": "common", "phrases": [
+          {"id": "screen", "text": "打开屏幕"},
+          {"id": "block", "text": "启用屏蔽"}
+        ]},
+        {"id": "bing3", "display": "bǐng", "anchor": "丙", "anchorConfidence": "common", "phrases": [
+          {"id": "hold_breath", "text": "屏住呼吸"},
+          {"id": "breath", "text": "开始屏息"},
+          {"id": "hold_breath_short", "text": "开始屏气"},
+          {"id": "dismiss", "text": "执行屏退"}
+        ]}
+      ]
+    },
+    {
+      "id": "zhan-zhan1",
+      "character": "占",
+      "readings": [
+        {"id": "zhan4", "display": "zhàn", "anchor": "站", "anchorConfidence": "common", "phrases": [
+          {"id": "memory", "text": "占用内存"},
+          {"id": "ratio", "text": "显示占比"}
+        ]},
+        {"id": "zhan1", "display": "zhān", "anchor": "沾", "anchorConfidence": "common", "phrases": [
+          {"id": "divination", "text": "打开占卜"},
+          {"id": "augury", "text": "执行占卦"}
+        ]}
+      ]
+    },
+    {
+      "id": "zhe",
+      "character": "折",
+      "readings": [
+        {"id": "zhe2", "display": "zhé", "anchor": "哲", "anchorConfidence": "common", "phrases": [
+          {"id": "collapse", "text": "折叠按钮"},
+          {"id": "polyline", "text": "显示折线"}
+        ]},
+        {"id": "zhe1", "display": "zhē", "anchor": "遮", "anchorConfidence": "common", "phrases": [
+          {"id": "toss", "text": "反复折腾"},
+          {"id": "stop_tossing", "text": "别再折腾"}
+        ]},
+        {"id": "she2", "display": "shé", "anchor": "舌", "anchorConfidence": "common", "phrases": [
+          {"id": "lose_money", "text": "生意折本"},
+          {"id": "loss", "text": "这次折本"}
+        ]}
+      ]
+    },
+    {
+      "id": "jia",
+      "character": "夹",
+      "readings": [
+        {"id": "jia1", "display": "jiā", "anchor": "家", "anchorConfidence": "common", "phrases": [
+          {"id": "folder", "text": "打开文件夹"},
+          {"id": "clamp", "text": "夹住标签"}
+        ]},
+        {"id": "jia2", "display": "jiá", "anchor": "颊", "anchorConfidence": "common", "phrases": [
+          {"id": "lined_jacket", "text": "查看夹袄"},
+          {"id": "lined_quilt", "text": "选择夹被"}
+        ]},
+        {"id": "ga1", "display": "gā", "anchor": "嘎", "anchorConfidence": "contextual", "phrases": [
+          {"id": "armpit", "text": "夹肢窝疼"},
+          {"id": "armpit_location", "text": "点击夹肢窝位置"}
+        ]}
+      ]
+    },
+    {
+      "id": "qiang",
+      "character": "强",
+      "readings": [
+        {"id": "qiang2", "display": "qiáng", "anchor": "墙", "anchorConfidence": "common", "phrases": [
+          {"id": "force", "text": "启用强制模式"},
+          {"id": "enhance", "text": "增强对比度"}
+        ]},
+        {"id": "qiang3", "display": "qiǎng", "anchor": "抢", "anchorConfidence": "common", "phrases": [
+          {"id": "reluctant", "text": "勉强可用"},
+          {"id": "coerce", "text": "系统强迫更新"}
+        ]},
+        {"id": "jiang4", "display": "jiàng", "anchor": "酱", "anchorConfidence": "common", "phrases": [
+          {"id": "stubborn", "text": "性格倔强"},
+          {"id": "stubborn_mode", "text": "倔强模式"}
+        ]}
+      ]
+    },
+    {
+      "id": "dang",
+      "character": "当",
+      "readings": [
+        {"id": "dang1", "display": "dāng", "anchor": "裆", "anchorConfidence": "common", "phrases": [
+          {"id": "current", "text": "当前设置"},
+          {"id": "ought", "text": "应当启用"}
+        ]},
+        {"id": "dang4", "display": "dàng", "anchor": "荡", "anchorConfidence": "common", "phrases": [
+          {"id": "appropriate", "text": "恰当配置"},
+          {"id": "regard_as", "text": "当作文本"}
+        ]}
+      ]
+    },
+    {
+      "id": "dao",
+      "character": "倒",
+      "readings": [
+        {"id": "dao3", "display": "dǎo", "anchor": "岛", "anchorConfidence": "common", "phrases": [
+          {"id": "fall", "text": "设备倒下"},
+          {"id": "fall_detection", "text": "跌倒检测"}
+        ]},
+        {"id": "dao4", "display": "dào", "anchor": "到", "anchorConfidence": "common", "phrases": [
+          {"id": "reverse_order", "text": "列表倒序"},
+          {"id": "countdown", "text": "开始倒计时"}
+        ]}
+      ]
+    },
+    {
+      "id": "can-shen-cen",
+      "character": "参",
+      "readings": [
+        {"id": "can1", "display": "cān", "anchor": "餐", "anchorConfidence": "common", "phrases": [
+          {"id": "parameter", "text": "修改参数"},
+          {"id": "reference", "text": "查看参考"}
+        ]},
+        {"id": "shen1", "display": "shēn", "anchor": "深", "anchorConfidence": "common", "phrases": [
+          {"id": "ginseng", "text": "人参图片"},
+          {"id": "codonopsis", "text": "党参资料"}
+        ]},
+        {"id": "cen1", "display": "cēn", "anchor": "岑", "anchorConfidence": "common", "phrases": [
+          {"id": "uneven_layout", "text": "参差布局", "anchorOverrides": {"can1": "餐疵布局", "shen1": "深疵布局", "cen1": "岑疵布局"}},
+          {"id": "uneven_result", "text": "结果参差", "anchorOverrides": {"can1": "结果餐疵", "shen1": "结果深疵", "cen1": "结果岑疵"}}
+        ]}
+      ]
+    }
+  ]
+}

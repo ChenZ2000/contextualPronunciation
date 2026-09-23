@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Vocalizer Expressive 2.2 同音替代 renderer 的声学与音素标记对照语料",
+  "rules": [
+    "compareGroup 内只比较同一引擎、同一版本、同一声库、同一 operating point 和同一次运行的目标音素标记。",
+    "anchor 不是语言学标注接口；最终结论必须人工听取 WAV。",
+    "候选替代只存在于送往语音合成器的临时文本，绝不能改写文档、剪贴板或盲文内容。"
+  ],
+  "cases": [
+    {
+      "id": "hang2_anchor_hang",
+      "text": "测试杭字",
+      "targetCharIndex": 2,
+      "compareGroup": "hang2_carrier",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "note": "杭是 háng 的候选锚点。"
+    },
+    {
+      "id": "hang2_anchor_hang_navigation",
+      "text": "测试航字",
+      "targetCharIndex": 2,
+      "compareGroup": "hang2_carrier",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "note": "航是 háng 的另一候选锚点。"
+    },
+    {
+      "id": "hang2_source_xing",
+      "text": "测试行字",
+      "targetCharIndex": 2,
+      "compareGroup": "hang2_carrier",
+      "role": "source",
+      "expectedReading": "context-free; do not auto-correct",
+      "note": "孤立多音字用于观察引擎默认值，不能作为插件应改写的证据。"
+    },
+    {
+      "id": "hang2_phrase_row_head_source",
+      "text": "行首位置",
+      "targetCharIndex": 0,
+      "compareGroup": "hang2_row_head",
+      "role": "source",
+      "expectedReading": "háng"
+    },
+    {
+      "id": "hang2_phrase_row_head_hang",
+      "text": "杭首位置",
+      "targetCharIndex": 0,
+      "compareGroup": "hang2_row_head",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "杭"
+    },
+    {
+      "id": "hang2_phrase_row_head_navigation",
+      "text": "航首位置",
+      "targetCharIndex": 0,
+      "compareGroup": "hang2_row_head",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "航"
+    },
+    {
+      "id": "hang2_phrase_row_number_source",
+      "text": "当前是第十二行",
+      "targetCharIndex": 6,
+      "compareGroup": "hang2_row_number",
+      "role": "source",
+      "expectedReading": "háng"
+    },
+    {
+      "id": "hang2_phrase_row_number_hang",
+      "text": "当前是第十二杭",
+      "targetCharIndex": 6,
+      "compareGroup": "hang2_row_number",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "杭"
+    },
+    {
+      "id": "hang2_phrase_row_number_navigation",
+      "text": "当前是第十二航",
+      "targetCharIndex": 6,
+      "compareGroup": "hang2_row_number",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "航"
+    },
+    {
+      "id": "hang2_phrase_row_column_source",
+      "text": "表格共有三行四列",
+      "targetCharIndex": 5,
+      "compareGroup": "hang2_row_column",
+      "role": "source",
+      "expectedReading": "háng"
+    },
+    {
+      "id": "hang2_phrase_row_column_hang",
+      "text": "表格共有三杭四列",
+      "targetCharIndex": 5,
+      "compareGroup": "hang2_row_column",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "杭"
+    },
+    {
+      "id": "hang2_phrase_row_column_navigation",
+      "text": "表格共有三航四列",
+      "targetCharIndex": 5,
+      "compareGroup": "hang2_row_column",
+      "role": "anchor",
+      "expectedReading": "háng",
+      "rendererCandidate": "航"
+    },
+    {
+      "id": "chong2_anchor_chong",
+      "text": "测试崇字",
+      "targetCharIndex": 2,
+      "compareGroup": "chong2_carrier",
+      "role": "anchor",
+      "expectedReading": "chóng"
+    },
+    {
+      "id": "chong2_anchor_insect",
+      "text": "测试虫字",
+      "targetCharIndex": 2,
+      "compareGroup": "chong2_carrier",
+      "role": "anchor",
+      "expectedReading": "chóng"
+    },
+    {
+      "id": "chong2_source_zhong",
+      "text": "测试重字",
+      "targetCharIndex": 2,
+      "compareGroup": "chong2_carrier",
+      "role": "source",
+      "expectedReading": "context-free; do not auto-correct"
+    },
+    {
+      "id": "chong2_phrase_repeat_source",
+      "text": "请重复一次",
+      "targetCharIndex": 1,
+      "compareGroup": "chong2_repeat",
+      "role": "source",
+      "expectedReading": "chóng"
+    },
+    {
+      "id": "chong2_phrase_repeat_chong",
+      "text": "请崇复一次",
+      "targetCharIndex": 1,
+      "compareGroup": "chong2_repeat",
+      "role": "anchor",
+      "expectedReading": "chóng",
+      "rendererCandidate": "崇"
+    },
+    {
+      "id": "chong2_phrase_repeat_insect",
+      "text": "请虫复一次",
+      "targetCharIndex": 1,
+      "compareGroup": "chong2_repeat",
+      "role": "anchor",
+      "expectedReading": "chóng",
+      "rendererCandidate": "虫"
+    },
+    {
+      "id": "chong2_phrase_retry_source",
+      "text": "操作失败后重试",
+      "targetCharIndex": 5,
+      "compareGroup": "chong2_retry",
+      "role": "source",
+      "expectedReading": "chóng"
+    },
+    {
+      "id": "chong2_phrase_retry_chong",
+      "text": "操作失败后崇试",
+      "targetCharIndex": 5,
+      "compareGroup": "chong2_retry",
+      "role": "anchor",
+      "expectedReading": "chóng",
+      "rendererCandidate": "崇"
+    },
+    {
+      "id": "chong2_phrase_retry_insect",
+      "text": "操作失败后虫试",
+      "targetCharIndex": 5,
+      "compareGroup": "chong2_retry",
+      "role": "anchor",
+      "expectedReading": "chóng",
+      "rendererCandidate": "虫"
+    },
+    {
+      "id": "cheng2_anchor_become",
+      "text": "测试成字",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_carrier",
+      "role": "anchor",
+      "expectedReading": "chéng"
+    },
+    {
+      "id": "cheng2_anchor_ride",
+      "text": "测试乘字",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_carrier",
+      "role": "anchor",
+      "expectedReading": "chéng"
+    },
+    {
+      "id": "sheng4_anchor_prosperous",
+      "text": "测试盛字",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_carrier",
+      "role": "source",
+      "expectedReading": "context-free; engine commonly defaults to shèng"
+    },
+    {
+      "id": "cheng2_phrase_serve_soup_source",
+      "text": "请给客人盛汤",
+      "targetCharIndex": 4,
+      "compareGroup": "cheng2_serve_soup",
+      "role": "source",
+      "expectedReading": "chéng"
+    },
+    {
+      "id": "cheng2_phrase_serve_soup_become",
+      "text": "请给客人成汤",
+      "targetCharIndex": 4,
+      "compareGroup": "cheng2_serve_soup",
+      "role": "anchor",
+      "expectedReading": "chéng",
+      "rendererCandidate": "成"
+    },
+    {
+      "id": "cheng2_phrase_serve_soup_ride",
+      "text": "请给客人乘汤",
+      "targetCharIndex": 4,
+      "compareGroup": "cheng2_serve_soup",
+      "role": "anchor",
+      "expectedReading": "chéng",
+      "rendererCandidate": "乘"
+    },
+    {
+      "id": "cheng2_phrase_serve_rice_source",
+      "text": "我来盛一碗饭",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_serve_rice",
+      "role": "source",
+      "expectedReading": "chéng"
+    },
+    {
+      "id": "cheng2_phrase_serve_rice_become",
+      "text": "我来成一碗饭",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_serve_rice",
+      "role": "anchor",
+      "expectedReading": "chéng",
+      "rendererCandidate": "成"
+    },
+    {
+      "id": "cheng2_phrase_serve_rice_ride",
+      "text": "我来乘一碗饭",
+      "targetCharIndex": 2,
+      "compareGroup": "cheng2_serve_rice",
+      "role": "anchor",
+      "expectedReading": "chéng",
+      "rendererCandidate": "乘"
+    },
+    {
+      "id": "sheng4_phrase_bloom_source",
+      "text": "花朵正在盛开",
+      "targetCharIndex": 4,
+      "compareGroup": "sheng4_bloom",
+      "role": "source",
+      "expectedReading": "shèng",
+      "note": "盛开本身应读 shèng kāi；它是保护性反例，不应改成 chéng。"
+    },
+    {
+      "id": "sheng4_phrase_bloom_anchor",
+      "text": "花朵正在胜开",
+      "targetCharIndex": 4,
+      "compareGroup": "sheng4_bloom",
+      "role": "anchor",
+      "expectedReading": "shèng"
+    },
+    {
+      "id": "sheng4_phrase_grand_source",
+      "text": "举行盛大庆典",
+      "targetCharIndex": 2,
+      "compareGroup": "sheng4_grand",
+      "role": "source",
+      "expectedReading": "shèng"
+    },
+    {
+      "id": "sheng4_phrase_grand_anchor",
+      "text": "举行胜大庆典",
+      "targetCharIndex": 2,
+      "compareGroup": "sheng4_grand",
+      "role": "anchor",
+      "expectedReading": "shèng"
+    }
+  ]
+}

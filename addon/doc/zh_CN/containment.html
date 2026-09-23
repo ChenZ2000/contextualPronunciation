@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0.6.1：盛装与容纳结构修复</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#0-6-1">0.6.1：盛装、容纳语义与局部结构修复</a></li>
+    <li class="toc-level-2"><a href="#1">1. 根因不是只缺少两个词条</a></li>
+    <li class="toc-level-2"><a href="#2">2. 发音与语法依据</a></li>
+    <li class="toc-level-2"><a href="#3">3. 修改后的裁决和结构</a></li>
+    <li class="toc-level-2"><a href="#4">4. 数据更新与复现</a></li>
+    <li class="toc-level-2"><a href="#5">5. 贡献语法与边界</a></li>
+    <li class="toc-level-2"><a href="#6">6. 回归、性能与交付验收</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="0-6-1">0.6.1：盛装、容纳语义与局部结构修复</h1>
+<p>本版修复“盛液体／盛装液体”及同类局部结构，继续支持 NVDA 2026.2 和固定源码 2026.3beta2。安装标识不变，覆盖升级即可；不替用户安装、重启、切换语音或修改 WorldVoice。基本模式即可使用新语法，不要求开启实验词库。</p>
+<p>这不是一个“所有汉语场景接近百分之百正确”的实测结论。当前系统仍是可审计、有界的局部语法与词典系统，不是完整依存解析器；修复范围、不能确定的情况和性能计量口径分别说明。</p>
+<h2 id="1">1. 根因不是只缺少两个词条</h2>
+<p>旧版的三个层次共同造成了这次问题：</p>
+<ol>
+<li><code>syntax-serving-object</code> 只接受食物宾语，把“盛”的 chéng 限缩成盛饭义，漏掉用容器装载、容纳一般物质的义项。“液体”即使分词正确，也无法通过这个语义门槛。</li>
+<li>核心 <code>sheng-protection</code> 把“盛装”无条件保留在先，语法没有机会判别“华丽服装”和“装载”两义。OpenHowNet 固定源中实际同时有衣物名词义和装载动词义。</li>
+<li>离线投影只枚举少量食物根义原，没有使用官方分类树的下位关系，漏掉“食物／食品／饮品”的继承关系。因此连“盛装食物”都可能在解除保护后继续失败。</li>
+</ol>
+<p>扩大测试还暴露了结构缺陷：形态前缀不能无条件吞掉“装饰品”的“装”，最长词也不能无条件把“盛过气体”拆成“盛／过气／体”；“半瓶透明液体”的“瓶”应先由数量结构选择量词义；“盛装液体的容器”不能把容器当作被盛装的宾语。</p>
+<h2 id="2">2. 发音与语法依据</h2>
+<p>教育部《国语辞典简编本》的<a href="https://dict.concised.moe.edu.tw/dictView.jsp?ID=32353&amp;la=0&amp;powerMode=0">盛 chéng 条目</a>区分容器装物和容纳义；<a href="https://dict.concised.moe.edu.tw/dictView.jsp?ID=35211&amp;la=0&amp;powerMode=0">盛装 shèng zhuāng 条目</a>说明服装义。民航局的<a href="https://www.caac.gov.cn/PHONE/SY/HLFW/GLZN/">旅客服务指南</a>另有盛装液态物品的实际书面用例。这些资料用于核对事实和自编规则，不整段导入词典释义。</p>
+<p><a href="https://github.com/thunlp/OpenHowNet">OpenHowNet 官方项目</a>提供义项、词性和义原上下位关系。分类依据是义项的根义原及明确审阅的角色关系，不把释义里任何出现“液体”的词都当作液体。<a href="https://universaldependencies.org/zh/dep/obj.html">UD 中文宾语</a>与<a href="https://universaldependencies.org/zh/dep/acl.html">定语从句规范</a>用于区分明示宾语和修饰外部名词的从句；我们的有限依存记录不是完整 UD 树或受训练的词性标注结果。</p>
+<h2 id="3">3. 修改后的裁决和结构</h2>
+<p>原公共语音序列入口、全局引擎政策、符号处理、命令边界和同音字渲染保持不变。没有添加 WorldVoice 私有钩子、神经服务或句子缓存。</p>
+<ul>
+<li>只把明确标记 <code>contextualPhrases</code> 的内建保护词开放给语法复核；目前是“盛装／盛裝”。解析不成立就保留原保护。其他保护、用户 keep、明确用户读音、冲突与停用规则的优先级不降低。</li>
+<li>现有盛框架的宾语类别从 <code>food</code> 改为 <code>contents</code>：食品，及有依据的液体、气体、化学物、材料、药物等。保留多义性，不把所有名词或所有“人工物”都当作容纳物。</li>
+<li><code>extensions</code> 表示有限动词组合，“盛／盛装／盛裝”；<code>prefixes</code> 表示有限体貌、结果和可能补语。运行时比较可成立的切分：完整名词能形成合法宾语时不拆开；否则允许验证另一种形态切分。首字符候选在加载时编译，普通宾语不扫描所有补语形式。</li>
+<li>数量或限定词后出现兼为名词的量词时，先选择量词用途，再寻找真正名词中心。</li>
+<li>普通领属结构、带明示宾语的定语结构、宾语空位定语结构分开记录。只有容器／测量工具等声明的外部中心类别，才允许把明示宾语与后面的“的＋外部中心词”拆开；不随意截断“的”后任意名词。</li>
+<li>穿着语境和紧接称谓的姓氏歧义采用保守阻断。“盛先生的液体”不能仅因末尾出现液体就当成动宾结构。</li>
+</ul>
+<table><caption>容纳语义正反例与局部语法关系</caption>
+<thead>
+<tr>
+<th scope="col">原文</th>
+<th scope="col">局部结构及中心词</th>
+<th scope="col">“盛”的处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>盛液体</td>
+<td>盛＋宾语液体</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛装液体</td>
+<td>盛装＋宾语液体</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛装液体的容器</td>
+<td>盛装的宾语是液体；整个从句修饰容器</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛装的液体</td>
+<td>从句省略的宾语对应外部中心液体；不伪造明示宾语“装”</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛了半瓶透明液体</td>
+<td>了＋半瓶数量修饰＋透明＋液体中心</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛过气体</td>
+<td>盛过＋气体，不是盛＋过气＋体</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛装饰品</td>
+<td>盛＋装饰品，不拆装饰品</td>
+<td>chéng</td>
+</tr>
+<tr>
+<td>盛装出席、身穿盛装</td>
+<td>服装义；保留原字</td>
+<td>不强制改为 chéng</td>
+</tr>
+<tr>
+<td>盛装液体公司的代表</td>
+<td>末端中心是代表，不能因内部有液体而触发</td>
+<td>保留原字</td>
+</tr>
+</tbody>
+</table>
+<p>语音层临时用“呈”落实 chéng；原文、共享注音中的字形和 Unicode／UTF-16 位置仍是“盛”。<code>construction="object-relative"</code> 表示宾语空位定语，<code>object_start/end</code> 在此指对应的外部语义论元范围；依存记录只有 <code>acl</code> 等实际关系，不伪造明示 <code>obj</code>。</p>
+<h2 id="4">4. 数据更新与复现</h2>
+<p>沿用固定 2021-09-20 官方归档和原核心源快照，不把它称作 2026 年新编审音词典。新增导入同归档的 <code>sememe_triples_taxonomy.txt</code>，保留为源码包的 <code>data/sources/openhownet-taxonomy-20210920.txt</code>。只沿显式 <code>hyponym</code> 边遍历，访问集合防止循环；不沿任意关联关系推断类别。</p>
+<ul>
+<li>归档 SHA256：<code>daaa31e2627e099e03ce15371f472c6f9ec5b3aac71a4e5e2ab5c4f4f38c44d4</code>。</li>
+<li>分类树 SHA256：<code>d1b44ef0385c243b8f4661b39348df359b764247d2d1d0dd263ad31e6deb73a0</code>。</li>
+<li>保留 215,831 个义项、117,464 个词头。食物名词义一致的词头为 2,760，另有 147 个多义食物候选；容纳物名词义一致的词头为 4,455，另有 291 个多义候选；一致的容器词头为 451。</li>
+</ul>
+<p>这些类别可能重叠，不能把数量相加当作新增词汇数；也不是新拼音规则数或正确率。“材料”可表示物质、资料等多个名词义，仍标为可能而非确定容纳物。少量有来源的粉末、颗粒、实验容器和实际繁体词形在 <code>nounHeads</code> 中作公开审阅，不能自动将全部繁体词转换后继承词义。</p>
+<p>运行时仅加载生成后的普通 JSON 特征和 TOML 框架。分类树遍历、源数据反序列化在开发编译阶段完成；不在朗读回调读分类树、查 SQLite、做网络请求或导入 HowNet API。许可证、原作者和论文引文随包保留。<code>--check</code> 对生成数据逐字节验证，不接受静默变更的上游归档。</p>
+<h2 id="5">5. 贡献语法与边界</h2>
+<p>继续编辑唯一的 <code>data/syntax_frames.toml</code>（位于插件模块目录），不新增平行补丁系统：</p>
+<pre><code class="language-toml"># 字段示意；应修改已有框架，不复制同 ID 的框架。
+object = &quot;contents&quot;
+extensions = [&quot;&quot;, &quot;装&quot;, &quot;裝&quot;]
+prefixes = [&quot;&quot;, &quot;有&quot;, &quot;了&quot;, &quot;过&quot;, &quot;不了&quot;]
+relativeHeads = [&quot;container&quot;]
+</code></pre>
+<p><code>nounHeads.contents</code> 和 <code>nounHeads.container</code> 必须有来源；新增词义不能只凭“希望读成某音”推断。<code>blockedLeft/blockedRight</code> 是有限明确语境，称谓歧义只在紧接目标时阻断，不跳过任意未知片段。<code>contextualPhrases</code> 必须是内建保护组已有短语的子集；非保护组和扩展词典层不允许使用，用户 keep 永远不能由它降级。</p>
+<p>局部名词短语仍至多 48 字、24 个 token、三层“的”，未知领属人名至多八字；每框架至多四种动词扩展、32 种补语前缀，拼接后至多八字。超限、未知、冲突或证据不足时保留原字。语音项和命令两侧不合并，不等待以后输入的句子，不缓存文档。</p>
+<p>当前仍不能保证复杂并列、远距离依存、所有名动兼类、反讽、任意专名和缺失上下文的判断。例如“盛装液体材料”中“材料”的多义性、外部中心后继续接“价格”等复杂结构并未全部消解。穿着语境的保守阻断也可能降低部分少见构式的召回。这些限制不应被本次测试通过掩盖。</p>
+<h2 id="6">6. 回归、性能与交付验收</h2>
+<p><code>tests/test_containment_syntax.py</code> 增加独立预期，不从当前转换结果生成预期：24 个结构例句在基本／扩展模式及三个句中环境验证，20 个名词中心与两种动词、六种补语组合，共 240 个正例组合及对应“公司的代表”反例。另含称谓与服装反例、真正中心词和依存偏移、形态与量词、用户优先级、非法保护声明、分类树循环／角色隔离、全部 Unicode 符号与语音项边界。</p>
+<p>同时复跑既有规则、词库、盲文注音、原生 Liblouis、WorldVoice 6.2 真实源码两种词典顺序、两版 NVDA 原生单测和集成。VE 声学固定场景增加液体、装载液体、容器定语、量词、宾语空位定语、装饰品、气体和食物八组；仍以独立同音锚点比较，不把生成器自身输出当作发音真值。真实用户试听另行确认，自动化不能代替全部声音的人耳验收。</p>
+<p>性能增加相同新结构的基本／扩展公共过滤器短句和 8K 密集容器定语；沿用短句 200 微秒、密集 8K 30 毫秒、稀疏 8K 10 毫秒的门限，不因修复放宽。门限是多轮批量平均耗时的中位数，不是逐次 p99，也不包括合成器和声卡启动时间。最终数值以版本对应冻结报告为准。</p>
+<pre><code class="language-powershell">python tools/build_syntax_data.py --check
+python tools/pronunciation.py --check-contributions
+python -m unittest tests.test_containment_syntax tests.test_syntax tests.test_worldvoice -v
+python tools/pronunciation.py &quot;盛液体，盛装液体的容器，盛装出席&quot;
+python tools/generate_final_renderer_fixture.py
+python tools/boundary_acoustics.py generate
+python tools/sentence_acoustics.py generate
+$env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.2'
+python scripts/run_regression.py --native --vocalizer --release --llvm-bin vendor/llvm-20.1.8/bin --spectre-atl-fallback --installed-worldvoice "$env:APPDATA/nvda/addons/WorldVoice" --jobs 4
+# 将环境版本改为 2026.3beta2，在独立固定源码目录重复。
+</code></pre>
+<p>新读音共享给注音 API，未动态改写国家通用盲文 2018 的实际 Liblouis 输出表。原表、省调、词间空格和光标路由测试继续保留；不能把临时语音同音字当盲文原文，也不能说实际盲文区域已自动使用本次所有新组合。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/0.6.1-盛装与容纳结构修复.md</p>
+</footer>
+  </div>
+</body>
+</html>

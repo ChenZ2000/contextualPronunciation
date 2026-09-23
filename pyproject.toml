@@ -1,0 +1,26 @@
+[project]
+name = "contextual-pronunciation-nvda"
+version = "0.7.4"
+description = "Context-aware pronunciation normalization for NVDA"
+requires-python = ">=3.13"
+license = "GPL-2.0-or-later"
+maintainers = [{ name = "ChenZ2000" }]
+
+[project.urls]
+Homepage = "https://github.com/ChenZ2000/contextualPronunciation"
+Repository = "https://github.com/ChenZ2000/contextualPronunciation"
+Issues = "https://github.com/ChenZ2000/contextualPronunciation/issues"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+builtins = ["_", "pgettext"]
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

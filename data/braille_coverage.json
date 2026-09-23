@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "baseTable": "zhcn-cbs.ctb",
+  "scheme": "GF 0019-2018",
+  "literalContexts": 12057,
+  "correctionContexts": 11697,
+  "protectionContexts": 360,
+  "compiledMatchRules": 455,
+  "factoredTemplateRules": 25,
+  "readings": {
+    "hang2": "125-236",
+    "chong2": "12345-256",
+    "cheng2": "12345-3456",
+    "bing3": "12-16-3",
+    "tan2": "2345-1236",
+    "yue4": "23456",
+    "zhao1": "34-235-1",
+    "zhang3": "34-236-3",
+    "zhao2": "34-235-2",
+    "huan2": "125-12456",
+    "dei3": "145-2346-3",
+    "qu3": "13-346-3",
+    "ji4": "1245-24",
+    "liang2": "123-1346-2"
+  },
+  "separatorPolicy": "At most one ASCII space at each context boundary; no newline crossing",
+  "baseWordGroupOverrides": [
+    {
+      "id": "liang-measure-ti-before-physical-dimension",
+      "characters": "量体",
+      "before": "",
+      "after": [
+        "温",
+        "重",
+        "积"
+      ],
+      "dots": "123-1346-2-2345-24-3",
+      "baseDots": "123-1346-2345-24-3",
+      "source": "GF 0019-2018 liang2 + ti3; liblouis zhcn-cbs.ctb always 量体 groups these same two characters with liang4; measurement sense before 温/重/积 only"
+    }
+  ],
+  "excludedContexts": [
+    [
+      "hang-row-layout",
+      "行/列"
+    ],
+    [
+      "hang-row-layout",
+      "行、列"
+    ],
+    [
+      "liang-physical-quantity",
+      "dynamic template"
+    ],
+    [
+      "yue-key-technical",
+      "公钥"
+    ],
+    [
+      "yue-key-technical",
+      "密钥"
+    ],
+    [
+      "yue-key-technical",
+      "密钥对"
+    ],
+    [
+      "yue-key-technical",
+      "密钥库"
+    ],
+    [
+      "yue-key-technical",
+      "密钥文件"
+    ],
+    [
+      "yue-key-technical",
+      "密钥管理"
+    ],
+    [
+      "yue-key-technical",
+      "私钥"
+    ]
+  ],
+  "notCompiled": [
+    "structural number rules",
+    "user configuration",
+    "extended CC-CEDICT matching",
+    "full word segmentation",
+    "full GF 0019-2018 translation"
+  ]
+}

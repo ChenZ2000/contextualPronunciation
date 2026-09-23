@@ -1,0 +1,56 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+dist/
+*.nvda-addon
+vendor/
+artifacts/
+.ruff_cache/
+
+# Local interpreters, editors and coverage output.
+.venv/
+venv/
+.mypy_cache/
+.hypothesis/
+.tox/
+.nox/
+htmlcov/
+coverage.xml
+.coverage.*
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+
+# Credentials, private configuration and machine-generated diagnostics.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.log
+*.dmp
+*.wav
+*.mp3
+*.flac
+*.sqlite
+*.sqlite3
+*.db
+diagnostics/
+private/
+local/
+
+# Local planning note; maintained public design docs live under docs/.
+/NVDA-Vocalizer-多音字与撇号发音插件开发方案.md
+
+# Optional SCons build intermediates. Reviewed gettext catalogs are tracked.
+.sconsign.dblite
+addon/manifest.ini
+*.pot

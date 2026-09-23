@@ -1,0 +1,4 @@
+# Evidence fixtures bind exact source bytes. Never silently convert line endings
+# when a developer/CI checkout uses core.autocrlf=true on Windows.
+* -text whitespace=cr-at-eol
+*.py diff=python

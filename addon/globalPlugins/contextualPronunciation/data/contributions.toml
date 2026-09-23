@@ -1,0 +1,266 @@
+# Human-maintained contextual data: CC-BY-SA-4.0; see THIRD-PARTY-NOTICES.txt.
+# Readings are citation pinyin, never sandhi. Do not infer a source reading from
+# a renderer's output. Every contribution needs sources and positive/negative tests.
+schemaVersion = 1
+
+[classes]
+container = ["碗", "杯", "勺", "盆", "锅", "盘", "瓶", "壶", "桶", "盒", "袋", "份", "盅", "罐", "匙"]
+musicPrefix = ["仙", "音", "声", "器", "管弦", "交响", "礼"]
+musicForm = ["曲", "谱", "章", "器", "队", "团"]
+fastener = ["鞋带", "鞋帶", "安全带", "安全帶", "腰带", "腰帶", "领带", "領帶", "红领巾", "紅領巾", "围裙", "圍裙", "丝带", "絲帶", "缎带", "緞帶", "绳子", "繩子", "扣子", "纽扣", "鈕扣", "蝴蝶结", "蝴蝶結", "领结", "領結", "皮带", "皮帶", "裤带", "褲帶", "帽带", "帽帶", "头绳", "頭繩", "布条", "布條", "围巾", "圍巾", "丝巾", "絲巾", "鞋带儿", "鞋帶兒"]
+fasteningResult = ["好", "上", "紧", "緊", "牢", "着", "著", "了", "住", "好了", "上了", "紧了", "緊了", "牢了", "过", "過"]
+fasteningAmount = ["条", "條", "根", "个", "個", "一条", "一條", "一根", "一个", "一個"]
+fasteningKnot = ["个活扣", "個活扣", "个死扣", "個死扣", "个活结", "個活結", "个死结", "個死結", "一个结", "一個結"]
+fasteningLocation = ["在", "到"]
+xiPrefix = ["关", "關", "联", "聯", "维", "維", "体", "體", "世", "谱", "譜", "水", "星", "直", "旁", "父", "母", "嫡", "语", "語", "中文", "数学", "數學", "物理", "化学", "化學", "干", "心", "情", "所", "确", "確", "实", "實", "乃"]
+measurement = ["体温", "體溫", "血压", "血壓", "身高", "体重", "體重", "尺寸", "长度", "長度", "宽度", "寬度", "高度", "厚度", "深度", "温度", "溫度", "腰围", "腰圍", "胸围", "胸圍", "肩宽", "肩寬", "臂长", "臂長", "腿长", "腿長", "距离", "距離", "角度", "直径", "直徑", "半径", "半徑", "周长", "周長", "面积", "面積", "体积", "體積", "头围", "頭圍", "颈围", "頸圍", "袖长", "袖長", "裤长", "褲長", "水深", "水温", "水溫", "间距", "間距", "孔径", "孔徑", "壁厚", "电压", "電壓", "电流", "電流"]
+measurementResult = ["一下", "一量", "了", "过", "過", "好", "完", "出", "出来", "出來", "清楚", "准确", "準確", "不准", "不準", "得准", "得準"]
+measurementOwner = ["我的", "你的", "他的", "她的", "自己的", "孩子的"]
+measurementUse = ["用", "拿"]
+measurementTool = ["尺", "尺子", "直尺", "卷尺", "捲尺", "软尺", "軟尺", "皮尺", "钢尺", "鋼尺", "游标卡尺", "遊標卡尺", "千分尺", "米尺", "卡尺", "量角器"]
+measurementMethod = ["来", "來", "再", "重新", "反复", "反覆", "仔细", "仔細"]
+measurementUnit = ["米", "厘米", "毫米", "公分", "寸", "尺", "丈", "升", "毫升"]
+liangVerbPrefix = ["测", "測", "丈", "衡", "称", "稱"]
+liangNounPrefix = ["重", "数", "數", "质", "質", "力", "能", "容", "流", "热", "熱", "电", "電", "功", "当", "當", "向", "标", "標", "变", "變", "常", "总", "總", "分", "批", "大", "少", "限", "适", "適", "雨", "音", "排", "含", "剂", "劑", "储", "儲", "放", "载", "載", "产", "產", "运", "運", "通", "存", "销", "銷", "增", "减", "減", "小", "微", "巨", "无", "無", "定", "额", "額", "等", "足"]
+liangFourthForm = ["力", "入", "体裁衣", "體裁衣", "化", "产", "產", "词", "詞", "子", "纲", "綱", "贩", "販", "级", "級", "刑", "才", "材", "敌", "敵", "腹", "他不敢", "她不敢", "你不敢"]
+liangEvaluativePrefix = ["计", "計", "估", "考", "校", "较", "較", "裁", "酌", "酝", "醞", "忖", "审", "審", "参", "參"]
+liangInstrument = ["杯", "筒", "具", "角器", "规", "規", "程", "尺", "瓶"]
+liangNeutralPrefix = ["商", "打", "掂", "思"]
+xiUnresolvedForm = ["泊", "留", "马", "馬", "狱", "獄", "带", "帶"]
+
+[[rules]]
+id = "yue-music-prefix"
+pattern = "{musicPrefix}[乐:yuè]"
+source = "CC-CEDICT music headwords; 仙乐 also MOE https://dict.concised.moe.edu.tw/dictView.jsp?ID=27272&la=0&powerMode=0"
+positive = ["仙乐飘飘", "音乐观众很快乐", "声乐", "器乐", "管弦乐", "交响乐", "礼乐文明"]
+negative = ["乐观", "快乐", "乐高", "可口可乐"]
+
+[[rules]]
+id = "yue-music-form"
+pattern = "[乐:yuè]{musicForm}"
+source = "CC-CEDICT 乐曲 yue4 qu3, 乐谱 yue4 pu3, 乐章 yue4 zhang1, 乐器 yue4 qi4, 乐队 yue4 dui4, 乐团 yue4 tuan2"
+positive = ["欣赏乐曲", "乐谱", "乐章", "乐器", "乐队", "乐团"]
+negative = ["乐观", "快乐", "乐趣", "乐于助人"]
+
+[[rules]]
+id = "qu-musical-composition"
+pattern = "乐[曲:qǔ]"
+source = "CC-CEDICT 乐曲 yue4 qu3; a musical composition, not a bend"
+positive = ["我们欣赏乐曲"]
+negative = ["曲线", "曲折", "弯曲"]
+
+[[rules]]
+id = "zhao-morning-clouds"
+pattern = "天边的[朝:zhāo]霞"
+source = "CC-CEDICT 朝霞 zhao1 xia2; narrowed to explicit landscape context"
+positive = ["天边的朝霞很美"]
+negative = ["朝阳区", "朝代", "朋友朝霞来了"]
+
+[[rules]]
+id = "zhang-growing-up"
+pattern = "[长:zhǎng]大成人"
+source = "CC-CEDICT 长大 zhang3 da4; fixed adulthood construction"
+positive = ["孩子长大成人以后"]
+negative = ["身材长大", "长大", "长长的路"]
+
+[[rules]]
+id = "zhao-falling-asleep"
+pattern = "睡[着:zháo]了"
+source = "CC-CEDICT 睡着 shui4 zhao2; completed falling-asleep construction"
+positive = ["孩子睡着了"]
+negative = ["睡着觉", "着手处理", "着装"]
+
+[[rules]]
+id = "zhao-catching-fire"
+pattern = "[着:zháo]了火"
+source = "CC-CEDICT 着火 zhao2 huo3; completed catching-fire construction"
+positive = ["仓库着了火"]
+negative = ["火着了", "着急", "沿着火车轨道"]
+
+[[rules]]
+id = "huan-give-back"
+pattern = "请[还:huán]给"
+source = "CC-CEDICT 还 huan2: return; 给 marks recipient"
+positive = ["请还给我"]
+negative = ["还有", "还好", "他还会给我", "他还给我一个苹果"]
+
+[[rules]]
+id = "dei-must-hurry"
+pattern = "[得:děi]赶快"
+source = "CC-CEDICT 得 dei3: must; modal construction before 赶快"
+positive = ["我得赶快走"]
+negative = ["跑得快", "得奖", "获得"]
+
+[[rules]]
+id = "ji-fasten-object"
+pattern = "[系:jì]{fastener}"
+source = "KFCD 系 ji4; CC-CEDICT 系 ji4 tie/fasten; https://www.zdic.net/hans/系 basic ji4 sense (not historical xi4 tying/hoisting senses)"
+positive = ["给孩子系鞋带", "系安全带之后出发", "系腰带", "系红领巾", "系绳子", "系领结", "系帽带", "系皮带", "系头绳"]
+negative = ["系主任", "系统", "系数", "系泊", "系马", "舌系带"]
+
+[[rules]]
+id = "ji-fasten-result-object"
+pattern = "[系:jì]{fasteningResult}{fastener}"
+source = "KFCD 系 ji4 fastening sense; reviewed finite result-complement + fastening-object construction"
+positive = ["请系好安全带", "系紧鞋带", "系上腰带", "系牢绳子", "系了领带"]
+negative = ["关系好", "联系紧密", "系上来", "系上绳索的土筐被提起"]
+
+[[rules]]
+id = "ji-object-before-verb"
+pattern = "{fastener}[系:jì]{fasteningResult}"
+source = "KFCD 系 ji4; basic dictionary example 把鞋带系上; finite object-before-verb construction"
+positive = ["把鞋带系好", "安全带系紧", "将腰带系上"]
+negative = ["把土筐系上来", "关系紧密", "系主任"]
+
+[[rules]]
+id = "xi-linked-compound-protection"
+pattern = "{xiPrefix}[系:keep]"
+priority = 200
+source = "CC-CEDICT/KFCD xi4 relation/system/department words; prevent suffix matching across 关系 + 好安全带 etc."
+positive = ["联系好安全带厂家", "关系紧密", "维系了友谊", "数学系", "心系红领巾", "此物确系领结"]
+negative = ["系好安全带", "系鞋带"]
+
+[[rules]]
+id = "xi-specialized-sense-abstention"
+pattern = "[系:keep]{xiUnresolvedForm}"
+priority = 200
+source = "CC-CEDICT/KFCD and historical/technical readings may differ; 系带 also anatomical noun xi4; abstain pending domain evidence"
+positive = ["系泊", "系留", "系马", "系狱", "舌系带", "系带手术"]
+negative = ["系鞋带", "系好安全带"]
+
+[[rules]]
+id = "liang-measure-object"
+pattern = "[量:liáng]{measurement}"
+source = "KFCD 量 liang2; CC-CEDICT 量体温 liang2 ti3 wen1; finite physical measurement objects"
+positive = ["给孩子量体温", "量尺寸之后量身高", "量血压", "用尺子量长度", "量直径", "量角度", "量头围", "量袖长", "量体积"]
+negative = ["量体裁衣", "量力而行", "量子力学", "量化交易"]
+
+[[rules]]
+id = "liang-measure-result-object"
+pattern = "[量:liáng]{measurementResult}{measurement}"
+source = "KFCD 量 liang2; reviewed finite measurement verb-complement-object construction"
+positive = ["量一下体温", "量了身高", "量一量尺寸", "量完血压", "量出直径", "量不准长度", "量清楚尺寸"]
+negative = ["量了一下", "量力而行", "数量过多"]
+
+[[rules]]
+id = "liang-measure-verb"
+pattern = "{liangVerbPrefix}[量:liáng]"
+source = "CC-CEDICT 测量 ce4 liang2, 丈量 zhang4 liang2, 衡量 heng2 liang2, 称量 cheng1 liang2; https://www.zdic.net/hans/称量"
+positive = ["测量结果", "丈量土地", "衡量标准", "称量样品"]
+negative = ["计量", "估量", "裁量", "商量", "重量"]
+
+[[rules]]
+id = "liang-noun-protection"
+pattern = "{liangNounPrefix}[量:keep]"
+priority = 200
+source = "CC-CEDICT/KFCD noun liang4; do not reinterpret the suffix of 数量 + 长度 etc. as a measurement verb"
+positive = ["测量重量", "数量长度", "批量尺寸", "能量", "变量"]
+negative = ["量体温", "测量"]
+
+[[rules]]
+id = "liang-fourth-tone-protection"
+pattern = "[量:keep]{liangFourthForm}"
+priority = 200
+source = "CC-CEDICT/KFCD liang4 estimation and nominal forms; mainland 量体裁衣 liang4 (regional liang2 also exists)"
+positive = ["量力而行", "量入为出", "量体裁衣", "量子力学", "量化"]
+negative = ["量体温", "量血压", "测量"]
+
+[[rules]]
+id = "liang-neutral-protection"
+pattern = "{liangNeutralPrefix}[量:keep]"
+priority = 200
+source = "CC-CEDICT 商量/打量/掂量/思量 neutral-tone variants; do not impose liang2 or liang4 on weak syllables"
+positive = ["商量尺寸", "打量身高", "掂量", "思量"]
+negative = ["测量", "量体温"]
+
+[[rules]]
+id = "ji-fasten-quantity-object"
+pattern = "[系:jì]{fasteningAmount}{fastener}"
+source = "Modern oral tie/fasten sense, not written xi4; reviewed finite amount + fastening-object construction; https://paper.people.com.cn/rmrbhwb/html/2014-04/26/content_1420139.htm"
+positive = ["系一条领带", "系根绳子", "系一个蝴蝶结"]
+negative = ["系一个土筐上来", "系铃人", "系一名囚犯"]
+
+[[rules]]
+id = "ji-fasten-result-quantity-object"
+pattern = "[系:jì]{fasteningResult}{fasteningAmount}{fastener}"
+source = "Reviewed finite aspect/result + amount + fastening-object construction, modern oral ji4; https://www.zdic.net/hans/系"
+positive = ["系了一条领带", "系上一根绳子", "系好一个蝴蝶结"]
+negative = ["系了一个土筐上来", "系上绳索的土筐被提起", "系了三名囚犯"]
+
+[[rules]]
+id = "ji-fasten-knot"
+pattern = "[系:jì]{fasteningKnot}"
+source = "Modern oral knot-making sense; reviewed finite knot complements, never bare 结/结果; https://paper.people.com.cn/rmrbhwb/html/2014-04/26/content_1420139.htm"
+positive = ["请系个活扣", "系一个结", "系个死结"]
+negative = ["关系结果", "系结论错误", "解铃还须系铃人"]
+
+[[rules]]
+id = "ji-fastener-location"
+pattern = "{fastener}[系:jì]{fasteningLocation}"
+source = "Modern oral attaching a fastening object to a location; https://www.zdic.net/hans/系; does not infer ji4 from bare 系在/系到"
+positive = ["把绳子系在树上", "领结系在领口", "把丝带系到盒子上"]
+negative = ["把桶系到井下", "成败系在这一举", "关系在变化"]
+
+[[rules]]
+id = "liang-object-before-verb"
+pattern = "{measurement}[量:liáng]{measurementResult}"
+source = "KFCD/CC-CEDICT 量 liang2 physical measurement; reviewed topic/object-first + finite measurement complement"
+positive = ["身高量了两次", "尺寸量一下", "长度量不准", "血压量完再走"]
+negative = ["身高量化", "数量过多", "重量了不起"]
+
+[[rules]]
+id = "liang-owned-measurement"
+pattern = "[量:liáng]{measurementOwner}{measurement}"
+source = "KFCD/CC-CEDICT 量 liang2 physical measurement; finite possessive + measured dimension, never arbitrary pronouns"
+positive = ["量孩子的身高", "量我的腰围", "量他的体温"]
+negative = ["量他不敢来", "量他的能力", "商量孩子的事情"]
+
+[[rules]]
+id = "liang-physical-tool"
+pattern = "{measurementUse}{measurementTool}[量:liáng]"
+source = "KFCD/CC-CEDICT 量 liang2 using a measuring instrument; explicit tool allows an omitted or previously unseen object; https://kotobank.jp/jazhword/尺"
+positive = ["用尺子量一下", "拿卷尺量这张桌子", "用量角器量一下", "用尺子量长度"]
+negative = ["用力量", "计量", "尺子数量", "量他不敢来"]
+
+[[rules]]
+id = "liang-physical-tool-method"
+pattern = "{measurementUse}{measurementTool}{measurementMethod}[量:liáng]"
+source = "Physical tool + finite measurement manner; same reviewed liang2 sense, no wildcard gap"
+positive = ["用卷尺重新量一下", "用直尺仔细量桌子", "拿软尺来量"]
+negative = ["用尺子然后商量", "用尺子量刑", "工具考量"]
+
+[[rules]]
+id = "liang-physical-tool-reduplication"
+pattern = "{measurementUse}{measurementTool}量一[量:liáng]"
+source = "Physical tool explicitly establishes measurement sense for both characters of 量一量; citation tone, not prosodic sandhi"
+positive = ["用卷尺量一量", "拿尺子量一量这个盒子"]
+negative = ["量一量", "力量一量", "用尺子商量一量"]
+
+[[rules]]
+id = "liang-physical-tool-method-reduplication"
+pattern = "{measurementUse}{measurementTool}{measurementMethod}量一[量:liáng]"
+source = "Physical tool + finite manner establishes the second verb of 量一量; no unbounded lookback"
+positive = ["用卷尺重新量一量", "拿软尺再量一量"]
+negative = ["重新量一量", "用尺子商量一量", "用尺子再考量一量"]
+
+[[rules]]
+id = "liang-measuring-instrument"
+pattern = "[量:liáng]{liangInstrument}"
+source = "CC-CEDICT/KFCD 量杯/量筒/量具/量角器/量规/量程/量尺/量瓶 liang2; instrument nouns show POS alone is insufficient; https://www.zdic.net/hans/量"
+positive = ["量杯", "量筒", "量具", "量角器", "量规", "量程", "量瓶"]
+negative = ["量词", "量刑", "量力而行", "量子"]
+
+[[rules]]
+id = "liang-evaluative-compound-protection"
+pattern = "{liangEvaluativePrefix}[量:keep]"
+priority = 200
+source = "Do not infer liang2 from verb POS or a following dimension: 校量 jiao4 liang4 https://www.zdic.net/hans/校量; 估量/较量 also have weak-syllable variants; protect unresolved readings, do not impose tone 4"
+positive = ["校量尺寸", "估量长度", "计量尺寸", "裁量", "考量身高", "较量", "酌量"]
+negative = ["测量", "称量", "用尺子量", "量体温"]
+
+[[rules]]
+id = "liang-physical-quantity"
+pattern = "[量:liáng]{number}{measurementUnit}"
+source = "KFCD/CC-CEDICT 量 liang2 physically measuring length/capacity; bounded numeric quantity + physical unit, not arbitrary amounts or noun POS"
+positive = ["量三米布", "量二十厘米", "量100毫升水", "量３米绳子"]
+negative = ["量一量", "量十三个人", "量三种方法", "量1234567890123米"]

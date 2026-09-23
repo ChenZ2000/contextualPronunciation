@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0.6.0：局部句法与跨词读音锁定</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#0-6-0">0.6.0：局部句法、语义宾语与跨词读音锁定</a></li>
+    <li class="toc-level-2"><a href="#1">1. 两类问题的根因</a></li>
+    <li class="toc-level-2"><a href="#2">2. 研究与取舍</a></li>
+    <li class="toc-level-2"><a href="#3">3. 可审计的语义词库</a></li>
+    <li class="toc-level-2"><a href="#4">4. 局部结构分析</a></li>
+    <li class="toc-level-2"><a href="#5">5. 跨词异读锁定</a></li>
+    <li class="toc-level-2"><a href="#6">6. 贡献与复现</a></li>
+    <li class="toc-level-2"><a href="#7">7. 盲文与未完成范围</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="0-6-0">0.6.0：局部句法、语义宾语与跨词读音锁定</h1>
+<p>本版交付两个相互独立但共用输出决策的改进：组合“盛＋食物宾语”“量＋可变化的领属短语＋尺寸”“系＋可变化的系结物”；以及在词边界已正确识别时，防止词典默认读音被下游合成器重新解释。它不是任意中文长句的完整语义理解系统，不承诺所有多音字、所有声音百分之百正确或严格零计算耗时。</p>
+<h2 id="1">1. 两类问题的根因</h2>
+<p>“盛豆角”“盛红豆粥”“量小名的身高”的问题不只是词库少了三个短语。0.5 的分词权重只选择词边界，固定模板只认识有限宾语／领属词，没有把“红豆＋粥”合成为食物名词，也没有把“小名的身高”作为以“身高”为中心的宾语。</p>
+<p>“降调音频”不同：实际旧词库的正向、反向分词都为“降调／音频”，并已得到 diào。旧语音策略却只改写不同于词典默认音的结果；“调”的词典默认值就是 diao4，所以原字“调”仍原样送入引擎。词典的默认值不是合成器对这句话的预测，引擎仍可受到跨词“调音”的 tiáo 影响。无需伪造“降调音频”的高词频，也不能把这个故障归咎于插件实际没有做过的“调音抢词”。</p>
+<h2 id="2">2. 研究与取舍</h2>
+<ul>
+<li><a href="https://github.com/nvaccess/nvda/pull/20242">NVDA 分词重构</a>与其固定 beta2 源码使用 cppjieba，面向词导航和盲文词间空格，不输出拼音或语义角色。插件不依赖其私有初始化状态，不修改共享用户词典。</li>
+<li><a href="https://github.com/yanyiwu/cppjieba/blob/b3602bef7d1f67521a61788a74fb5801a0e62cd3/include/cppjieba/MPSegment.hpp">cppjieba 最大概率分词实现</a>在词图上做动态规划。现有插件继续使用同版本固定词频，在小分歧区间进行最大边际裁决；不是给目标短语临时加权。原生测试实际检查“降调 音频”的切分和偏移往返。</li>
+<li><a href="https://arxiv.org/abs/1901.09957">OpenHowNet 论文</a>及<a href="https://github.com/thunlp/OpenHowNet">官方项目</a>提供词性和义原，适合离线提取食物、材料等词法证据。<a href="https://openhownet.thunlp.org/download">官方许可说明</a>说明 MIT；完整归属与引文随包保留。静态词性集合不等于当前句子的词性预测。</li>
+<li><a href="https://universaldependencies.org/zh/dep/compound.html">Universal Dependencies 中文名词复合规范</a>、<a href="https://universaldependencies.org/zh/dep/obj.html">宾语规范</a>、<a href="https://universaldependencies.org/zh/dep/acl.html">定语从句规范</a>帮助区分宾语、名词修饰和定语从句。这里实现的是有界局部识别器，不是训练过的完整 UD 依存解析器，也没有把 UD 语料作为模型训练数据。</li>
+<li><a href="https://github.com/kakaobrain/g2pM">g2pM 官方模型</a>约 47.7 万参数，依赖 NumPy。开发环境中实际运行固定版本：本次三条用户例句的目标字全部判断不符预期；八条短句探测的逐次热态中位数约 0.20–0.47 毫秒，首次导入并加载约 192 毫秒。这只是本机探测，不是其通用准确率。未把它放入插件，不能因为“使用神经网络”就认为能保证本次问题正确。</li>
+<li><a href="https://arxiv.org/abs/2203.10430">g2pW</a>把 BERT、词性辅助和条件加权分类用于多音字，<a href="https://aclanthology.org/2024.naacl-long.294/">DLM</a>研究长尾消歧。它们说明这仍是上下文建模问题；本版未下载运行这些大型模型，未伪造其本机耗时，也没有证明它们能达到读屏零延迟。HanLP/LTP 完整句法模型同样不能单凭模型名获得所有语境读音保证。</li>
+</ul>
+<p>结论：保持原有可验证词典和规则，在缺少决定时增加轻量词法／句法组合；有真实异读竞争时落实已有决定。不给同步回调引入模型下载、云端请求、推理服务、句子缓冲或文档缓存。</p>
+<h2 id="3">3. 可审计的语义词库</h2>
+<p>固定 OpenHowNet 核心归档最后修改于 2021-09-20，本次取得于 2026-09-15。不是声称它是 2026 年新编权威审音词典。归档 SHA256 为 <code>daaa31e2627e099e03ce15371f472c6f9ec5b3aac71a4e5e2ab5c4f4f38c44d4</code>。</p>
+<p>只读取指定核心成员，开发导入器禁止 pickle 的全局类调用和持久化引用。原始大归档留在开发目录，不分发。源码中提供固定、可检查的 JSON gzip 投影：原义项 ID、汉字词头、词性及 KDML；安装包仅有压缩归档中的普通 JSON 词法特征。</p>
+<table><caption>OpenHowNet 词性和语义数据投影口径</caption>
+<thead>
+<tr>
+<th scope="col">数据口径</th>
+<th style="text-align: right;">数量</th>
+<th scope="col">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保留的义项记录</td>
+<td style="text-align: right;">215,831</td>
+<td>词性和义原证据，不是拼音规则</td>
+</tr>
+<tr>
+<td>词头</td>
+<td style="text-align: right;">117,464</td>
+<td>指定汉字区块内、最长 16 字的词形</td>
+</tr>
+<tr>
+<td>名词义一致支持食物的词头</td>
+<td style="text-align: right;">2,472</td>
+<td>可参与食物宾语候选，不表示每句已验证</td>
+</tr>
+<tr>
+<td>另含非食物名词义的词头</td>
+<td style="text-align: right;">122</td>
+<td>保留歧义，不直接强制为食物</td>
+</tr>
+</tbody>
+</table>
+<p>只看顶层食物／水果／蔬菜等义原，以及经明确审阅的可食部件、食材关系。不能因为“餐厅”的释义中提到了食物就把餐厅当食物，也不能因为果树能结果就把树当水果。“苹果”的电脑／品牌等义仍保留，独立“苹果”不因存在一个水果义就自动放行。</p>
+<p>“汤、汁、面、饭”等多义名词，另有经审阅的食物复合中心词声明，只在名词复合结构中提供烹饪义候选，例如“红豆＋汤”。不是把单字所有词义覆盖成食物。词源以实际源词形为准，不任意把繁体字转为简体字后继承语义。</p>
+<p><code>tools/build_syntax_data.py --check</code> 从固定源投影离线重建并逐字节比较。源码包保留来源；运行时不读源码 gzip、不执行 pickle、不导入 OpenHowNet API、不访问 SQLite。拼音仍来自审阅框架和既有字音证据，HowNet 不替我们推导某字的拼音。</p>
+<h2 id="4">4. 局部结构分析</h2>
+<p>流程为：目标字候选 → 有界词法切分 → 名词短语／局部定语结构 → 语义中心词 → 审阅动词框架 → 共享原文位置读音决定。</p>
+<p>示例解析：</p>
+<pre><code class="language-text">盛 [红豆 粥]             obj，复合中心词“粥”：食物 → cheng2
+盛 [刚煮好的 红豆粥]      acl 修饰宾语 → cheng2
+量 [小名的 身高]          nmod，中心词“身高”：可测维度 → liang2
+量 [[住在隔壁的 小名]的 身高]
+    “住在隔壁的”修饰“小名”，“小名的”修饰“身高” → liang2
+系 [小名的 鞋带]          中心词“鞋带”：系结物 → ji4
+</code></pre>
+<p>识别器的词法切分使用固定词性词库的局部最长匹配，保留词性集合；它与拼音词库的双向匹配／词频词图各有职责，不是暗中调用 NVDA 私有接口。它识别右中心名词复合、限定／数量前缀、领属“的”和有词法证据的局部定语从句。未收录的汉字姓名仅能在显式“的”结构中作有界变量，不可跳过任意未知字符串寻找后面的“身高”。</p>
+<p>宾语中心词决定类型，而不是任意位置出现关键词就命中。“豆角公司的产品”中心词是“产品”，不能因里面有“豆角”而当成食物宾语。已知词、核心规则、保护、用户 keep 和冲突都先于新回退框架；本版不假装这些旧层的全部语义也被重写了。</p>
+<p>每次局部分析至多 48 字、24 个词法 token，另可有一个“不完整尾部”标记；“的”递归至多三层。未知字组成的领属成分至多八字。超限的名词短语弃权，但已经完成的宾语不会因为后面独立谓语很长而撤回。每个行内间隔至多四个空白；不跨换行、标点、符号、语言／索引命令或字符串项。I Ching 符号位于两个汉字区块之间，不能用粗糙的整个 U+3400–U+9FFF 区间把它们当汉字。</p>
+<p>只有明确候选才进入分析；语义中心词尾字的必要条件预筛不产生任何读音，只用于跳过不可能命中的重复字符输入。原模板增加严格计算的 FIRST/LAST 字符索引，支持可空空格；最终仍由原正则判断。等价性测试对照不带索引的原正则，不用降低规则质量换取速度。</p>
+<h2 id="5">5. 跨词异读锁定</h2>
+<p>这是扩展词库的通用输出政策，不改变分词边界：</p>
+<ol>
+<li>先取得双向一致或通过词图门限的、无阻断的整词读音。</li>
+<li>若某目标恰好采用词典默认读音，检查有没有另一条可读词边跨过已选词边界，并对该位置给出不同读音。</li>
+<li>若确有竞争且已有可用同音渲染，把已选默认音也标为需要落实到语音；不采用竞争词的音。</li>
+<li>没有竞争不额外改写；不锁定未知、阻断、未决分词或单纯位于整词内部的子词。用户 keep 仍有优先权。</li>
+</ol>
+<pre><code class="language-text">原文：降调音频
+已选词：降调 / 音频
+已选读音：jiang4 diao4 / yin1 pin2
+跨界竞争：调音 → tiao2 yin1
+临时语音文本：降吊音频
+原文与盲文注音：仍为“调”、diao4、原始位置
+</code></pre>
+<p>回归还包含升调／变调／大调／小调音频、繁体词形、合成字符词典的其他目标字，以及真正的“调音师”tiáo。它不是只匹配“降”前缀的特例。<strong>需要开启扩展词组库</strong>；用户现有配置已经开启，插件不会替用户改配置。用 <code>tools/pronunciation.py</code> 可看到 <code>forced_offsets</code> 和 <code>[crossing-reading-lock]</code> 来源标记。</p>
+<p>同音字渲染仍不是跨引擎音素 API。没有哪个通用接口能保证任意引擎绝不重新解释文本；声学回归与人工试听仍必不可少。</p>
+<h2 id="6">6. 贡献与复现</h2>
+<p>固定短语仍编辑 <code>contributions.toml</code>；有语法角色和语义宾语的规则编辑 <code>syntax_frames.toml</code>。例如新增名词类别先在 contributions 的 <code>[classes]</code> 声明实际词，再在 syntax 的 <code>[classes]</code> 将语义类别名绑定到它。新增框架声明目标、拼音、宾语类别、有限补语前缀、字音来源、正例与反例，不必枚举人名和整句。新类别最多 32 个，框架最多 64 个；同目标异读框架同时成功时弃权。</p>
+<p>已有三个框架可通过设置的停用规则 ID 单独关闭：<code>syntax-serving-object</code>、<code>syntax-measurement-object</code>、<code>syntax-fastening-object</code>。这是语法框架开关，不是清空整个字的所有已有规则。停用旧词组规则时，新回退不会偷偷把旧规则的匹配范围重新启用。</p>
+<pre><code class="language-powershell">python tools/build_syntax_data.py --check
+python tools/pronunciation.py --check-contributions
+python tools/pronunciation.py &quot;盛红豆粥，量小名的身高，降调音频&quot;
+python -m unittest tests.test_syntax tests.test_crossing_readings -v
+python tools/generate_final_renderer_fixture.py
+python tools/boundary_acoustics.py generate
+python tools/sentence_acoustics.py generate
+python scripts/run_tests.py
+$env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.3beta2'
+python scripts/run_regression.py --native --vocalizer --release --llvm-bin vendor/llvm-20.1.8/bin --spectre-atl-fallback --installed-worldvoice "$env:APPDATA/nvda/addons/WorldVoice" --jobs 4
+</code></pre>
+<p>固定输出说明中 <code>syntaxProposals</code> 是局部分析建议；<code>selected</code> 区分是否真正被最终裁决采用，不能把被保护规则否决的建议当实际输出。工具仅处理显式传入文本，不记录正在朗读的文档。</p>
+<p>自动化包括：完整既有单元回归、新未登录姓名与名词组合、反例中心词、递归／长度上限、全部 Unicode 符号边界、命令和逐字模式、语音／注音投影、词库复现与安全导入、WorldVoice 两种顺序、原生 cppjieba 切分和 Liblouis 路由、VE 独立同音锚点。统计语料 CPP 仍是测试集，不用其标签拟合规则或调整频率；错误和弃权分别报告。</p>
+<p>性能门禁增加语法短句、跨词锁定及 8K 压力输入，沿用短句 200 微秒、密集 8K 30 毫秒、稀疏 8K 10 毫秒的批量平均中位数门限。启动及内存另测。最终结果以发布包对应的冻结证据为准，不把开发阶段数据代替最终测试，不把这些门限说成端到端 p99 或所有设备“零延迟”。</p>
+<h2 id="7">7. 盲文与未完成范围</h2>
+<p>新的读音进入原文位置的共享注音 API，可供盲文系统使用。<strong>本版没有把动态局部句法结果接入所有实际 Liblouis 区域</strong>，不把“呈／梁／吊”作为盲文原文。已有国家通用盲文 2018 实验表、词间空格和光标路由保持原实现；全标调 API 不等于标准省调、省写、连写的完整翻译器。</p>
+<p>仍未解决任意长距离依存、指代、所有未知词、所有姓名歧义、古汉语、文白异读、方言和所有声音的音素控制。尤其没有把“名词一律读某音”或“动词一律读二声”作为规则。本版是可测量、可贡献的局部结构能力升级，不是“完整汉语 NLP 已经完成”的声明。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/0.6.0-局部句法与跨词读音锁定.md</p>
+</footer>
+  </div>
+</body>
+</html>

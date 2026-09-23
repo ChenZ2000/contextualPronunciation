@@ -1,0 +1,126 @@
+# Local argument grammar, not a list of complete sentences. Project-authored.
+# OpenHowNet supplies POS/semantic classes, not pronunciations. Readings here are
+# reviewed against CC-CEDICT/KFCD and the existing contribution sense evidence.
+schemaVersion = 1
+
+[[frames]]
+id = "syntax-coordinated-predicates"
+target = "和"
+reading = "he2"
+object = "coordinatingPredicate"
+prefixes = [""]
+source = "OpenHowNet independent speech-action verb senses; CC-CEDICT conjunction 和 versus lexical 唱和/说和"
+positive = ["唱和说", "唱和跳", "说和唱"]
+negative = ["诗人唱和", "唱和诗词", "附和说法", "和面"]
+
+[[frames]]
+id = "syntax-spatial-edge"
+target = "边"
+reading = "bian1"
+object = "edgeNoun"
+prefixes = [""]
+source = "OpenHowNet part:PartPosition=edge; CC-CEDICT 边缘/边框/边界 versus 上边/下边 neutral-tone localizers"
+positive = ["下边缘", "上边框", "左边界"]
+negative = ["下边的人", "上边说", "边唱边说"]
+
+[[frames]]
+id = "syntax-spatial-edge-traditional"
+target = "邊"
+reading = "bian1"
+object = "edgeNoun"
+prefixes = [""]
+source = "CC-CEDICT source-authored traditional headwords; OpenHowNet edge noun senses"
+positive = ["下邊緣", "上邊框"]
+negative = ["下邊的人", "邊唱邊說"]
+
+# These class names reuse contributions.toml; edit noun classes in ONE place.
+[classes]
+dimension = "measurement"
+fastener = "fastener"
+measuringTool = "measurementTool"
+
+# Reviewed physical senses where the core source is generic/ambiguous or only
+# supplies the simplified spelling. Do not equate every artifact with contents.
+[nounHeads.contents]
+words = ["粉末", "颗粒", "顆粒", "沙子", "物品", "货物", "貨物", "物料", "液體", "氣體", "化學品", "廢液", "廢水", "藥品"]
+source = "CC-CEDICT/KFCD physical powder/granule/sand/item/cargo/material/liquid senses; not a conversion of all traditional characters. Source profiles in dictionary-sources.json."
+
+[nounHeads.container]
+words = ["容器", "试管", "試管", "烧杯", "燒杯", "量筒", "储罐", "儲罐", "储槽", "儲槽", "托盘", "托盤"]
+source = "CC-CEDICT lab/storage vessel senses; MOE 盛 container/hold valency. Containers are external heads, not automatically contained material."
+
+# These ambiguous nouns acquire the culinary sense ONLY as the head of a
+# noun-noun compound (红豆 + 汤), not as standalone words or surname guesses.
+# CC-CEDICT noun senses: soup, juice, noodles/flour, rice/meal.
+[compoundHeads]
+food = ["汤", "汁", "面", "饭"]
+
+[[frames]]
+id = "syntax-serving-object"
+target = "盛"
+reading = "cheng2"
+object = "contents"
+extensions = ["", "装", "裝"]
+prefixes = ["", "有", "了", "过", "過", "着", "著", "好", "好了", "出", "出来", "出來", "起", "起来", "起來", "完", "满", "滿", "不了", "不下", "得下"]
+results = ["好", "出", "出来", "出來", "起", "起来", "起來", "完", "满", "滿"]
+relativeHeads = ["container"]
+blockedLeft = ["身穿", "身着", "身著", "穿着", "穿著", "穿上", "一身", "一套", "这身", "這身", "那身", "姓", "姓氏为", "姓氏為", "姓名为", "姓名為"]
+# A bare surname + title can own a following noun: 盛先生的液体. Abstain;
+# this is not evidence for a verb. 盛了先生的液体 has an explicit aspect.
+blockedRight = ["先生", "女士", "小姐", "教授", "博士", "老师", "老師", "师傅", "師傅", "总裁", "總裁"]
+source = "MOE 盛 cheng2 container/hold sense https://dict.concised.moe.edu.tw/dictView.jsp?ID=32353&la=0&powerMode=0; CC-CEDICT/KFCD; OpenHowNet unanimous food/material/container noun senses; 盛装 liquid usage https://www.caac.gov.cn/PHONE/SY/HLFW/GLZN/"
+positive = ["盛豆角", "盛红豆粥", "盛刚煮好的红豆粥", "盛小名的红豆粥", "盛液体", "盛装液体", "盛装液体的容器", "盛装了酒精", "盛装饰品"]
+negative = ["盛先生", "盛豆角公司的产品", "盛红豆粥的价格", "丰盛的红豆粥", "盛装出席", "盛装液体公司的代表", "身穿盛装衣料昂贵"]
+
+[[frames]]
+id = "syntax-measurement-object"
+target = "量"
+reading = "liang2"
+object = "dimension"
+relativeHeads = ["measuringTool"]
+prefixes = ["", "了", "过", "過", "好", "好了", "出", "出来", "出來", "完", "一下", "清楚", "准确", "準確"]
+results = ["好", "出", "出来", "出來", "完", "清楚", "准确", "準確"]
+source = "CC-CEDICT 量 liang2: to measure; measurement sense sources in contributions.toml"
+positive = ["量小名的身高", "量住在隔壁的小名的身高", "量这张桌子的长度"]
+negative = ["商量小名的身高", "估量小名的身高", "量小名的身高标准", "量未知的事情"]
+
+[[frames]]
+id = "syntax-fastening-object"
+target = "系"
+reading = "ji4"
+object = "fastener"
+prefixes = ["", "了", "过", "過", "好", "好了", "上", "上了", "紧", "緊", "紧了", "緊了", "牢", "牢了"]
+results = ["好", "上", "紧", "緊", "牢"]
+source = "CC-CEDICT 系 ji4: tie/fasten; fastening sense sources in contributions.toml"
+positive = ["系小名的鞋带", "系这条红色的丝带", "系紧孩子新买的红领巾"]
+negative = ["关系小名的前途", "联系小名的鞋带厂家", "系红领巾的价格"]
+
+[[frames]]
+id = "syntax-repeat-predicate"
+target = "重"
+reading = "chong2"
+object = "predicate"
+prefixes = [""]
+source = "CC-CEDICT 重 chong2 re-/again; KFCD 重 chong2 再另又一次; MOE https://dict.revised.moe.edu.tw/dictView.jsp?ID=8701; lexical verb evidence: pinned OpenHowNet, cppjieba POS, CC-CEDICT explicit infinitive definitions; no inference of other characters' readings."
+positive = ["重转", "请把文件重转一次", "重编译", "重下载", "重转码", "重排序", "重校对", "重轉", "重編譯"]
+negative = ["重视", "重用", "重罚", "重读音节", "重载铁路", "很重转不动", "体重增长", "重学生", "重未知词"]
+
+[[frames]]
+id = "syntax-general-nominal"
+target = "将"
+reading = "jiang4"
+object = "nominalGeneral"
+prefixes = [""]
+source = "CC-CEDICT/KFCD 将 jiang4 noun general; MOE https://dict.concised.moe.edu.tw/dictView.jsp?ID=23531; OpenHowNet military noun and human classifier selection. Parallel nominal constituents, not fixed idiom strings."
+positive = ["士兵和勇猛的将", "一员勇猛的将"]
+negative = ["天将下雨", "士兵和老师将离开", "一位老人的将来", "天兵和天将军"]
+
+[[frames]]
+id = "syntax-general-nominal-traditional"
+target = "將"
+reading = "jiang4"
+object = "nominalGeneral"
+prefixes = [""]
+source = "Source-authored traditional form of 将; same nominal productions and evidence as syntax-general-nominal."
+positive = ["士兵和勇猛的將", "一員勇猛的將"]
+negative = ["天將下雨", "士兵和老師將離開", "一位老人的將來", "天兵和天將軍"]

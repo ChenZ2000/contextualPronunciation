@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability privately
+    url: https://github.com/ChenZ2000/contextualPronunciation/security/advisories/new
+    about: Do not disclose private data or exploit details in a public issue.

@@ -1,0 +1,3281 @@
+{
+  "schemaVersion": 1,
+  "purpose": "0.1.1 Unicode boundary regression through NVDA symbols and VE",
+  "sourceSha256": {
+    "addon/globalPlugins/contextualPronunciation/__init__.py": "0111a10907996b08a04918c92467ff39a60cd1d60982df8bbeb458706c921de3",
+    "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
+    "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
+    "addon/globalPlugins/contextualPronunciation/constituents.py": "f0a788cb987c524a6c8fe45ad839fe92b79991e35d4a670c98953461c83e5a79",
+    "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
+    "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "17f5da785faf8489021d6c312ecb6fc64fbd56a8f9e6328da9701ff3399bd727",
+    "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "e8fef79cba2b1db16ed94b0f5c8c146a008a238dc6ccbd5ad4eedec29478ddd7",
+    "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
+    "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
+    "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "199646f6c7b6113fa8773d79542a4bc9ce346d223b7308a812250530725977e9",
+    "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
+    "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "66aa92ef8a46fb348f4093428bc71799d92c81ae79d2355d1ab03b90f51ea588",
+    "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
+    "addon/globalPlugins/contextualPronunciation/edges.py": "14b7236183e1e3ff592cf15b7848b8d30b0d5b937215c900ab00a672e9b9b7db",
+    "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
+    "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
+    "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
+    "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
+    "addon/globalPlugins/contextualPronunciation/pipeline.py": "89caaeb38214e8529f22f6e3e008ea0815915e276e1c1039af0f36a896d8f069",
+    "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
+    "addon/globalPlugins/contextualPronunciation/rules.py": "8b5b475dee6af3d809cb8d622a626ddf771e1f750509d471cec056797c72ad84",
+    "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
+    "addon/globalPlugins/contextualPronunciation/settings.py": "23186bd9ee5bc9e26ff2b7fa5d9b2a5d5d0ce10611b8abd5a505ec847b8d2886",
+    "addon/globalPlugins/contextualPronunciation/syntax.py": "4257d7133230f56c2589568be08f6d01539730760380e042457b9e26f4f560b0",
+    "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
+    "addon/locale/en/symbols-lexicalApostrophe.dic": "f9df0e7d00d44a0f32b05e766fb4a215245119d3dcb0192fda8fc69f8317d5c1",
+    "addon/locale/zh_CN/symbols-lexicalApostrophe.dic": "1d39881b3f58187ab1935411d7d870265193a27a22928e075a929d6066faa3ce",
+    "tools/boundary_acoustics.py": "fbabbaa93aab7e23b91c7a213e77bb600a8f7c9068ff75cf71706c3f52705b03",
+    "vendor/nvda-2026.2/source/characterProcessing.py": "d64bae2530368d1988c1bd42bbe4ce76af564495f89ae192f0fc250121eeb8fa",
+    "vendor/nvda-2026.2/source/locale/en/symbols.dic": "6a60536d89f05a88345e7f2886061e5adb8d01f4f8381fa14302768e5c0dda96",
+    "vendor/nvda-2026.2/source/locale/zh_CN/symbols.dic": "5776106d763c8443198e48361872b7ac7c36def1ee2f49a682fe54006790891a"
+  },
+  "groups": [
+    {
+      "id": "boundary_00_soup_raw",
+      "sourceBeforeSymbols": "盛汤|",
+      "transformedBeforeSymbols": "呈汤|",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_00_soup_none",
+      "sourceBeforeSymbols": "盛汤|",
+      "transformedBeforeSymbols": "呈汤|",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_00_soup_some",
+      "sourceBeforeSymbols": "盛汤|",
+      "transformedBeforeSymbols": "呈汤|",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_00_soup_most",
+      "sourceBeforeSymbols": "盛汤|",
+      "transformedBeforeSymbols": "呈汤|",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_00_soup_all",
+      "sourceBeforeSymbols": "盛汤|",
+      "transformedBeforeSymbols": "呈汤|",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_01_soup_raw",
+      "sourceBeforeSymbols": "盛汤$",
+      "transformedBeforeSymbols": "呈汤$",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_01_soup_none",
+      "sourceBeforeSymbols": "盛汤$",
+      "transformedBeforeSymbols": "呈汤$",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_01_soup_some",
+      "sourceBeforeSymbols": "盛汤$",
+      "transformedBeforeSymbols": "呈汤$",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_01_soup_most",
+      "sourceBeforeSymbols": "盛汤$",
+      "transformedBeforeSymbols": "呈汤$",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_01_soup_all",
+      "sourceBeforeSymbols": "盛汤$",
+      "transformedBeforeSymbols": "呈汤$",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_02_soup_raw",
+      "sourceBeforeSymbols": "盛汤^",
+      "transformedBeforeSymbols": "呈汤^",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_02_soup_none",
+      "sourceBeforeSymbols": "盛汤^",
+      "transformedBeforeSymbols": "呈汤^",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_02_soup_some",
+      "sourceBeforeSymbols": "盛汤^",
+      "transformedBeforeSymbols": "呈汤^",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_02_soup_most",
+      "sourceBeforeSymbols": "盛汤^",
+      "transformedBeforeSymbols": "呈汤^",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_02_soup_all",
+      "sourceBeforeSymbols": "盛汤^",
+      "transformedBeforeSymbols": "呈汤^",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_03_soup_raw",
+      "sourceBeforeSymbols": "盛汤+",
+      "transformedBeforeSymbols": "呈汤+",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_03_soup_none",
+      "sourceBeforeSymbols": "盛汤+",
+      "transformedBeforeSymbols": "呈汤+",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_03_soup_some",
+      "sourceBeforeSymbols": "盛汤+",
+      "transformedBeforeSymbols": "呈汤+",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_03_soup_most",
+      "sourceBeforeSymbols": "盛汤+",
+      "transformedBeforeSymbols": "呈汤+",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_03_soup_all",
+      "sourceBeforeSymbols": "盛汤+",
+      "transformedBeforeSymbols": "呈汤+",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_04_soup_raw",
+      "sourceBeforeSymbols": "盛汤=",
+      "transformedBeforeSymbols": "呈汤=",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_04_soup_none",
+      "sourceBeforeSymbols": "盛汤=",
+      "transformedBeforeSymbols": "呈汤=",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_04_soup_some",
+      "sourceBeforeSymbols": "盛汤=",
+      "transformedBeforeSymbols": "呈汤=",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_04_soup_most",
+      "sourceBeforeSymbols": "盛汤=",
+      "transformedBeforeSymbols": "呈汤=",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_04_soup_all",
+      "sourceBeforeSymbols": "盛汤=",
+      "transformedBeforeSymbols": "呈汤=",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_05_soup_raw",
+      "sourceBeforeSymbols": "盛汤<",
+      "transformedBeforeSymbols": "呈汤<",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_05_soup_none",
+      "sourceBeforeSymbols": "盛汤<",
+      "transformedBeforeSymbols": "呈汤<",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_05_soup_some",
+      "sourceBeforeSymbols": "盛汤<",
+      "transformedBeforeSymbols": "呈汤<",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_05_soup_most",
+      "sourceBeforeSymbols": "盛汤<",
+      "transformedBeforeSymbols": "呈汤<",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_05_soup_all",
+      "sourceBeforeSymbols": "盛汤<",
+      "transformedBeforeSymbols": "呈汤<",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_06_soup_raw",
+      "sourceBeforeSymbols": "盛汤>",
+      "transformedBeforeSymbols": "呈汤>",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_06_soup_none",
+      "sourceBeforeSymbols": "盛汤>",
+      "transformedBeforeSymbols": "呈汤>",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_06_soup_some",
+      "sourceBeforeSymbols": "盛汤>",
+      "transformedBeforeSymbols": "呈汤>",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_06_soup_most",
+      "sourceBeforeSymbols": "盛汤>",
+      "transformedBeforeSymbols": "呈汤>",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_06_soup_all",
+      "sourceBeforeSymbols": "盛汤>",
+      "transformedBeforeSymbols": "呈汤>",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_07_soup_raw",
+      "sourceBeforeSymbols": "盛汤`",
+      "transformedBeforeSymbols": "呈汤`",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_07_soup_none",
+      "sourceBeforeSymbols": "盛汤`",
+      "transformedBeforeSymbols": "呈汤`",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_07_soup_some",
+      "sourceBeforeSymbols": "盛汤`",
+      "transformedBeforeSymbols": "呈汤`",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_07_soup_most",
+      "sourceBeforeSymbols": "盛汤`",
+      "transformedBeforeSymbols": "呈汤`",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_07_soup_all",
+      "sourceBeforeSymbols": "盛汤`",
+      "transformedBeforeSymbols": "呈汤`",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_08_soup_raw",
+      "sourceBeforeSymbols": "盛汤~",
+      "transformedBeforeSymbols": "呈汤~",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_08_soup_none",
+      "sourceBeforeSymbols": "盛汤~",
+      "transformedBeforeSymbols": "呈汤~",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_08_soup_some",
+      "sourceBeforeSymbols": "盛汤~",
+      "transformedBeforeSymbols": "呈汤~",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_08_soup_most",
+      "sourceBeforeSymbols": "盛汤~",
+      "transformedBeforeSymbols": "呈汤~",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_08_soup_all",
+      "sourceBeforeSymbols": "盛汤~",
+      "transformedBeforeSymbols": "呈汤~",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_09_soup_raw",
+      "sourceBeforeSymbols": "盛汤￥",
+      "transformedBeforeSymbols": "呈汤￥",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_09_soup_none",
+      "sourceBeforeSymbols": "盛汤￥",
+      "transformedBeforeSymbols": "呈汤￥",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_09_soup_some",
+      "sourceBeforeSymbols": "盛汤￥",
+      "transformedBeforeSymbols": "呈汤￥",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_09_soup_most",
+      "sourceBeforeSymbols": "盛汤￥",
+      "transformedBeforeSymbols": "呈汤￥",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_09_soup_all",
+      "sourceBeforeSymbols": "盛汤￥",
+      "transformedBeforeSymbols": "呈汤￥",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_10_soup_raw",
+      "sourceBeforeSymbols": "盛汤＋",
+      "transformedBeforeSymbols": "呈汤＋",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_10_soup_none",
+      "sourceBeforeSymbols": "盛汤＋",
+      "transformedBeforeSymbols": "呈汤＋",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_10_soup_some",
+      "sourceBeforeSymbols": "盛汤＋",
+      "transformedBeforeSymbols": "呈汤＋",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_10_soup_most",
+      "sourceBeforeSymbols": "盛汤＋",
+      "transformedBeforeSymbols": "呈汤＋",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_10_soup_all",
+      "sourceBeforeSymbols": "盛汤＋",
+      "transformedBeforeSymbols": "呈汤＋",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_11_soup_raw",
+      "sourceBeforeSymbols": "盛汤＜",
+      "transformedBeforeSymbols": "呈汤＜",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_11_soup_none",
+      "sourceBeforeSymbols": "盛汤＜",
+      "transformedBeforeSymbols": "呈汤＜",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_11_soup_some",
+      "sourceBeforeSymbols": "盛汤＜",
+      "transformedBeforeSymbols": "呈汤＜",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_11_soup_most",
+      "sourceBeforeSymbols": "盛汤＜",
+      "transformedBeforeSymbols": "呈汤＜",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_11_soup_all",
+      "sourceBeforeSymbols": "盛汤＜",
+      "transformedBeforeSymbols": "呈汤＜",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_12_soup_raw",
+      "sourceBeforeSymbols": "盛汤｜",
+      "transformedBeforeSymbols": "呈汤｜",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_12_soup_none",
+      "sourceBeforeSymbols": "盛汤｜",
+      "transformedBeforeSymbols": "呈汤｜",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_12_soup_some",
+      "sourceBeforeSymbols": "盛汤｜",
+      "transformedBeforeSymbols": "呈汤｜",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_12_soup_most",
+      "sourceBeforeSymbols": "盛汤｜",
+      "transformedBeforeSymbols": "呈汤｜",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_12_soup_all",
+      "sourceBeforeSymbols": "盛汤｜",
+      "transformedBeforeSymbols": "呈汤｜",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_13_soup_raw",
+      "sourceBeforeSymbols": "盛汤×",
+      "transformedBeforeSymbols": "呈汤×",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_13_soup_none",
+      "sourceBeforeSymbols": "盛汤×",
+      "transformedBeforeSymbols": "呈汤×",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_13_soup_some",
+      "sourceBeforeSymbols": "盛汤×",
+      "transformedBeforeSymbols": "呈汤×",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_13_soup_most",
+      "sourceBeforeSymbols": "盛汤×",
+      "transformedBeforeSymbols": "呈汤×",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_13_soup_all",
+      "sourceBeforeSymbols": "盛汤×",
+      "transformedBeforeSymbols": "呈汤×",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_14_soup_raw",
+      "sourceBeforeSymbols": "盛汤→",
+      "transformedBeforeSymbols": "呈汤→",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_14_soup_none",
+      "sourceBeforeSymbols": "盛汤→",
+      "transformedBeforeSymbols": "呈汤→",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_14_soup_some",
+      "sourceBeforeSymbols": "盛汤→",
+      "transformedBeforeSymbols": "呈汤→",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_14_soup_most",
+      "sourceBeforeSymbols": "盛汤→",
+      "transformedBeforeSymbols": "呈汤→",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_14_soup_all",
+      "sourceBeforeSymbols": "盛汤→",
+      "transformedBeforeSymbols": "呈汤→",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_15_soup_raw",
+      "sourceBeforeSymbols": "盛汤★",
+      "transformedBeforeSymbols": "呈汤★",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_15_soup_none",
+      "sourceBeforeSymbols": "盛汤★",
+      "transformedBeforeSymbols": "呈汤★",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_15_soup_some",
+      "sourceBeforeSymbols": "盛汤★",
+      "transformedBeforeSymbols": "呈汤★",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_15_soup_most",
+      "sourceBeforeSymbols": "盛汤★",
+      "transformedBeforeSymbols": "呈汤★",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_15_soup_all",
+      "sourceBeforeSymbols": "盛汤★",
+      "transformedBeforeSymbols": "呈汤★",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_16_soup_raw",
+      "sourceBeforeSymbols": "盛汤😀",
+      "transformedBeforeSymbols": "呈汤😀",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_16_soup_none",
+      "sourceBeforeSymbols": "盛汤😀",
+      "transformedBeforeSymbols": "呈汤😀",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_16_soup_some",
+      "sourceBeforeSymbols": "盛汤😀",
+      "transformedBeforeSymbols": "呈汤😀",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_16_soup_most",
+      "sourceBeforeSymbols": "盛汤😀",
+      "transformedBeforeSymbols": "呈汤😀",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_16_soup_all",
+      "sourceBeforeSymbols": "盛汤😀",
+      "transformedBeforeSymbols": "呈汤😀",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_raw",
+      "sourceBeforeSymbols": "第12行$",
+      "transformedBeforeSymbols": "第12航$",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_none",
+      "sourceBeforeSymbols": "第12行$",
+      "transformedBeforeSymbols": "第12航$",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_some",
+      "sourceBeforeSymbols": "第12行$",
+      "transformedBeforeSymbols": "第12航$",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_most",
+      "sourceBeforeSymbols": "第12行$",
+      "transformedBeforeSymbols": "第12航$",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_all",
+      "sourceBeforeSymbols": "第12行$",
+      "transformedBeforeSymbols": "第12航$",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_18_rowCount_raw",
+      "sourceBeforeSymbols": "12行|",
+      "transformedBeforeSymbols": "12航|",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_18_rowCount_none",
+      "sourceBeforeSymbols": "12行|",
+      "transformedBeforeSymbols": "12航|",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_18_rowCount_some",
+      "sourceBeforeSymbols": "12行|",
+      "transformedBeforeSymbols": "12航|",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_18_rowCount_most",
+      "sourceBeforeSymbols": "12行|",
+      "transformedBeforeSymbols": "12航|",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_18_rowCount_all",
+      "sourceBeforeSymbols": "12行|",
+      "transformedBeforeSymbols": "12航|",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_19_rank_raw",
+      "sourceBeforeSymbols": "行二~",
+      "transformedBeforeSymbols": "航二~",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_19_rank_none",
+      "sourceBeforeSymbols": "行二~",
+      "transformedBeforeSymbols": "航二~",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_19_rank_some",
+      "sourceBeforeSymbols": "行二~",
+      "transformedBeforeSymbols": "航二~",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_19_rank_most",
+      "sourceBeforeSymbols": "行二~",
+      "transformedBeforeSymbols": "航二~",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_19_rank_all",
+      "sourceBeforeSymbols": "行二~",
+      "transformedBeforeSymbols": "航二~",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_20_rowLabel_raw",
+      "sourceBeforeSymbols": "$行 12|",
+      "transformedBeforeSymbols": "$航 12|",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_20_rowLabel_none",
+      "sourceBeforeSymbols": "$行 12|",
+      "transformedBeforeSymbols": "$航 12|",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_20_rowLabel_some",
+      "sourceBeforeSymbols": "$行 12|",
+      "transformedBeforeSymbols": "$航 12|",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_20_rowLabel_most",
+      "sourceBeforeSymbols": "$行 12|",
+      "transformedBeforeSymbols": "$航 12|",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_20_rowLabel_all",
+      "sourceBeforeSymbols": "$行 12|",
+      "transformedBeforeSymbols": "$航 12|",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_21_repeat_raw",
+      "sourceBeforeSymbols": "重复^",
+      "transformedBeforeSymbols": "崇复^",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_21_repeat_none",
+      "sourceBeforeSymbols": "重复^",
+      "transformedBeforeSymbols": "崇复^",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_21_repeat_some",
+      "sourceBeforeSymbols": "重复^",
+      "transformedBeforeSymbols": "崇复^",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_21_repeat_most",
+      "sourceBeforeSymbols": "重复^",
+      "transformedBeforeSymbols": "崇复^",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_21_repeat_all",
+      "sourceBeforeSymbols": "重复^",
+      "transformedBeforeSymbols": "崇复^",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_22_popup_raw",
+      "sourceBeforeSymbols": "弹窗+",
+      "transformedBeforeSymbols": "谈窗+",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_22_popup_none",
+      "sourceBeforeSymbols": "弹窗+",
+      "transformedBeforeSymbols": "谈窗+",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_22_popup_some",
+      "sourceBeforeSymbols": "弹窗+",
+      "transformedBeforeSymbols": "谈窗+",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_22_popup_most",
+      "sourceBeforeSymbols": "弹窗+",
+      "transformedBeforeSymbols": "谈窗+",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_22_popup_all",
+      "sourceBeforeSymbols": "弹窗+",
+      "transformedBeforeSymbols": "谈窗+",
+      "symbolLevel": "ALL"
+    },
+    {
+      "id": "boundary_23_breath_raw",
+      "sourceBeforeSymbols": "屏住呼吸=",
+      "transformedBeforeSymbols": "丙住呼吸=",
+      "symbolLevel": "RAW"
+    },
+    {
+      "id": "boundary_23_breath_none",
+      "sourceBeforeSymbols": "屏住呼吸=",
+      "transformedBeforeSymbols": "丙住呼吸=",
+      "symbolLevel": "NONE"
+    },
+    {
+      "id": "boundary_23_breath_some",
+      "sourceBeforeSymbols": "屏住呼吸=",
+      "transformedBeforeSymbols": "丙住呼吸=",
+      "symbolLevel": "SOME"
+    },
+    {
+      "id": "boundary_23_breath_most",
+      "sourceBeforeSymbols": "屏住呼吸=",
+      "transformedBeforeSymbols": "丙住呼吸=",
+      "symbolLevel": "MOST"
+    },
+    {
+      "id": "boundary_23_breath_all",
+      "sourceBeforeSymbols": "屏住呼吸=",
+      "transformedBeforeSymbols": "丙住呼吸=",
+      "symbolLevel": "ALL"
+    }
+  ],
+  "cases": [
+    {
+      "id": "boundary_00_soup_raw_source",
+      "text": "盛汤|",
+      "role": "source",
+      "compareGroup": "boundary_00_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_raw_transformed",
+      "text": "呈汤|",
+      "role": "transformed",
+      "compareGroup": "boundary_00_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_raw_anchor",
+      "text": "乘汤|",
+      "role": "anchor",
+      "compareGroup": "boundary_00_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_00_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_00_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_00_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_00_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_00_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_00_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_most_source",
+      "text": "盛汤 竖线",
+      "role": "source",
+      "compareGroup": "boundary_00_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_most_transformed",
+      "text": "呈汤 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_00_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_most_anchor",
+      "text": "乘汤 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_00_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_all_source",
+      "text": "盛汤 竖线",
+      "role": "source",
+      "compareGroup": "boundary_00_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_all_transformed",
+      "text": "呈汤 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_00_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_00_soup_all_anchor",
+      "text": "乘汤 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_00_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_raw_source",
+      "text": "盛汤$",
+      "role": "source",
+      "compareGroup": "boundary_01_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_raw_transformed",
+      "text": "呈汤$",
+      "role": "transformed",
+      "compareGroup": "boundary_01_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_raw_anchor",
+      "text": "乘汤$",
+      "role": "anchor",
+      "compareGroup": "boundary_01_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_none_source",
+      "text": "盛汤$",
+      "role": "source",
+      "compareGroup": "boundary_01_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_none_transformed",
+      "text": "呈汤$",
+      "role": "transformed",
+      "compareGroup": "boundary_01_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_none_anchor",
+      "text": "乘汤$",
+      "role": "anchor",
+      "compareGroup": "boundary_01_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_some_source",
+      "text": "盛汤$",
+      "role": "source",
+      "compareGroup": "boundary_01_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_some_transformed",
+      "text": "呈汤$",
+      "role": "transformed",
+      "compareGroup": "boundary_01_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_some_anchor",
+      "text": "乘汤$",
+      "role": "anchor",
+      "compareGroup": "boundary_01_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_most_source",
+      "text": "盛汤$",
+      "role": "source",
+      "compareGroup": "boundary_01_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_most_transformed",
+      "text": "呈汤$",
+      "role": "transformed",
+      "compareGroup": "boundary_01_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_most_anchor",
+      "text": "乘汤$",
+      "role": "anchor",
+      "compareGroup": "boundary_01_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_all_source",
+      "text": "盛汤 美元",
+      "role": "source",
+      "compareGroup": "boundary_01_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_all_transformed",
+      "text": "呈汤 美元",
+      "role": "transformed",
+      "compareGroup": "boundary_01_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_01_soup_all_anchor",
+      "text": "乘汤 美元",
+      "role": "anchor",
+      "compareGroup": "boundary_01_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_raw_source",
+      "text": "盛汤^",
+      "role": "source",
+      "compareGroup": "boundary_02_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_raw_transformed",
+      "text": "呈汤^",
+      "role": "transformed",
+      "compareGroup": "boundary_02_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_raw_anchor",
+      "text": "乘汤^",
+      "role": "anchor",
+      "compareGroup": "boundary_02_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_02_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_02_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_02_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_02_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_02_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_02_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_most_source",
+      "text": "盛汤 脱字符",
+      "role": "source",
+      "compareGroup": "boundary_02_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_most_transformed",
+      "text": "呈汤 脱字符",
+      "role": "transformed",
+      "compareGroup": "boundary_02_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_most_anchor",
+      "text": "乘汤 脱字符",
+      "role": "anchor",
+      "compareGroup": "boundary_02_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_all_source",
+      "text": "盛汤 脱字符",
+      "role": "source",
+      "compareGroup": "boundary_02_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_all_transformed",
+      "text": "呈汤 脱字符",
+      "role": "transformed",
+      "compareGroup": "boundary_02_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_02_soup_all_anchor",
+      "text": "乘汤 脱字符",
+      "role": "anchor",
+      "compareGroup": "boundary_02_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_raw_source",
+      "text": "盛汤+",
+      "role": "source",
+      "compareGroup": "boundary_03_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_raw_transformed",
+      "text": "呈汤+",
+      "role": "transformed",
+      "compareGroup": "boundary_03_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_raw_anchor",
+      "text": "乘汤+",
+      "role": "anchor",
+      "compareGroup": "boundary_03_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_03_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_03_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_03_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_some_source",
+      "text": "盛汤 加",
+      "role": "source",
+      "compareGroup": "boundary_03_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_some_transformed",
+      "text": "呈汤 加",
+      "role": "transformed",
+      "compareGroup": "boundary_03_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_some_anchor",
+      "text": "乘汤 加",
+      "role": "anchor",
+      "compareGroup": "boundary_03_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_most_source",
+      "text": "盛汤 加",
+      "role": "source",
+      "compareGroup": "boundary_03_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_most_transformed",
+      "text": "呈汤 加",
+      "role": "transformed",
+      "compareGroup": "boundary_03_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_most_anchor",
+      "text": "乘汤 加",
+      "role": "anchor",
+      "compareGroup": "boundary_03_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_all_source",
+      "text": "盛汤 加",
+      "role": "source",
+      "compareGroup": "boundary_03_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_all_transformed",
+      "text": "呈汤 加",
+      "role": "transformed",
+      "compareGroup": "boundary_03_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_03_soup_all_anchor",
+      "text": "乘汤 加",
+      "role": "anchor",
+      "compareGroup": "boundary_03_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_raw_source",
+      "text": "盛汤=",
+      "role": "source",
+      "compareGroup": "boundary_04_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_raw_transformed",
+      "text": "呈汤=",
+      "role": "transformed",
+      "compareGroup": "boundary_04_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_raw_anchor",
+      "text": "乘汤=",
+      "role": "anchor",
+      "compareGroup": "boundary_04_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_04_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_04_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_04_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_some_source",
+      "text": "盛汤 等于",
+      "role": "source",
+      "compareGroup": "boundary_04_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_some_transformed",
+      "text": "呈汤 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_04_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_some_anchor",
+      "text": "乘汤 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_04_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_most_source",
+      "text": "盛汤 等于",
+      "role": "source",
+      "compareGroup": "boundary_04_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_most_transformed",
+      "text": "呈汤 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_04_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_most_anchor",
+      "text": "乘汤 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_04_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_all_source",
+      "text": "盛汤 等于",
+      "role": "source",
+      "compareGroup": "boundary_04_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_all_transformed",
+      "text": "呈汤 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_04_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_04_soup_all_anchor",
+      "text": "乘汤 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_04_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_raw_source",
+      "text": "盛汤<",
+      "role": "source",
+      "compareGroup": "boundary_05_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_raw_transformed",
+      "text": "呈汤<",
+      "role": "transformed",
+      "compareGroup": "boundary_05_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_raw_anchor",
+      "text": "乘汤<",
+      "role": "anchor",
+      "compareGroup": "boundary_05_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_05_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_05_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_05_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_05_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_05_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_05_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_most_source",
+      "text": "盛汤 小于",
+      "role": "source",
+      "compareGroup": "boundary_05_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_most_transformed",
+      "text": "呈汤 小于",
+      "role": "transformed",
+      "compareGroup": "boundary_05_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_most_anchor",
+      "text": "乘汤 小于",
+      "role": "anchor",
+      "compareGroup": "boundary_05_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_all_source",
+      "text": "盛汤 小于",
+      "role": "source",
+      "compareGroup": "boundary_05_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_all_transformed",
+      "text": "呈汤 小于",
+      "role": "transformed",
+      "compareGroup": "boundary_05_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_05_soup_all_anchor",
+      "text": "乘汤 小于",
+      "role": "anchor",
+      "compareGroup": "boundary_05_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_raw_source",
+      "text": "盛汤>",
+      "role": "source",
+      "compareGroup": "boundary_06_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_raw_transformed",
+      "text": "呈汤>",
+      "role": "transformed",
+      "compareGroup": "boundary_06_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_raw_anchor",
+      "text": "乘汤>",
+      "role": "anchor",
+      "compareGroup": "boundary_06_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_06_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_06_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_06_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_06_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_06_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_06_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_most_source",
+      "text": "盛汤 大于",
+      "role": "source",
+      "compareGroup": "boundary_06_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_most_transformed",
+      "text": "呈汤 大于",
+      "role": "transformed",
+      "compareGroup": "boundary_06_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_most_anchor",
+      "text": "乘汤 大于",
+      "role": "anchor",
+      "compareGroup": "boundary_06_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_all_source",
+      "text": "盛汤 大于",
+      "role": "source",
+      "compareGroup": "boundary_06_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_all_transformed",
+      "text": "呈汤 大于",
+      "role": "transformed",
+      "compareGroup": "boundary_06_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_06_soup_all_anchor",
+      "text": "乘汤 大于",
+      "role": "anchor",
+      "compareGroup": "boundary_06_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_raw_source",
+      "text": "盛汤`",
+      "role": "source",
+      "compareGroup": "boundary_07_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_raw_transformed",
+      "text": "呈汤`",
+      "role": "transformed",
+      "compareGroup": "boundary_07_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_raw_anchor",
+      "text": "乘汤`",
+      "role": "anchor",
+      "compareGroup": "boundary_07_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_07_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_07_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_07_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_07_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_07_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_07_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_most_source",
+      "text": "盛汤 反撇号",
+      "role": "source",
+      "compareGroup": "boundary_07_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_most_transformed",
+      "text": "呈汤 反撇号",
+      "role": "transformed",
+      "compareGroup": "boundary_07_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_most_anchor",
+      "text": "乘汤 反撇号",
+      "role": "anchor",
+      "compareGroup": "boundary_07_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_all_source",
+      "text": "盛汤 反撇号",
+      "role": "source",
+      "compareGroup": "boundary_07_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_all_transformed",
+      "text": "呈汤 反撇号",
+      "role": "transformed",
+      "compareGroup": "boundary_07_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_07_soup_all_anchor",
+      "text": "乘汤 反撇号",
+      "role": "anchor",
+      "compareGroup": "boundary_07_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_raw_source",
+      "text": "盛汤~",
+      "role": "source",
+      "compareGroup": "boundary_08_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_raw_transformed",
+      "text": "呈汤~",
+      "role": "transformed",
+      "compareGroup": "boundary_08_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_raw_anchor",
+      "text": "乘汤~",
+      "role": "anchor",
+      "compareGroup": "boundary_08_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_none_source",
+      "text": "盛汤 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_08_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_none_transformed",
+      "text": "呈汤 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_08_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_none_anchor",
+      "text": "乘汤 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_08_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_some_source",
+      "text": "盛汤 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_08_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_some_transformed",
+      "text": "呈汤 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_08_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_some_anchor",
+      "text": "乘汤 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_08_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_most_source",
+      "text": "盛汤 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_08_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_most_transformed",
+      "text": "呈汤 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_08_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_most_anchor",
+      "text": "乘汤 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_08_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_all_source",
+      "text": "盛汤 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_08_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_all_transformed",
+      "text": "呈汤 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_08_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_08_soup_all_anchor",
+      "text": "乘汤 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_08_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_raw_source",
+      "text": "盛汤￥",
+      "role": "source",
+      "compareGroup": "boundary_09_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_raw_transformed",
+      "text": "呈汤￥",
+      "role": "transformed",
+      "compareGroup": "boundary_09_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_raw_anchor",
+      "text": "乘汤￥",
+      "role": "anchor",
+      "compareGroup": "boundary_09_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_none_source",
+      "text": "盛汤 人民币",
+      "role": "source",
+      "compareGroup": "boundary_09_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_none_transformed",
+      "text": "呈汤 人民币",
+      "role": "transformed",
+      "compareGroup": "boundary_09_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_none_anchor",
+      "text": "乘汤 人民币",
+      "role": "anchor",
+      "compareGroup": "boundary_09_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_some_source",
+      "text": "盛汤 人民币",
+      "role": "source",
+      "compareGroup": "boundary_09_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_some_transformed",
+      "text": "呈汤 人民币",
+      "role": "transformed",
+      "compareGroup": "boundary_09_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_some_anchor",
+      "text": "乘汤 人民币",
+      "role": "anchor",
+      "compareGroup": "boundary_09_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_most_source",
+      "text": "盛汤 人民币",
+      "role": "source",
+      "compareGroup": "boundary_09_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_most_transformed",
+      "text": "呈汤 人民币",
+      "role": "transformed",
+      "compareGroup": "boundary_09_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_most_anchor",
+      "text": "乘汤 人民币",
+      "role": "anchor",
+      "compareGroup": "boundary_09_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_all_source",
+      "text": "盛汤 人民币",
+      "role": "source",
+      "compareGroup": "boundary_09_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_all_transformed",
+      "text": "呈汤 人民币",
+      "role": "transformed",
+      "compareGroup": "boundary_09_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_09_soup_all_anchor",
+      "text": "乘汤 人民币",
+      "role": "anchor",
+      "compareGroup": "boundary_09_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_raw_source",
+      "text": "盛汤＋",
+      "role": "source",
+      "compareGroup": "boundary_10_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_raw_transformed",
+      "text": "呈汤＋",
+      "role": "transformed",
+      "compareGroup": "boundary_10_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_raw_anchor",
+      "text": "乘汤＋",
+      "role": "anchor",
+      "compareGroup": "boundary_10_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_10_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_10_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_10_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_10_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_10_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_10_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_most_source",
+      "text": "盛汤 全角加号",
+      "role": "source",
+      "compareGroup": "boundary_10_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_most_transformed",
+      "text": "呈汤 全角加号",
+      "role": "transformed",
+      "compareGroup": "boundary_10_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_most_anchor",
+      "text": "乘汤 全角加号",
+      "role": "anchor",
+      "compareGroup": "boundary_10_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_all_source",
+      "text": "盛汤 全角加号",
+      "role": "source",
+      "compareGroup": "boundary_10_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_all_transformed",
+      "text": "呈汤 全角加号",
+      "role": "transformed",
+      "compareGroup": "boundary_10_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_10_soup_all_anchor",
+      "text": "乘汤 全角加号",
+      "role": "anchor",
+      "compareGroup": "boundary_10_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_raw_source",
+      "text": "盛汤＜",
+      "role": "source",
+      "compareGroup": "boundary_11_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_raw_transformed",
+      "text": "呈汤＜",
+      "role": "transformed",
+      "compareGroup": "boundary_11_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_raw_anchor",
+      "text": "乘汤＜",
+      "role": "anchor",
+      "compareGroup": "boundary_11_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_11_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_11_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_11_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_11_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_11_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_11_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_most_source",
+      "text": "盛汤 全角小于号",
+      "role": "source",
+      "compareGroup": "boundary_11_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_most_transformed",
+      "text": "呈汤 全角小于号",
+      "role": "transformed",
+      "compareGroup": "boundary_11_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_most_anchor",
+      "text": "乘汤 全角小于号",
+      "role": "anchor",
+      "compareGroup": "boundary_11_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_all_source",
+      "text": "盛汤 全角小于号",
+      "role": "source",
+      "compareGroup": "boundary_11_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_all_transformed",
+      "text": "呈汤 全角小于号",
+      "role": "transformed",
+      "compareGroup": "boundary_11_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_11_soup_all_anchor",
+      "text": "乘汤 全角小于号",
+      "role": "anchor",
+      "compareGroup": "boundary_11_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_raw_source",
+      "text": "盛汤｜",
+      "role": "source",
+      "compareGroup": "boundary_12_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_raw_transformed",
+      "text": "呈汤｜",
+      "role": "transformed",
+      "compareGroup": "boundary_12_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_raw_anchor",
+      "text": "乘汤｜",
+      "role": "anchor",
+      "compareGroup": "boundary_12_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_12_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_12_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_12_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_12_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_12_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_12_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_most_source",
+      "text": "盛汤 全角竖线",
+      "role": "source",
+      "compareGroup": "boundary_12_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_most_transformed",
+      "text": "呈汤 全角竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_12_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_most_anchor",
+      "text": "乘汤 全角竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_12_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_all_source",
+      "text": "盛汤 全角竖线",
+      "role": "source",
+      "compareGroup": "boundary_12_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_all_transformed",
+      "text": "呈汤 全角竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_12_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_12_soup_all_anchor",
+      "text": "乘汤 全角竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_12_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_raw_source",
+      "text": "盛汤×",
+      "role": "source",
+      "compareGroup": "boundary_13_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_raw_transformed",
+      "text": "呈汤×",
+      "role": "transformed",
+      "compareGroup": "boundary_13_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_raw_anchor",
+      "text": "乘汤×",
+      "role": "anchor",
+      "compareGroup": "boundary_13_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_13_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_13_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_13_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_some_source",
+      "text": "盛汤 乘号",
+      "role": "source",
+      "compareGroup": "boundary_13_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_some_transformed",
+      "text": "呈汤 乘号",
+      "role": "transformed",
+      "compareGroup": "boundary_13_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_some_anchor",
+      "text": "乘汤 乘号",
+      "role": "anchor",
+      "compareGroup": "boundary_13_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_most_source",
+      "text": "盛汤 乘号",
+      "role": "source",
+      "compareGroup": "boundary_13_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_most_transformed",
+      "text": "呈汤 乘号",
+      "role": "transformed",
+      "compareGroup": "boundary_13_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_most_anchor",
+      "text": "乘汤 乘号",
+      "role": "anchor",
+      "compareGroup": "boundary_13_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_all_source",
+      "text": "盛汤 乘号",
+      "role": "source",
+      "compareGroup": "boundary_13_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_all_transformed",
+      "text": "呈汤 乘号",
+      "role": "transformed",
+      "compareGroup": "boundary_13_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_13_soup_all_anchor",
+      "text": "乘汤 乘号",
+      "role": "anchor",
+      "compareGroup": "boundary_13_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_raw_source",
+      "text": "盛汤→",
+      "role": "source",
+      "compareGroup": "boundary_14_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_raw_transformed",
+      "text": "呈汤→",
+      "role": "transformed",
+      "compareGroup": "boundary_14_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_raw_anchor",
+      "text": "乘汤→",
+      "role": "anchor",
+      "compareGroup": "boundary_14_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_14_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_14_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_14_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_14_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_14_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_14_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_most_source",
+      "text": "盛汤 右箭头",
+      "role": "source",
+      "compareGroup": "boundary_14_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_most_transformed",
+      "text": "呈汤 右箭头",
+      "role": "transformed",
+      "compareGroup": "boundary_14_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_most_anchor",
+      "text": "乘汤 右箭头",
+      "role": "anchor",
+      "compareGroup": "boundary_14_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_all_source",
+      "text": "盛汤 右箭头",
+      "role": "source",
+      "compareGroup": "boundary_14_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_all_transformed",
+      "text": "呈汤 右箭头",
+      "role": "transformed",
+      "compareGroup": "boundary_14_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_14_soup_all_anchor",
+      "text": "乘汤 右箭头",
+      "role": "anchor",
+      "compareGroup": "boundary_14_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_raw_source",
+      "text": "盛汤★",
+      "role": "source",
+      "compareGroup": "boundary_15_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_raw_transformed",
+      "text": "呈汤★",
+      "role": "transformed",
+      "compareGroup": "boundary_15_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_raw_anchor",
+      "text": "乘汤★",
+      "role": "anchor",
+      "compareGroup": "boundary_15_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_none_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_15_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_none_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_15_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_none_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_15_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_some_source",
+      "text": "盛汤",
+      "role": "source",
+      "compareGroup": "boundary_15_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_some_transformed",
+      "text": "呈汤",
+      "role": "transformed",
+      "compareGroup": "boundary_15_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_some_anchor",
+      "text": "乘汤",
+      "role": "anchor",
+      "compareGroup": "boundary_15_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_most_source",
+      "text": "盛汤 实心星号",
+      "role": "source",
+      "compareGroup": "boundary_15_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_most_transformed",
+      "text": "呈汤 实心星号",
+      "role": "transformed",
+      "compareGroup": "boundary_15_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_most_anchor",
+      "text": "乘汤 实心星号",
+      "role": "anchor",
+      "compareGroup": "boundary_15_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_all_source",
+      "text": "盛汤 实心星号",
+      "role": "source",
+      "compareGroup": "boundary_15_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_all_transformed",
+      "text": "呈汤 实心星号",
+      "role": "transformed",
+      "compareGroup": "boundary_15_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_15_soup_all_anchor",
+      "text": "乘汤 实心星号",
+      "role": "anchor",
+      "compareGroup": "boundary_15_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_raw_source",
+      "text": "盛汤😀",
+      "role": "source",
+      "compareGroup": "boundary_16_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_raw_transformed",
+      "text": "呈汤😀",
+      "role": "transformed",
+      "compareGroup": "boundary_16_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_raw_anchor",
+      "text": "乘汤😀",
+      "role": "anchor",
+      "compareGroup": "boundary_16_soup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_none_source",
+      "text": "盛汤😀",
+      "role": "source",
+      "compareGroup": "boundary_16_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_none_transformed",
+      "text": "呈汤😀",
+      "role": "transformed",
+      "compareGroup": "boundary_16_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_none_anchor",
+      "text": "乘汤😀",
+      "role": "anchor",
+      "compareGroup": "boundary_16_soup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_some_source",
+      "text": "盛汤😀",
+      "role": "source",
+      "compareGroup": "boundary_16_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_some_transformed",
+      "text": "呈汤😀",
+      "role": "transformed",
+      "compareGroup": "boundary_16_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_some_anchor",
+      "text": "乘汤😀",
+      "role": "anchor",
+      "compareGroup": "boundary_16_soup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_most_source",
+      "text": "盛汤😀",
+      "role": "source",
+      "compareGroup": "boundary_16_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_most_transformed",
+      "text": "呈汤😀",
+      "role": "transformed",
+      "compareGroup": "boundary_16_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_most_anchor",
+      "text": "乘汤😀",
+      "role": "anchor",
+      "compareGroup": "boundary_16_soup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_all_source",
+      "text": "盛汤😀",
+      "role": "source",
+      "compareGroup": "boundary_16_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_all_transformed",
+      "text": "呈汤😀",
+      "role": "transformed",
+      "compareGroup": "boundary_16_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_16_soup_all_anchor",
+      "text": "乘汤😀",
+      "role": "anchor",
+      "compareGroup": "boundary_16_soup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_raw_source",
+      "text": "第12行$",
+      "role": "source",
+      "compareGroup": "boundary_17_rowOrdinal_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_raw_transformed",
+      "text": "第12航$",
+      "role": "transformed",
+      "compareGroup": "boundary_17_rowOrdinal_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_raw_anchor",
+      "text": "第12杭$",
+      "role": "anchor",
+      "compareGroup": "boundary_17_rowOrdinal_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_none_source",
+      "text": "第12行$",
+      "role": "source",
+      "compareGroup": "boundary_17_rowOrdinal_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_none_transformed",
+      "text": "第12航$",
+      "role": "transformed",
+      "compareGroup": "boundary_17_rowOrdinal_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_none_anchor",
+      "text": "第12杭$",
+      "role": "anchor",
+      "compareGroup": "boundary_17_rowOrdinal_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_some_source",
+      "text": "第12行$",
+      "role": "source",
+      "compareGroup": "boundary_17_rowOrdinal_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_some_transformed",
+      "text": "第12航$",
+      "role": "transformed",
+      "compareGroup": "boundary_17_rowOrdinal_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_some_anchor",
+      "text": "第12杭$",
+      "role": "anchor",
+      "compareGroup": "boundary_17_rowOrdinal_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_most_source",
+      "text": "第12行$",
+      "role": "source",
+      "compareGroup": "boundary_17_rowOrdinal_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_most_transformed",
+      "text": "第12航$",
+      "role": "transformed",
+      "compareGroup": "boundary_17_rowOrdinal_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_most_anchor",
+      "text": "第12杭$",
+      "role": "anchor",
+      "compareGroup": "boundary_17_rowOrdinal_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_all_source",
+      "text": "第12行 美元",
+      "role": "source",
+      "compareGroup": "boundary_17_rowOrdinal_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_all_transformed",
+      "text": "第12航 美元",
+      "role": "transformed",
+      "compareGroup": "boundary_17_rowOrdinal_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_17_rowOrdinal_all_anchor",
+      "text": "第12杭 美元",
+      "role": "anchor",
+      "compareGroup": "boundary_17_rowOrdinal_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_raw_source",
+      "text": "12行|",
+      "role": "source",
+      "compareGroup": "boundary_18_rowCount_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_raw_transformed",
+      "text": "12航|",
+      "role": "transformed",
+      "compareGroup": "boundary_18_rowCount_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_raw_anchor",
+      "text": "12杭|",
+      "role": "anchor",
+      "compareGroup": "boundary_18_rowCount_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_none_source",
+      "text": "12行",
+      "role": "source",
+      "compareGroup": "boundary_18_rowCount_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_none_transformed",
+      "text": "12航",
+      "role": "transformed",
+      "compareGroup": "boundary_18_rowCount_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_none_anchor",
+      "text": "12杭",
+      "role": "anchor",
+      "compareGroup": "boundary_18_rowCount_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_some_source",
+      "text": "12行",
+      "role": "source",
+      "compareGroup": "boundary_18_rowCount_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_some_transformed",
+      "text": "12航",
+      "role": "transformed",
+      "compareGroup": "boundary_18_rowCount_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_some_anchor",
+      "text": "12杭",
+      "role": "anchor",
+      "compareGroup": "boundary_18_rowCount_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_most_source",
+      "text": "12行 竖线",
+      "role": "source",
+      "compareGroup": "boundary_18_rowCount_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_most_transformed",
+      "text": "12航 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_18_rowCount_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_most_anchor",
+      "text": "12杭 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_18_rowCount_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_all_source",
+      "text": "12行 竖线",
+      "role": "source",
+      "compareGroup": "boundary_18_rowCount_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_all_transformed",
+      "text": "12航 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_18_rowCount_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_18_rowCount_all_anchor",
+      "text": "12杭 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_18_rowCount_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_raw_source",
+      "text": "行二~",
+      "role": "source",
+      "compareGroup": "boundary_19_rank_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_raw_transformed",
+      "text": "航二~",
+      "role": "transformed",
+      "compareGroup": "boundary_19_rank_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_raw_anchor",
+      "text": "杭二~",
+      "role": "anchor",
+      "compareGroup": "boundary_19_rank_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_none_source",
+      "text": "行二 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_19_rank_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_none_transformed",
+      "text": "航二 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_19_rank_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_none_anchor",
+      "text": "杭二 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_19_rank_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_some_source",
+      "text": "行二 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_19_rank_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_some_transformed",
+      "text": "航二 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_19_rank_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_some_anchor",
+      "text": "杭二 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_19_rank_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_most_source",
+      "text": "行二 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_19_rank_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_most_transformed",
+      "text": "航二 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_19_rank_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_most_anchor",
+      "text": "杭二 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_19_rank_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_all_source",
+      "text": "行二 波浪号",
+      "role": "source",
+      "compareGroup": "boundary_19_rank_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_all_transformed",
+      "text": "航二 波浪号",
+      "role": "transformed",
+      "compareGroup": "boundary_19_rank_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_19_rank_all_anchor",
+      "text": "杭二 波浪号",
+      "role": "anchor",
+      "compareGroup": "boundary_19_rank_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_raw_source",
+      "text": "$行 12|",
+      "role": "source",
+      "compareGroup": "boundary_20_rowLabel_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_raw_transformed",
+      "text": "$航 12|",
+      "role": "transformed",
+      "compareGroup": "boundary_20_rowLabel_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_raw_anchor",
+      "text": "$杭 12|",
+      "role": "anchor",
+      "compareGroup": "boundary_20_rowLabel_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_none_source",
+      "text": "$行 12",
+      "role": "source",
+      "compareGroup": "boundary_20_rowLabel_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_none_transformed",
+      "text": "$航 12",
+      "role": "transformed",
+      "compareGroup": "boundary_20_rowLabel_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_none_anchor",
+      "text": "$杭 12",
+      "role": "anchor",
+      "compareGroup": "boundary_20_rowLabel_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_some_source",
+      "text": "$行 12",
+      "role": "source",
+      "compareGroup": "boundary_20_rowLabel_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_some_transformed",
+      "text": "$航 12",
+      "role": "transformed",
+      "compareGroup": "boundary_20_rowLabel_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_some_anchor",
+      "text": "$杭 12",
+      "role": "anchor",
+      "compareGroup": "boundary_20_rowLabel_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_most_source",
+      "text": "$行 12 竖线",
+      "role": "source",
+      "compareGroup": "boundary_20_rowLabel_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_most_transformed",
+      "text": "$航 12 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_20_rowLabel_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_most_anchor",
+      "text": "$杭 12 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_20_rowLabel_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_all_source",
+      "text": "美元 行 12 竖线",
+      "role": "source",
+      "compareGroup": "boundary_20_rowLabel_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_all_transformed",
+      "text": "美元 航 12 竖线",
+      "role": "transformed",
+      "compareGroup": "boundary_20_rowLabel_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_20_rowLabel_all_anchor",
+      "text": "美元 杭 12 竖线",
+      "role": "anchor",
+      "compareGroup": "boundary_20_rowLabel_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_raw_source",
+      "text": "重复^",
+      "role": "source",
+      "compareGroup": "boundary_21_repeat_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_raw_transformed",
+      "text": "崇复^",
+      "role": "transformed",
+      "compareGroup": "boundary_21_repeat_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_raw_anchor",
+      "text": "虫复^",
+      "role": "anchor",
+      "compareGroup": "boundary_21_repeat_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_none_source",
+      "text": "重复",
+      "role": "source",
+      "compareGroup": "boundary_21_repeat_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_none_transformed",
+      "text": "崇复",
+      "role": "transformed",
+      "compareGroup": "boundary_21_repeat_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_none_anchor",
+      "text": "虫复",
+      "role": "anchor",
+      "compareGroup": "boundary_21_repeat_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_some_source",
+      "text": "重复",
+      "role": "source",
+      "compareGroup": "boundary_21_repeat_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_some_transformed",
+      "text": "崇复",
+      "role": "transformed",
+      "compareGroup": "boundary_21_repeat_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_some_anchor",
+      "text": "虫复",
+      "role": "anchor",
+      "compareGroup": "boundary_21_repeat_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_most_source",
+      "text": "重复 脱字符",
+      "role": "source",
+      "compareGroup": "boundary_21_repeat_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_most_transformed",
+      "text": "崇复 脱字符",
+      "role": "transformed",
+      "compareGroup": "boundary_21_repeat_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_most_anchor",
+      "text": "虫复 脱字符",
+      "role": "anchor",
+      "compareGroup": "boundary_21_repeat_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_all_source",
+      "text": "重复 脱字符",
+      "role": "source",
+      "compareGroup": "boundary_21_repeat_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_all_transformed",
+      "text": "崇复 脱字符",
+      "role": "transformed",
+      "compareGroup": "boundary_21_repeat_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_21_repeat_all_anchor",
+      "text": "虫复 脱字符",
+      "role": "anchor",
+      "compareGroup": "boundary_21_repeat_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_raw_source",
+      "text": "弹窗+",
+      "role": "source",
+      "compareGroup": "boundary_22_popup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_raw_transformed",
+      "text": "谈窗+",
+      "role": "transformed",
+      "compareGroup": "boundary_22_popup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_raw_anchor",
+      "text": "坛窗+",
+      "role": "anchor",
+      "compareGroup": "boundary_22_popup_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_none_source",
+      "text": "弹窗",
+      "role": "source",
+      "compareGroup": "boundary_22_popup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_none_transformed",
+      "text": "谈窗",
+      "role": "transformed",
+      "compareGroup": "boundary_22_popup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_none_anchor",
+      "text": "坛窗",
+      "role": "anchor",
+      "compareGroup": "boundary_22_popup_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_some_source",
+      "text": "弹窗 加",
+      "role": "source",
+      "compareGroup": "boundary_22_popup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_some_transformed",
+      "text": "谈窗 加",
+      "role": "transformed",
+      "compareGroup": "boundary_22_popup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_some_anchor",
+      "text": "坛窗 加",
+      "role": "anchor",
+      "compareGroup": "boundary_22_popup_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_most_source",
+      "text": "弹窗 加",
+      "role": "source",
+      "compareGroup": "boundary_22_popup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_most_transformed",
+      "text": "谈窗 加",
+      "role": "transformed",
+      "compareGroup": "boundary_22_popup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_most_anchor",
+      "text": "坛窗 加",
+      "role": "anchor",
+      "compareGroup": "boundary_22_popup_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_all_source",
+      "text": "弹窗 加",
+      "role": "source",
+      "compareGroup": "boundary_22_popup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_all_transformed",
+      "text": "谈窗 加",
+      "role": "transformed",
+      "compareGroup": "boundary_22_popup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_22_popup_all_anchor",
+      "text": "坛窗 加",
+      "role": "anchor",
+      "compareGroup": "boundary_22_popup_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_raw_source",
+      "text": "屏住呼吸=",
+      "role": "source",
+      "compareGroup": "boundary_23_breath_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_raw_transformed",
+      "text": "丙住呼吸=",
+      "role": "transformed",
+      "compareGroup": "boundary_23_breath_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_raw_anchor",
+      "text": "饼住呼吸=",
+      "role": "anchor",
+      "compareGroup": "boundary_23_breath_raw",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_none_source",
+      "text": "屏住呼吸",
+      "role": "source",
+      "compareGroup": "boundary_23_breath_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_none_transformed",
+      "text": "丙住呼吸",
+      "role": "transformed",
+      "compareGroup": "boundary_23_breath_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_none_anchor",
+      "text": "饼住呼吸",
+      "role": "anchor",
+      "compareGroup": "boundary_23_breath_none",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_some_source",
+      "text": "屏住呼吸 等于",
+      "role": "source",
+      "compareGroup": "boundary_23_breath_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_some_transformed",
+      "text": "丙住呼吸 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_23_breath_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_some_anchor",
+      "text": "饼住呼吸 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_23_breath_some",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_most_source",
+      "text": "屏住呼吸 等于",
+      "role": "source",
+      "compareGroup": "boundary_23_breath_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_most_transformed",
+      "text": "丙住呼吸 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_23_breath_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_most_anchor",
+      "text": "饼住呼吸 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_23_breath_most",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_all_source",
+      "text": "屏住呼吸 等于",
+      "role": "source",
+      "compareGroup": "boundary_23_breath_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_all_transformed",
+      "text": "丙住呼吸 等于",
+      "role": "transformed",
+      "compareGroup": "boundary_23_breath_all",
+      "anchorConfidence": "common"
+    },
+    {
+      "id": "boundary_23_breath_all_anchor",
+      "text": "饼住呼吸 等于",
+      "role": "anchor",
+      "compareGroup": "boundary_23_breath_all",
+      "anchorConfidence": "common"
+    }
+  ]
+}

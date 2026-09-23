@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Vocalizer Expressive 2.2 direct-engine comparison of lexical apostrophes and quotation-mark counterexamples",
+  "unicodeForms": {
+    "ascii": "U+0027 APOSTROPHE",
+    "word": "U+2019 RIGHT SINGLE QUOTATION MARK",
+    "modifier": "U+02BC MODIFIER LETTER APOSTROPHE"
+  },
+  "scope": "These strings are sent directly to Vocalizer. They have not passed through NVDA symbol processing.",
+  "cases": [
+    {
+      "id": "doesnt_isolated_ascii",
+      "text": "Doesn't",
+      "compareGroup": "doesnt_isolated",
+      "role": "anchor",
+      "expectedReading": "English contraction, one lexical unit"
+    },
+    {
+      "id": "doesnt_isolated_word",
+      "text": "Doesn’t",
+      "compareGroup": "doesnt_isolated",
+      "role": "source",
+      "expectedReading": "same as U+0027 form"
+    },
+    {
+      "id": "doesnt_isolated_modifier",
+      "text": "Doesnʼt",
+      "compareGroup": "doesnt_isolated",
+      "role": "source",
+      "expectedReading": "diagnostic only; U+02BC is outside the requested Word/ASCII normalization scope"
+    },
+    {
+      "id": "doesnt_isolated_none",
+      "text": "Doesnt",
+      "compareGroup": "doesnt_isolated",
+      "role": "source",
+      "expectedReading": "negative control"
+    },
+    {
+      "id": "doesnt_sentence_ascii",
+      "text": "He doesn't know.",
+      "compareGroup": "doesnt_sentence",
+      "role": "anchor",
+      "expectedReading": "continuous contraction in a sentence"
+    },
+    {
+      "id": "doesnt_sentence_word",
+      "text": "He doesn’t know.",
+      "compareGroup": "doesnt_sentence",
+      "role": "source",
+      "expectedReading": "same as U+0027 form"
+    },
+    {
+      "id": "doesnt_sentence_modifier",
+      "text": "He doesnʼt know.",
+      "compareGroup": "doesnt_sentence",
+      "role": "source",
+      "expectedReading": "diagnostic only"
+    },
+    {
+      "id": "doesnt_sentence_none",
+      "text": "He doesnt know.",
+      "compareGroup": "doesnt_sentence",
+      "role": "source",
+      "expectedReading": "negative control"
+    },
+    {
+      "id": "mikes_isolated_ascii",
+      "text": "Mike's",
+      "compareGroup": "mikes_isolated",
+      "role": "anchor",
+      "expectedReading": "possessive Mike's, one lexical unit"
+    },
+    {
+      "id": "mikes_isolated_word",
+      "text": "Mike’s",
+      "compareGroup": "mikes_isolated",
+      "role": "source",
+      "expectedReading": "same as U+0027 form"
+    },
+    {
+      "id": "mikes_isolated_modifier",
+      "text": "Mikeʼs",
+      "compareGroup": "mikes_isolated",
+      "role": "source",
+      "expectedReading": "diagnostic only"
+    },
+    {
+      "id": "mikes_isolated_none",
+      "text": "Mikes",
+      "compareGroup": "mikes_isolated",
+      "role": "source",
+      "expectedReading": "phonetic control; spelling is not possessive"
+    },
+    {
+      "id": "mikes_sentence_ascii",
+      "text": "That is Mike's book.",
+      "compareGroup": "mikes_sentence",
+      "role": "anchor",
+      "expectedReading": "continuous possessive in a sentence"
+    },
+    {
+      "id": "mikes_sentence_word",
+      "text": "That is Mike’s book.",
+      "compareGroup": "mikes_sentence",
+      "role": "source",
+      "expectedReading": "same as U+0027 form"
+    },
+    {
+      "id": "mikes_sentence_modifier",
+      "text": "That is Mikeʼs book.",
+      "compareGroup": "mikes_sentence",
+      "role": "source",
+      "expectedReading": "diagnostic only"
+    },
+    {
+      "id": "quoted_word_none",
+      "text": "He said hello.",
+      "compareGroup": "quoted_word",
+      "role": "anchor",
+      "expectedReading": "quotation-free acoustic control"
+    },
+    {
+      "id": "quoted_word_ascii",
+      "text": "He said 'hello'.",
+      "compareGroup": "quoted_word",
+      "role": "counterexample",
+      "expectedReading": "closing U+0027 is punctuation, not a lexical apostrophe"
+    },
+    {
+      "id": "quoted_word_smart",
+      "text": "He said ‘hello’.",
+      "compareGroup": "quoted_word",
+      "role": "counterexample",
+      "expectedReading": "closing U+2019 is punctuation, not a lexical apostrophe"
+    },
+    {
+      "id": "plural_possessive_ascii",
+      "text": "The students' books are here.",
+      "compareGroup": "plural_possessive",
+      "role": "anchor",
+      "expectedReading": "word-final possessive apostrophe; do not treat as an in-word joiner"
+    },
+    {
+      "id": "plural_possessive_word",
+      "text": "The students’ books are here.",
+      "compareGroup": "plural_possessive",
+      "role": "counterexample",
+      "expectedReading": "word-final U+2019; should remain punctuation"
+    },
+    {
+      "id": "leading_quote_none",
+      "text": "Hello is a greeting.",
+      "compareGroup": "leading_quote",
+      "role": "anchor",
+      "expectedReading": "quotation-free acoustic control"
+    },
+    {
+      "id": "leading_quote_ascii",
+      "text": "'Hello' is a greeting.",
+      "compareGroup": "leading_quote",
+      "role": "counterexample",
+      "expectedReading": "both U+0027 characters are quotation punctuation"
+    },
+    {
+      "id": "leading_quote_smart",
+      "text": "‘Hello’ is a greeting.",
+      "compareGroup": "leading_quote",
+      "role": "counterexample",
+      "expectedReading": "U+2018/U+2019 are quotation punctuation"
+    }
+  ]
+}

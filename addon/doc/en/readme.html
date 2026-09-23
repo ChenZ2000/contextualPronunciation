@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Context-aware Pronunciation 0.7.4</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#context-aware-pronunciation-0-6-1">Context-aware Pronunciation 0.7.4</a></li>
+    <li class="toc-level-2"><a href="#install-and-settings">Install and settings</a></li>
+    <li class="toc-level-2"><a href="#worldvoice-6-2">WorldVoice 6.2</a></li>
+    <li class="toc-level-2"><a href="#data-and-contribution">Data and contribution</a></li>
+    <li class="toc-level-2"><a href="#braille-and-limitations">Braille and limitations</a></li>
+    <li class="toc-level-2"><a href="#licensing">Licensing</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="context-aware-pronunciation-0-6-1">Context-aware Pronunciation 0.7.4</h1>
+<p><strong>0.7.4:</strong> First public repository release; stable API declaration: NVDA 2026.2. <a href="https://github.com/ChenZ2000/contextualPronunciation">Source, releases and support</a>.</p>
+<p><strong>New in 0.7.3:</strong> Resolve spatial noun and coordinated predicate edges, support bare multirow labels, and recheck residual target readings after dictionaries before speech is queued. 1,154 targeted grammar cases. Existing settings, character mode and command boundaries remain effective.</p>
+<p><strong>New in 0.7.0:</strong> Productive 重 + predicate analysis, nested and coordinated modifiers, and explicit 把/将 preposed arguments work by default. The 357,293 lexical candidates retain source evidence, not an accuracy guarantee. Parsing has a 512-character / 256-token window, depth 16 and analysis/item work budgets. Unknown or over-budget constructions abstain. This is not complete Chinese semantic understanding or zero latency. Dynamic annotations retain original text and do not replace the static braille table.</p>
+<p>This NVDA 2026.2 / 2026.3beta2 add-on applies Mandarin contextual pronunciation rules globally to every synthesizer, voice and language tag. There are no engine or voice whitelists and no private WorldVoice adapter. The public speech-sequence filter analyzes original text; a pre_speechQueued listener checks residual target readings after dictionaries and symbols. The stable manifest declares NVDA 2026.2; beta2 is an additional development test target.</p>
+<h2 id="install-and-settings">Install and settings</h2>
+<p>Install the 0.7.4 nvda-addon and restart NVDA when prompted. Enable contextual rewriting and Chinese polyphones in the add-on settings. Bounded lexical-semantic parsing composes food/material objects, possessors and local relative clauses. Version 0.6.1 fixes 盛液体 / 盛装液体 through audited sememe inheritance, conditional attire protection, contextual morphology, classifier disambiguation and typed relative attachment. These three reviewed argument frames work without the experimental phrase lexicon. Existing explicit rules and user keep decisions remain authoritative. An old Off preference remains disabled until you re-enable Chinese corrections.</p>
+<p>With the experimental lexicon enabled, crossing-reading locks also enforce an accepted dictionary default when another reading-bearing word crosses its selected boundary. 降调音频 was already segmented as 降调 / 音频; diào was incorrectly assumed to need no output enforcement. The new generic mechanism preserves that decision against the competing 调音 edge. 调音师 still takes tiáo. No complete 降调音频 exception or engine-specific gate was added.</p>
+<p>The extended phrase lexicon is experimental and off by default. It may improve coverage but can also misread ambiguous contexts. Global Mandarin rules also affect Chinese characters tagged as English, Cantonese, Japanese or traditional Chinese; they cannot add Mandarin support to a voice. Character/spelling mode remains unchanged. The add-on does not switch voices or alter original documents.</p>
+<h2 id="worldvoice-6-2">WorldVoice 6.2</h2>
+<p>WorldVoice's public dictionary filter runs first. Its dictionary output can therefore be normalized once by this add-on in both language-detection modes. Unicode substitutions have different ordering: before-mode substitutions precede our rules; after-mode substitutions may receive an already-rewritten character. Use a local keep rule if you need the original character preserved for a later stage. No installed WorldVoice files or user dictionaries are modified.</p>
+<p>Installed 6.2 source-chain tests use the real pipeline and substitute voices, including containment, syntax and crossing locks in both dictionary orders. Separately, the user confirmed listening to earlier releases with WorldVoice 6.2 and VE:Ting-Ting. This is not live audio acceptance of all new 0.6.1 contexts or other voices.</p>
+<h2 id="data-and-contribution">Data and contribution</h2>
+<p>The offline source database contains 131,436 attributed CC-CEDICT/KFCD records. The compiled optional lexicon contains 183,244 exact source-authored simplified/traditional headwords: 147,598 annotatable and 35,646 blockers. Of the non-default targets, 623 characters meet the speech-candidate policy in 7,903 headwords. These counts measure candidates, not pronunciation accuracy. Unknown positions remain unknown; conflicting sources do not silently choose the first pronunciation.</p>
+<p>Version 0.5.0 adds bounded unigram lattice adjudication for disputed spans only. Weights come from the same pinned cppjieba dictionary as NVDA beta2; no private NVDA APIs or shared user dictionaries are accessed. Agreed words and blockers are preserved. Maximum word length is 32, disagreement-island length 96, and likelihood margin log(16); this is not a calibrated pronunciation probability or neural semantic model. The Unihan ledger inventories 8,372 characters / 19,570 reading pairs, including historic/regional variants; 2,879 characters have phrase evidence. The user-suggested cc-table remains reference-only. See the <a href="../zh_CN/expansion.html">0.5.0 design and evidence</a>.</p>
+<p>Use templates such as <code>仙[乐:yuè]</code> or <code>[盛:chéng]{number}{container}</code>. <code>仙[乐:keep]</code> preserves the target locally. Templates have bounded syntax and cannot execute Python or arbitrary regular expressions. See the <a href="../zh_CN/contributing.html">Chinese contribution guide</a> and <a href="../zh_CN/research.html">design report</a>.</p>
+<h2 id="braille-and-limitations">Braille and limitations</h2>
+<p>OpenHowNet contributes 215,831 retained sense records and 117,464 lexical heads, with 2,760 unanimous food heads, 4,455 containment-material heads and 451 container heads; these classes may overlap. There are 147 ambiguous food and 291 ambiguous material heads. These are semantic features, not pronunciation accuracy. The official taxonomy is projected offline; only runtime JSON features are installed, not the API, executable pickles, BabelNet or a neural model. Static POS alternatives and bounded parsing are not full dependency parsing or universal semantic understanding. See the <a href="../zh_CN/containment.html">0.6.1 fixes and scope</a>.</p>
+<p>The shared annotation API includes new syntax decisions and original offsets; the optional static Liblouis table does NOT dynamically consume them. No new claim of complete GF 0019-2018 translation is made.</p>
+<p>The optional experimental Chinese common braille 2018 table derives 12,057 finite context combinations from reviewed templates, not individually reviewed words. Factored equivalent alternatives and three base-word conditions compile to 455 match instructions. Version 0.6.1 only adds static preservation of 盛裝; it does not compile the dynamic containment grammar. The native regression compares against an uncompressed reference table, including cell routing; it also measures warm translation cost. Single ASCII word separators from beta CWS are accepted without crossing newlines. Select the table manually. Dynamic numeric rules, the extended lexicon and custom speech settings do not synchronize into it. Full-tone annotations retain original code-point/UTF-16 offsets but do not replace the standard's tone omissions. Computer-braille expansion at the cursor intentionally bypasses contextual translation. See the <a href="../zh_CN/fasten-measure.html">0.5.1 scope and limitations</a>.</p>
+<p>Speech uses temporary homophones, not a universal phoneme API. Speech Viewer may show these characters. Source documents, clipboard text and accessibility objects remain unchanged. Acoustic probes and bounded performance gates do not certify every voice, tone, arbitrary sentence or zero end-to-end delay. Further listening, live WorldVoice and braille hardware acceptance remain necessary.</p>
+<h2 id="licensing">Licensing</h2>
+<p>Code: GPL-2.0-or-later. CC-CEDICT: CC-BY-SA-4.0. KFCD originals: CC-BY-3.0. Unicode retains its license; cppjieba frequencies and OpenHowNet core projections retain MIT. The normalized dictionary collection and derived pronunciation lexicon retain source attribution under CC-BY-SA-4.0. See <a href="../../THIRD-PARTY-NOTICES.txt">third-party notices</a>.</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/README-en.md</p>
+</footer>
+  </div>
+</body>
+</html>

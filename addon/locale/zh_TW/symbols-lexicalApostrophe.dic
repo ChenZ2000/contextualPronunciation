@@ -1,0 +1,3 @@
+# Preserve the inherited complex symbol "in-word '" until character speech.
+symbols:
+in-word '	-	char	norep

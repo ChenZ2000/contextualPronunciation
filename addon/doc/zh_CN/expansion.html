@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0.5.0 分词与多音字扩展</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#0-5-0">0.5.0：系／量、词频分词与多音字扩展</a></li>
+    <li class="toc-level-2"><a href="#1-nvda">1. NVDA 新分词能做什么</a></li>
+    <li class="toc-level-2"><a href="#2">2. 默认规则补齐</a></li>
+    <li class="toc-level-2"><a href="#3">3. 词图权重实现</a></li>
+    <li class="toc-level-2"><a href="#4">4. 扩展覆盖与真实收益</a></li>
+    <li class="toc-level-2"><a href="#5-2018">5. 国家通用盲文 2018</a></li>
+    <li class="toc-level-2"><a href="#6">6. 自动化与复现</a></li>
+    <li class="toc-level-2"><a href="#7">7. 后续贡献方向</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="0-5-0">0.5.0：系／量、词频分词与多音字扩展</h1>
+<p>本次在既有全局规范化路径上增加明确的系／量规则、源词典繁体词形、有界词频裁决和 NVDA 2026.3beta2 原生测试。它是更广的普通话词典匹配系统，不是所有多音字任意语境的完整解法，也不宣称零延迟。</p>
+<h2 id="1-nvda">1. NVDA 新分词能做什么</h2>
+<p><a href="https://www.nvaccess.org/post/nvda-2026-3beta2/">NV Access 于 2026-09-14 发布 2026.3beta2</a>。固定源码 commit 为 <code>b416601eecd01813e9dd89ca9e85cb914acd936a</code>。本地完整编译位于 <code>vendor/nvda-2026.3beta2</code>，未修改上游代码，未升级活跃 NVDA。</p>
+<p>源码 <code>textUtils/_wordSeg</code> 使用 cppjieba；C++ 输出词尾的 Unicode 字符偏移，供按词导航、分词空格和映射使用。它不输出词语拼音、句法角色或多音字后验概率，相关 Python 实现处于私有命名空间。逐个调用按位置查询还会重复遍历词尾列表。因此插件既不把这个接口当拼音 API，也不在同步语音路径等待它初始化或修改其共享用户词典。参见 <a href="https://github.com/nvaccess/nvda/pull/20242">NVDA 分词重构</a>。</p>
+<p>采用同一固定 cppjieba 字典的词频数据，许可 MIT，commit <code>b3602bef7d1f67521a61788a74fb5801a0e62cd3</code>。将与发音词库重合的词频和单字回退频次编译为 90,936 项。省去未使用的词性标签和 HMM 模型，不把静态词典的 POS 标签误当成当前句子的词性预测。</p>
+<h2 id="2">2. 默认规则补齐</h2>
+<ul>
+<li>jì：系鞋带、系安全带、系好／系紧／系上安全带、把鞋带系好，以及有限的领带、腰带、绳子等宾语组合。</li>
+<li>liáng：量体温、量血压、量身高、量尺寸，以及量一下／量过／量完等有限补语组合；测量、丈量、衡量默认生效。</li>
+<li>保护：关系、联系、维系、系统、系主任；重量、数量、能量、量力而行、量体裁衣；商量、打量、思量等轻声或异读场景。</li>
+<li>专业／古义／解剖词如系泊、系留、系带不以通用系鞋带规则覆盖，暂保留原读音。</li>
+</ul>
+<p>来源为既有 CC-CEDICT、KFCD 字音记录，并以 <a href="https://www.zdic.net/hans/系">系的现代基本义</a>、<a href="https://www.zdic.net/hans/量">量的基本义</a> 和 <a href="https://www.zdic.net/hans/量体裁衣">量体裁衣的地域读音差异</a> 作人工核对。这些网页未批量复制进数据库。</p>
+<p>规则放在 <code>contributions.toml</code>，使用已有有限模板语法，如 <code>[系:jì]{fasteningResult}{fastener}</code>。反例不只看词条，还测试“联系好安全带厂家”“商量尺寸”“测量重量”等跨词组合。所有命中都基于原始字符串位置，一次性渲染，不能用已经替换的文字继续推导后一个读音。</p>
+<h2 id="3">3. 词图权重实现</h2>
+<p>流程仍是：用户规则和审阅规则优先；字典双向最长匹配一致时直接采用；只在不一致的小区间建立候选词图。</p>
+<ol>
+<li>原词典完整保留阻断词。正反向候选的交叠部分构成分歧区间；区间超过 96 字时直接弃权，不截断成虚假的短词。每个词最多 32 字。</li>
+<li>每条词边权重为 <code>log(词频 / 总词频)</code>；无频率词和单字使用明确回退。它是词频先验，不是经过训练的多音字分类模型。</li>
+<li>前后向动态规划计算路径分数。针对候选词，比较包含它的最佳路径与所有不包含它的路径的最大分数；用穷举小词图测试验证最大边际计算。</li>
+<li>差距至少 <code>log(16)</code>、有词频记录、无阻断交叠且不覆盖一致词，才补充整个词的原有读音证据。平分或证据不足时弃权，不按导入顺序猜音。</li>
+<li>语音投影与完整注音保持相同裁决。没有可靠同音渲染、轻声风险或字音未知时不强制语音替换；共享注音仍保留已知原字、音节和原文偏移。</li>
+</ol>
+<p>阈值是可审查的保守策略，不是“94% 或 99% 的校准置信度”。本轮未用 CPP 测试标签拟合权重、阈值或逐条补丁。<code>[unigram-margin]</code> 来源标记可在解释工具中辨认这类判定。</p>
+<p>分词也不能解决全部同词异读。例如便宜、朝阳、长大需要词义、语域或更远上下文。现代研究仍把长尾多音字和上下文表征作为独立任务；<a href="https://aclanthology.org/2024.naacl-long.294/">NAACL 2024 的 DLM 论文</a> 报告的是特定数据集结果，并非全汉语保证。此版本不将这类大型神经模型放入 NVDA 同步语音回调。</p>
+<h2 id="4">4. 扩展覆盖与真实收益</h2>
+<p>词头统计对比：</p>
+<table><caption>0.4.0 与 0.5.0 词典候选覆盖比较</caption>
+<thead>
+<tr>
+<th scope="col">口径</th>
+<th style="text-align: right;">0.4.0</th>
+<th style="text-align: right;">0.5.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全部词头，含阻断</td>
+<td style="text-align: right;">110,692</td>
+<td style="text-align: right;">183,244</td>
+</tr>
+<tr>
+<td>全部或部分可注音</td>
+<td style="text-align: right;">89,550</td>
+<td style="text-align: right;">147,598</td>
+</tr>
+<tr>
+<td>明确阻断词头</td>
+<td style="text-align: right;">21,142</td>
+<td style="text-align: right;">35,646</td>
+</tr>
+<tr>
+<td>词库非默认读音目标字</td>
+<td style="text-align: right;">894</td>
+<td style="text-align: right;">1,218</td>
+</tr>
+<tr>
+<td>具备自动语音候选条件的字</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">623</td>
+</tr>
+<tr>
+<td>含可渲染非默认候选的词头</td>
+<td style="text-align: right;">4,801</td>
+<td style="text-align: right;">7,903</td>
+</tr>
+</tbody>
+</table>
+<p>新增主要来自源词典已经收录的繁体词形，不是新增 7 万个互不相同的词义。“後發”和其他形似词各自保留来源；不将一字多义繁简关系压成同一个字串。每字位仍交叉检查 Unihan。原始开放源数据库 131,436 条记录保持不变。</p>
+<p>固定 Unihan 清单仍是 8,372 字、19,570 个字音组合，其中有词例证据的字增至 2,879。含历史、地域、异体音，不代表常用普通话多音字数量或全场景已支持。</p>
+<p>CPP 固定测试集 10,254 例的当前审计：3,582 例与标注一致、104 例不同、6,568 例弃权；判定覆盖率 35.947%，已判定项一致率 97.179%。这是注音选择审计，不是声学准确率。主动语音替换为 561 例一致、27 例不同。</p>
+<p>同资源关闭加权裁决的对照：3,510 一致、99 不同、6,645 弃权。加权层补出 77 个原来未判断的样本，其中 72 与标注一致、5 不同。覆盖确有增益，条件一致率并未同时提高，不能把这一结果包装成“全面准确”。整体与 0.4.0 的差异还包括词形扩展和系／量规则。完整报告与逐读音统计由 <code>tools/evaluate_cpp.py</code> 重新生成。</p>
+<h2 id="5-2018">5. 国家通用盲文 2018</h2>
+<p>语音临时文本不送入盲文。共享注音 API 继续返回原字、来源、码点与 UTF-16 偏移；它不是整套盲文翻译器。</p>
+<p>可选静态表有 1,151 个固定上下文及两个“量体”覆盖条件。上下文间可容纳 beta 插入的单个 ASCII 空格，保护规则使用相同语法，不跨换行或任意空白。底层原有 <code>always 量体</code> 比单字匹配更长，所以增加经审阅的同长度条件覆盖，仅在后接温／重时使用 liáng；保持基础表本来就存在的两字路由分组。</p>
+<p><code>data/braille_contexts.toml</code> 专门记录这类基础表词组碰撞、点位、旧点位与证据；不靠无限扩大匹配字串来抢优先级。原生测试检查“量体裁衣”不变，并检查加空格后的字位置和光标往返。</p>
+<p>限制：不动态同步用户语音设置和大词库；不自动切表；光标处计算机盲文展开遵循 NVDA 原行为，会跳过上下文翻译。其他基础表长词、完整省调连写和盲文硬件仍需独立工作，不能宣称完整 2018 方案已经重写完成。</p>
+<h2 id="6">6. 自动化与复现</h2>
+<p>固定稳定版、beta 版源码分别在 <code>vendor/nvda-2026.2</code>、<code>vendor/nvda-2026.3beta2</code>。Windows CI 已加入两版本矩阵，本机测试不写活跃用户配置。Beta 编译使用独立缓存的 uv 0.12.5 和其要求的 Python 3.13.15，不为满足构建而自更新用户的 uv。</p>
+<pre><code class="language-powershell">python tools/import_cedict.py --check
+python tools/build_segmentation_data.py --check
+python tools/build_polyphone_coverage.py --check
+python tools/build_braille_table.py --check
+python tools/pronunciation.py &quot;系鞋带并量体温，測量尺寸&quot; --output artifacts/example-0.5.json
+python scripts/run_tests.py
+$env:CONTEXTUAL_PRONUNCIATION_NVDA_VERSION = '2026.3beta2'
+python scripts/run_regression.py --native --vocalizer --release --llvm-bin vendor/llvm-20.1.8/bin --spectre-atl-fallback
+</code></pre>
+<p>Beta 上游 1,432 项中 5 项 DotPad BLE 因上游功能尚未合入而主动跳过；原断言和跳过声明未经修改。验收器只接受固定 beta 下这五个具体 ID 及原原因，不当成通过，不接受其他跳过。稳定版仍要求原来的零跳过。显示保护测试保留入场状态并在 finally 中恢复，不自动关闭幕帘或颜色滤镜。</p>
+<p>插件测试包括整库 183,244 个词头的读音／阻断回读、语音与完整注音投影一致、词图与穷举对照、词频文件复现、词形冲突、未知音、Unicode 符号边界、句中反复命中、WorldVoice 两种词典次序及命令对象保持。新增默认词例有独立音节期望和 VE 同音同调锚点测试；不由生产替换结果反推正确读音。</p>
+<p>性能门限维持短句 0.2 毫秒、稀疏 8K 文本 10 毫秒、密集 8K 文本 30 毫秒的批量平均中位数门禁；新增系／量及分词分歧压力场景。启动时间另测，扩展词库仍默认关闭。最终测量和包校验见发布证据，门限不是所有机器的端到端承诺。</p>
+<h2 id="7">7. 后续贡献方向</h2>
+<p>优先增加有来源的现代词组及跨词反例，而不是删除弃权机制来增加表面覆盖率。下一步应分别研究同词异读、姓氏地名、轻声语法、长距离句法和语音驱动的标准化音素接口。即便词典完全收齐，任意新造句和所有声音仍不能靠词典匹配保证。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/0.5.0-分词与多音字扩展.md</p>
+</footer>
+  </div>
+</body>
+</html>

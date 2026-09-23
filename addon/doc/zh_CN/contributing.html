@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>贡献规则与盲文接口</title>
+  <style>
+:root {
+  color-scheme: light;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #d9e2ec;
+  --surface: #ffffff;
+  --accent: #005fcc;
+  --code: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--surface);
+}
+
+body {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  padding: .65rem .85rem;
+  color: #fff;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(.75rem);
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 3rem) 4rem;
+}
+
+header,
+footer {
+  color: var(--muted);
+}
+
+main {
+  outline: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.6em 0 .55em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: .25rem;
+}
+
+h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+figure,
+blockquote,
+pre {
+  margin: 1rem 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+figcaption,
+caption {
+  color: var(--muted);
+  font-size: .95rem;
+  text-align: left;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: .55rem .7rem;
+  vertical-align: top;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code);
+  border-radius: .35rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: .25rem solid var(--border);
+  color: var(--muted);
+}
+
+.toc {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.toc ol {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 { margin-left: 1rem; }
+.toc-level-4 { margin-left: 2rem; }
+.toc-level-5 { margin-left: 3rem; }
+.toc-level-6 { margin-left: 4rem; }
+
+.source-note {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+@media print {
+  .skip-link,
+  .toc {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .9em;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page">
+    <header>
+      <p class="document-label">Accessible HTML document</p>
+    </header>
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Contents</h2>
+  <ol>
+    <li class="toc-level-1"><a href="#section">贡献规则与盲文接口</a></li>
+    <li class="toc-level-2"><a href="#section-2">有界语法和裁决</a></li>
+    <li class="toc-level-2"><a href="#section-3">审阅与工具</a></li>
+    <li class="toc-level-2"><a href="#section-4">词库更新</a></li>
+    <li class="toc-level-2"><a href="#section-5">开放字典与全局策略</a></li>
+    <li class="toc-level-2"><a href="#api">共享读音 API</a></li>
+  </ol>
+</nav>
+    <main id="main" tabindex="-1">
+<h1 id="section">贡献规则与盲文接口</h1>
+<p>维护 <code>addon/globalPlugins/contextualPronunciation/data/contributions.toml</code>，每条必须有稳定 ID、上下文、字音来源和正反例。示例（已有等价规则无需重复加入）：</p>
+<pre><code class="language-toml">[[rules]]
+id = &quot;example-celestial-music&quot;
+pattern = &quot;仙[乐:yuè]&quot;
+source = &quot;教育部简编本 仙樂；https://dict.concised.moe.edu.tw/dictView.jsp?ID=27272&amp;la=0&amp;powerMode=0&quot;
+positive = [&quot;仙乐飘飘&quot;, &quot;听见仙乐以后&quot;]
+negative = [&quot;快乐&quot;, &quot;乐观&quot;, &quot;乐高&quot;]
+</code></pre>
+<p>设置中的上下文模板只填 pattern，一行一条。支持 yuè/yue4、lǜ/lv4/lu:4；无调 de 表示 de5，不是任意调。验证拼音存在不证明某个字能读这个音，贡献者仍须查字音依据。</p>
+<h2 id="section-2">有界语法和裁决</h2>
+<ul>
+<li><code>[字:拼音]</code> 恰好一个目标，其余普通文字均是字面文本。</li>
+<li><code>[字:keep]</code> 保留该位置，并从共享注音中撤回读音。</li>
+<li><code>{number}</code> 1–12 位指定数字，不接受超长数字的一部分；<code>{space}</code> 0–4 个行内空白。</li>
+<li><code>{container}</code> 等命名类在 <code>[classes]</code> 中列有限字面选项：至多 64 项、每项 1–8 字。0.5.1 扩容以容纳同一语义类的繁简词形，仍有硬上限。</li>
+<li>单条至多 160 字符、每侧至多 64 字上下文及 4 个占位符；用户最多 256 条。正则元字符按字面处理，不能执行 Python。</li>
+</ul>
+<p>同级相异读音冲突时弃权，不依赖文件顺序。用户模板高于内置模板；已有用户固定词规则保留最高优先权；内置核心保护高于内置模板。先判原文，后渲染，不用追加无穷后缀解决结构错误。</p>
+<h2 id="section-3">审阅与工具</h2>
+<ol>
+<li>分清本调、变调、轻声、异读、姓氏、文白读和地域差异，给词典条目/标准条款/论文来源，不能只听一个引擎猜拼音。</li>
+<li>写句首/中/末正例，以及同形异义、跨词、人名、符号和逐字反例；注明信息不足时不改。</li>
+<li>数据声明拼音，不把“乐→月”当语言事实。语音同音字后端独立验证。zhao2/dei3 等当前无同音映射，仍可注音，但不应称已改变语音。</li>
+<li><code>python tools/pronunciation.py "待测句子"</code> 显示原文位置、拼音来源、实际临时语音文本、盲文注音。可用 <code>--templates 文件</code> 测 UTF-8 用户规则、<code>--output 文件</code> 导出。只处理用户显式提交的文本，不收集正在读的文档。</li>
+<li><code>python tools/pronunciation.py --check-contributions</code> 检查来源与正反例存在且匹配正确；不是语义证明。</li>
+<li><code>python tools/build_braille_table.py</code> 更新静态输出表。只编译无边界谓词的 BMP 汉字固定上下文和可枚举类；动态规则明确列为未编入。新增省调音必须审阅构建器 DOTS，不能从语音同音字推导。自定义语音设置不会写回安装包表。</li>
+<li>重建声学 fixture，跑全套测试和真实声学比较，最终重新运行完整发布门禁。独立文本期望不能从生产规则本身生成。</li>
+</ol>
+<h2 id="section-4">词库更新</h2>
+<p><code>data/sources</code> 只随源码包提供；<code>tools/import_cedict.py --check</code> 离线复现生成字节。更新快照必须复核来源、许可、哈希、覆盖数和风险，不选同词首音，不丢阻断词，不覆盖旧六字族保护。</p>
+<p>0.5.0 同时导入源词典原有简、繁词形，不运行逐字转换；不同词形碰撞时保留所有候选，不覆盖先前条目。导入后还应运行 <code>tools/build_segmentation_data.py</code> 和 <code>tools/build_polyphone_coverage.py</code>，最后用各自 <code>--check</code> 校验。</p>
+<p>词频只在双向分词不一致时提供有界裁决，不是拼音概率。新词若没有固定频率数据，仍可走一致匹配；不得为测试集单句伪造高频次来强行通过。用 <code>tools/evaluate_cpp.py</code> 的同资源消融报告区分词库扩展与加权裁决收益。测试集差异只能报告，不用于拟合本轮规则。</p>
+<p>系／量新增模板示例：<code>[系:jì]{fasteningResult}{fastener}</code>、<code>[量:liáng]{measurement}</code>、<code>{xiPrefix}[系:keep]</code>。改动类会扩大所有使用它的模板，必须保留跨词反例，如“联系好安全带厂家”“商量尺寸”，不能只测生成的正例。</p>
+<p>0.5.1 增加 <code>{measurementUse}{measurementTool}[量:liáng]</code>、<code>[量:liáng]{number}{measurementUnit}</code> 等有界结构。校量、估量、计量不能因右侧是“尺寸”就归入测量的二声；量杯也不能因名词词性就归入四声。<code>体重量一下</code> 等可能含“重量”词边界的字串暂不靠提高优先级强判；数词、工具和补语都须有明确证据。不要把所有动词或所有名词统一读音。</p>
+<p>静态盲文编译保留展开后的冲突审计和覆盖清单，但将等价的有限类合并为 Liblouis 分组选项。仅在目标字的非保护输出只有一种读音、模板全部可枚举且完整指令短于 2,000 字符时合并，否则保留展开顺序；保留原有保护优先政策，不扩大上下文语言。<code>tools/build_braille_table.py --reference-output 新文件.ctb</code> 生成未合并的差分参照，拒绝覆盖已有文件；该表不安装。beta 原生测试逐一比较展开语境及空格、换行、符号变体的盲文格与全部位置映射，并设独立的暖态翻译性能门限。动态数字模板仍明确排除，不静默近似为有限数字列表。</p>
+<p>盲文的 <code>data/braille_contexts.toml</code> 用于基础表更长 <code>always</code> 条目阻挡单字纠正的少数情况。只能复用已有词组边界，必须记录原点位、纠正点位、限定前后文和来源；经原生 Liblouis 验证不得合并更多原字位置。不要将这个文件当作第二套无限追加的语音词典。计算机盲文光标展开仍遵循 NVDA 本身行为。</p>
+<p><code>data/lexicon_coverage.json</code> 是扩展候选清单，<code>data/polyphone_inventory.json</code> 为历史 93 项探测任务，口径不同；<code>data/braille_coverage.json</code> 列静态表编入/排除内容。都不表示所有字在所有句子中已读对。</p>
+<h2 id="section-5">开放字典与全局策略</h2>
+<p>0.3.0 增加 <code>tools/build_dictionary_database.py --query 词语</code>，可查阅 CC-CEDICT 词条或 KFCD 字义例词对应的原始拼音、释义、来源行与许可。运行 <code>--check</code> 校验规范记录可复现；<code>--sqlite 新文件路径</code> 建索引供贡献者离线检索，不允许覆盖已有文件。来源清单为 <code>data/dictionary-sources.json</code>。</p>
+<p>0.4.0 增加 <code>tools/build_polyphone_coverage.py --query 行</code>，逐读音查看现有词例、规则、同音映射和待补语境。<code>data/polyphone-coverage.json</code> 是固定 Unihan 字段的完整多读音字清单，不是全部场景均已实现的声明。文献中的历史、地域、专名读音要先分类，再贡献现代语境；没有精确字音对齐的表格不得自动入库。缺证字位可以留空，但整词语法歧义不能因此强制放行。</p>
+<p>运行索引 schema 2 的 <code>?</code> 是未知位置，API 对应 None。KFCD 字义例词仅注目标字，不替其他字补音；多个来源对某字位有冲突时，只撤回该字位，同词其他一致读音继续保留。专名和同词异读等已有整词阻断不许靠一个字义例子解封。来源记录 kind=word 的拼音序列与 kind=characterSense 的候选读音集合含义不同，不可混用。</p>
+<p>生产路径没有语音适配方案或引擎名单。新规则必须对所有声音使用相同裁决与映射，实际声学测试工具可以指定引擎以便复现。WorldVoice 后置 Unicode 替换可能看到同音替代字而非原字，若需保留该词给其字典，可用局部 keep。不要为某个引擎重新添加私有包装或后台轮询。</p>
+<h2 id="api">共享读音 API</h2>
+<p>0.6.0 的新词法／局部句法扩展见 <a href="syntax.html">局部句法与跨词读音锁定</a>。语义宾语框架在 <code>syntax_frames.toml</code>，复用 <code>contributions.toml</code> 中的有限名词类，新增类与框架不必改 Python 分析器。示例：<code>object = "dimension"</code> 匹配以可测尺寸为中心的宾语，而不是枚举所有“某某的身高”。每个框架必须声明字音来源和正反例，不能从 HowNet 词性直接推断拼音。</p>
+<p><code>tools/build_syntax_data.py --check</code> 校验固定 OpenHowNet 投影；<code>tools/pronunciation.py</code> 增加 <code>lexicalSpans</code>、<code>forced_offsets</code> 和 <code>syntaxProposals</code>。建议的 <code>selected</code> 字段表明是否被最终规则采用；不应把未采用的语法建议展示为确定读音。三个框架 ID 可以分别停用，用户 keep 始终高于回退。</p>
+<p>扩展词库还会在<strong>已接受的词边界被异读词跨越</strong>时落实默认读音，例如“降调／音频”对“调音”的竞争。不要通过伪造词频、添加所有可能后缀或改变字典默认值来修复这类输出问题。其他上下文没有真实竞争时仍不强制默认音。</p>
+<p>新语法结果已进入共享注音，但没有动态写入静态盲文表。不能把 API 的新覆盖误写成所有盲文输出已经自动支持。</p>
+<p>活跃 GlobalPlugin 的 <code>getReadingAnnotations(text)</code> 返回不可变注音元组，服从当前启用/严格/规则设置；纯 Python <code>braille_readings.annotate(text, compiled_rules)</code> 不加载 NVDA。每条包含：</p>
+<pre><code class="language-text">start/end               原文 Python Unicode code point 半开区间
+utf16_start/utf16_end    原文 UTF-16 code unit 半开区间
+character               原字，绝不是语音同音替代字
+reading                 带数字本调拼音，如 yue4、cheng2
+source                  规则 ID 或词库来源
+dots/cells              全标调注音；未支持编码为 null
+</code></pre>
+<p><code>😀仙乐</code> 的“乐”区间为 code point [2,3)、UTF-16 [3,4)。消费者不得混用偏移，缺席区间表示未知，不得补成确定默认音。API 全标调预览不等于国家通用盲文省调结果；正式输出表对 yuè 省去对应声调格，连写/标点/路由仍由基础表与 Liblouis 处理。</p>
+<p>完整盲文翻译器应接受“原文 + 读音 + 字词边界/置信信息”，在内部实现 2018 省写和连写，不能把语音临时替代字送给盲文。下一阶段需扩充语法分词、动态规则编译、原文映射和真实盲文硬件验收。</p>
+    </main>
+<footer class="source-note">
+  <p>Source: docs/贡献规则与盲文接口.md</p>
+</footer>
+  </div>
+</body>
+</html>

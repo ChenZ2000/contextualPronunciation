@@ -1,0 +1,5 @@
+# Preserve the already-defined built-in complex symbol "in-word '" until
+# character-by-character speech. Add-on symbol dictionaries cannot define new
+# complex regexes, so this entry inherits NVDA's built-in regex and replacement.
+symbols:
+in-word '	-	char	norep

@@ -1,0 +1,66 @@
+name: NVDA pronunciation regression
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regression-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  windows-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        nvda: ['2026.2', '2026.3beta2']
+    env:
+      CONTEXTUAL_PRONUNCIATION_NVDA_VERSION: ${{ matrix.nvda }}
+    # Same runner family as the pinned upstream NVDA workflow.
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13.13'
+          architecture: x64
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.11.32'
+          enable-cache: false
+      - name: Strict regression including native NVDA source build
+        run: python scripts/run_regression.py --native --jobs 2
+      - name: Audit public files and release metadata
+        run: python scripts/check_repository.py
+      - name: Upload diagnostics (no proprietary engine or voice resources)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: regression-evidence-${{ matrix.nvda }}
+          path: |
+            artifacts/workflow-report.json
+            artifacts/workflow-logs/*.log
+            artifacts/addon-tests.json
+            artifacts/nvda-native-integration.json
+            artifacts/nvda-native-segmentation.json
+            artifacts/nvda-display-guard.json
+            artifacts/performance-report.json
+            artifacts/startup-report.json
+            artifacts/cpp-evaluation.json
+            artifacts/grammar-evaluation.json
+            artifacts/grammar-performance.json
+            data/dictionary-sources.json
+            vendor/nvda-${{ matrix.nvda }}/testOutput/unit/unitTests.xml
+      - name: Upload CI package (no proprietary voice certification)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: candidate-addon-${{ matrix.nvda }}
+          path: dist/*.nvda-addon

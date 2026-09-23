@@ -1,0 +1,43 @@
+MIT License
+
+Copyright (c) 2019 THUNLP
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Source: https://github.com/thunlp/OpenHowNet/blob/master/LICENSE
+Official data/API license statement: https://openhownet.thunlp.org/download
+Core archive: https://thunlp.oss-cn-qingdao.aliyuncs.com/OpenHowNet/resources.zip
+Archive last modified: 2021-09-20; acquired 2026-09-15.
+Archive SHA256: daaa31e2627e099e03ce15371f472c6f9ec5b3aac71a4e5e2ab5c4f4f38c44d4
+
+Modifications: source projection retains Chinese headwords, original sense IDs,
+POS and KDML for review. Runtime projection retains bounded Han headwords, POS
+alternatives and conservative food/material/container-sememe features.
+Version 0.6.1 additionally projects explicit hyponym edges from the same
+archive member sememe_triples_taxonomy.txt (source bundle only, unmodified):
+data/sources/openhownet-taxonomy-20210920.txt
+SHA256 d1b44ef0385c243b8f4661b39348df359b764247d2d1d0dd263ad31e6deb73a0
+No BabelNet, synonyms,
+similarity resources, executable pickle or OpenHowNet API is included.
+
+Please cite:
+Fanchao Qi, Chenghao Yang, Zhiyuan Liu, Qiang Dong, Maosong Sun, Zhendong Dong.
+2019. OpenHowNet: An Open Sememe-based Lexical Knowledge Base. arXiv:1901.09957.
+Zhendong Dong and Qiang Dong. 2003. HowNet-a hybrid language and knowledge
+resource. Proceedings of NLP-KE.

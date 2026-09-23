@@ -1,0 +1,67 @@
+name: Publish versioned release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    uses: ./.github/workflows/regression.yml
+  publish:
+    needs: verify
+    runs-on: windows-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13.13'
+          architecture: x64
+      - name: Check tag and build reproducible release files
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python scripts/build_public_release.py --tag "$env:RELEASE_TAG"
+      - name: Get pinned official Store validators
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: nvaccess/addon-datastore
+          ref: e716e9c6878c54036150052fb2372c4630d743ee
+          path: vendor/addon-datastore
+          persist-credentials: false
+          sparse-checkout: |
+            validation
+            transform
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.11.32'
+          enable-cache: false
+      - name: Install locked Store validation dependencies
+        run: uv sync --project vendor/addon-datastore --frozen --no-default-groups
+      - name: Validate package with official manifest, schema and API checks
+        run: vendor/addon-datastore/.venv/Scripts/python.exe scripts/check_store_metadata.py --validator-root vendor/addon-datastore
+      - name: Publish immutable version assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: pwsh
+        run: |
+          $metadata = Get-Content -LiteralPath dist/release-metadata.json -Raw | ConvertFrom-Json
+          $assets = @($metadata.packages | ForEach-Object { Join-Path dist $_.name })
+          $assets += @('dist/SHA256SUMS', 'dist/release-metadata.json')
+          $releaseArgs = @('release', 'create', $env:RELEASE_TAG, '--verify-tag',
+            '--title', "Context-aware Pronunciation $($metadata.version)",
+            '--notes-file', "docs/releases/$($metadata.version).md")
+          if ($metadata.channel -ne 'stable') { $releaseArgs += '--prerelease' }
+          & gh @releaseArgs @assets
+          if ($LASTEXITCODE -ne 0) { throw 'Release creation failed; existing versions are never overwritten' }
