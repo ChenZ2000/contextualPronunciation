@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import subprocess
 import sys
@@ -17,6 +18,34 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WorkflowGuardTests(unittest.TestCase):
+	def test_cold_cpp_download_checks_upstream_and_windows_bytes(self):
+		from scripts import prepare_cpp
+
+		upstream = b"first\nsecond\n"
+		projected = b"first\r\nsecond\r\n"
+		with (
+			tempfile.TemporaryDirectory() as directory,
+			mock.patch.object(prepare_cpp, "CPP", Path(directory)),
+			mock.patch.object(prepare_cpp, "HASHES", {"data/test.sent": hashlib.sha256(projected).hexdigest()}),
+			mock.patch.object(prepare_cpp, "UPSTREAM_HASHES", {"data/test.sent": hashlib.sha256(upstream).hexdigest()}),
+			mock.patch.object(prepare_cpp.urllib.request, "urlopen", return_value=io.BytesIO(upstream)),
+		):
+			prepare_cpp.prepare()
+			self.assertEqual(projected, (Path(directory) / "data/test.sent").read_bytes())
+			prepare_cpp.prepare(download=False)
+
+	def test_cold_cpp_rejects_unknown_download_without_writing(self):
+		from scripts import prepare_cpp
+
+		with (
+			tempfile.TemporaryDirectory() as directory,
+			mock.patch.object(prepare_cpp, "CPP", Path(directory)),
+			mock.patch.object(prepare_cpp.urllib.request, "urlopen", return_value=io.BytesIO(b"untrusted")),
+		):
+			with self.assertRaisesRegex(ValueError, "Unverified CPP download"):
+				prepare_cpp.prepare()
+			self.assertEqual([], list(Path(directory).iterdir()))
+
 	def test_beta_ble_skips_cannot_mask_failures_or_apply_to_stable(self):
 		from scripts.evidence import _BETA_BLE_REASON, _BETA_BLE_TESTS
 

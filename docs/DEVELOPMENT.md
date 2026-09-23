@@ -35,6 +35,8 @@ python tools/pronunciation.py --check-contributions
 
 Do not change source pins or hashes merely to hide a mismatch. Retain source licenses and document derivations. A corpus size is not an accuracy figure.
 
+The CPP development downloader verifies the pinned LF Git-blob hash, then converts line endings to the exact CRLF form used by the existing Windows audit evidence and verifies that second hash. It never accepts arbitrary downloaded bytes or overwrites a changed cached file. This makes a fresh checkout reproducible without relying on a pre-existing Windows Git checkout.
+
 ## Tests and native integration
 
 `python scripts/run_tests.py` requires the pinned development sources and rejects skipped add-on tests. `python tools/evaluate_grammar.py` checks independently specified reading and preservation oracles. `python scripts/run_regression.py --native --jobs 2` additionally compiles NVDA and runs its upstream tests, the native plugin chain, lint, all reproducibility checks and performance gates.
