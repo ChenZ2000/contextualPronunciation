@@ -8,7 +8,7 @@ Provide an anonymized complete sentence, the target character, expected pinyin i
 
 ## Development
 
-Read [DEVELOPMENT.md](docs/DEVELOPMENT.md), prepare the pinned dependencies, then run `python scripts/run_tests.py`. Run Ruff using the pinned version:
+Read [DEVELOPMENT.md](docs/DEVELOPMENT.md) for setup commands and module responsibilities. The [reference guide](docs/REFERENCES.md) maps dictionary sources to their generators and licenses. Prepare the pinned dependencies, then run `python scripts/run_tests.py`. Run Ruff using the pinned version:
 
 ```powershell
 uv tool run --from ruff==0.15.9 ruff check addon tests tools scripts buildVars.py
@@ -22,6 +22,8 @@ The runtime must keep NVDA commands and spelling mode intact, stay offline, avoi
 ## Translations and documentation
 
 UI translations live under `addon/locale/<language>/LC_MESSAGES/nvda.po`; include the compiled `.mo` when updating a catalog. Localized manifests are in `addon/locale/<language>/manifest.ini`. User help is `addon/doc/<language>/readme.html`. Keep installed help and the current guides under `docs/` consistent, including relative links. Crowdin registration is a separate optional process and is not currently configured.
+
+The project overviews are [README.md](README.md) and [中文项目主页](docs/README-zh_CN.md). Detailed settings and troubleshooting belong in the [English user guide](docs/README-en.md) and [中文使用指南](docs/USAGE-zh_CN.md). Keep the two languages aligned and run `python scripts/check_repository.py` after documentation changes.
 
 ## Pull requests and releases
 

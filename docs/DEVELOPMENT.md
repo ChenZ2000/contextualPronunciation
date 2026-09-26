@@ -2,7 +2,20 @@
 
 ## Requirements and first build
 
-Use Windows, Git, uv and 64-bit Python 3.13. Start in a fresh checkout and follow the commands in the [README](../README.md). Ordinary tests prepare fixed NVDA, WorldVoice and CPP source snapshots; they do not start NVDA or change a live profile. Outputs go to ignored `artifacts/` and `dist/`, with downloaded tools and source under ignored `vendor/`.
+Use Windows, Git, [uv](https://docs.astral.sh/uv/) and 64-bit Python 3.13. Clone the repository as shown in the [README](../README.md#build-and-contribute), then run these commands from its root:
+
+```powershell
+python scripts/prepare_nvda.py
+python scripts/prepare_worldvoice.py
+python scripts/prepare_cpp.py
+python scripts/run_tests.py
+python tools/evaluate_grammar.py
+python scripts/check_repository.py
+python scripts/build_addon.py
+python scripts/build_source_archive.py
+```
+
+The preparation scripts fetch and verify pinned development sources. The ordinary test suite runs independently of your active NVDA session. Test reports go to ignored `artifacts/`, packages to `dist/`, and downloaded sources and tools to `vendor/`. See [Tests and native integration](#tests-and-native-integration) for the additional C++ build environment required by the full regression workflow.
 
 `python scripts/build_addon.py` produces an installable archive without compiling native code or requiring SCons. It preserves the standard NVDA archive layout and template-compatible `buildVars.py` metadata, uses a single root `manifest.ini`, stable ZIP timestamps and deterministic file ordering. `python scripts/build_source_archive.py` includes the code, generators, licensed source data, tests and community documents. It excludes vendor trees, recordings and private diagnostics. This custom packager is intentional; the NVDA Store validates the archive and manifest rather than requiring a particular build system.
 
@@ -17,6 +30,19 @@ Use Windows, Git, uv and 64-bit Python 3.13. Start in a fresh checkout and follo
 5. `braille_readings.py` exposes original-character annotations. The optional installed static Liblouis table is separate and does not dynamically execute the speech parser.
 
 Runtime data is loaded from packaged JSON/TOML. Templates are bounded and cannot execute arbitrary Python or regular expressions. Speech-time processing does not fetch data, query SQLite or retain previous utterances.
+
+## Choose where to make a change
+
+| Change | Main entry points | Validation |
+|---|---|---|
+| Reviewed phrase or grammatical context | `data/contributions.toml` and `data/syntax_frames.toml` inside the plugin | Add reading and preservation cases, run contribution checks and the grammar evaluator |
+| Segmentation or sentence analysis | `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py` | Unit and grammar tests, native integration, performance and applicable acoustic checks |
+| Dictionary snapshot or lexical features | Root `data/sources/` and the corresponding generator under `tools/` | Review the source/license, regenerate outputs and run the affected `--check` commands |
+| Settings or NVDA integration | `settings.py`, `__init__.py`, `pipeline.py`, `lifecycle.py` | Settings/profile, command-preservation and native integration tests |
+| UI translation or installed help | `addon/locale/` and `addon/doc/` | Compile changed translation catalogs; check links and package contents |
+| Repository documentation | `README.md` and current guides under `docs/` | Keep English/Chinese guidance aligned; run `scripts/check_repository.py` |
+
+Runtime module paths above are relative to `addon/globalPlugins/contextualPronunciation/`. Source dictionary changes go through their generators so that provenance and generated files remain reproducible. The [reference guide](REFERENCES.md) maps each dataset to its role and output.
 
 ## Reproducing data
 
@@ -69,4 +95,6 @@ When changing runtime rules, regenerate `tools/generate_final_renderer_fixture.p
 
 ## Documentation
 
-Current entry points are the README, English/Chinese user guides, this file and RELEASING.md. Versioned research notes remain historical evidence. Their local `artifacts/` references are intentionally absent from Git. Installed help uses semantic HTML with headings and language tags. Verify all relative links when editing either form.
+The English project overview is `README.md`; its Chinese counterpart is `docs/README-zh_CN.md`. Detailed user instructions are `docs/README-en.md` and `docs/USAGE-zh_CN.md`. Keep their features, settings, examples and compatibility information aligned. Source provenance belongs in `docs/REFERENCES.md`, development procedures here, and release steps in `docs/RELEASING.md`.
+
+Add new current guides to `CURRENT_DOCS` in `scripts/check_repository.py` so CI checks their relative links. Update `docs/INDEX.md` to make them discoverable. Versioned research notes remain historical evidence; their `artifacts/` references describe local output. Installed help uses semantic HTML with headings and language tags. Check links in both Markdown and HTML when either form changes.

@@ -19,6 +19,8 @@ CURRENT_DOCS = (
 	"CHANGELOG.md",
 	"docs/README-en.md",
 	"docs/README-zh_CN.md",
+	"docs/USAGE-zh_CN.md",
+	"docs/REFERENCES.md",
 	"docs/DEVELOPMENT.md",
 	"docs/RELEASING.md",
 	"docs/INDEX.md",
