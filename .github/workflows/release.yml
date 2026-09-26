@@ -1,17 +1,17 @@
-name: Publish versioned release
+name: Publish release from main
 on:
-  push:
-    tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-main
   cancel-in-progress: false
 
 jobs:
   publish:
+    if: github.ref == 'refs/heads/main'
     runs-on: windows-latest
     timeout-minutes: 10
     permissions:
@@ -20,6 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
+          ref: ${{ github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
@@ -30,10 +31,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: python scripts/require_release_ci.py --repository "$env:GH_REPO"
-      - name: Check tag and build reproducible release files
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: python scripts/build_public_release.py --tag "$env:RELEASE_TAG"
+      - name: Read version and build reproducible release files
+        run: python scripts/build_public_release.py
       - name: Get pinned official Store validators
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -56,15 +55,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_COMMIT: ${{ github.sha }}
         shell: pwsh
         run: |
           $metadata = Get-Content -LiteralPath dist/release-metadata.json -Raw | ConvertFrom-Json
+          $existingTag = & git ls-remote --tags origin "refs/tags/$($metadata.tag)"
+          if ($LASTEXITCODE -ne 0) { throw 'Could not check existing release tags' }
+          if ($existingTag) { throw 'Version tag already exists; update the version on main before publishing' }
           $assets = @($metadata.packages | ForEach-Object { Join-Path dist $_.name })
-          $assets += @('dist/SHA256SUMS', 'dist/release-metadata.json', 'dist/ci-verification.json')
-          $releaseArgs = @('release', 'create', $env:RELEASE_TAG, '--verify-tag',
+          $assets += @('dist/SHA256SUMS', 'dist/release-metadata.json', 'dist/ci-verification.json', 'dist/store-submission.md')
+          $releaseArgs = @('release', 'create', $metadata.tag, '--target', $env:RELEASE_COMMIT,
             '--title', "Context-aware Pronunciation $($metadata.version)",
             '--notes-file', "docs/releases/$($metadata.version).md")
           if ($metadata.channel -ne 'stable') { $releaseArgs += '--prerelease' }
           & gh @releaseArgs @assets
           if ($LASTEXITCODE -ne 0) { throw 'Release creation failed; existing versions are never overwritten' }
+      - name: Show Store submission fields
+        shell: pwsh
+        run: |
+          'Use the official [Add-on Store registration form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml) with these fields. Store submission and approval are separate from this release.' >> $env:GITHUB_STEP_SUMMARY
+          Get-Content -LiteralPath dist/store-submission.md >> $env:GITHUB_STEP_SUMMARY

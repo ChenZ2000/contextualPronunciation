@@ -48,7 +48,7 @@ python scripts/run_regression.py --native --jobs 2
 python scripts/run_regression.py --native --vocalizer --release --jobs 2
 ```
 
-See [development and architecture](docs/DEVELOPMENT.md), [release instructions](docs/RELEASING.md), and [contribution guidelines](CONTRIBUTING.md). Public CI runs stable and beta native targets. Version tags publish reproducible add-on/source archives and SHA-256 checksums only after both targets pass. No proprietary voice data or credentials are required by GitHub Actions.
+See [development and architecture](docs/DEVELOPMENT.md), [release instructions](docs/RELEASING.md), and [contribution guidelines](CONTRIBUTING.md). Public CI runs stable and beta native targets. The maintainer runs **Publish release from main** after both targets pass for the chosen `main` commit. The workflow reads the version, creates its tag, and publishes reproducible add-on/source archives, SHA-256 checksums and Store submission fields. `main` is the only maintained development/release branch. No proprietary voice data or credentials are required by GitHub Actions.
 
 ## Repository layout
 
@@ -60,7 +60,7 @@ See [development and architecture](docs/DEVELOPMENT.md), [release instructions](
 | `tests/` | Unit, grammar and acoustic input fixtures; no captured speech |
 | `scripts/`, `tools/` | Reproducible packaging, integrations, data generators and offline probes |
 | `docs/` | Current community guides and clearly identified historical design notes |
-| `.github/` | Native CI, tag-based releases, issue/PR templates and dependency updates |
+| `.github/` | Native CI, releases from `main`, issue/PR templates and dependency updates |
 
 Generated packages, recordings, downloaded dependencies, local diagnostics, credentials and private configuration are ignored. [Documentation index](docs/INDEX.md).
 

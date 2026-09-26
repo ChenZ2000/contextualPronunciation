@@ -16,8 +16,10 @@ from build_addon import ROOT, build, checked_manifest
 from build_source_archive import build as build_source
 
 
-def prepare(tag: str) -> dict:
+def prepare(tag: str | None = None) -> dict:
 	_manifest, name, version = checked_manifest()
+	if tag is None:
+		tag = f"v{version}"
 	if not re.fullmatch(r"\d+\.\d+\.\d+", version) or tag != f"v{version}":
 		raise ValueError("Release tag must be v plus the exact numeric manifest version")
 	metadata = runpy.run_path(str(ROOT / "buildVars.py"))["addon_info"]
@@ -66,7 +68,7 @@ def prepare(tag: str) -> dict:
 		"channel": channel,
 		"minimumNVDA": metadata["addon_minimumNVDAVersion"],
 		"lastTestedNVDA": metadata["addon_lastTestedNVDAVersion"],
-		"sourceURL": f"{repository}/tree/{tag}",
+		"sourceURL": f"{repository}/releases/tag/{tag}",
 		"packages": packages,
 		"acousticScope": "Public build checks do not certify proprietary voices or all synthesizers",
 	}
@@ -90,5 +92,5 @@ def prepare(tag: str) -> dict:
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description=__doc__)
-	parser.add_argument("--tag", required=True)
+	parser.add_argument("--tag", help="Optional assertion; defaults to v plus the manifest version")
 	print(json.dumps(prepare(parser.parse_args().tag), ensure_ascii=False, indent=2))

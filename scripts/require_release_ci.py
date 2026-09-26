@@ -22,7 +22,7 @@ def verified_run(runs: list[dict], commit: str) -> dict:
 		):
 			return {"commit": commit, "runId": run["databaseId"], "url": run["url"]}
 	# No success may be inferred from a PR, another commit or a partial run.
-	raise ValueError("Wait for the exact main commit's complete native regression to pass before tagging")
+	raise ValueError("Wait for the exact main commit's complete native regression to pass before publishing")
 
 
 def main() -> None:

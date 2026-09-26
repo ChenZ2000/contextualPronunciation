@@ -37,7 +37,7 @@ def check(validator_root: Path) -> None:
 		str(output),
 		metadata["addon_updateChannel"],
 		"ChenZ2000",
-		f"{repository}/tree/v{version}",
+		f"{repository}/releases/tag/v{version}",
 		f"{repository}/releases/download/v{version}/{package.name}",
 		"GPL-2.0-or-later",
 		metadata["addon_licenseURL"],

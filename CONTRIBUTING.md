@@ -25,6 +25,6 @@ UI translations live under `addon/locale/<language>/LC_MESSAGES/nvda.po`; includ
 
 ## Pull requests and releases
 
-Describe the user-visible trigger and resulting behavior, validation performed and remaining limitations. Public native CI runs on both pinned NVDA versions. A maintainer creates a version tag only after review; [RELEASING.md](docs/RELEASING.md) explains packaging, immutable download assets and Store submission. External contributors do not need proprietary Vocalizer resources to run ordinary tests or build the add-on.
+Describe the user-visible trigger and resulting behavior, validation performed and remaining limitations. Target pull requests at `main`, the only maintained development/release branch; contributor and Dependabot branches are temporary proposals. Public native CI runs on both pinned NVDA versions. After review and successful CI, a maintainer runs **Publish release from main**; the workflow creates the version tag. [RELEASING.md](docs/RELEASING.md) explains packaging, immutable download assets and Store submission. External contributors do not need proprietary Vocalizer resources to run ordinary tests or build the add-on.
 
 Code contributions use GPL-2.0-or-later. Data contributions must retain their source licenses and attribution; the existing data compilations have separate terms described in [third-party notices](addon/THIRD-PARTY-NOTICES.txt). By contributing, you confirm that you have the right to supply the contribution under the applicable terms. No copyright transfer is required.
