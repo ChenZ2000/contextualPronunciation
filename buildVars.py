@@ -19,7 +19,7 @@ addon_info = {
 	"addon_lastTestedNVDAVersion": "2026.2",
 	"addon_updateChannel": "stable",
 	"addon_license": "GNU General Public License version 2 or later",
-	"addon_licenseURL": "https://github.com/ChenZ2000/contextualPronunciation/blob/main/LICENSE",
+	"addon_licenseURL": "https://www.gnu.org/licenses/gpl-2.0.html",
 }
 
 pythonSources = ["addon/globalPlugins/contextualPronunciation/**/*.py"]

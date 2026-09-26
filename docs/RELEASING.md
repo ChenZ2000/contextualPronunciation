@@ -19,6 +19,8 @@ The stable manifest currently declares minimum and last-tested NVDA API 2026.2. 
 
 `python scripts/build_public_release.py --tag v0.7.4` performs the same local package checks. It writes artifacts under `dist/`; it does not publish or submit anything. `dist/store-submission.md` contains the issue-form fields for manual review.
 
+The Store license URL comes from `addon_licenseURL` in `buildVars.py`. Both the submission form generator and the official-validation metadata generator use this value: `https://www.gnu.org/licenses/gpl-2.0.html`. Keep the license name `GPL-2.0-or-later` and the bundled license text. Future submissions use this official GNU URL; updating the source repository does not automatically change an existing Store issue or metadata pull request.
+
 ## Validate against the official Store tools
 
 The current tools live inside `nvaccess/addon-datastore`, under `validation/_validate`, rather than the archived standalone validation repository. Check out a known upstream commit and install its locked dependencies using uv. The validator compares the actual downloaded package to manifest/JSON metadata and the official API list.

@@ -80,7 +80,7 @@ def prepare(tag: str) -> dict:
 		("Publisher", "ChenZ2000"),
 		("Channel", channel),
 		("License Name", "GPL-2.0-or-later"),
-		("License URL", f"{repository}/blob/{tag}/LICENSE"),
+		("License URL", metadata["addon_licenseURL"]),
 	)
 	(dist / "store-submission.md").write_text(
 		"\n\n".join(f"### {key}\n\n{value}" for key, value in fields) + "\n", "utf-8"

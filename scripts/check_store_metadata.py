@@ -40,7 +40,7 @@ def check(validator_root: Path) -> None:
 		f"{repository}/tree/v{version}",
 		f"{repository}/releases/download/v{version}/{package.name}",
 		"GPL-2.0-or-later",
-		f"{repository}/blob/v{version}/LICENSE",
+		metadata["addon_licenseURL"],
 	)
 	path = output / name / f"{version}.json"
 	data = validate.getAddonMetadata(str(path))
