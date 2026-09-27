@@ -549,6 +549,17 @@ class ArgumentParser:
 		if not 0 <= index < len(text):
 			return None
 		frames = self.buckets.get(text[index], ())
+		# With no compatible head anywhere in this speech item, a single
+		# typed object frame cannot succeed. Retain containment complements,
+		# whose explicit action/goal construction can omit the contents.
+		if (
+			context is not None
+			and len(frames) == 1
+			and frames[0].object_class in {"contents", "dimension", "fastener", "playedInstrument"}
+			and frames[0].object_class not in context.head_classes
+			and not (frames[0].object_class == "contents" and text[index + 1 : index + 2] in {"装", "裝"})
+		):
+			return None
 		if frames and frames[0].object_class in {"motionPredicate", "transferPredicate"}:
 			# Competing meanings share one parse; disabling one never promotes
 			# the losing meaning. No second chart for the same verb group.

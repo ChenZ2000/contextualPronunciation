@@ -401,7 +401,9 @@ class CompiledRules:
 			core_decision = None
 			if target in self._curated_triggers:
 				core_decision = self._phrase_decision(text, index, target, strict=strict)
-				if core_decision is None or core_decision.contextual and not core_decision.user:
+				if self._structural_rules.get(target) and (
+					core_decision is None or core_decision.contextual and not core_decision.user
+				):
 					core_decision = self._structural_decision(text, index, target) or core_decision
 			template = (
 				self._templates.decision(text, index)
