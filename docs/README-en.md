@@ -27,6 +27,8 @@ Chinese corrections specify Mandarin readings under every voice and language tag
 
 ## Custom context templates
 
+All three custom-rule fields support multiple lines. Press **Enter** or numeric-keypad Enter to insert a line break, or paste multiple lines. **Tab** moves to the next control and **Ctrl+S** applies settings. Enter inside these fields does not close the settings dialog.
+
 Use **Context templates** for a reading tied to surrounding text. Enter one template per line in the form `left context[target:pinyin]right context`. The target is one character; provide context on at least one side. Use ordinary text for a literal match or a supported placeholder for a class of text.
 
 ```text

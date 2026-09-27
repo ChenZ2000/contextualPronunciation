@@ -33,6 +33,14 @@ class Scenario:
 
 
 SCENARIOS = (
+	Scenario("cheng2_zhuangsheng", "P0", "盛", "装盛", "乘", "chéng", "cheng-zhuangsheng-default"),
+	Scenario("cheng2_action_nominal", "P0", "盛", "盛装的动作", "乘", "chéng", "syntax-serving-object"),
+	Scenario("cheng2_container_goal", "P0", "盛", "盛装在小明买的碗里", "乘", "chéng", "syntax-serving-object"),
+	Scenario("tan2_modified_instrument", "P0", "弹", "弹小明昨天买的那架钢琴", "坛", "tán", "syntax-played-instrument"),
+	Scenario("tan2_numeric_instrument", "P0", "弹", "弹了123遍琴", "坛", "tán", "syntax-played-instrument"),
+	Scenario(
+		"tan2_traditional_instrument", "P0", "彈", "彈這架鋼琴", "坛", "tán", "syntax-played-instrument-traditional"
+	),
 	Scenario("chong2_reinstall_default", "P0", "重", "需要重装吗", "虫", "chóng", "chong-reinstall-default"),
 	Scenario("chong2_reinstall_traditional", "P0", "重", "需要重裝嗎", "虫", "chóng", "chong-reinstall-default"),
 	Scenario("zhuan4_screw", "P0", "转", "螺丝会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),

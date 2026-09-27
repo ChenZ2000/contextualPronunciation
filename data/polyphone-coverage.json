@@ -119672,6 +119672,7 @@
           "curatedRuleIds": [
             "cheng-serving-context",
             "cheng-serving-object-bounded",
+            "cheng-zhuangsheng-default",
             "servingQuantity"
           ],
           "homophoneCandidate": "呈",

@@ -43,6 +43,59 @@ sentence_spec.loader.exec_module(sentences)
 
 
 class NativeSpeechChainTests(unittest.TestCase):
+	def test_multiline_editors_intercept_enter_before_dialog_ok(self):
+		import ctypes
+
+		import wx
+		from gui.settingsDialogs import SettingsDialog
+
+		settings = importlib.import_module(self.module.__name__ + ".settings")
+		app = wx.GetApp() or wx.App(False)
+		dialog = wx.Dialog(None)
+		self.addCleanup(dialog.Destroy)
+		dialog.hasApply = True
+		dialog.Bind(wx.EVT_CHAR_HOOK, lambda event: SettingsDialog._enterActivatesOk_ctrlSActivatesApply(dialog, event))
+		clicked = []
+		dialog.Bind(wx.EVT_BUTTON, lambda event: clicked.append(event.GetId()))
+		panel = settings.ContextualPronunciationSettingsPanel(dialog)
+		editors = (panel.custom_entries_edit, panel.custom_templates_edit, panel.disabled_rules_edit)
+		values = (
+			("仙乐|乐|yue4", "盛汤|盛|keep"),
+			("仙[乐:yuè]", "[盛:chéng]{number}{container}"),
+			("syntax-played-instrument", "syntax-played-instrument-traditional"),
+		)
+		for editor, (value, second) in zip(editors, values, strict=True):
+			self.assertTrue(editor.HasFlag(wx.TE_MULTILINE))
+			for key in (wx.WXK_RETURN, wx.WXK_NUMPAD_ENTER):
+				event = wx.KeyEvent(wx.wxEVT_CHAR_HOOK)
+				event.SetKeyCode(key)
+				event.SetEventObject(editor)
+				editor.ProcessWindowEvent(event)
+				self.assertTrue(event.IsNextEventAllowed())
+				self.assertEqual([], clicked)
+			# Deliver the following native edit character to the hidden HWND.
+			# No focus stealing, visible windows or installed profile is used.
+			editor.SetValue(value)
+			editor.SetInsertionPointEnd()
+			ctypes.windll.user32.SendMessageW(editor.GetHandle(), 0x0102, 13, 0)
+			editor.WriteText(second)
+			self.assertEqual(value + "\n" + second, editor.GetValue())
+		with mock.patch("gui.messageBox") as message:
+			self.assertTrue(panel.isValid(), message.call_args)
+		panel.onSave()
+		for key, editor in zip(("customEntries", "customTemplates", "disabledRules"), editors, strict=True):
+			self.assertEqual(editor.GetValue(), config.conf[settings.CONFIG_SECTION][key])
+			config.conf[settings.CONFIG_SECTION][key] = ""
+		settings.options_changed.notify()
+		# Native dialog shortcuts still propagate from an editor.
+		event = wx.KeyEvent(wx.wxEVT_CHAR_HOOK)
+		event.SetKeyCode(ord("S"))
+		event.SetUnicodeKey(ord("S"))
+		event.SetControlDown(True)
+		editors[0].ProcessWindowEvent(event)
+		self.assertEqual([wx.ID_APPLY], clicked)
+		self.assertIsNotNone(app)
+
 	@classmethod
 	def setUpClass(cls):
 		name = "_contextualPronunciationNativeIntegration"
@@ -127,6 +180,13 @@ class NativeSpeechChainTests(unittest.TestCase):
 			("唱和说", "唱河说"),
 			("多行", "多航"),
 			("盛汤", "呈汤"),
+			("装盛", "装呈"),
+			("盛装动作", "呈装动作"),
+			("盛装到容器里", "呈装到容器里"),
+			("身穿盛装的动作", "身穿盛装的动作"),
+			("弹小明昨天买的那架钢琴", "谈小明昨天买的那架钢琴"),
+			("弹了123遍琴", "谈了123遍琴"),
+			("子弹击中了琴", "子弹击仲了琴"),  # 中 zhong4; 弹 remains dan4.
 			("第12行", "第12航"),
 			("12行", "12航"),
 			("行二", "航二"),

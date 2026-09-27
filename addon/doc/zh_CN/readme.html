@@ -74,6 +74,7 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 <p>词典词组和有界词性、句法分析现已随中文纠正默认启用。旧配置中的“扩展词组库”值不再控制读音。词边界保护可区分“降调音频”的 diào 与“调音师”的 tiáo；遇到特定误读时，可以使用局部 <code>keep</code> 规则。</p>
 <p>中文纠正会对所有声音和语言标签下的汉字指定普通话读音，请搭配支持普通话的声音。使用粤语、日语等汉字读法时，在相应的配置方案中关闭中文纠正。</p>
 <h2 id="_4">自定义上下文模板</h2>
+<p>三个自定义输入框均支持多行：按 <strong>Enter</strong> 或数字键盘回车换行，也可直接粘贴多行内容；按 <strong>Tab</strong> 移到下一项，按 <strong>Ctrl+S</strong> 应用设置。输入框内按回车不会关闭设置窗口。</p>
 <p>在“<strong>上下文模板</strong>”中，每行输入一条“<code>前文[目标字:拼音]后文</code>”规则。目标字为单个汉字，前文和后文至少填写一侧；普通文字按原样匹配，也可以使用已支持的占位符表示一类文本。</p>
 <pre><code class="language-text">仙[乐:yuè]
 [盛:chéng]{number}{container}

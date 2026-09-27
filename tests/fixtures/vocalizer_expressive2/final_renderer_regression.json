@@ -8,33 +8,34 @@
       "addon/globalPlugins/contextualPronunciation/argument_roles.py": "a43f83087c1a43cba4f909cc8df8ed95088c8be13acd5974c5a7b08ffc0e8997",
       "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
       "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
+      "addon/globalPlugins/contextualPronunciation/containment.py": "a24cae6fff0a6a4ed8f8a882e91f643b85b118c4fbc846b709348bb9ee65d81b",
       "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
       "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "17f5da785faf8489021d6c312ecb6fc64fbd56a8f9e6328da9701ff3399bd727",
       "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "524547b5d7948f9c888d1a6d4bcd1402434272746bb6bdf94537ebf6f4166ccc",
       "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
       "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
-      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "ce64e7701778b8638daee44d284ee5839e64de3cb8129d3e25d34fb65d638a96",
+      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "c2c47d012cba23eaa768d91162e9c8dfad5be05cbb43fbddc519a38fbad3b357",
       "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
-      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "47a90b09dd26a9e4e1666887070d8da5f5d9266fd3739c173879a9b0068ee335",
+      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "c9386273141237f96b27b36b68a6515af165e30f57b224559cf1b8884f88fab0",
       "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
       "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
       "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
       "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
-      "addon/globalPlugins/contextualPronunciation/motion.py": "80722721821801e9762073846efcb9fb311f27dd4c62bb8c018cacb7a2025ae6",
+      "addon/globalPlugins/contextualPronunciation/motion.py": "706ee7dd3de3a4179d7890acd256462be45f4db44232a5173550012c18efbe65",
       "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
       "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
       "addon/globalPlugins/contextualPronunciation/pipeline.py": "e5f21e74ceb007c683c7ef34c0c987d7b7a5705d7d6a45ca7933ec7e7fc47e97",
       "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
       "addon/globalPlugins/contextualPronunciation/rules.py": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
       "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
-      "addon/globalPlugins/contextualPronunciation/settings.py": "7b695af37dbca6792f730790fe6b4d9d34d81173ad545a0d89718aaf991d4a50",
-      "addon/globalPlugins/contextualPronunciation/syntax.py": "f1efda55bab707e2b9c304b006589f6261464a09ac82667bd9cf514668f5bb19",
+      "addon/globalPlugins/contextualPronunciation/settings.py": "ddd080ac2c4f03eb50d6ca0a382bd8b7a2d59290762b270b7c2c238c95885175",
+      "addon/globalPlugins/contextualPronunciation/syntax.py": "12112f2d62b4d36bdb6d48d7118345bb3c5ff40756326858ffef46dcfaf73b99",
       "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
       "addon/globalPlugins/contextualPronunciation/verb_forms.py": "ff0f287feed85d5d72cb6ce5e5da72fa1ac95ef9e7191bc669f8059f905fe325"
     },
     "ruleEngine": "addon/globalPlugins/contextualPronunciation/rules.py",
     "ruleData": "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json",
-    "ruleDataSha256": "ce64e7701778b8638daee44d284ee5839e64de3cb8129d3e25d34fb65d638a96",
+    "ruleDataSha256": "c2c47d012cba23eaa768d91162e9c8dfad5be05cbb43fbddc519a38fbad3b357",
     "ruleEngineSha256": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
     "renderer": "addon/globalPlugins/contextualPronunciation/rules.py",
     "rendererSha256": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
@@ -47,6 +48,90 @@
     "若引擎音素标记没有可独立解释的声调信息，则只能用同音锚点等价关系验证，仍需最终人工听取 WAV。"
   ],
   "transformations": [
+    {
+      "id": "cheng2_zhuangsheng",
+      "source": "装盛",
+      "transformed": "装呈",
+      "commonAnchor": "装乘",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "expectedReading": "chéng",
+      "ruleKind": "cheng-zhuangsheng-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_action_nominal",
+      "source": "盛装的动作",
+      "transformed": "呈装的动作",
+      "commonAnchor": "乘装的动作",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_container_goal",
+      "source": "盛装在小明买的碗里",
+      "transformed": "呈装在小明买的碗里",
+      "commonAnchor": "乘装在小明买的碗里",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_modified_instrument",
+      "source": "弹小明昨天买的那架钢琴",
+      "transformed": "谈小明昨天买的那架钢琴",
+      "commonAnchor": "坛小明昨天买的那架钢琴",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_numeric_instrument",
+      "source": "弹了123遍琴",
+      "transformed": "谈了123遍琴",
+      "commonAnchor": "坛了123遍琴",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_traditional_instrument",
+      "source": "彈這架鋼琴",
+      "transformed": "谈這架鋼琴",
+      "commonAnchor": "坛這架鋼琴",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument-traditional",
+      "strict": true,
+      "extended": false
+    },
     {
       "id": "chong2_reinstall_default",
       "source": "需要重装吗",
@@ -1627,6 +1712,294 @@
     }
   ],
   "cases": [
+    {
+      "id": "cheng2_zhuangsheng_source",
+      "text": "装盛",
+      "role": "source",
+      "compareGroup": "final_cheng2_zhuangsheng",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "cheng-zhuangsheng-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_zhuangsheng_transformed",
+      "text": "装呈",
+      "role": "transformed",
+      "rendererCandidate": "呈",
+      "compareGroup": "final_cheng2_zhuangsheng",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "cheng-zhuangsheng-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_zhuangsheng_common_anchor",
+      "text": "装乘",
+      "role": "anchor",
+      "anchorCharacter": "乘",
+      "anchorConfidence": "common",
+      "compareGroup": "final_cheng2_zhuangsheng",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "cheng-zhuangsheng-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_action_nominal_source",
+      "text": "盛装的动作",
+      "role": "source",
+      "compareGroup": "final_cheng2_action_nominal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_action_nominal_transformed",
+      "text": "呈装的动作",
+      "role": "transformed",
+      "rendererCandidate": "呈",
+      "compareGroup": "final_cheng2_action_nominal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_action_nominal_common_anchor",
+      "text": "乘装的动作",
+      "role": "anchor",
+      "anchorCharacter": "乘",
+      "anchorConfidence": "common",
+      "compareGroup": "final_cheng2_action_nominal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_container_goal_source",
+      "text": "盛装在小明买的碗里",
+      "role": "source",
+      "compareGroup": "final_cheng2_container_goal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_container_goal_transformed",
+      "text": "呈装在小明买的碗里",
+      "role": "transformed",
+      "rendererCandidate": "呈",
+      "compareGroup": "final_cheng2_container_goal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_container_goal_common_anchor",
+      "text": "乘装在小明买的碗里",
+      "role": "anchor",
+      "anchorCharacter": "乘",
+      "anchorConfidence": "common",
+      "compareGroup": "final_cheng2_container_goal",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_modified_instrument_source",
+      "text": "弹小明昨天买的那架钢琴",
+      "role": "source",
+      "compareGroup": "final_tan2_modified_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_modified_instrument_transformed",
+      "text": "谈小明昨天买的那架钢琴",
+      "role": "transformed",
+      "rendererCandidate": "谈",
+      "compareGroup": "final_tan2_modified_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_modified_instrument_common_anchor",
+      "text": "坛小明昨天买的那架钢琴",
+      "role": "anchor",
+      "anchorCharacter": "坛",
+      "anchorConfidence": "common",
+      "compareGroup": "final_tan2_modified_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_numeric_instrument_source",
+      "text": "弹了123遍琴",
+      "role": "source",
+      "compareGroup": "final_tan2_numeric_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_numeric_instrument_transformed",
+      "text": "谈了123遍琴",
+      "role": "transformed",
+      "rendererCandidate": "谈",
+      "compareGroup": "final_tan2_numeric_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_numeric_instrument_common_anchor",
+      "text": "坛了123遍琴",
+      "role": "anchor",
+      "anchorCharacter": "坛",
+      "anchorConfidence": "common",
+      "compareGroup": "final_tan2_numeric_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_traditional_instrument_source",
+      "text": "彈這架鋼琴",
+      "role": "source",
+      "compareGroup": "final_tan2_traditional_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument-traditional",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_traditional_instrument_transformed",
+      "text": "谈這架鋼琴",
+      "role": "transformed",
+      "rendererCandidate": "谈",
+      "compareGroup": "final_tan2_traditional_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument-traditional",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "tan2_traditional_instrument_common_anchor",
+      "text": "坛這架鋼琴",
+      "role": "anchor",
+      "anchorCharacter": "坛",
+      "anchorConfidence": "common",
+      "compareGroup": "final_tan2_traditional_instrument",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "tán",
+      "ruleKind": "syntax-played-instrument-traditional",
+      "strict": true,
+      "extended": false
+    },
     {
       "id": "chong2_reinstall_default_source",
       "text": "需要重装吗",

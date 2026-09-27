@@ -84,7 +84,7 @@ measuringTool = "measurementTool"
 # Reviewed physical senses where the core source is generic/ambiguous or only
 # supplies the simplified spelling. Do not equate every artifact with contents.
 [nounHeads.contents]
-words = ["粉末", "颗粒", "顆粒", "沙子", "物品", "货物", "貨物", "物料", "液體", "氣體", "化學品", "廢液", "廢水", "藥品"]
+words = ["粉末", "颗粒", "顆粒", "沙子", "物品", "货物", "貨物", "物料", "液體", "氣體", "化學品", "廢液", "廢水", "藥品", "东西", "東西"]
 source = "CC-CEDICT/KFCD physical powder/granule/sand/item/cargo/material/liquid senses; not a conversion of all traditional characters. Source profiles in dictionary-sources.json."
 
 [nounHeads.container]
@@ -106,6 +106,36 @@ source = "CC-CEDICT duration units; only quantified duration complements, never 
 [nounHeads.actionMeasure]
 words = ["圈"]
 source = "CC-CEDICT 圈 quan1: classifier for loops/orbits/laps/turns; supplements HowNet ActUnit roots. An action extent is not an omitted transferred item."
+
+[nounHeads.playedInstrument]
+words = ["琴", "钢琴", "鋼琴", "电子琴", "電子琴", "电钢琴", "電鋼琴", "古琴", "古筝", "古箏", "筝", "箏", "竖琴", "豎琴", "扬琴", "揚琴", "琵琶", "吉他", "木吉他", "电吉他", "電吉他", "三弦", "月琴", "柳琴", "阮", "冬不拉", "键盘", "鍵盤"]
+source = "MOE 彈琴 tan2 https://dict.revised.moe.edu.tw/dictView.jsp?ID=51192; CC-CEDICT keyboard/plucked-string/struck-string instrument senses. Excludes wind/bowed instruments; requires the actual argument head, not an instrument inside a modifier."
+
+[nounHeads.actionNominal]
+words = ["动作", "動作"]
+source = "CC-CEDICT 动作 action/movement nominal; selects a nominalized filling event in 盛装(的)动作. MOE 盛 cheng2 https://dict.revised.moe.edu.tw/dictView.jsp?ID=8518; MOE 皿 explicit 裝盛 pronunciation https://pedia.cloud.edu.tw/Entry/Detail/?search=皿&title=皿. Attire governors remain blocked."
+
+[[frames]]
+id = "syntax-played-instrument"
+target = "弹"
+reading = "tan2"
+object = "playedInstrument"
+prefixes = ["", "了", "过", "過", "着", "著", "好", "完", "起", "起来", "起來", "不了", "得了", "一弹", "一彈"]
+results = ["好", "完", "起", "起来", "起來"]
+source = "MOE 彈琴 tan2 https://dict.revised.moe.edu.tw/dictView.jsp?ID=51192; productive verb-object relation with quantified, possessed and modified instrument NPs."
+positive = ["弹这架钢琴", "弹了两架新钢琴", "弹小明的琴", "弹昨天买的琴"]
+negative = ["子弹击中了琴", "弹药放在钢琴上", "弹钢琴公司的招牌", "弹未知琴"]
+
+[[frames]]
+id = "syntax-played-instrument-traditional"
+target = "彈"
+reading = "tan2"
+object = "playedInstrument"
+prefixes = ["", "了", "过", "過", "着", "著", "好", "完", "起", "起来", "起來", "不了", "得了", "一弹", "一彈"]
+results = ["好", "完", "起", "起来", "起來"]
+source = "Same MOE 彈琴 frame with source-authored traditional instrument spellings."
+positive = ["彈這架鋼琴", "彈了兩架新鋼琴", "彈小明的琴"]
+negative = ["子彈擊中了琴", "彈藥放在鋼琴上", "彈未知琴"]
 
 # These ambiguous nouns acquire the culinary sense ONLY as the head of a
 # noun-noun compound (红豆 + 汤), not as standalone words or surname guesses.

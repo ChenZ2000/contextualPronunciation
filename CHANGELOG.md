@@ -2,6 +2,10 @@
 
 ## 0.7.8
 
+- Default 装盛 / 裝盛 to chéng; recognize 盛装 action nominals and container goals while preserving attire contexts.
+- Parse quantified, possessed and modified instrument objects in 弹…琴 / 彈…琴 instead of requiring adjacent characters.
+- Fix multiline custom-rule editing by preserving native Enter handling before NVDA's dialog-wide OK shortcut.
+
 - Enable the full dictionary and bounded grammar whenever Chinese corrections are enabled; remove the extended-lexicon checkbox.
 - Correct counted work trips, counted nights versus astronomical 宿, and both syllables in 倔强. Default 重装 / 重裝 to chóng for reinstall, with explicit heavy-equipment protections.
 - Select rotation, roaming and transfer readings using noun-phrase heads, recipients, beneficiaries, purpose clauses and productive verb complements. Expand dictionary-derived mechanical candidates and share arguments across 转呀转, 转着转着 and 转了又转.

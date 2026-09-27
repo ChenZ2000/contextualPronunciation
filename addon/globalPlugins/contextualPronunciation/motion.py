@@ -164,6 +164,14 @@ def _prefix(parser, text, end, context, g):
 
 def motion_reading(parser, text, index, frames, context, g):
 	"""One role analysis selects between rotation/roaming and transfer frames."""
+	# An overlapping VVV run is rejected by the bounded VV production.
+	# Avoid allocating a group/cache entry for each position of a long run.
+	if (
+		index + 1 < len(text)
+		and text[index + 1] == text[index]
+		and (index and text[index - 1] == text[index] or index + 2 < len(text) and text[index + 2] == text[index])
+	):
+		return None
 	# Ordinary lexical compounds never enter the bare-verb grammar. Only
 	# take this shortcut when neither neighbor can extend a productive
 	# group/complement; a final stem may share a preceding group's analysis.

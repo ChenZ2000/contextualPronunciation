@@ -32,6 +32,21 @@ CONFIG_SPEC = {
 options_changed = extensionPoints.Action()
 
 
+def multiline_key_hook(event):
+	"""Keep native editing before NVDA's dialog-wide Enter-to-OK hook.
+
+	Allow the following native key/character event instead of inserting text
+	ourselves, preserving IME, selection, undo and accessibility behavior.
+	Modified shortcuts and navigation continue to the settings dialog.
+	"""
+	if event.KeyCode in (wx.WXK_RETURN, wx.WXK_NUMPAD_ENTER) and not event.GetModifiers() & (
+		wx.MOD_CONTROL | wx.MOD_ALT | wx.MOD_META
+	):
+		event.DoAllowNextEvent()
+	else:
+		event.Skip()
+
+
 def initialize_config() -> None:
 	config.conf.spec[CONFIG_SECTION] = CONFIG_SPEC
 
@@ -139,6 +154,8 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 			value=section["disabledRules"],
 			style=wx.TE_MULTILINE,
 		)
+		for editor in (self.custom_templates_edit, self.custom_entries_edit, self.disabled_rules_edit):
+			editor.Bind(wx.EVT_CHAR_HOOK, multiline_key_hook)
 
 	def isValid(self) -> bool:  # noqa: N802 - NVDA API naming
 		try:

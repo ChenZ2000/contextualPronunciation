@@ -132,6 +132,14 @@
       "structuralRules": ["servingQuantity"],
       "phraseGroups": [
         {
+          "id": "cheng-zhuangsheng-default",
+          "description": "装盛 is the lexical container-filling verb; default to cheng2 even without an overt object.",
+          "reading": "cheng2",
+          "confidence": "high",
+          "priority": 160,
+          "phrases": ["装盛", "裝盛"]
+        },
+        {
           "id": "cheng-serving-object-bounded",
           "description": "Legacy stable ID. Serving-object lexemes match within sentences; delimiters are not required. Explicit sheng protection still wins.",
           "reading": "cheng2",
@@ -157,7 +165,7 @@
         },
         {
           "id": "sheng-protection",
-          "contextualPhrases": ["盛装", "盛裝"],
+          "contextualPhrases": ["盛装", "盛裝", "盛大"],
           "protect": true,
           "confidence": "high",
           "priority": 200,

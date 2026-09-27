@@ -32,6 +32,8 @@ OpenHowNet supplies sense and role structure, not sentence pronunciation. Projec
 
 `constituents.py` identifies complete noun phrases, heads, modifiers, coordination and supported relative clauses. A noun inside a modifier cannot supply the meaning of an unrelated predicate. `verb_forms.py` recognizes complements and repeated predicates independently of pronunciation. `argument_roles.py` distinguishes recipients and quantity ellipsis; `motion.py` selects competing motion and transfer frames.
 
+The instrument frame for 弹 / 彈 reuses the same noun chart for quantified, possessed and modified objects. A keyboard/plucked-string instrument must be the argument head; a mention inside a company name or another clause is insufficient. `containment.py` handles an omitted contents argument when 盛装 retains a parsed container goal or heads an action nominal. Attire governors remain protected. 装盛 / 裝盛 has a reviewed lexical default. The pronunciation sources are [MOE 彈琴](https://dict.revised.moe.edu.tw/dictView.jsp?ID=51192), [MOE 盛](https://dict.revised.moe.edu.tw/dictView.jsp?ID=8518) and [MOE 皿 with 裝盛](https://pedia.cloud.edu.tw/Entry/Detail/?search=皿&title=皿).
+
 | Sentence | Evidence | Result |
 |---|---|---|
 | 让风车转起来 | Caused-motion object; phase complement | zhuàn |

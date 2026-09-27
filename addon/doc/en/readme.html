@@ -74,6 +74,7 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 <p>The dictionary lexicon and bounded grammar are active whenever Chinese corrections are enabled. The retired extended-lexicon setting no longer gates them. Boundary protection distinguishes 降调音频 (调 → diào) from 调音师 (调 → tiáo). Use a local <code>keep</code> rule for a specific unwanted correction.</p>
 <p>Chinese corrections specify Mandarin readings under every voice and language tag. Use a voice that supports Mandarin. For Cantonese, Japanese or other readings of Han characters, turn off Chinese corrections in the relevant profile.</p>
 <h2 id="custom-context-templates">Custom context templates</h2>
+<p>All three custom-rule fields support multiple lines. Press <strong>Enter</strong> or numeric-keypad Enter to insert a line break, or paste multiple lines. <strong>Tab</strong> moves to the next control and <strong>Ctrl+S</strong> applies settings. Enter inside these fields does not close the settings dialog.</p>
 <p>Use <strong>Context templates</strong> for a reading tied to surrounding text. Enter one template per line in the form <code>left context[target:pinyin]right context</code>. The target is one character; provide context on at least one side. Use ordinary text for a literal match or a supported placeholder for a class of text.</p>
 <pre><code class="language-text">仙[乐:yuè]
 [盛:chéng]{number}{container}

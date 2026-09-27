@@ -18,6 +18,7 @@ from pathlib import Path
 from types import MappingProxyType
 
 from .constituents import ConstituentParser
+from .containment import complement_reading
 from .edges import DIRECTIONS, coordination_pair, edge_reading
 from .motion import contextual_form, motion_reading
 from .nominals import general_role
@@ -36,6 +37,8 @@ EDGE_NOUN, SPEECH_VERB = 1 << 31, 1 << 32
 PLACE, PATH_MOTION, ROTOR, DURATION = 1 << 33, 1 << 34, 1 << 35, 1 << 36
 TRANSFER_THEME, INDEFINITE_QUANTITY = 1 << 37, 1 << 38
 ACTION_MEASURE = 1 << 39
+PLAYED_INSTRUMENT = 1 << 40
+ACTION_NOMINAL = 1 << 41
 MAX_CHARS = 512
 MAX_TOKENS = 256
 MAX_DEPTH = 16
@@ -83,6 +86,7 @@ _HEAD_CLASSES = {
 	"coordinatingPredicate": VERB,
 	"motionPredicate": VERB,
 	"transferPredicate": VERB,
+	"playedInstrument": PLAYED_INSTRUMENT,
 }
 _FUNCTIONS = {
 	"的": DE,
@@ -545,7 +549,7 @@ class ArgumentParser:
 		if (
 			_verb_end is None
 			and frames
-			and frames[0].object_class in {"contents", "dimension", "fastener"}
+			and frames[0].object_class in {"contents", "dimension", "fastener", "playedInstrument"}
 			and (
 				index + 1 < len(text) and text[index + 1] in "呀啊着著了" or index and text[index - 1] in "呀啊着著又再"
 			)
@@ -577,6 +581,19 @@ class ArgumentParser:
 		verb_end = index + 1 if _verb_end is None else _verb_end
 		matches = []
 		for frame in frames:
+			if (
+				frame.object_class == "contents"
+				and text[index + 1 : index + 2] in {"装", "裝"}
+				and (
+					text[index + 2 : index + 3]
+					in {"的", "到", "进", "進", "入", "在", "了", "过", "過", "着", "著", "好", "完", "满", "滿"}
+					or text.find("动作", index + 2, index + MAX_CHARS) >= 0
+					or text.find("動作", index + 2, index + MAX_CHARS) >= 0
+				)
+			):
+				if (parsed := complement_reading(self, text, index, frame, context, _GRAMMAR)) is not None:
+					matches.append(parsed)
+					continue
 			if frame.object_class in {"edgeNoun", "coordinatingPredicate"}:
 				if (parsed := edge_reading(self, text, index, frame, context, _GRAMMAR)) is not None:
 					matches.append(parsed)
@@ -794,6 +811,8 @@ def _load_data():
 			"place": PLACE,
 			"duration": DURATION,
 			"actionMeasure": ACTION_MEASURE,
+			"playedInstrument": PLAYED_INSTRUMENT,
+			"actionNominal": ACTION_NOMINAL,
 		}.get(name)
 		if feature is None or not row.get("source") or not 1 <= len(row["words"]) <= 128:
 			raise ValueError("Invalid reviewed noun class")
