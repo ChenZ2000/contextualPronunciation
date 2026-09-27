@@ -197,15 +197,27 @@ class ArgumentFrame:
 class SyntaxContext:
 	"""Ephemeral per-speech-item prefilter; never retained by the parser."""
 
-	__slots__ = ("head_classes", "remaining_work", "motion_readings")
+	__slots__ = ("_head_classes", "_text", "_head_tails", "remaining_work", "motion_readings")
 
 	def __init__(self, text, lexicon):
-		characters = frozenset(text)
-		self.head_classes = frozenset(
-			name for name, tails in lexicon.head_tails.items() if not tails.isdisjoint(characters)
-		)
+		# Prefix, coordination and motion frames often resolve without a typed
+		# object. Build this necessary-condition filter only if a frame uses
+		# it. The context and its text remain local to this speech item.
+		self._head_classes = None
+		self._text = text
+		self._head_tails = lexicon.head_tails
 		self.remaining_work = MAX_ITEM_WORK
 		self.motion_readings = {}
+
+	@property
+	def head_classes(self):
+		if self._head_classes is None:
+			characters = frozenset(self._text)
+			self._head_classes = frozenset(
+				name for name, tails in self._head_tails.items() if not tails.isdisjoint(characters)
+			)
+			self._text = self._head_tails = None
+		return self._head_classes
 
 	def consume(self, amount):
 		self.remaining_work -= amount

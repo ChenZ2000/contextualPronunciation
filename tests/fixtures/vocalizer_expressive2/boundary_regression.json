@@ -28,7 +28,7 @@
     "addon/globalPlugins/contextualPronunciation/rules.py": "4972ccf084f061ceabaf2a0000ba55f3f8194a5f153250ef4bf932efe802a7c7",
     "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
     "addon/globalPlugins/contextualPronunciation/settings.py": "ddd080ac2c4f03eb50d6ca0a382bd8b7a2d59290762b270b7c2c238c95885175",
-    "addon/globalPlugins/contextualPronunciation/syntax.py": "925a1da15b0c2d09e1988369547ba2881e8d107cee7639654d584c0b01b4f9b0",
+    "addon/globalPlugins/contextualPronunciation/syntax.py": "ce72cc353303469d0b46d5ace8b79b1db17165cbcc842c5d6caab8c565a35874",
     "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
     "addon/globalPlugins/contextualPronunciation/verb_forms.py": "b681a970752feabf9f64df55f126d75c1b04ff24604d8fc403eaa881954092b1",
     "addon/locale/en/symbols-lexicalApostrophe.dic": "f9df0e7d00d44a0f32b05e766fb4a215245119d3dcb0192fda8fc69f8317d5c1",
