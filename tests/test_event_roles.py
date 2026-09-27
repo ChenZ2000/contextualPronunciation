@@ -226,6 +226,18 @@ class EventRoleTests(unittest.TestCase):
 		rules = load("rules").load_default_rules(custom_entries="车轮转|转|keep")
 		self.assertEqual("让车轮转一篆", rules.transform("让车轮转一转"))
 
+	def test_simple_recipients_match_full_constituent_attachment(self):
+		roles = load("argument_roles")
+		for head in ("他", "客户", "大家"):
+			for tail in ("", "看", "坐", "的机器", "公司的机器", "老师"):
+				text = head + tail
+				tokens = self.rules.syntax.lexicon.tokenize(text, 0)
+				reference = load("constituents").ConstituentParser(tokens, self.g).parse()
+				if reference is not None and not reference.features & (self.g.HUMAN | self.g.PRON):
+					reference = None
+				with self.subTest(text=text):
+					self.assertEqual(reference, roles.recipient(tokens, self.g, self.rules.syntax.context(text)))
+
 
 if __name__ == "__main__":
 	unittest.main()

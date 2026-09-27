@@ -4,7 +4,7 @@
   "sourceSha256": {
     "addon/globalPlugins/contextualPronunciation/__init__.py": "f8e3c92cafa99e48c1ddc753b90569aa5ca38fbfab5b622d60789404259df383",
     "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
-    "addon/globalPlugins/contextualPronunciation/argument_roles.py": "a43f83087c1a43cba4f909cc8df8ed95088c8be13acd5974c5a7b08ffc0e8997",
+    "addon/globalPlugins/contextualPronunciation/argument_roles.py": "04a6c61443d7849dd7549ac2cf2789b1964bb5d1053c63d25e1b50c70c227183",
     "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
     "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
     "addon/globalPlugins/contextualPronunciation/containment.py": "a24cae6fff0a6a4ed8f8a882e91f643b85b118c4fbc846b709348bb9ee65d81b",
@@ -30,7 +30,7 @@
     "addon/globalPlugins/contextualPronunciation/settings.py": "ddd080ac2c4f03eb50d6ca0a382bd8b7a2d59290762b270b7c2c238c95885175",
     "addon/globalPlugins/contextualPronunciation/syntax.py": "b0fef3983cd3e38ce15810ec525e9c139ae8e2b08fe9019dc60b7aaea9158d05",
     "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
-    "addon/globalPlugins/contextualPronunciation/verb_forms.py": "ff0f287feed85d5d72cb6ce5e5da72fa1ac95ef9e7191bc669f8059f905fe325",
+    "addon/globalPlugins/contextualPronunciation/verb_forms.py": "b681a970752feabf9f64df55f126d75c1b04ff24604d8fc403eaa881954092b1",
     "addon/locale/en/symbols-lexicalApostrophe.dic": "f9df0e7d00d44a0f32b05e766fb4a215245119d3dcb0192fda8fc69f8317d5c1",
     "addon/locale/zh_CN/symbols-lexicalApostrophe.dic": "1d39881b3f58187ab1935411d7d870265193a27a22928e075a929d6066faa3ce",
     "tools/boundary_acoustics.py": "fbabbaa93aab7e23b91c7a213e77bb600a8f7c9068ff75cf71706c3f52705b03",

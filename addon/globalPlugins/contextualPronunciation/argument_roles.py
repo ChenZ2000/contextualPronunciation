@@ -12,6 +12,21 @@ def recipient(tokens, grammar, context):
 	if not tokens:
 		return None
 	g = grammar
+	if len(tokens) == 1 or (
+		len(tokens) == 2
+		# Only an unambiguous verb can close this simple recipient NP;
+		# speech/path sense tags do not change its part of speech.
+		and tokens[1].features & ~(g.SPEECH_VERB | g.PATH_MOTION) == g.VERB
+	):
+		flags = tokens[0].features
+		if (
+			flags & (g.NOUN | g.PRON)
+			and flags & (g.HUMAN | g.PRON)
+			and not flags & (g.STOP | g.DE | g.UNKNOWN | g.COORD | g.ADVERBIAL | g.COMPLEMENT)
+		):
+			if context is not None and not context.consume(len(tokens)):
+				return None
+			return g.NounPhrase(1, 0, flags, 0)
 	np = ConstituentParser(tokens, g, context).parse()
 	if np is None or not np.features & (g.HUMAN | g.PRON):
 		return None

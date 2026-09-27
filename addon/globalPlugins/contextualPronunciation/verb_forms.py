@@ -28,7 +28,17 @@ def reiterated_form(text, index):
 	No punctuation crossing or arbitrary conjunction skipping. Empty stems mark
 	an over-budget group, which callers must not reinterpret as a bare verb.
 	"""
-	if not (index + 1 < len(text) and text[index + 1] in "呀啊着著了" or index and text[index - 1] in "呀啊着著又再"):
+	if not (
+		index + 2 < len(text)
+		and text[index + 1] in "呀啊着著"
+		and text[index + 2] == text[index]
+		or index + 3 < len(text)
+		and text[index + 1] == "了"
+		and text[index + 2] in "又再"
+		and text[index + 3] == text[index]
+		or index
+		and text[index - 1] in "呀啊着著又再"
+	):
 		return None
 	stem = text[index]
 	for link in _REITERATION:
