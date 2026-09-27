@@ -143,7 +143,7 @@ class NativeSpeechChainTests(unittest.TestCase):
 			("这几行不行", "这几航不行"),
 			("写了数行之后", "写了数航之后"),
 			("这个参数行吗", "这个参数行吗"),
-			("茶几行不行", "茶几行不行"),
+			("茶几行不行", "茶击行不行"),  # 几 ji1: full dictionary is always enabled.
 			("系鞋带", "冀鞋带"),
 			("系好安全带", "冀好安全带"),
 			("量一下体温", "梁一下体温"),
@@ -152,8 +152,8 @@ class NativeSpeechChainTests(unittest.TestCase):
 			("商量尺寸", "商量尺寸"),
 			("量体裁衣", "量体裁衣"),
 			("系领结，系绳子，系红领巾", "冀领结，冀绳子，冀红领巾"),
-			("用尺子量长度，量身高", "用尺子梁长度，梁身高"),
-			("校量尺寸，估量长度", "校量尺寸，估量长度"),
+			("用尺子量长度，量身高", "用尺子梁偿度，梁身高"),  # 长 chang2 in 长度.
+			("校量尺寸，估量长度", "校量尺寸，估量偿度"),
 			("用卷尺重新量一量", "用卷尺崇新梁一梁"),
 			("系了一条领带，身高量了两次", "冀了一条领带，身高梁了两次"),
 			("盛豆角，盛红豆粥", "呈豆角，呈红豆粥"),
@@ -184,11 +184,7 @@ class NativeSpeechChainTests(unittest.TestCase):
 
 	def test_actual_crossing_default_reading_reaches_speech_manager(self):
 		settings = sys.modules[self.module.__name__ + ".settings"]
-		section = config.conf[settings.CONFIG_SECTION]
-		previous = section["extendedLexiconEnabled"]
-		self.addCleanup(section.__setitem__, "extendedLexiconEnabled", previous)
-		section["extendedLexiconEnabled"] = True
-		self.plugin._reload_configuration()
+		self.assertNotIn("extendedLexiconEnabled", settings.CONFIG_SPEC)
 		for source, expected in (
 			("降调音频", "降吊音频"),
 			("升调音频", "升吊音频"),

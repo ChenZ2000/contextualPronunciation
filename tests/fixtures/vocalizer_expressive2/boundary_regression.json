@@ -19,7 +19,7 @@
     "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
     "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
     "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
-    "addon/globalPlugins/contextualPronunciation/motion.py": "d22efdcb39e58d07ae22a9a2a037c33393a5d1af487da117e136a59b32c85c1e",
+    "addon/globalPlugins/contextualPronunciation/motion.py": "405a519f7e950b875cdd4b36f77d244a6ec9a89d8c88f8e30ad9533f6b23ab3d",
     "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
     "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
     "addon/globalPlugins/contextualPronunciation/pipeline.py": "e5f21e74ceb007c683c7ef34c0c987d7b7a5705d7d6a45ca7933ec7e7fc47e97",

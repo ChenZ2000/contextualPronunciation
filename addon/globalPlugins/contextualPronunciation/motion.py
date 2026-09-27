@@ -164,6 +164,14 @@ def _prefix(parser, text, end, context, g):
 
 def motion_reading(parser, text, index, frames, context, g):
 	"""One role analysis selects between rotation/roaming and transfer frames."""
+	if (
+		index + 3 == len(text)
+		and text[index + 1] in g._NUMBERS
+		and not text.startswith(_SUFFIXES.get(text[index + 1], ()), index + 1)
+	):
+		unit_flags = parser.lexicon.words.get(text[index + 2], 0)
+		if unit_flags & g.ACTION_MEASURE and not unit_flags & (g.ROTOR | g.TRANSFER_THEME | g.DURATION):
+			return None
 	if context is None:
 		return _motion_reading(parser, text, index, frames, context, g)
 	if index not in context.motion_readings:
@@ -207,6 +215,18 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		tail_end, tail = predicate_tail(text, end)
 	else:
 		tail_end, tail = end, ()
+	# A closed numeral + action-unit complement cannot supply the theme
+	# required by either current frame. Reject this common, unambiguous
+	# shape before constructing a prefix chart (e.g. 重转一次). Keep open
+	# continuations, lexical noun heads and durations on the full path.
+	if (
+		tail_end + 2 == len(text)
+		and text[tail_end] in g._NUMBERS
+		and not text.startswith(_SUFFIXES.get(text[tail_end], ()), tail_end)
+	):
+		unit_flags = parser.lexicon.words.get(text[tail_end + 1], 0)
+		if unit_flags & g.ACTION_MEASURE and not unit_flags & (g.ROTOR | g.TRANSFER_THEME | g.DURATION):
+			return None
 	# A lexical compound such as 转发/转身 cannot be split into a bare V.
 	# Productive phase/potential morphology and recipient 给 are analyzed
 	# before greedy lexical entries such as 转起 can block the verb boundary.

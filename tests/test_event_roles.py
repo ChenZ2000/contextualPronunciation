@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from unittest import mock
 
 from tests.core_loader import load
 
@@ -170,6 +171,26 @@ class EventRoleTests(unittest.TestCase):
 				with self.subTest(text=text):
 					proposal = self.rules.syntax.analyze(text, text.index("转"))
 					self.assertTrue(proposal is None or proposal.reading != "zhuan3")
+
+	def test_closed_action_extent_rejects_before_building_a_prefix_chart(self):
+		motion = load("motion")
+		for prefix in ("请把文件重", "风车", "我给他", "引擎"):
+			for quantity in ("一", "三", "5"):
+				for unit in ("次", "遍", "圈"):
+					text = prefix + "转" + quantity + unit
+					with (
+						self.subTest(text=text),
+						mock.patch.object(motion, "_prefix", side_effect=AssertionError("unnecessary chart")),
+					):
+						self.assertIsNone(self.rules.syntax.analyze(text, text.index("转")))
+		for text, reading in (
+			("重转一次", "chong2"),
+			("风车转了两天", "zhuan4"),
+			("转一份文件给经理", "zhuan3"),
+			("转一个螺丝", "zhuan4"),
+		):
+			index = 0 if text.startswith("重") else text.index("转")
+			self.assertEqual(reading, self.rules.resolve(text)[index].reading_id)
 
 
 if __name__ == "__main__":
