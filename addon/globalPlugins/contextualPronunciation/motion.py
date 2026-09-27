@@ -329,6 +329,17 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		deps += (g.Dependency("mark:temporal", start, right[0].start, right[0].end),)
 		right = ()
 	pre_recipient = None
+	# Closed clauses with a single path predicate or a simple locative NP
+	# have no recipient, beneficiary or overt theme attachment to resolve.
+	# Apply the same existing frame after all lexical/morphological checks.
+	if not right:
+		if len(arguments) == 1 and (arguments[0].features & g.PATH_MOTION or arguments[0].text in {"去", "来", "來"}):
+			return result("serial-motion", arguments, relation="xcomp")
+		if len(arguments) == 2 and arguments[0].text in _LOCATIVE and arguments[1].features & g.PLACE:
+			place = arguments[1:]
+			np = _noun(place, g, context)
+			if np is not None and np.features & g.PLACE:
+				return result("locative-motion", place, np)
 	# Postverbal 给 selects a recipient. The theme may precede 给 or be
 	# omitted with an overt quantity. A phase/result plus 给 NP VP is a
 	# purpose clause (转起来给大家看), not the verb's transfer recipient.

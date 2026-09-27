@@ -252,6 +252,13 @@ class SyntaxLexicon:
 		}
 
 	def longest(self, text, start, end):
+		# Short bounded constituents often occupy the entire available span.
+		# An exact hit is already the longest possible word: no candidate
+		# lengths or temporary prefixes need to be examined.
+		if end - start <= 4:
+			word = text[start:end]
+			if (features := self.words.get(word)) is not None:
+				return word, features
 		for length in self.lengths.get(text[start], ()):
 			if start + length <= end:
 				word = text[start : start + length]
