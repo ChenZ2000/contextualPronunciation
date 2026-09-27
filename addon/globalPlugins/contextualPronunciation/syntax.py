@@ -534,7 +534,7 @@ class ArgumentParser:
 			)
 		return None
 
-	def analyze(self, text: str, index: int, context=None) -> SyntaxReading | None:
+	def analyze(self, text: str, index: int, context=None, *, _verb_end=None) -> SyntaxReading | None:
 		if not 0 <= index < len(text):
 			return None
 		frames = self.buckets.get(text[index], ())
@@ -542,7 +542,14 @@ class ArgumentParser:
 			# Competing meanings share one parse; disabling one never promotes
 			# the losing meaning. No second chart for the same verb group.
 			return motion_reading(self, text, index, frames, context, _GRAMMAR)
-		if frames and frames[0].object_class in {"contents", "dimension", "fastener"}:
+		if (
+			_verb_end is None
+			and frames
+			and frames[0].object_class in {"contents", "dimension", "fastener"}
+			and (
+				index + 1 < len(text) and text[index + 1] in "呀啊着著了" or index and text[index - 1] in "呀啊着著又再"
+			)
+		):
 			group = reiterated_form(text, index)
 			if group is not None:
 				start, end, stems = group
@@ -556,7 +563,7 @@ class ArgumentParser:
 				if context is not None and index in context.motion_readings:
 					parsed = context.motion_readings[index]
 				else:
-					parsed = self._analyze_single(text, start, context, end)
+					parsed = self.analyze(text, start, context, _verb_end=end)
 					if parsed is not None:
 						parsed = replace(
 							parsed,
@@ -567,11 +574,7 @@ class ArgumentParser:
 						for stem in stems:
 							context.motion_readings[stem] = parsed
 				return replace(parsed, target=index) if parsed is not None else None
-		return self._analyze_single(text, index, context)
-
-	def _analyze_single(self, text, index, context, verb_end=None):
-		frames = self.buckets.get(text[index], ())
-		verb_end = index + 1 if verb_end is None else verb_end
+		verb_end = index + 1 if _verb_end is None else _verb_end
 		matches = []
 		for frame in frames:
 			if frame.object_class in {"edgeNoun", "coordinatingPredicate"}:

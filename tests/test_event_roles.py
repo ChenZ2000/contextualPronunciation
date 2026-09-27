@@ -192,6 +192,22 @@ class EventRoleTests(unittest.TestCase):
 			index = 0 if text.startswith("重") else text.index("转")
 			self.assertEqual(reading, self.rules.resolve(text)[index].reading_id)
 
+	def test_lexical_motion_compounds_skip_morphology_without_blocking_groups(self):
+		motion = load("motion")
+		for text in ("请重转码", "把文件转交经理", "他转身离开", "风车转速很快"):
+			with (
+				self.subTest(text=text),
+				mock.patch.object(motion, "predicate_form", side_effect=AssertionError("lexical compound")),
+			):
+				self.assertIsNone(self.rules.syntax.analyze(text, text.index("转")))
+		for text in ("转一转车轮", "转呀转车轮", "让风车转起来", "把风车转给经理"):
+			context = self.rules.syntax.context(text)
+			reading = "zhuan3" if "给经理" in text else "zhuan4"
+			for index, char in enumerate(text):
+				if char == "转":
+					with self.subTest(text=text, index=index):
+						self.assertEqual(reading, self.rules.syntax.analyze(text, index, context).reading)
+
 
 if __name__ == "__main__":
 	unittest.main()

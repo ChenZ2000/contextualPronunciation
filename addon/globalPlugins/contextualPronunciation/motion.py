@@ -164,6 +164,17 @@ def _prefix(parser, text, end, context, g):
 
 def motion_reading(parser, text, index, frames, context, g):
 	"""One role analysis selects between rotation/roaming and transfer frames."""
+	# Ordinary lexical compounds never enter the bare-verb grammar. Only
+	# take this shortcut when neither neighbor can extend a productive
+	# group/complement; a final stem may share a preceding group's analysis.
+	if (
+		index + 1 < len(text)
+		and text[index + 1] not in "转轉一了呀啊着著起下出进進回动動得不过過给給"
+		and (not index or text[index - 1] not in "转轉一了呀啊着著又再")
+	):
+		word, _flags = parser.lexicon.longest(text, index, min(len(text), index + 16))
+		if len(word) > 1:
+			return None
 	if (
 		index + 3 == len(text)
 		and text[index + 1] in g._NUMBERS
