@@ -60,6 +60,9 @@ jobs:
             artifacts/hosted-performance-comparison.json
             artifacts/baseline-performance.json
             artifacts/baseline-grammar-performance.json
+            artifacts/paired-current-performance.json
+            artifacts/paired-current-grammar-performance.json
+            artifacts/hosted-performance-samples/*.json
             artifacts/hosted-baseline-benchmark.log
             data/dictionary-sources.json
             vendor/nvda-${{ matrix.nvda }}/testOutput/unit/unitTests.xml

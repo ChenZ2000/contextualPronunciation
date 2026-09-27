@@ -14,6 +14,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts.sample_hosted_performance import PROCESS_ROUNDS, aggregate, pin_process  # noqa: E402
+
 BASELINE = "82bdb20ae72a849f9cefac6073a1111d82bc52fc"
 BASE = ROOT / "vendor/performance-baseline"
 RATIO = 1.30
@@ -43,7 +47,15 @@ def compare(current: dict, baseline: dict, metric: str) -> list[dict]:
 		value, reference = row[metric], baseline[name][metric]
 		if not all(isinstance(v, (int, float)) and math.isfinite(v) and v > 0 for v in (value, reference)):
 			raise ValueError(f"Invalid timing: {name}")
-		for field in ("inputCodePoints", "codepoints", "samples", "iterationsPerRound", "rounds"):
+		for field in (
+			"inputCodePoints",
+			"codepoints",
+			"samples",
+			"iterationsPerRound",
+			"rounds",
+			"processRounds",
+			"totalTimedCalls",
+		):
 			if row.get(field) != baseline[name].get(field):
 				raise ValueError(f"Different benchmark inputs/sampling: {name}/{field}")
 		limit = max(reference * RATIO, reference + NOISE_FLOOR_US)
@@ -122,36 +134,53 @@ def main() -> None:
 	artifacts = ROOT / "artifacts"
 	base_hot = artifacts / "baseline-performance.json"
 	base_grammar = artifacts / "baseline-grammar-performance.json"
+	affinity = pin_process()
+	samples = artifacts / "hosted-performance-samples"
+	samples.mkdir(exist_ok=True)
+	collected = {(kind, label): [] for kind in ("hot_path", "grammar") for label in ("current", "baseline")}
+	order = []
 	with (artifacts / "hosted-baseline-benchmark.log").open("w", encoding="utf-8") as log:
-		for command in (
-			[
-				sys.executable,
-				"tools/benchmark_hot_path.py",
-				"--short-iterations",
-				"10000",
-				"--long-iterations",
-				"20",
-				"--rounds",
-				"7",
-				"--output",
-				str(base_hot),
-			],
-			[sys.executable, "tools/benchmark_grammar.py", "--output", str(base_grammar)],
-		):
-			subprocess.run(
-				command,
-				cwd=BASE,
-				env=dict(os.environ, PYTHONHASHSEED="0"),
-				check=True,
-				stdout=log,
-				stderr=subprocess.STDOUT,
-			)
-
-	def read(path):
-		return json.loads(path.read_text("utf-8"))
-
-	current_hot, baseline_hot = read(artifacts / "performance-report.json"), read(base_hot)
-	current_grammar, baseline_grammar = read(artifacts / "grammar-performance.json"), read(base_grammar)
+		for round_index in range(PROCESS_ROUNDS):
+			for kind_index, kind in enumerate(("hot_path", "grammar")):
+				labels = ("current", "baseline") if (round_index + kind_index) % 2 == 0 else ("baseline", "current")
+				for label in labels:
+					checkout = ROOT if label == "current" else BASE
+					output = samples / f"{round_index + 1}-{kind}-{label}.json"
+					print(f"Paired sampling {round_index + 1}/{PROCESS_ROUNDS}: {kind}/{label}", flush=True)
+					subprocess.run(
+						[
+							sys.executable,
+							str(ROOT / "scripts/sample_hosted_performance.py"),
+							"--checkout",
+							str(checkout),
+							"--kind",
+							kind,
+							"--output",
+							str(output),
+						],
+						cwd=checkout,
+						env=dict(os.environ, PYTHONHASHSEED="0"),
+						check=True,
+						stdout=log,
+						stderr=subprocess.STDOUT,
+					)
+					sample = json.loads(output.read_text("utf-8"))
+					for key in ("selectedMask", "selectedCpu"):
+						if sample["measurementAffinity"].get(key) != affinity.get(key):
+							raise ValueError("Benchmark child used a different processor")
+					collected[kind, label].append(sample)
+					order.append(output.relative_to(ROOT).as_posix())
+	current_hot = aggregate(collected["hot_path", "current"], "hot_path")
+	baseline_hot = aggregate(collected["hot_path", "baseline"], "hot_path")
+	current_grammar = aggregate(collected["grammar", "current"], "grammar")
+	baseline_grammar = aggregate(collected["grammar", "baseline"], "grammar")
+	for path, data in (
+		(artifacts / "paired-current-performance.json", current_hot),
+		(artifacts / "paired-current-grammar-performance.json", current_grammar),
+		(base_hot, baseline_hot),
+		(base_grammar, baseline_grammar),
+	):
+		path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", "utf-8")
 	rows, aliases = compare_hot_path(current_hot["measurements"], baseline_hot["measurements"])
 	for mode in ("default", "extended"):
 		for row in compare(
@@ -164,7 +193,12 @@ def main() -> None:
 		"noiseFloorUs": NOISE_FLOOR_US,
 		"baselineModeAliases": aliases,
 		"newMotionEnvelopeMultiplier": 2,
-		"scope": "Same-runner relative regression gate; raw absolute timings are retained separately",
+		"scope": (
+			"Same-core alternating five-process median comparison; original timed-call totals and thresholds retained"
+		),
+		"affinity": affinity,
+		"processRounds": PROCESS_ROUNDS,
+		"sampleOrder": order,
 		"passed": all(row["passed"] for row in rows),
 		"comparisons": rows,
 	}
