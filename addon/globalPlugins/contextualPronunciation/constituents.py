@@ -71,7 +71,13 @@ class ConstituentParser:
 					end = i
 					break
 				return None
-			if head is None and f & g.CLASSIFIER and i > start and tokens[i - 1].features & (g.NUMBER | g.DET):
+			if (
+				head is None
+				and f & g.CLASSIFIER
+				and not f & g.NOUN
+				and i > start
+				and tokens[i - 1].features & (g.NUMBER | g.DET)
+			):
 				continue
 			if f & (g.NOUN | g.PRON):
 				if head is not None:
@@ -105,6 +111,15 @@ class ConstituentParser:
 		while i < end and tokens[i].features & g.ADJ and not tokens[i].features & g.CLASSIFIER:
 			i += 1
 		if i < end and tokens[i].features & g.CLASSIFIER:
+			# 钱 is both a historical weight classifier and a money noun.
+			# At an NP boundary, Num/indefinite-quantity + noun must retain
+			# that nominal analysis; container ellipsis has its own license.
+			if (
+				tokens[i].features & g.NOUN
+				and not tokens[i].features & g.CONTAINER_MEASURE
+				and (i + 1 == end or tokens[i + 1].features & (g.STOP | g.PREP | g.COORD))
+			):
+				return None
 			return i + 1, i
 		return None
 

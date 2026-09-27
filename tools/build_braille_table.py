@@ -115,7 +115,13 @@ def generate(*, compact=True) -> tuple[bytes, dict]:
 	rules = load("rules").CompiledRules.from_json_file(PLUGIN_PATH / "data/rules_zh_CN.json")
 	entries, excluded = {}, []
 	for rule in {item for bucket in rules._buckets.values() for item in bucket}:
-		if rule.confidence != "high" or rule.left_boundary or rule.right_boundary or not _han(rule.phrase):
+		if (
+			rule.confidence != "high"
+			or rule.left_boundary
+			or rule.right_boundary
+			or not _han(rule.phrase)
+			or (not rule.protect and rule.reading_id not in DOTS)
+		):
 			excluded.append((rule.id, rule.phrase))
 			continue
 		key = (rule.phrase, rule.pivot)
@@ -205,7 +211,7 @@ def generate(*, compact=True) -> tuple[bytes, dict]:
 		"notCompiled": [
 			"structural number rules",
 			"user configuration",
-			"extended CC-CEDICT matching",
+			"dictionary matching and speech-only readings without reviewed braille cells",
 			"full word segmentation",
 			"full GF 0019-2018 translation",
 		],

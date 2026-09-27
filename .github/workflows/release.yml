@@ -73,5 +73,5 @@ jobs:
       - name: Show Store submission fields
         shell: pwsh
         run: |
-          'Use the official [Add-on Store registration form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml) with these fields. Store submission and approval are separate from this release.' >> $env:GITHUB_STEP_SUMMARY
+          'Store updates are on hold until the first submission is approved. The fields below are for later maintainer review; this workflow does not submit to the Store. See the repository release guide before taking a separate submission action.' >> $env:GITHUB_STEP_SUMMARY
           Get-Content -LiteralPath dist/store-submission.md >> $env:GITHUB_STEP_SUMMARY

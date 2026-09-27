@@ -1,4 +1,4 @@
-# Development and architecture
+# Development
 
 ## Requirements and first build
 
@@ -19,24 +19,42 @@ The preparation scripts fetch and verify pinned development sources. The ordinar
 
 `python scripts/build_addon.py` produces an installable archive without compiling native code or requiring SCons. It preserves the standard NVDA archive layout and template-compatible `buildVars.py` metadata, uses a single root `manifest.ini`, stable ZIP timestamps and deterministic file ordering. `python scripts/build_source_archive.py` includes the code, generators, licensed source data, tests and community documents. It excludes vendor trees, recordings and private diagnostics. This custom packager is intentional; the NVDA Store validates the archive and manifest rather than requiring a particular build system.
 
+## Workspace maintenance
+
+| Directory | Maintained content | Published |
+|---|---|---|
+| `addon/` | Runtime, compiled data, translations and generated user help | Yes |
+| `data/`, `data/sources/` | Reviewed data, licensed pinned inputs and reproducible summaries | Source bundle |
+| `tools/`, `scripts/`, `tests/` | Generators, diagnostics, workflows and regression fixtures | Source bundle |
+| `docs/` | Current guides; `docs/releases/` contains published-version notes | Source bundle |
+| `artifacts/`, `dist/` | Current reports and built packages | Ignored build output |
+| `vendor/` | Reproducible external dependencies | Ignored |
+| `local/` | Personal notes, previous runs and development-session archives | Ignored |
+
+Keep only stable entry points and project metadata at the root. Local AI instructions are ignored and excluded from packages. Public build and test scripts must work without them. Directory maintenance and contributor requirements belong in this guide. Do not add private text, voice files or credentials to fixtures.
+
+Preview cache cleanup with `pwsh -File scripts/clean_workspace.ps1 -WhatIf`. Omit `-WhatIf` to run it. Add `-ArchiveOutputs` to move current reports and packages into a timestamped local archive before starting fresh. The script records its actions and uses an atomic directory move that does not traverse links. Builds must not depend on the archive.
+
 ## Runtime
 
 `addon/globalPlugins/contextualPronunciation/` contains the global plugin and pure-Python engine:
 
 1. `__init__.py` registers public speech, queue, profile and settings events and unregisters them on termination.
 2. `pipeline.py` preserves speech commands and character mode, analyzes string items and commits successful normalization results. The queue guard acts after native dictionaries/symbols on residual reviewed target characters.
-3. `rules.py` combines user preservation, reviewed phrases, structural evidence and the optional lexicon into decisions at original offsets before rendering temporary homophones.
-4. `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py` and `edges.py` provide lexical boundaries and bounded structural analysis. Static POS alternatives are evidence, not an infallible contextual POS classifier.
+3. `rules.py` combines user preservation, reviewed phrases, structural evidence and the always-enabled lexicon into decisions at original offsets before rendering temporary homophones.
+4. `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py` and `motion.py` provide lexical boundaries and bounded structural analysis. `verb_forms.py` and `argument_roles.py` expose shared complement, recipient and quantity productions. Static POS alternatives are evidence, not an infallible contextual POS classifier. See [event roles and sense selection](ARCHITECTURE.md) for competing transfer/rotation frames.
 5. `braille_readings.py` exposes original-character annotations. The optional installed static Liblouis table is separate and does not dynamically execute the speech parser.
 
 Runtime data is loaded from packaged JSON/TOML. Templates are bounded and cannot execute arbitrary Python or regular expressions. Speech-time processing does not fetch data, query SQLite or retain previous utterances.
+
+The local performance gate includes short motion predicates and dense 8K motion input with the same 200 µs / 30 ms budgets used for comparable existing scenarios. Hosted CI keeps the fixed baseline for existing workloads. Retired `defaultPlugin` settings cases compare against that baseline's dictionary-enabled plugin cases; new motion scenarios use a separately reported envelope of twice the slowest baseline short-plugin or long-page scenario on that runner. Unknown or missing scenario names fail the schema check. These are batch timing gates, not end-to-end speech latency promises.
 
 ## Choose where to make a change
 
 | Change | Main entry points | Validation |
 |---|---|---|
 | Reviewed phrase or grammatical context | `data/contributions.toml` and `data/syntax_frames.toml` inside the plugin | Add reading and preservation cases, run contribution checks and the grammar evaluator |
-| Segmentation or sentence analysis | `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py` | Unit and grammar tests, native integration, performance and applicable acoustic checks |
+| Segmentation or sentence analysis | `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py`, `motion.py`, `verb_forms.py`, `argument_roles.py` | Unit and grammar tests, native integration, performance and applicable acoustic checks |
 | Dictionary snapshot or lexical features | Root `data/sources/` and the corresponding generator under `tools/` | Review the source/license, regenerate outputs and run the affected `--check` commands |
 | Settings or NVDA integration | `settings.py`, `__init__.py`, `pipeline.py`, `lifecycle.py` | Settings/profile, command-preservation and native integration tests |
 | UI translation or installed help | `addon/locale/` and `addon/doc/` | Compile changed translation catalogs; check links and package contents |
@@ -97,4 +115,14 @@ When changing runtime rules, regenerate `tools/generate_final_renderer_fixture.p
 
 The English project overview is `README.md`; its Chinese counterpart is `docs/README-zh_CN.md`. Detailed user instructions are `docs/README-en.md` and `docs/USAGE-zh_CN.md`. Keep their features, settings, examples and compatibility information aligned. Source provenance belongs in `docs/REFERENCES.md`, development procedures here, and release steps in `docs/RELEASING.md`.
 
-Add new current guides to `CURRENT_DOCS` in `scripts/check_repository.py` so CI checks their relative links. Update `docs/INDEX.md` to make them discoverable. Versioned research notes remain historical evidence; their `artifacts/` references describe local output. Installed help uses semantic HTML with headings and language tags. Check links in both Markdown and HTML when either form changes.
+Add new current guides to `CURRENT_DOCS` in `scripts/check_repository.py` so CI checks their relative links. Update `docs/INDEX.md` to make them discoverable. Keep development-session reports and machine-specific measurements under ignored `local/` or `artifacts/`. Consolidate durable design decisions into `ARCHITECTURE.md` and rule/API contracts into `RULES.md`. Published changes belong in `CHANGELOG.md` and `docs/releases/`.
+
+The installed English and Chinese help is generated from the corresponding user guide; edit Markdown first, then regenerate semantic HTML:
+
+```powershell
+uv run --no-project --with markdown==3.10.2 python tools/build_user_help.py
+uv run --no-project --with markdown==3.10.2 python tools/build_user_help.py --check
+python scripts/check_repository.py
+```
+
+CI checks generated help, links and publication exclusions. The package builder uses the checked-in HTML and does not need Markdown or network access.

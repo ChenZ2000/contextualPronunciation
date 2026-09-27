@@ -106,7 +106,7 @@ PROTECTIONS = (
 	"重可以",
 	"重读",
 	"重载",
-	"重装",
+	"重装步兵",
 	"重。转",
 	"重\n转",
 	"重😀转",
@@ -128,6 +128,20 @@ WRONG_HEADS = (
 )
 
 CASES = (
+	("重装", "重", "chong2"),
+	("重裝", "重", "chong2"),
+	("需要重装插件吗", "重", "chong2"),
+	("螺丝会转", "转", "zhuan4"),
+	("螺丝刀转起来", "转", "zhuan4"),
+	("引擎会转", "转", "zhuan4"),
+	("发电机会转", "转", "zhuan4"),
+	("电机会转", "转", "zhuan4"),
+	("转呀转", "转", "zhuan4"),
+	("机器转着转着停了", "转", "zhuan4"),
+	("车轮转了又转", "转", "zhuan4"),
+	("盛呀盛红豆粥", "盛", "cheng2"),
+	("量呀量身高", "量", "liang2"),
+	("系呀系鞋带", "系", "ji4"),
 	*((s, "重", "chong2") for s in REPEAT),
 	*STRUCTURES,
 	*((s, "重", None) for s in PROTECTIONS),
@@ -318,3 +332,42 @@ CASES = tuple(dict.fromkeys((*CASES, *CONTINUATION_CASES)))
 from tests.resegmentation_cases import CASES as RESEGMENTATION_CASES  # noqa: E402
 
 CASES = tuple(dict.fromkeys((*CASES, *RESEGMENTATION_CASES)))
+
+EVENT_CASES = (
+	*(
+		(text, "转", "zhuan4")
+		for text in (
+			"让风车转起来",
+			"风车会转",
+			"汽轮机会转",
+			"发动机转起来了",
+			"轴承能转起来吗",
+			"发动机转起来给大家看",
+			"螺旋桨不会转起来",
+			"给我转一转车轮",
+			"邮件旁边的风车能转起来吗",
+		)
+	),
+	*(
+		(text, "转", "zhuan3")
+		for text in (
+			"邮件能转给经理吗",
+			"附件能给他转吗",
+			"钱给他转了吗",
+			"我转了好多给客户",
+			"我给他转了好多钱",
+			"把风车转给经理",
+			"风车旁边的邮件能给他转吗",
+		)
+	),
+	*(
+		(text, "转", None)
+		for text in (
+			"汽轮机厂会转",
+			"轴承包装箱能转起来吗",
+			"我转了好多给客户的风车",
+			"车轮向左转起来",
+		)
+	),
+)
+CASES = tuple(dict.fromkeys((*CASES, *EVENT_CASES)))

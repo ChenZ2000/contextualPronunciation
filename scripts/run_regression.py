@@ -118,6 +118,19 @@ def main() -> int:
 		targets = ["addon", "tests", "tools", "scripts", "buildVars.py"]
 		stage("lint", [*ruff, "check", *targets])
 		stage("format", [*ruff, "format", "--check", *targets])
+		stage(
+			"user-help",
+			[
+				"uv",
+				"run",
+				"--no-project",
+				"--with",
+				"markdown==3.10.2",
+				"python",
+				"tools/build_user_help.py",
+				"--check",
+			],
+		)
 		stage("workflow-tool", [py, "scripts/prepare_actionlint.py"])
 		stage("workflow-lint", [str(ACTIONLINT), *[str(p) for p in sorted((ROOT / ".github/workflows").glob("*.yml"))]])
 		stage("addon-tests", [py, "scripts/run_tests.py"])

@@ -1,0 +1,28 @@
+# Build-time sense projections, not sentence rules. CC-CEDICT nominal heads
+# license affordance candidates; runtime argument attachment selects the sense.
+schemaVersion = 1
+source = "CC-CEDICT record IDs in dictionary-records.jsonl.gz; MOE 螺絲起子 https://dict.revised.moe.edu.tw/dictView.jsp?ID=66368"
+# Parenthetic sense labels are retained: a screwdriver cocktail is not a tool.
+excludedLabels = ['cocktail', 'figurative', 'fig\.', 'slang', 'computing', 'software']
+
+[[families]]
+id = "rotary-power"
+modifiers = ['steam', 'gas', 'wind', 'water', 'hydraulic', 'electric', 'electrical', 'internal combustion', 'diesel', 'jet', 'aircraft', 'turbine', 'centrifugal', 'rotating', 'spinning', 'small', 'large', 'mechanical']
+heads = ['turbine', 'windmill', 'pinwheel', 'rotor', 'impeller', 'propeller', 'wheel', 'flywheel', 'gyroscope', 'centrifuge', 'engine', 'motor', 'electric fan', 'spinning top', 'gear', 'pinion', 'electricity generator', 'electric generator', 'dynamo', 'alternator']
+
+[[families]]
+id = "threaded-fastener"
+modifiers = ['hexagon', 'socket', 'head', 'cap', 'wood', 'metal', 'machine', 'self-tapping', 'countersunk', 'countersunk head']
+heads = ['screw', 'bolt', 'nut']
+# Bare nut is a food sense. The dictionary must identify the physical part.
+requires = { nut = 'component of nut and bolt' }
+
+[[families]]
+id = "rotary-tool"
+modifiers = ['Phillips', 'flat', 'flathead', 'cross-head', 'open', 'open end', 'socket', 'adjustable', 'pipe', 'monkey', 'hand', 'electric', 'power']
+heads = ['screwdriver', 'spanner', 'wrench', 'auger', 'gimlet', 'drill bit', 'drill chuck', 'electric drill', 'hand drill']
+
+[[families]]
+id = "rotating-part-control"
+modifiers = ['guide', 'hand', 'thread', 'fishing', 'record', 'rotary', 'rotating', 'weaving']
+heads = ['knob', 'doorknob', 'crank handle', 'hand crank', 'crankshaft', 'spindle', 'pulley', 'turntable', 'swivel chair', 'swivel table', 'spool', 'fishing reel', 'windlass']

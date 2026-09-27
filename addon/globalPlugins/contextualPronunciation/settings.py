@@ -19,7 +19,6 @@ CONFIG_SECTION = "contextualPronunciation"
 CONFIG_SPEC = {
 	"enabled": "boolean(default=True)",
 	"chinesePolyphonesEnabled": "boolean(default=True)",
-	"extendedLexiconEnabled": "boolean(default=False)",
 	"normalizeApostrophes": "boolean(default=True)",
 	"strictMode": "boolean(default=True)",
 	"customEntries": "string(default='')",
@@ -50,7 +49,6 @@ def get_runtime_options() -> RuntimeOptions:
 	return RuntimeOptions(
 		enabled=bool(section["enabled"]),
 		chinese_polyphones_enabled=bool(section["chinesePolyphonesEnabled"]),
-		extended_lexicon_enabled=bool(section["extendedLexiconEnabled"]),
 		normalize_apostrophes=bool(section["normalizeApostrophes"]),
 		strict_mode=bool(section["strictMode"]),
 		custom_entries=str(section["customEntries"]),
@@ -77,10 +75,6 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 		# Translators: Enables context-aware Chinese polyphone rules.
 		self.chinese_checkbox = helper.addItem(wx.CheckBox(self, label=_("Correct supported Chinese polyphones")))
 		self.chinese_checkbox.SetValue(section["chinesePolyphonesEnabled"])
-		self.lexicon_checkbox = helper.addItem(
-			wx.CheckBox(self, label=_("Use extended phrase lexicon (experimental; may introduce wrong readings)")),
-		)
-		self.lexicon_checkbox.SetValue(section["extendedLexiconEnabled"])
 
 		# Translators: No engine, voice or language-tag whitelist is consulted.
 		helper.addItem(
@@ -151,7 +145,6 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 			load_default_rules(
 				custom_entries=self.custom_entries_edit.GetValue(),
 				disabled_rules=self.disabled_rules_edit.GetValue(),
-				extended=self.lexicon_checkbox.GetValue(),
 				custom_templates=self.custom_templates_edit.GetValue(),
 			)
 		except (RuleDataError, ValueError) as error:
@@ -163,7 +156,6 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 		section = config.conf[CONFIG_SECTION]
 		section["enabled"] = self.enable_checkbox.GetValue()
 		section["chinesePolyphonesEnabled"] = self.chinese_checkbox.GetValue()
-		section["extendedLexiconEnabled"] = self.lexicon_checkbox.GetValue()
 		section["normalizeApostrophes"] = self.apostrophe_checkbox.GetValue()
 		section["strictMode"] = self.strict_checkbox.GetValue()
 		section["customEntries"] = self.custom_entries_edit.GetValue()

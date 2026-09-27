@@ -18,7 +18,6 @@ from .rules import CompiledRules
 class RuntimeOptions:
 	enabled: bool = True
 	chinese_polyphones_enabled: bool = True
-	extended_lexicon_enabled: bool = False
 	normalize_apostrophes: bool = True
 	strict_mode: bool = True
 	custom_entries: str = ""

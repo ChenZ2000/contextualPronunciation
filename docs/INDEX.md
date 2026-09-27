@@ -1,31 +1,25 @@
-# Documentation index / 文档索引
+# Documentation / 文档导航
 
-## Current guides
+## Users / 用户
 
-- [Project overview: features, installation and maintenance](../README.md)
-- [中文项目主页：功能、安装与维护](README-zh_CN.md)
-- [English user guide](README-en.md)
-- [中文使用指南：设置、自定义规则与问题排查](USAGE-zh_CN.md)
-- [Development and architecture](DEVELOPMENT.md)
-- [Releases and Store submission](RELEASING.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Security policy](../SECURITY.md)
-- [Changelog](../CHANGELOG.md)
-- [Third-party licenses and data attribution](../addon/THIRD-PARTY-NOTICES.txt)
-- [Sources and references / 资料来源与参考](REFERENCES.md)
+| 内容 | English | 简体中文 |
+|---|---|---|
+| Features, installation and downloads / 功能、安装与下载 | [Project overview](../README.md) | [项目主页](README-zh_CN.md) |
+| Settings, personal rules and troubleshooting / 设置、自定义规则与排查 | [User guide](README-en.md) | [使用指南](USAGE-zh_CN.md) |
 
-## Find the right guide / 按任务查阅
+Installed NVDA help contains the same current user guides. Published changes are in [CHANGELOG.md](../CHANGELOG.md) and [versioned release notes](releases/).
 
-| Task / 任务 | Guide / 入口 |
+## Contributors / 贡献者
+
+| Document | Scope |
 |---|---|
-| Install and start reading / 安装并开始使用 | [English](../README.md#install-and-use) · [中文](README-zh_CN.md#安装与使用) |
-| Adjust settings or fix a local reading / 调整设置或添加个人规则 | [English](README-en.md) · [中文](USAGE-zh_CN.md) |
-| Change code, rules or translations / 修改代码、规则或翻译 | [Contributing](../CONTRIBUTING.md) · [Development](DEVELOPMENT.md) · [规则贡献](贡献规则与盲文接口.md) |
-| Trace dictionary data / 追溯词典资料 | [English](REFERENCES.md#english) · [中文](REFERENCES.md#简体中文) |
-| Build and publish a version / 构建和发布版本 | [Releasing](RELEASING.md) |
+| [Contributing](../CONTRIBUTING.md) | Reports, pull requests, translations and contribution expectations |
+| [Development](DEVELOPMENT.md) | Setup, repository layout, generators, tests and performance policy |
+| [Architecture](ARCHITECTURE.md) | Lexical evidence, grammar, reading selection and limits |
+| [Rules and annotation API](RULES.md) | Formats, source review, original offsets and braille integration |
+| [Sources and references](REFERENCES.md) | Pinned datasets, linguistic references and licenses |
+| [Release process](RELEASING.md) | GitHub publication, immutable assets and separate Store submission |
 
-## Historical implementation notes
+[Code of conduct](../CODE_OF_CONDUCT.md) · [Security](../SECURITY.md) · [Third-party notices](../addon/THIRD-PARTY-NOTICES.txt)
 
-Version-prefixed `0.x.y-*.md` files, the earlier development/acceptance records, pronunciation backlog and Ting-Ting probe report describe the named development version or experiment. Old engine-specific settings and compatibility statements may have been superseded. Their `artifacts/` paths refer to local diagnostic output, not missing files required for a source build. Use the current guides above for installation, configuration, CI and release steps.
-
-The 0.7.3 edge/queue implementation remains the pronunciation runtime for the initial 0.7.4 public release. The public release changes metadata, packaging automation and community documentation.
+Keep current instructions here. Development-session reports and machine-specific measurements belong in ignored local output directories. Historical code and published versions remain available in Git history and GitHub Releases.

@@ -89,6 +89,24 @@ _ROW_QUANTITY_PREFIXES: Final = (
 )
 _INLINE_SPACES: Final = frozenset(" \t\u00a0\u3000")
 _MAX_PHRASE_LENGTH: Final = 64
+_TRAVEL_UNITS: Final = (
+	"个小时",
+	"個小時",
+	"小时",
+	"小時",
+	"分钟",
+	"分鐘",
+	"星期",
+	"个月",
+	"個月",
+	"週",
+	"周",
+	"天",
+	"日",
+	"月",
+	"年",
+)
+_TRAVEL_QUANTITY_CHARS: Final = _CHINESE_NUMERALS | frozenset("兩倆萬億几幾半多少好若干数數很余餘")
 
 
 class RuleDataError(ValueError):
@@ -366,6 +384,11 @@ class CompiledRules:
 						)
 						if speech_only and not speech:
 							continue
+						if self.syntax is not None and self.syntax.contextual_form(span.text):
+							decisions[span.start + offset] = ReadingDecision(
+								None, protect=True, speech=False, rule_id=span.source + ":" + span.text, contextual=True
+							)
+							continue
 						decisions[span.start + offset] = ReadingDecision(
 							reading,
 							speech=speech,
@@ -408,8 +431,10 @@ class CompiledRules:
 				if syntax_context is None:
 					syntax_context = self.syntax.context(text)
 				if (parsed := self.syntax.analyze(text, index, syntax_context)) is not None:
-					decisions[index] = ReadingDecision(parsed.reading, rule_id=parsed.rule_id)
-		return decisions
+					decisions[index] = ReadingDecision(
+						parsed.reading, speech=not parsed.preserve, rule_id=parsed.rule_id
+					)
+		return {index: value for index, value in decisions.items() if value.speech} if speech_only else decisions
 
 	def _phrase_decision(self, text: str, index: int, target: str, *, strict: bool) -> ReadingDecision | None:
 		left = text[index - 1] if index else None
@@ -637,6 +662,72 @@ def _serving_quantity(text: str, index: int) -> str | None:
 	return None
 
 
+def _travel_assignment(text: str, index: int) -> str | None:
+	"""出 + bounded duration/quantity + (的) + 差 is one travel predicate."""
+	if text.startswith(
+		(
+			"差错",
+			"差錯",
+			"差额",
+			"差額",
+			"差距",
+			"差异",
+			"差異",
+			"差别",
+			"差別",
+			"差价",
+			"差價",
+			"差点",
+			"差點",
+			"差评",
+			"差評",
+			"差不多",
+		),
+		index,
+	):
+		return None
+	end = index - (1 if index and text[index - 1] == "的" else 0)
+	if end <= 0:
+		return None
+	for unit in (*_TRAVEL_UNITS, "个", "個"):
+		if not text.endswith(unit, 0, end):
+			continue
+		quantity_end = end - len(unit)
+		if unit in ("个", "個") and text[max(0, quantity_end - 2) : quantity_end].endswith(("出", "出了")):
+			return "chai1"
+		quantity_start = quantity_end
+		while (
+			quantity_start > 0
+			and quantity_end - quantity_start < 12
+			and (text[quantity_start - 1].isdigit() or text[quantity_start - 1] in _TRAVEL_QUANTITY_CHARS)
+		):
+			quantity_start -= 1
+		if (
+			quantity_start == quantity_end
+			or quantity_start > 0
+			and (text[quantity_start - 1].isdigit() or text[quantity_start - 1] in _TRAVEL_QUANTITY_CHARS)
+		):
+			continue
+		prefix = text[max(0, quantity_start - 3) : quantity_start]
+		if prefix.endswith(("出了", "出過", "出过", "出")):
+			return "chai1"
+	return None
+
+
+def _night_count(text: str, index: int) -> str | None:
+	"""Counted nights: 住了三宿 / 熬了几宿; protect astronomical compounds."""
+	if text.startswith(("宿舍", "宿星", "宿度"), index) or text[max(0, index - 3) : index] == "二十八":
+		return None
+	start = _number_start_left(text, index - 1, maximum=8)
+	if start is None:
+		return None
+	if start == 0 or text[max(0, start - 3) : start].endswith(
+		("住", "住了", "住过", "住過", "睡", "睡了", "熬", "熬了", "两", "兩")
+	):
+		return "xiu3"
+	return None
+
+
 _STRUCTURAL_HANDLERS: Final = {
 	"rowOrdinal": _row_ordinal,
 	"rowColumnCount": _row_column_count,
@@ -645,6 +736,8 @@ _STRUCTURAL_HANDLERS: Final = {
 	"rankOrder": _rank_order,
 	"rowLabel": _row_label,
 	"servingQuantity": _serving_quantity,
+	"travelAssignment": _travel_assignment,
+	"nightCount": _night_count,
 }
 _STRUCTURAL_REQUIREMENTS: Final = {
 	"rowOrdinal": ("行", "hang2"),
@@ -654,6 +747,8 @@ _STRUCTURAL_REQUIREMENTS: Final = {
 	"rankOrder": ("行", "hang2"),
 	"rowLabel": ("行", "hang2"),
 	"servingQuantity": ("盛", "cheng2"),
+	"travelAssignment": ("差", "chai1"),
+	"nightCount": ("宿", "xiu3"),
 }
 
 

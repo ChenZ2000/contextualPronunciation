@@ -34,7 +34,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			rules = load_default_rules(
 				custom_entries=self._options.custom_entries,
 				disabled_rules=self._options.disabled_rules,
-				extended=self._options.extended_lexicon_enabled,
 				custom_templates=self._options.custom_templates,
 			)
 		except Exception:
@@ -80,7 +79,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			rules = load_default_rules(
 				custom_entries=options.custom_entries,
 				disabled_rules=options.disabled_rules,
-				extended=options.extended_lexicon_enabled,
 				custom_templates=options.custom_templates,
 			)
 		except Exception:

@@ -3,41 +3,44 @@
   "purpose": "当前规则引擎输出到 Vocalizer Expressive 2.2 的最终完整音素流回归",
   "generatedFrom": {
     "runtimeSha256": {
-      "addon/globalPlugins/contextualPronunciation/__init__.py": "0111a10907996b08a04918c92467ff39a60cd1d60982df8bbeb458706c921de3",
+      "addon/globalPlugins/contextualPronunciation/__init__.py": "f8e3c92cafa99e48c1ddc753b90569aa5ca38fbfab5b622d60789404259df383",
       "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
+      "addon/globalPlugins/contextualPronunciation/argument_roles.py": "a43f83087c1a43cba4f909cc8df8ed95088c8be13acd5974c5a7b08ffc0e8997",
       "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
-      "addon/globalPlugins/contextualPronunciation/constituents.py": "f0a788cb987c524a6c8fe45ad839fe92b79991e35d4a670c98953461c83e5a79",
+      "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
       "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
       "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "17f5da785faf8489021d6c312ecb6fc64fbd56a8f9e6328da9701ff3399bd727",
-      "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "e8fef79cba2b1db16ed94b0f5c8c146a008a238dc6ccbd5ad4eedec29478ddd7",
+      "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "524547b5d7948f9c888d1a6d4bcd1402434272746bb6bdf94537ebf6f4166ccc",
       "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
       "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
-      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "199646f6c7b6113fa8773d79542a4bc9ce346d223b7308a812250530725977e9",
+      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "ce64e7701778b8638daee44d284ee5839e64de3cb8129d3e25d34fb65d638a96",
       "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
-      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "66aa92ef8a46fb348f4093428bc71799d92c81ae79d2355d1ab03b90f51ea588",
+      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "47a90b09dd26a9e4e1666887070d8da5f5d9266fd3739c173879a9b0068ee335",
       "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
-      "addon/globalPlugins/contextualPronunciation/edges.py": "14b7236183e1e3ff592cf15b7848b8d30b0d5b937215c900ab00a672e9b9b7db",
+      "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
       "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
       "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
+      "addon/globalPlugins/contextualPronunciation/motion.py": "d22efdcb39e58d07ae22a9a2a037c33393a5d1af487da117e136a59b32c85c1e",
       "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
       "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
-      "addon/globalPlugins/contextualPronunciation/pipeline.py": "89caaeb38214e8529f22f6e3e008ea0815915e276e1c1039af0f36a896d8f069",
+      "addon/globalPlugins/contextualPronunciation/pipeline.py": "e5f21e74ceb007c683c7ef34c0c987d7b7a5705d7d6a45ca7933ec7e7fc47e97",
       "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
-      "addon/globalPlugins/contextualPronunciation/rules.py": "8b5b475dee6af3d809cb8d622a626ddf771e1f750509d471cec056797c72ad84",
+      "addon/globalPlugins/contextualPronunciation/rules.py": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
       "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
-      "addon/globalPlugins/contextualPronunciation/settings.py": "23186bd9ee5bc9e26ff2b7fa5d9b2a5d5d0ce10611b8abd5a505ec847b8d2886",
-      "addon/globalPlugins/contextualPronunciation/syntax.py": "4257d7133230f56c2589568be08f6d01539730760380e042457b9e26f4f560b0",
-      "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41"
+      "addon/globalPlugins/contextualPronunciation/settings.py": "7b695af37dbca6792f730790fe6b4d9d34d81173ad545a0d89718aaf991d4a50",
+      "addon/globalPlugins/contextualPronunciation/syntax.py": "512bb158f9872f696663930a56d4e6003cee402ada7363f9247a5cc16d26d702",
+      "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
+      "addon/globalPlugins/contextualPronunciation/verb_forms.py": "ff0f287feed85d5d72cb6ce5e5da72fa1ac95ef9e7191bc669f8059f905fe325"
     },
     "ruleEngine": "addon/globalPlugins/contextualPronunciation/rules.py",
     "ruleData": "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json",
-    "ruleDataSha256": "199646f6c7b6113fa8773d79542a4bc9ce346d223b7308a812250530725977e9",
-    "ruleEngineSha256": "8b5b475dee6af3d809cb8d622a626ddf771e1f750509d471cec056797c72ad84",
+    "ruleDataSha256": "ce64e7701778b8638daee44d284ee5839e64de3cb8129d3e25d34fb65d638a96",
+    "ruleEngineSha256": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
     "renderer": "addon/globalPlugins/contextualPronunciation/rules.py",
-    "rendererSha256": "8b5b475dee6af3d809cb8d622a626ddf771e1f750509d471cec056797c72ad84",
+    "rendererSha256": "5990e9a4cf306c9b1151f7e5f55489d1341b3e17e04d3aa5b504030f47865bad",
     "strict": "Default scenarios are strict; optional key preference is explicitly non-strict"
   },
-  "method": "每组由 source、规则引擎实时生成的 transformed、以及仅将目标字换成另一枚常用同音字的 common_anchor 组成；以同一次 Ting-Ting 离线渲染中的完整音素流严格相等为自动判据。",
+  "method": "每组由 source、规则引擎实时生成的 transformed、以及将所有目标位置换成另一枚常用同音字的 common_anchor 组成；以同一次 Ting-Ting 离线渲染中的完整音素流严格相等为自动判据。",
   "limitations": [
     "Vocalizer 音素编号为引擎私有值，只能在相同版本、声库、operating point 和同一次运行内比较。",
     "完整音素流相等仅验证音段序列一致；不独立验证声调或韵律。不相等不能单凭此判错。",
@@ -45,11 +48,360 @@
   ],
   "transformations": [
     {
+      "id": "chong2_reinstall_default",
+      "source": "需要重装吗",
+      "transformed": "需要崇装吗",
+      "commonAnchor": "需要虫装吗",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_traditional",
+      "source": "需要重裝嗎",
+      "transformed": "需要崇裝嗎",
+      "commonAnchor": "需要虫裝嗎",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhuan4_screw",
+      "source": "螺丝会转",
+      "transformed": "螺丝会篆",
+      "commonAnchor": "螺丝会赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screwdriver",
+      "source": "螺丝刀转呀转",
+      "transformed": "螺丝刀篆呀篆",
+      "commonAnchor": "螺丝刀赚呀赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_head",
+      "source": "引擎会转",
+      "transformed": "引擎会篆",
+      "commonAnchor": "引擎会赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_generator",
+      "source": "发电机会转",
+      "transformed": "发电机会篆",
+      "commonAnchor": "发电机会赚",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_motor",
+      "source": "电机会转",
+      "transformed": "电机会篆",
+      "commonAnchor": "电机会赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_durative",
+      "source": "转呀转",
+      "transformed": "篆呀篆",
+      "commonAnchor": "赚呀赚",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_iterative",
+      "source": "车轮转了又转",
+      "transformed": "车轮篆了又篆",
+      "commonAnchor": "车轮赚了又赚",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        5
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "cheng2_durative",
+      "source": "盛呀盛红豆粥",
+      "transformed": "呈呀呈红豆粥",
+      "commonAnchor": "乘呀乘红豆粥",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhuan4_windmill_phase",
+      "source": "让风车转起来",
+      "transformed": "让风车篆起来",
+      "commonAnchor": "让风车赚起来",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_modal",
+      "source": "风车会转",
+      "transformed": "风车会篆",
+      "commonAnchor": "风车会赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_turbine_modal",
+      "source": "汽轮机会转",
+      "transformed": "汽轮机会篆",
+      "commonAnchor": "汽轮机会赚",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_aspect",
+      "source": "发动机转起来了",
+      "transformed": "发动机篆起来了",
+      "commonAnchor": "发动机赚起来了",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_bearing_question",
+      "source": "轴承能转起来吗",
+      "transformed": "轴承能篆起来吗",
+      "commonAnchor": "轴承能赚起来吗",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_potential",
+      "source": "轴承转不起来",
+      "transformed": "轴承篆不起来",
+      "commonAnchor": "轴承赚不起来",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_purpose",
+      "source": "发动机转起来给大家看",
+      "transformed": "发动机篆起来给大家看",
+      "commonAnchor": "发动机赚起来给大家看",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_serial",
+      "source": "出去转一转",
+      "transformed": "出去篆一篆",
+      "commonAnchor": "出去赚一赚",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place",
+      "source": "去公园转转",
+      "transformed": "去公园篆篆",
+      "commonAnchor": "去公园赚赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_modal",
+      "source": "我想出去随便转一转",
+      "transformed": "我想出去随便篆一篆",
+      "commonAnchor": "我想出去随便赚一赚",
+      "targetCharIndex": 6,
+      "targetCharIndices": [
+        6,
+        8
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_modifier",
+      "source": "去刚开放的博物馆慢慢转一转",
+      "transformed": "去刚开放的博物馆慢慢篆一篆",
+      "commonAnchor": "去刚开放的博物馆慢慢赚一赚",
+      "targetCharIndex": 10,
+      "targetCharIndices": [
+        10,
+        12
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_caused",
+      "source": "让车轮转一转",
+      "transformed": "让车轮篆一篆",
+      "commonAnchor": "让车轮赚一赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_stuck",
+      "source": "卡住不能转",
+      "transformed": "卡住不能篆",
+      "commonAnchor": "卡住不能赚",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_traditional",
+      "source": "去公園轉轉",
+      "transformed": "去公園篆篆",
+      "commonAnchor": "去公園赚赚",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate-traditional",
+      "strict": true,
+      "extended": true
+    },
+    {
       "id": "bian1_lower_edge",
       "source": "下边缘",
       "transformed": "下编缘",
       "commonAnchor": "下鞭缘",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
       "strict": true,
@@ -61,6 +413,9 @@
       "transformed": "上编框",
       "commonAnchor": "上鞭框",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
       "strict": true,
@@ -72,6 +427,9 @@
       "transformed": "唱河说",
       "commonAnchor": "唱盒说",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
       "strict": true,
@@ -83,6 +441,9 @@
       "transformed": "唱河跳",
       "commonAnchor": "唱盒跳",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
       "strict": true,
@@ -94,6 +455,9 @@
       "transformed": "多航",
       "commonAnchor": "多杭",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -105,6 +469,9 @@
       "transformed": "多航输入框",
       "commonAnchor": "多杭输入框",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -116,6 +483,9 @@
       "transformed": "航首位置",
       "commonAnchor": "杭首位置",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "háng",
       "ruleKind": "phrase",
       "strict": true,
@@ -127,6 +497,9 @@
       "transformed": "当前是第十二航",
       "commonAnchor": "当前是第十二杭",
       "targetCharIndex": 6,
+      "targetCharIndices": [
+        6
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
       "strict": true,
@@ -138,6 +511,9 @@
       "transformed": "请崇复一次",
       "commonAnchor": "请虫复一次",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "chóng",
       "ruleKind": "phrase",
       "strict": true,
@@ -149,6 +525,9 @@
       "transformed": "请把文件崇转一次",
       "commonAnchor": "请把文件虫转一次",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -160,6 +539,9 @@
       "transformed": "请崇编译",
       "commonAnchor": "请虫编译",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -171,6 +553,9 @@
       "transformed": "请崇压缩",
       "commonAnchor": "请虫压缩",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -182,6 +567,9 @@
       "transformed": "崇吸收",
       "commonAnchor": "虫吸收",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -193,6 +581,9 @@
       "transformed": "崇捏",
       "commonAnchor": "虫捏",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -204,6 +595,9 @@
       "transformed": "崇飞",
       "commonAnchor": "虫飞",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -215,6 +609,9 @@
       "transformed": "呈了一碗饭",
       "commonAnchor": "乘了一碗饭",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -226,6 +623,9 @@
       "transformed": "呈了一大碗刚煮好的饭",
       "commonAnchor": "乘了一大碗刚煮好的饭",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -237,6 +637,9 @@
       "transformed": "虾兵和蟹匠",
       "commonAnchor": "虾兵和蟹酱",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -248,6 +651,9 @@
       "transformed": "天兵和天匠",
       "commonAnchor": "天兵和天酱",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -259,6 +665,9 @@
       "transformed": "蟹匠和虾兵",
       "commonAnchor": "蟹酱和虾兵",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -270,6 +679,9 @@
       "transformed": "一员勇猛的匠",
       "commonAnchor": "一员勇猛的酱",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -281,6 +693,9 @@
       "transformed": "也给我呈了一碗",
       "commonAnchor": "也给我乘了一碗",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -292,6 +707,9 @@
       "transformed": "呈好了两大碗就回去了",
       "commonAnchor": "乘好了两大碗就回去了",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -303,6 +721,9 @@
       "transformed": "天兵和天匠一起去吃饭",
       "commonAnchor": "天兵和天酱一起去吃饭",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -314,6 +735,9 @@
       "transformed": "蟹匠和虾兵一起去吃饭",
       "commonAnchor": "蟹酱和虾兵一起去吃饭",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -325,6 +749,9 @@
       "transformed": "天兵和天匠要去吃饭",
       "commonAnchor": "天兵和天酱要去吃饭",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -336,6 +763,9 @@
       "transformed": "身经百战的匠和那些训练有素的士兵一起去吃饭",
       "commonAnchor": "身经百战的酱和那些训练有素的士兵一起去吃饭",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -347,6 +777,9 @@
       "transformed": "呈那碗刚刚煮好而且非常香甜的红豆粥",
       "commonAnchor": "乘那碗刚刚煮好而且非常香甜的红豆粥",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -358,6 +791,9 @@
       "transformed": "把刚刚煮好的红豆粥呈进碗里",
       "commonAnchor": "把刚刚煮好的红豆粥乘进碗里",
       "targetCharIndex": 9,
+      "targetCharIndices": [
+        9
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -369,6 +805,9 @@
       "transformed": "梁住在那条非常安静的街道旁边的小名的身高",
       "commonAnchor": "良住在那条非常安静的街道旁边的小名的身高",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -380,6 +819,9 @@
       "transformed": "冀那条又细又长的红色丝带",
       "commonAnchor": "季那条又细又长的红色丝带",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
       "strict": true,
@@ -391,6 +833,9 @@
       "transformed": "请给客人呈汤",
       "commonAnchor": "请给客人乘汤",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "chéng",
       "ruleKind": "phrase",
       "strict": true,
@@ -402,6 +847,9 @@
       "transformed": "我来呈一碗饭",
       "commonAnchor": "我来乘一碗饭",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
       "strict": true,
@@ -413,6 +861,9 @@
       "transformed": "请丙住呼吸",
       "commonAnchor": "请饼住呼吸",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
       "strict": true,
@@ -424,6 +875,9 @@
       "transformed": "关闭谈窗",
       "commonAnchor": "关闭坛窗",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "tán",
       "ruleKind": "phrase",
       "strict": true,
@@ -435,6 +889,9 @@
       "transformed": "读取密月文件",
       "commonAnchor": "读取密越文件",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "yuè",
       "ruleKind": "preference",
       "strict": false,
@@ -446,6 +903,9 @@
       "transformed": "航 12",
       "commonAnchor": "杭 12",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
       "strict": true,
@@ -457,6 +917,9 @@
       "transformed": "12 航 8 列",
       "commonAnchor": "12 杭 8 列",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
       "strict": true,
@@ -468,6 +931,9 @@
       "transformed": "呈半碗饭",
       "commonAnchor": "乘半碗饭",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
       "strict": true,
@@ -479,6 +945,9 @@
       "transformed": "仙月飘飘",
       "commonAnchor": "仙越飘飘",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -490,6 +959,9 @@
       "transformed": "音月观众很多",
       "commonAnchor": "音越观众很多",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -501,6 +973,9 @@
       "transformed": "管弦月演奏",
       "commonAnchor": "管弦越演奏",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -512,6 +987,9 @@
       "transformed": "声月练习",
       "commonAnchor": "声越练习",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -523,6 +1001,9 @@
       "transformed": "这几航很好",
       "commonAnchor": "这几杭很好",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -534,6 +1015,9 @@
       "transformed": "十几航写在这里",
       "commonAnchor": "十几杭写在这里",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -545,6 +1029,9 @@
       "transformed": "表格有多少航",
       "commonAnchor": "表格有多少杭",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -556,6 +1043,9 @@
       "transformed": "文字排成竖航",
       "commonAnchor": "文字排成竖杭",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "expectedReading": "háng",
       "ruleKind": "phrase",
       "strict": true,
@@ -567,6 +1057,9 @@
       "transformed": "孩子丙息等待",
       "commonAnchor": "孩子饼息等待",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
       "strict": true,
@@ -578,6 +1071,9 @@
       "transformed": "她正在谈琴",
       "commonAnchor": "她正在坛琴",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "tán",
       "ruleKind": "phrase",
       "strict": true,
@@ -589,6 +1085,9 @@
       "transformed": "这根谈簧很长",
       "commonAnchor": "这根坛簧很长",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "tán",
       "ruleKind": "phrase",
       "strict": true,
@@ -600,6 +1099,9 @@
       "transformed": "这几航不行",
       "commonAnchor": "这几杭不行",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -611,6 +1113,9 @@
       "transformed": "我给孩子冀鞋带",
       "commonAnchor": "我给孩子季鞋带",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -622,6 +1127,9 @@
       "transformed": "请冀好安全带",
       "commonAnchor": "请季好安全带",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
       "strict": true,
@@ -633,6 +1141,9 @@
       "transformed": "请把鞋带冀上",
       "commonAnchor": "请把鞋带季上",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
       "strict": true,
@@ -644,6 +1155,9 @@
       "transformed": "我给孩子梁体温",
       "commonAnchor": "我给孩子良体温",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -655,6 +1169,9 @@
       "transformed": "请测梁尺寸",
       "commonAnchor": "请测良尺寸",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
       "strict": true,
@@ -666,6 +1183,9 @@
       "transformed": "梁一下血压",
       "commonAnchor": "良一下血压",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
       "strict": true,
@@ -677,6 +1197,9 @@
       "transformed": "请冀领结",
       "commonAnchor": "请季领结",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -688,6 +1211,9 @@
       "transformed": "我来冀绳子",
       "commonAnchor": "我来季绳子",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -699,6 +1225,9 @@
       "transformed": "孩子冀红领巾",
       "commonAnchor": "孩子季红领巾",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -710,6 +1239,9 @@
       "transformed": "他冀了一条领带",
       "commonAnchor": "他季了一条领带",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
       "strict": true,
@@ -721,6 +1253,9 @@
       "transformed": "请冀个活扣",
       "commonAnchor": "请季个活扣",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
       "strict": true,
@@ -732,6 +1267,9 @@
       "transformed": "把绳子冀在树上",
       "commonAnchor": "把绳子季在树上",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
       "strict": true,
@@ -743,6 +1281,9 @@
       "transformed": "用尺子梁长度",
       "commonAnchor": "用尺子良长度",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -754,6 +1295,9 @@
       "transformed": "孩子梁身高",
       "commonAnchor": "孩子良身高",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -765,6 +1309,9 @@
       "transformed": "请梁直径",
       "commonAnchor": "请良直径",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -776,6 +1323,9 @@
       "transformed": "用卷尺仔细梁一下",
       "commonAnchor": "用卷尺仔细良一下",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
       "strict": true,
@@ -787,6 +1337,9 @@
       "transformed": "身高梁了两次",
       "commonAnchor": "身高良了两次",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
       "strict": true,
@@ -798,6 +1351,9 @@
       "transformed": "梁孩子的身高",
       "commonAnchor": "良孩子的身高",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
       "strict": true,
@@ -809,6 +1365,9 @@
       "transformed": "梁三米布",
       "commonAnchor": "良三米布",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
       "strict": true,
@@ -820,6 +1379,9 @@
       "transformed": "这是梁杯",
       "commonAnchor": "这是良杯",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
       "strict": true,
@@ -831,6 +1393,9 @@
       "transformed": "请呈豆角",
       "commonAnchor": "请乘豆角",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -842,6 +1407,9 @@
       "transformed": "呈红豆粥",
       "commonAnchor": "乘红豆粥",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -853,6 +1421,9 @@
       "transformed": "呈刚煮好的红豆粥",
       "commonAnchor": "乘刚煮好的红豆粥",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -864,6 +1435,9 @@
       "transformed": "呈液体",
       "commonAnchor": "乘液体",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -875,6 +1449,9 @@
       "transformed": "呈装液体",
       "commonAnchor": "乘装液体",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -886,6 +1463,9 @@
       "transformed": "呈装液体的容器",
       "commonAnchor": "乘装液体的容器",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -897,6 +1477,9 @@
       "transformed": "呈了半瓶透明液体",
       "commonAnchor": "乘了半瓶透明液体",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -908,6 +1491,9 @@
       "transformed": "呈装的液体",
       "commonAnchor": "乘装的液体",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -919,6 +1505,9 @@
       "transformed": "呈装饰品",
       "commonAnchor": "乘装饰品",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -930,6 +1519,9 @@
       "transformed": "呈过气体",
       "commonAnchor": "乘过气体",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -941,6 +1533,9 @@
       "transformed": "呈装食物",
       "commonAnchor": "乘装食物",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -952,6 +1547,9 @@
       "transformed": "梁小名的身高",
       "commonAnchor": "良小名的身高",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -963,6 +1561,9 @@
       "transformed": "梁住在隔壁的小名的身高",
       "commonAnchor": "良住在隔壁的小名的身高",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -974,6 +1575,9 @@
       "transformed": "冀小名的鞋带",
       "commonAnchor": "季小名的鞋带",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
       "strict": true,
@@ -985,6 +1589,9 @@
       "transformed": "降吊音频",
       "commonAnchor": "降掉音频",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
       "strict": true,
@@ -996,6 +1603,9 @@
       "transformed": "升吊音频",
       "commonAnchor": "升掉音频",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
       "strict": true,
@@ -1007,6 +1617,9 @@
       "transformed": "条音师",
       "commonAnchor": "迢音师",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
       "strict": true,
@@ -1015,11 +1628,1196 @@
   ],
   "cases": [
     {
+      "id": "chong2_reinstall_default_source",
+      "text": "需要重装吗",
+      "role": "source",
+      "compareGroup": "final_chong2_reinstall_default",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_default_transformed",
+      "text": "需要崇装吗",
+      "role": "transformed",
+      "rendererCandidate": "崇",
+      "compareGroup": "final_chong2_reinstall_default",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_default_common_anchor",
+      "text": "需要虫装吗",
+      "role": "anchor",
+      "anchorCharacter": "虫",
+      "anchorConfidence": "common",
+      "compareGroup": "final_chong2_reinstall_default",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_traditional_source",
+      "text": "需要重裝嗎",
+      "role": "source",
+      "compareGroup": "final_chong2_reinstall_traditional",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_traditional_transformed",
+      "text": "需要崇裝嗎",
+      "role": "transformed",
+      "rendererCandidate": "崇",
+      "compareGroup": "final_chong2_reinstall_traditional",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chong2_reinstall_traditional_common_anchor",
+      "text": "需要虫裝嗎",
+      "role": "anchor",
+      "anchorCharacter": "虫",
+      "anchorConfidence": "common",
+      "compareGroup": "final_chong2_reinstall_traditional",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chóng",
+      "ruleKind": "chong-reinstall-default",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhuan4_screw_source",
+      "text": "螺丝会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_screw",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screw_transformed",
+      "text": "螺丝会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_screw",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screw_common_anchor",
+      "text": "螺丝会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_screw",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screwdriver_source",
+      "text": "螺丝刀转呀转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_screwdriver",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screwdriver_transformed",
+      "text": "螺丝刀篆呀篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_screwdriver",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_screwdriver_common_anchor",
+      "text": "螺丝刀赚呀赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_screwdriver",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_head_source",
+      "text": "引擎会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_engine_head",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_head_transformed",
+      "text": "引擎会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_engine_head",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_head_common_anchor",
+      "text": "引擎会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_engine_head",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_generator_source",
+      "text": "发电机会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_generator",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_generator_transformed",
+      "text": "发电机会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_generator",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_generator_common_anchor",
+      "text": "发电机会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_generator",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_motor_source",
+      "text": "电机会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_motor",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_motor_transformed",
+      "text": "电机会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_motor",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_motor_common_anchor",
+      "text": "电机会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_motor",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_durative_source",
+      "text": "转呀转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_durative_transformed",
+      "text": "篆呀篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_durative_common_anchor",
+      "text": "赚呀赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_iterative_source",
+      "text": "车轮转了又转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_iterative",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_iterative_transformed",
+      "text": "车轮篆了又篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_iterative",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_iterative_common_anchor",
+      "text": "车轮赚了又赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_iterative",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "cheng2_durative_source",
+      "text": "盛呀盛红豆粥",
+      "role": "source",
+      "compareGroup": "final_cheng2_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_durative_transformed",
+      "text": "呈呀呈红豆粥",
+      "role": "transformed",
+      "rendererCandidate": "呈",
+      "compareGroup": "final_cheng2_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "cheng2_durative_common_anchor",
+      "text": "乘呀乘红豆粥",
+      "role": "anchor",
+      "anchorCharacter": "乘",
+      "anchorConfidence": "common",
+      "compareGroup": "final_cheng2_durative",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0,
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "chéng",
+      "ruleKind": "syntax-serving-object",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhuan4_windmill_phase_source",
+      "text": "让风车转起来",
+      "role": "source",
+      "compareGroup": "final_zhuan4_windmill_phase",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_phase_transformed",
+      "text": "让风车篆起来",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_windmill_phase",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_phase_common_anchor",
+      "text": "让风车赚起来",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_windmill_phase",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_modal_source",
+      "text": "风车会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_windmill_modal",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_modal_transformed",
+      "text": "风车会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_windmill_modal",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_windmill_modal_common_anchor",
+      "text": "风车会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_windmill_modal",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_turbine_modal_source",
+      "text": "汽轮机会转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_turbine_modal",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_turbine_modal_transformed",
+      "text": "汽轮机会篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_turbine_modal",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_turbine_modal_common_anchor",
+      "text": "汽轮机会赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_turbine_modal",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_aspect_source",
+      "text": "发动机转起来了",
+      "role": "source",
+      "compareGroup": "final_zhuan4_engine_aspect",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_aspect_transformed",
+      "text": "发动机篆起来了",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_engine_aspect",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_engine_aspect_common_anchor",
+      "text": "发动机赚起来了",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_engine_aspect",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_bearing_question_source",
+      "text": "轴承能转起来吗",
+      "role": "source",
+      "compareGroup": "final_zhuan4_bearing_question",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_bearing_question_transformed",
+      "text": "轴承能篆起来吗",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_bearing_question",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_bearing_question_common_anchor",
+      "text": "轴承能赚起来吗",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_bearing_question",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_potential_source",
+      "text": "轴承转不起来",
+      "role": "source",
+      "compareGroup": "final_zhuan4_potential",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_potential_transformed",
+      "text": "轴承篆不起来",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_potential",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_potential_common_anchor",
+      "text": "轴承赚不起来",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_potential",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_purpose_source",
+      "text": "发动机转起来给大家看",
+      "role": "source",
+      "compareGroup": "final_zhuan4_purpose",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_purpose_transformed",
+      "text": "发动机篆起来给大家看",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_purpose",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_purpose_common_anchor",
+      "text": "发动机赚起来给大家看",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_purpose",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_serial_source",
+      "text": "出去转一转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_serial",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_serial_transformed",
+      "text": "出去篆一篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_serial",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_serial_common_anchor",
+      "text": "出去赚一赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_serial",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_source",
+      "text": "去公园转转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_place",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_transformed",
+      "text": "去公园篆篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_place",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_common_anchor",
+      "text": "去公园赚赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_place",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_modal_source",
+      "text": "我想出去随便转一转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_modal",
+      "targetCharIndex": 6,
+      "targetCharIndices": [
+        6,
+        8
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_modal_transformed",
+      "text": "我想出去随便篆一篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_modal",
+      "targetCharIndex": 6,
+      "targetCharIndices": [
+        6,
+        8
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_modal_common_anchor",
+      "text": "我想出去随便赚一赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_modal",
+      "targetCharIndex": 6,
+      "targetCharIndices": [
+        6,
+        8
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_modifier_source",
+      "text": "去刚开放的博物馆慢慢转一转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_place_modifier",
+      "targetCharIndex": 10,
+      "targetCharIndices": [
+        10,
+        12
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_modifier_transformed",
+      "text": "去刚开放的博物馆慢慢篆一篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_place_modifier",
+      "targetCharIndex": 10,
+      "targetCharIndices": [
+        10,
+        12
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_place_modifier_common_anchor",
+      "text": "去刚开放的博物馆慢慢赚一赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_place_modifier",
+      "targetCharIndex": 10,
+      "targetCharIndices": [
+        10,
+        12
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_caused_source",
+      "text": "让车轮转一转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_caused",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_caused_transformed",
+      "text": "让车轮篆一篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_caused",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_caused_common_anchor",
+      "text": "让车轮赚一赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_caused",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        5
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_stuck_source",
+      "text": "卡住不能转",
+      "role": "source",
+      "compareGroup": "final_zhuan4_stuck",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_stuck_transformed",
+      "text": "卡住不能篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_stuck",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_stuck_common_anchor",
+      "text": "卡住不能赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_stuck",
+      "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_traditional_source",
+      "text": "去公園轉轉",
+      "role": "source",
+      "compareGroup": "final_zhuan4_traditional",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate-traditional",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_traditional_transformed",
+      "text": "去公園篆篆",
+      "role": "transformed",
+      "rendererCandidate": "篆",
+      "compareGroup": "final_zhuan4_traditional",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate-traditional",
+      "strict": true,
+      "extended": true
+    },
+    {
+      "id": "zhuan4_traditional_common_anchor",
+      "text": "去公園赚赚",
+      "role": "anchor",
+      "anchorCharacter": "赚",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhuan4_traditional",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3,
+        4
+      ],
+      "tier": "P0",
+      "expectedReading": "zhuàn",
+      "ruleKind": "syntax-motion-predicate-traditional",
+      "strict": true,
+      "extended": true
+    },
+    {
       "id": "bian1_lower_edge_source",
       "text": "下边缘",
       "role": "source",
       "compareGroup": "final_bian1_lower_edge",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1033,6 +2831,9 @@
       "rendererCandidate": "编",
       "compareGroup": "final_bian1_lower_edge",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1047,6 +2848,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_bian1_lower_edge",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1059,6 +2863,9 @@
       "role": "source",
       "compareGroup": "final_bian1_upper_frame",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1072,6 +2879,9 @@
       "rendererCandidate": "编",
       "compareGroup": "final_bian1_upper_frame",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1086,6 +2896,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_bian1_upper_frame",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -1098,6 +2911,9 @@
       "role": "source",
       "compareGroup": "final_he2_coordinated_verbs",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1111,6 +2927,9 @@
       "rendererCandidate": "河",
       "compareGroup": "final_he2_coordinated_verbs",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1125,6 +2944,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_he2_coordinated_verbs",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1137,6 +2959,9 @@
       "role": "source",
       "compareGroup": "final_he2_coordinated_actions",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1150,6 +2975,9 @@
       "rendererCandidate": "河",
       "compareGroup": "final_he2_coordinated_actions",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1164,6 +2992,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_he2_coordinated_actions",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -1176,6 +3007,9 @@
       "role": "source",
       "compareGroup": "final_hang2_multirow",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1189,6 +3023,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_multirow",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1203,6 +3040,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_multirow",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1215,6 +3055,9 @@
       "role": "source",
       "compareGroup": "final_hang2_multirow_input",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1228,6 +3071,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_multirow_input",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1242,6 +3088,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_multirow_input",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -1254,6 +3103,9 @@
       "role": "source",
       "compareGroup": "final_hang2_row_head",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -1267,6 +3119,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_row_head",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -1281,6 +3136,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_row_head",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -1293,6 +3151,9 @@
       "role": "source",
       "compareGroup": "final_hang2_row_ordinal",
       "targetCharIndex": 6,
+      "targetCharIndices": [
+        6
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -1306,6 +3167,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_row_ordinal",
       "targetCharIndex": 6,
+      "targetCharIndices": [
+        6
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -1320,6 +3184,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_row_ordinal",
       "targetCharIndex": 6,
+      "targetCharIndices": [
+        6
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -1332,6 +3199,9 @@
       "role": "source",
       "compareGroup": "final_chong2_repeat",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -1345,6 +3215,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_repeat",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -1359,6 +3232,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_repeat",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -1371,6 +3247,9 @@
       "role": "source",
       "compareGroup": "final_chong2_productive_transfer",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1384,6 +3263,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_productive_transfer",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1398,6 +3280,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_productive_transfer",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1410,6 +3295,9 @@
       "role": "source",
       "compareGroup": "final_chong2_productive_compile",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1423,6 +3311,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_productive_compile",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1437,6 +3328,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_productive_compile",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1449,6 +3343,9 @@
       "role": "source",
       "compareGroup": "final_chong2_productive_compress",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1462,6 +3359,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_productive_compress",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1476,6 +3376,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_productive_compress",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1488,6 +3391,9 @@
       "role": "source",
       "compareGroup": "final_chong2_reabsorb",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1501,6 +3407,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_reabsorb",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1515,6 +3424,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_reabsorb",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1527,6 +3439,9 @@
       "role": "source",
       "compareGroup": "final_chong2_reshape",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1540,6 +3455,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_reshape",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1554,6 +3472,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_reshape",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1566,6 +3487,9 @@
       "role": "source",
       "compareGroup": "final_chong2_refly",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1579,6 +3503,9 @@
       "rendererCandidate": "崇",
       "compareGroup": "final_chong2_refly",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1593,6 +3520,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_chong2_refly",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -1605,6 +3535,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_aspect_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1618,6 +3551,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_aspect_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1632,6 +3568,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_aspect_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1644,6 +3583,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_modified_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1657,6 +3599,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_modified_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1671,6 +3616,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_modified_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1683,6 +3631,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_crab_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1696,6 +3647,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_crab_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1710,6 +3664,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_crab_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1722,6 +3679,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_celestial_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1735,6 +3695,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_celestial_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1749,6 +3712,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_celestial_conjunct",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1761,6 +3727,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_reverse_conjunct",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1774,6 +3743,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_reverse_conjunct",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1788,6 +3760,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_reverse_conjunct",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1800,6 +3775,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_classified",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1813,6 +3791,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_classified",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1827,6 +3808,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_classified",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1839,6 +3823,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_elliptical_object",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1852,6 +3839,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_elliptical_object",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1866,6 +3856,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_elliptical_object",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1878,6 +3871,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_elliptical_continuation",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1891,6 +3887,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_elliptical_continuation",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1905,6 +3904,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_elliptical_continuation",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1917,6 +3919,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_coordinated_subject",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1930,6 +3935,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_coordinated_subject",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1944,6 +3952,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_coordinated_subject",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1956,6 +3967,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_reverse_subject",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1969,6 +3983,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_reverse_subject",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1983,6 +4000,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_reverse_subject",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -1995,6 +4015,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_modal_overlap",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2008,6 +4031,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_modal_overlap",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2022,6 +4048,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_modal_overlap",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2034,6 +4063,9 @@
       "role": "source",
       "compareGroup": "final_jiang4_modified_subject",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2047,6 +4079,9 @@
       "rendererCandidate": "匠",
       "compareGroup": "final_jiang4_modified_subject",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2061,6 +4096,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_jiang4_modified_subject",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -2073,6 +4111,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_coordinated_object",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2086,6 +4127,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_coordinated_object",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2100,6 +4144,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_coordinated_object",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2112,6 +4159,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_preposed_object",
       "targetCharIndex": 9,
+      "targetCharIndices": [
+        9
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2125,6 +4175,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_preposed_object",
       "targetCharIndex": 9,
+      "targetCharIndices": [
+        9
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2139,6 +4192,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_preposed_object",
       "targetCharIndex": 9,
+      "targetCharIndices": [
+        9
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2151,6 +4207,9 @@
       "role": "source",
       "compareGroup": "final_liang2_nested_clause",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -2164,6 +4223,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_nested_clause",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -2178,6 +4240,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_nested_clause",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -2190,6 +4255,9 @@
       "role": "source",
       "compareGroup": "final_ji4_coordinated_adjectives",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -2203,6 +4271,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_coordinated_adjectives",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -2217,6 +4288,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_coordinated_adjectives",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -2229,6 +4303,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_serve_soup",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -2242,6 +4319,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_serve_soup",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -2256,6 +4336,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_serve_soup",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -2268,6 +4351,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_serve_quantity",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2281,6 +4367,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_serve_quantity",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2295,6 +4384,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_serve_quantity",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2307,6 +4399,9 @@
       "role": "source",
       "compareGroup": "final_bing3_hold_breath",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2320,6 +4415,9 @@
       "rendererCandidate": "丙",
       "compareGroup": "final_bing3_hold_breath",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2334,6 +4432,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_bing3_hold_breath",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2346,6 +4447,9 @@
       "role": "source",
       "compareGroup": "final_tan2_popup",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2359,6 +4463,9 @@
       "rendererCandidate": "谈",
       "compareGroup": "final_tan2_popup",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2373,6 +4480,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_tan2_popup",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2385,6 +4495,9 @@
       "role": "source",
       "compareGroup": "final_yue4_secret_key",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -2398,6 +4511,9 @@
       "rendererCandidate": "月",
       "compareGroup": "final_yue4_secret_key",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -2412,6 +4528,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_yue4_secret_key",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -2424,6 +4543,9 @@
       "role": "source",
       "compareGroup": "final_hang2_spaced_label",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -2437,6 +4559,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_spaced_label",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -2451,6 +4576,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_spaced_label",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -2463,6 +4591,9 @@
       "role": "source",
       "compareGroup": "final_hang2_spaced_count",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -2476,6 +4607,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_spaced_count",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -2490,6 +4624,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_spaced_count",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -2502,6 +4639,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_half_bowl",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2515,6 +4655,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_half_bowl",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2529,6 +4672,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_half_bowl",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -2541,6 +4687,9 @@
       "role": "source",
       "compareGroup": "final_yue4_celestial_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2554,6 +4703,9 @@
       "rendererCandidate": "月",
       "compareGroup": "final_yue4_celestial_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2568,6 +4720,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_yue4_celestial_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2580,6 +4735,9 @@
       "role": "source",
       "compareGroup": "final_yue4_music_audience",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2593,6 +4751,9 @@
       "rendererCandidate": "月",
       "compareGroup": "final_yue4_music_audience",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2607,6 +4768,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_yue4_music_audience",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2619,6 +4783,9 @@
       "role": "source",
       "compareGroup": "final_yue4_orchestra",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2632,6 +4799,9 @@
       "rendererCandidate": "月",
       "compareGroup": "final_yue4_orchestra",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2646,6 +4816,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_yue4_orchestra",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2658,6 +4831,9 @@
       "role": "source",
       "compareGroup": "final_yue4_vocal_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2671,6 +4847,9 @@
       "rendererCandidate": "月",
       "compareGroup": "final_yue4_vocal_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2685,6 +4864,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_yue4_vocal_music",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -2697,6 +4879,9 @@
       "role": "source",
       "compareGroup": "final_hang2_indefinite_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2710,6 +4895,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_indefinite_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2724,6 +4912,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_indefinite_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2736,6 +4927,9 @@
       "role": "source",
       "compareGroup": "final_hang2_teen_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2749,6 +4943,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_teen_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2763,6 +4960,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_teen_rows",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2775,6 +4975,9 @@
       "role": "source",
       "compareGroup": "final_hang2_how_many_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2788,6 +4991,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_how_many_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2802,6 +5008,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_how_many_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2814,6 +5023,9 @@
       "role": "source",
       "compareGroup": "final_hang2_vertical_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -2827,6 +5039,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_vertical_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -2841,6 +5056,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_vertical_rows",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -2853,6 +5071,9 @@
       "role": "source",
       "compareGroup": "final_bing3_hold_silent_breath",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2866,6 +5087,9 @@
       "rendererCandidate": "丙",
       "compareGroup": "final_bing3_hold_silent_breath",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2880,6 +5104,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_bing3_hold_silent_breath",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -2892,6 +5119,9 @@
       "role": "source",
       "compareGroup": "final_tan2_play_piano",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2905,6 +5135,9 @@
       "rendererCandidate": "谈",
       "compareGroup": "final_tan2_play_piano",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2919,6 +5152,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_tan2_play_piano",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2931,6 +5167,9 @@
       "role": "source",
       "compareGroup": "final_tan2_spring",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2944,6 +5183,9 @@
       "rendererCandidate": "谈",
       "compareGroup": "final_tan2_spring",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2958,6 +5200,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_tan2_spring",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -2970,6 +5215,9 @@
       "role": "source",
       "compareGroup": "final_hang2_row_not_feasible",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2983,6 +5231,9 @@
       "rendererCandidate": "航",
       "compareGroup": "final_hang2_row_not_feasible",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -2997,6 +5248,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_hang2_row_not_feasible",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3009,6 +5263,9 @@
       "role": "source",
       "compareGroup": "final_ji4_shoelace",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3022,6 +5279,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_shoelace",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3036,6 +5296,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_shoelace",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3048,6 +5311,9 @@
       "role": "source",
       "compareGroup": "final_ji4_seatbelt",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -3061,6 +5327,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_seatbelt",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -3075,6 +5344,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_seatbelt",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -3087,6 +5359,9 @@
       "role": "source",
       "compareGroup": "final_ji4_object_first",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -3100,6 +5375,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_object_first",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -3114,6 +5392,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_object_first",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -3126,6 +5407,9 @@
       "role": "source",
       "compareGroup": "final_liang2_temperature",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3139,6 +5423,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_temperature",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3153,6 +5440,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_temperature",
       "targetCharIndex": 4,
+      "targetCharIndices": [
+        4
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3165,6 +5455,9 @@
       "role": "source",
       "compareGroup": "final_liang2_measure",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -3178,6 +5471,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_measure",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -3192,6 +5488,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_measure",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -3204,6 +5503,9 @@
       "role": "source",
       "compareGroup": "final_liang2_blood_pressure",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -3217,6 +5519,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_blood_pressure",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -3231,6 +5536,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_blood_pressure",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -3243,6 +5551,9 @@
       "role": "source",
       "compareGroup": "final_ji4_bow_tie",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3256,6 +5567,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_bow_tie",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3270,6 +5584,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_bow_tie",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3282,6 +5599,9 @@
       "role": "source",
       "compareGroup": "final_ji4_rope",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3295,6 +5615,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_rope",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3309,6 +5632,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_rope",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3321,6 +5647,9 @@
       "role": "source",
       "compareGroup": "final_ji4_red_scarf",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3334,6 +5663,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_red_scarf",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3348,6 +5680,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_red_scarf",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -3360,6 +5695,9 @@
       "role": "source",
       "compareGroup": "final_ji4_quantity",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -3373,6 +5711,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_quantity",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -3387,6 +5728,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_quantity",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -3399,6 +5743,9 @@
       "role": "source",
       "compareGroup": "final_ji4_knot",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -3412,6 +5759,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_knot",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -3426,6 +5776,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_knot",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -3438,6 +5791,9 @@
       "role": "source",
       "compareGroup": "final_ji4_location",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -3451,6 +5807,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_location",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -3465,6 +5824,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_location",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -3477,6 +5839,9 @@
       "role": "source",
       "compareGroup": "final_liang2_length",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3490,6 +5855,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_length",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3504,6 +5872,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_length",
       "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3516,6 +5887,9 @@
       "role": "source",
       "compareGroup": "final_liang2_height",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3529,6 +5903,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_height",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3543,6 +5920,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_height",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3555,6 +5935,9 @@
       "role": "source",
       "compareGroup": "final_liang2_diameter",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3568,6 +5951,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_diameter",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3582,6 +5968,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_diameter",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -3594,6 +5983,9 @@
       "role": "source",
       "compareGroup": "final_liang2_tool",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -3607,6 +5999,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_tool",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -3621,6 +6016,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_tool",
       "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -3633,6 +6031,9 @@
       "role": "source",
       "compareGroup": "final_liang2_object_first",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -3646,6 +6047,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_object_first",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -3660,6 +6064,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_object_first",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -3672,6 +6079,9 @@
       "role": "source",
       "compareGroup": "final_liang2_owned",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -3685,6 +6095,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_owned",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -3699,6 +6112,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_owned",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -3711,6 +6127,9 @@
       "role": "source",
       "compareGroup": "final_liang2_unit",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -3724,6 +6143,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_unit",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -3738,6 +6160,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_unit",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -3750,6 +6175,9 @@
       "role": "source",
       "compareGroup": "final_liang2_instrument",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -3763,6 +6191,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_instrument",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -3777,6 +6208,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_instrument",
       "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -3789,6 +6223,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_bean_object",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3802,6 +6239,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_bean_object",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3816,6 +6256,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_bean_object",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3828,6 +6271,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_compound_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3841,6 +6287,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_compound_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3855,6 +6304,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_compound_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3867,6 +6319,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_relative_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3880,6 +6335,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_relative_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3894,6 +6352,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_relative_food",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3906,6 +6367,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3919,6 +6383,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3933,6 +6400,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3945,6 +6415,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_load_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3958,6 +6431,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_load_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3972,6 +6448,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_load_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3984,6 +6463,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_liquid_container",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3997,6 +6479,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_liquid_container",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4011,6 +6496,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_liquid_container",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4023,6 +6511,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_liquid_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4036,6 +6527,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_liquid_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4050,6 +6544,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_liquid_quantity",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4062,6 +6559,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_loaded_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4075,6 +6575,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_loaded_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4089,6 +6592,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_loaded_liquid",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4101,6 +6607,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_decorations",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4114,6 +6623,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_decorations",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4128,6 +6640,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_decorations",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4140,6 +6655,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_experienced_gas",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4153,6 +6671,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_experienced_gas",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4167,6 +6688,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_experienced_gas",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4179,6 +6703,9 @@
       "role": "source",
       "compareGroup": "final_cheng2_edible",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4192,6 +6719,9 @@
       "rendererCandidate": "呈",
       "compareGroup": "final_cheng2_edible",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4206,6 +6736,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_cheng2_edible",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4218,6 +6751,9 @@
       "role": "source",
       "compareGroup": "final_liang2_unknown_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4231,6 +6767,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_unknown_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4245,6 +6784,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_unknown_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4257,6 +6799,9 @@
       "role": "source",
       "compareGroup": "final_liang2_relative_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4270,6 +6815,9 @@
       "rendererCandidate": "梁",
       "compareGroup": "final_liang2_relative_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4284,6 +6832,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_liang2_relative_owner",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4296,6 +6847,9 @@
       "role": "source",
       "compareGroup": "final_ji4_owned_fastener",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -4309,6 +6863,9 @@
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_owned_fastener",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -4323,6 +6880,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_ji4_owned_fastener",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -4335,6 +6895,9 @@
       "role": "source",
       "compareGroup": "final_diao4_lowered_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4348,6 +6911,9 @@
       "rendererCandidate": "吊",
       "compareGroup": "final_diao4_lowered_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4362,6 +6928,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_diao4_lowered_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4374,6 +6943,9 @@
       "role": "source",
       "compareGroup": "final_diao4_raised_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4387,6 +6959,9 @@
       "rendererCandidate": "吊",
       "compareGroup": "final_diao4_raised_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4401,6 +6976,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_diao4_raised_audio",
       "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -4413,6 +6991,9 @@
       "role": "source",
       "compareGroup": "final_tiao2_audio_engineer",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
@@ -4426,6 +7007,9 @@
       "rendererCandidate": "条",
       "compareGroup": "final_tiao2_audio_engineer",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
@@ -4440,6 +7024,9 @@
       "anchorConfidence": "common",
       "compareGroup": "final_tiao2_audio_engineer",
       "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",

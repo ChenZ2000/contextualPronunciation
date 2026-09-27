@@ -26,8 +26,38 @@ noback match \x7b2c\x0020?\x4e00\x0020? \x884c \x0020?\x661f =
 noback match \x7b2c\x0020?\x4e8c\x0020? \x884c \x0020?\x661f =
 # xing-protection: 行列整齐 (keep)
 noback match - \x884c \x0020?\x5217\x0020?\x6574\x0020?\x9f50 =
+# zhong-protection: 重装上阵 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x4e0a\x0020?\x9635 =
+# zhong-protection: 重装徒步 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x5f92\x0020?\x6b65 =
+# zhong-protection: 重装战士 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x6218\x0020?\x58eb =
+# zhong-protection: 重装步兵 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x6b65\x0020?\x5175 =
+# zhong-protection: 重装登山 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x767b\x0020?\x5c71 =
 # zhong-protection: 重装部队 (keep)
 noback match - \x91cd \x0020?\x88c5\x0020?\x90e8\x0020?\x961f =
+# zhong-protection: 重装骑兵 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x9a91\x0020?\x5175 =
+# zhong-protection: 重装骑士 (keep)
+noback match - \x91cd \x0020?\x88c5\x0020?\x9a91\x0020?\x58eb =
+# zhong-protection: 重裝上陣 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x4e0a\x0020?\x9663 =
+# zhong-protection: 重裝徒步 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x5f92\x0020?\x6b65 =
+# zhong-protection: 重裝戰士 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x6230\x0020?\x58eb =
+# zhong-protection: 重裝步兵 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x6b65\x0020?\x5175 =
+# zhong-protection: 重裝登山 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x767b\x0020?\x5c71 =
+# zhong-protection: 重裝部隊 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x90e8\x0020?\x968a =
+# zhong-protection: 重裝騎兵 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x9a0e\x0020?\x5175 =
+# zhong-protection: 重裝騎士 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x9a0e\x0020?\x58eb =
 # zhong-protection: 重读位置 (keep)
 noback match - \x91cd \x0020?\x8bfb\x0020?\x4f4d\x0020?\x7f6e =
 # zhong-protection: 重读单词 (keep)
@@ -102,6 +132,8 @@ noback match - \x91cd \x0020?\x751f\x0020?\x7537 =
 noback match - \x91cd \x0020?\x751f\x0020?\x80b2 =
 # zhong-protection: 重装甲 (keep)
 noback match - \x91cd \x0020?\x88c5\x0020?\x7532 =
+# zhong-protection: 重裝甲 (keep)
+noback match - \x91cd \x0020?\x88dd\x0020?\x7532 =
 # zhong-protection: 重载荷 (keep)
 noback match - \x91cd \x0020?\x8f7d\x0020?\x8377 =
 # zhong-protection: 重重地 (keep)
@@ -844,6 +876,10 @@ noback match - \x91cd \x0020?\x7f6e 12345-256
 noback match - \x91cd \x0020?\x805a 12345-256
 # chong-repeat: 重获 (chong2)
 noback match - \x91cd \x0020?\x83b7 12345-256
+# chong-reinstall-default: 重装 (chong2)
+noback match - \x91cd \x0020?\x88c5 12345-256
+# chong-reinstall-default: 重裝 (chong2)
+noback match - \x91cd \x0020?\x88dd 12345-256
 # chong-repeat: 重试 (chong2)
 noback match - \x91cd \x0020?\x8bd5 12345-256
 # chong-repeat: 重输 (chong2)

@@ -12,15 +12,17 @@ from __future__ import annotations
 import json
 import sys
 import tomllib
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
 from types import MappingProxyType
 
 from .constituents import ConstituentParser
 from .edges import DIRECTIONS, coordination_pair, edge_reading
+from .motion import contextual_form, motion_reading
 from .nominals import general_role
 from .predicates import _MODALS
+from .verb_forms import reiterated_form
 
 _GRAMMAR = sys.modules[__name__]
 NOUN, VERB, ADJ, ADV, PRON, PREP, CLASSIFIER, DET, NUMBER = (1 << n for n in range(9))
@@ -31,6 +33,9 @@ COORD, ADVERBIAL, COMPLEMENT = (1 << n for n in range(20, 23))
 CONTAINER_MEASURE = 1 << 23
 HUMAN, MILITARY, PERSON_MEASURE = (1 << n for n in range(28, 31))
 EDGE_NOUN, SPEECH_VERB = 1 << 31, 1 << 32
+PLACE, PATH_MOTION, ROTOR, DURATION = 1 << 33, 1 << 34, 1 << 35, 1 << 36
+TRANSFER_THEME, INDEFINITE_QUANTITY = 1 << 37, 1 << 38
+ACTION_MEASURE = 1 << 39
 MAX_CHARS = 512
 MAX_TOKENS = 256
 MAX_DEPTH = 16
@@ -76,6 +81,8 @@ _HEAD_CLASSES = {
 	"nominalGeneral": NOUN,
 	"edgeNoun": EDGE_NOUN,
 	"coordinatingPredicate": VERB,
+	"motionPredicate": VERB,
+	"transferPredicate": VERB,
 }
 _FUNCTIONS = {
 	"的": DE,
@@ -164,6 +171,7 @@ class SyntaxReading:
 	tokens: tuple[Token, ...]
 	dependencies: tuple[Dependency, ...]
 	construction: str = "transitive"
+	preserve: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -179,12 +187,13 @@ class ArgumentFrame:
 	relative_heads: tuple[str, ...] = ()
 	blocked_left: tuple[str, ...] = ()
 	blocked_right: tuple[str, ...] = ()
+	preserve: bool = False
 
 
 class SyntaxContext:
 	"""Ephemeral per-speech-item prefilter; never retained by the parser."""
 
-	__slots__ = ("head_classes", "remaining_work")
+	__slots__ = ("head_classes", "remaining_work", "motion_readings")
 
 	def __init__(self, text, lexicon):
 		characters = frozenset(text)
@@ -192,6 +201,7 @@ class SyntaxContext:
 			name for name, tails in lexicon.head_tails.items() if not tails.isdisjoint(characters)
 		)
 		self.remaining_work = MAX_ITEM_WORK
+		self.motion_readings = {}
 
 	def consume(self, amount):
 		self.remaining_work -= amount
@@ -257,9 +267,10 @@ class SyntaxLexicon:
 					return True
 		return False
 
-	def tokenize(self, text, start):
+	def tokenize(self, text, start, end=None):
 		"""Bounded longest lexical segmentation; never skips unknown material."""
-		end = min(len(text), start + MAX_CHARS)
+		limit = len(text) if end is None else min(len(text), end)
+		end = min(limit, start + MAX_CHARS)
 		position, tokens, spaces = start, [], 0
 		while position < end and len(tokens) < MAX_TOKENS:
 			ch = text[position]
@@ -285,6 +296,7 @@ class SyntaxLexicon:
 						text,
 						position + len(word) - 1,
 						_GRAMMAR,
+						end=end,
 					)
 					is not None
 				):
@@ -303,6 +315,7 @@ class SyntaxLexicon:
 			# their initial numeral. Actual numeric sequences remain bounded.
 			quantity_adjective = (
 				flags & ADJ
+				and position + len(word) < end
 				and self.words.get(word[-1], 0) & ADJ
 				and self.words.get(text[position + len(word) : position + len(word) + 1], 0) & CLASSIFIER
 			)
@@ -334,7 +347,7 @@ class SyntaxLexicon:
 		# Mark an incomplete tail instead of dropping an already complete
 		# object before a following predicate. A truncated NP itself fails at
 		# UNKNOWN; a finished NP before an independent predicate stays valid.
-		if position < len(text) and (position == end or len(tokens) == MAX_TOKENS):
+		if position < limit and (position == end or len(tokens) == MAX_TOKENS):
 			if _is_han(text[position]) or text[position] in _NUMBERS | _SPACES:
 				tokens.append(Token(position, position, "", UNKNOWN))
 		return tuple(tokens)
@@ -346,6 +359,8 @@ class _NounParser(ConstituentParser):
 
 
 class ArgumentParser:
+	contextual_form = staticmethod(contextual_form)
+
 	def __init__(self, lexicon, frames):
 		self.lexicon = lexicon
 		self.frames = tuple(frames)
@@ -368,7 +383,9 @@ class ArgumentParser:
 	def contextual_lexeme(self, word, offset=0):
 		"""A bound nominal head may overlap a dictionary future auxiliary."""
 		return (
-			word[offset : offset + 1] in {"边", "邊"}
+			offset == 0
+			and word in {"转给", "轉給"}
+			or word[offset : offset + 1] in {"边", "邊"}
 			and bool(self.lexicon.words.get(word, 0) & EDGE_NOUN)
 			or offset == 0
 			and len(word) > 1
@@ -520,8 +537,43 @@ class ArgumentParser:
 	def analyze(self, text: str, index: int, context=None) -> SyntaxReading | None:
 		if not 0 <= index < len(text):
 			return None
+		frames = self.buckets.get(text[index], ())
+		if frames and frames[0].object_class in {"motionPredicate", "transferPredicate"}:
+			# Competing meanings share one parse; disabling one never promotes
+			# the losing meaning. No second chart for the same verb group.
+			return motion_reading(self, text, index, frames, context, _GRAMMAR)
+		if frames and frames[0].object_class in {"contents", "dimension", "fastener"}:
+			group = reiterated_form(text, index)
+			if group is not None:
+				start, end, stems = group
+				if not stems or context is not None and context.remaining_work <= 0:
+					return None
+				# All copies share the same argument span at ORIGINAL offsets.
+				# Never apply this production to bound 重 or nominal 将.
+				word, _flags = self.lexicon.longest(text, stems[-1], min(len(text), stems[-1] + 16))
+				if stems[-1] + len(word) > end:
+					return None
+				if context is not None and index in context.motion_readings:
+					parsed = context.motion_readings[index]
+				else:
+					parsed = self._analyze_single(text, start, context, end)
+					if parsed is not None:
+						parsed = replace(
+							parsed,
+							dependencies=parsed.dependencies
+							+ tuple(Dependency("redup", start, p, p + 1) for p in stems[1:]),
+						)
+					if context is not None and len(context.motion_readings) + len(stems) <= MAX_CHART_STATES:
+						for stem in stems:
+							context.motion_readings[stem] = parsed
+				return replace(parsed, target=index) if parsed is not None else None
+		return self._analyze_single(text, index, context)
+
+	def _analyze_single(self, text, index, context, verb_end=None):
+		frames = self.buckets.get(text[index], ())
+		verb_end = index + 1 if verb_end is None else verb_end
 		matches = []
-		for frame in self.buckets.get(text[index], ()):
+		for frame in frames:
 			if frame.object_class in {"edgeNoun", "coordinatingPredicate"}:
 				if (parsed := edge_reading(self, text, index, frame, context, _GRAMMAR)) is not None:
 					matches.append(parsed)
@@ -541,10 +593,10 @@ class ArgumentParser:
 			# dense candidate-only input; a hit still needs the full grammar.
 			if frame.blocked_left and text[max(0, index - 16) : index].endswith(frame.blocked_left):
 				continue
-			if frame.blocked_right and text.startswith(frame.blocked_right, index + 1):
+			if frame.blocked_right and text.startswith(frame.blocked_right, verb_end):
 				continue
 			if self.lexicon.head_tails[frame.object_class].isdisjoint(
-				text[index + 1 : index + MAX_CHARS + MAX_MORPH + 1]
+				text[verb_end : verb_end + MAX_CHARS + MAX_MORPH]
 			):
 				if index and any(ch in text[max(0, index - MAX_CHARS) : index] for ch in "把将將"):
 					if (preposed := self._preposed(text, index, frame, context)) is not None:
@@ -555,15 +607,15 @@ class ArgumentParser:
 			# Try bounded morphological analyses, rather than irrevocably eating
 			# 装 from 装饰品 or 好 from 好看的衣服. Longest valid morphology wins.
 			forms = self.morphologies[frame.id]
-			for prefix in forms.get(text[index + 1 : index + 2], forms[""]):
+			for prefix in forms.get(text[verb_end : verb_end + 1], forms[""]):
 				if context is not None and context.remaining_work <= 0:
 					break
-				start = index + 1 + len(prefix)
-				if start >= len(text) or not text.startswith(prefix, index + 1):
+				start = verb_end + len(prefix)
+				if start >= len(text) or not text.startswith(prefix, verb_end):
 					continue
 				if prefix:
 					if lexical is None:
-						lexical = self.lexicon.longest(text, index + 1, min(len(text), index + 17))
+						lexical = self.lexicon.longest(text, verb_end, min(len(text), verb_end + 16))
 					word, flags = lexical
 					if len(word) > len(prefix) and flags & (NOUN | ADJ) and not flags & VERB:
 						# Prefer the intact noun only if it forms a valid argument.
@@ -571,7 +623,7 @@ class ArgumentParser:
 						# as 盛 / 过气 / 体 instead of 盛过 / 气体.
 						if bare_object is None:
 							bare_object = (
-								self._object(self.lexicon.tokenize(text, index + 1), frame, index, context) is not None
+								self._object(self.lexicon.tokenize(text, verb_end), frame, index, context) is not None
 							)
 						if bare_object:
 							continue
@@ -689,6 +741,12 @@ def _load_data():
 		"militaryNoun": NOUN | MILITARY,
 		"edgeNoun": NOUN | EDGE_NOUN,
 		"speechVerb": VERB | SPEECH_VERB,
+		"placeNoun": NOUN | PLACE,
+		"pathMotion": VERB | PATH_MOTION,
+		"rotorNoun": NOUN | ROTOR,
+		"transferTheme": NOUN | TRANSFER_THEME,
+		"indefiniteQuantity": NUMBER | INDEFINITE_QUANTITY,
+		"actionMeasure": CLASSIFIER | ACTION_MEASURE,
 	}
 	for name, entries in evidence["selection"].items():
 		if name not in selection_flags:
@@ -702,6 +760,7 @@ def _load_data():
 	semantic_mask = FOOD | POSSIBLE_FOOD | CONTENTS | POSSIBLE_CONTENTS | CONTAINER | HUMAN | MILITARY
 	semantic_mask |= CLASSIFIER | CONTAINER_MEASURE | PERSON_MEASURE
 	semantic_mask |= EDGE_NOUN | SPEECH_VERB
+	semantic_mask |= PLACE | PATH_MOTION | ROTOR | TRANSFER_THEME | INDEFINITE_QUANTITY | ACTION_MEASURE
 	for traditional, simplified in evidence["formAliases"].items():
 		if not all(_is_han(c) for c in traditional + simplified):
 			raise ValueError("Invalid dictionary form pair")
@@ -725,7 +784,14 @@ def _load_data():
 	# Small, sourced lexical sense reviews supplement incomplete source types
 	# (e.g. 粉末 classified only as shape). These are noun heads, not sentences.
 	for name, row in grammar.get("nounHeads", {}).items():
-		feature = {"contents": CONTENTS, "container": CONTAINER}.get(name)
+		feature = {
+			"contents": CONTENTS,
+			"container": CONTAINER,
+			"rotor": ROTOR,
+			"place": PLACE,
+			"duration": DURATION,
+			"actionMeasure": ACTION_MEASURE,
+		}.get(name)
 		if feature is None or not row.get("source") or not 1 <= len(row["words"]) <= 128:
 			raise ValueError("Invalid reviewed noun class")
 		for word in row["words"]:
@@ -753,6 +819,9 @@ def _load_data():
 			or not row["source"]
 			or not row["positive"]
 			or not row["negative"]
+			or type(row.get("preserve", False)) is not bool
+			or row.get("preserve", False)
+			and row["reading"] != "zhuan3"
 			or not isinstance(row["prefixes"], list)
 			or not 1 <= len(row["prefixes"]) <= 32
 			or not all(isinstance(p, str) and len(p) <= 4 for p in row["prefixes"])
@@ -792,6 +861,7 @@ def _load_data():
 				tuple(relative_heads),
 				tuple(blocked_left),
 				tuple(blocked_right),
+				row.get("preserve", False),
 			)
 		)
 	return SyntaxLexicon(
@@ -806,6 +876,6 @@ def _load_data():
 
 def load_argument_parser(allowed, disabled=frozenset()):
 	lexicon, frames = _load_data()
-	if any(frame.reading not in allowed for frame in frames):
+	if any(frame.reading not in allowed and not frame.preserve for frame in frames):
 		raise ValueError("Unknown frame pronunciation")
 	return ArgumentParser(lexicon, (frame for frame in frames if frame.id not in disabled))

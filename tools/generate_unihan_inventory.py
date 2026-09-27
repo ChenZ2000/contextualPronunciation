@@ -6,6 +6,7 @@ rare, historical, regional and variant readings; no generated entry is enabled.
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import unicodedata
@@ -13,7 +14,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "artifacts/Unihan/Unihan_Readings.txt"
+SOURCE = ROOT / "data/sources/Unihan_Readings-17.0.0.txt.gz"
 OUTPUT = ROOT / "data/unihan_polyphone_candidates.json"
 
 
@@ -47,15 +48,15 @@ def extract(lines) -> list[dict]:
 
 
 def main() -> int:
-	with SOURCE.open("r", encoding="utf-8") as stream:
-		items = extract(stream)
+	content = gzip.decompress(SOURCE.read_bytes())
+	items = extract(content.decode("utf-8").splitlines())
 	report = {
 		"schemaVersion": 1,
 		"unicodeVersion": "17.0.0",
 		"source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
 		"documentation": "https://www.unicode.org/reports/tr38/tr38-38.html",
 		"license": "UNICODE-LICENSE.txt",
-		"sourceSha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+		"sourceSha256": hashlib.sha256(content).hexdigest(),
 		"method": (
 			"Union of kMandarin and kHanyuPinyin readings, NFC normalized; retain more than one distinct reading."
 		),

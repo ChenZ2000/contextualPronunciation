@@ -5,14 +5,15 @@ from __future__ import annotations
 DIRECTIONS = frozenset("上下左右前后後内內外")
 
 
-def coordination_pair(lexicon, text, index, g):
+def coordination_pair(lexicon, text, index, g, end=None):
 	"""An independently attested speech action coordinated with a predicate.
 
 	Only speech-action senses license splitting an overlapping lexical 和 word;
 	附和/应和 retain their response senses. Aspect or a nominal right side is
 	insufficient evidence. Unknown text is never skipped to find a predicate.
 	"""
-	if text[index : index + 1] != "和":
+	end = len(text) if end is None else end
+	if index >= end or text[index : index + 1] != "和":
 		return None
 	left = None
 	for start in range(max(0, index - 8), index):
@@ -24,11 +25,11 @@ def coordination_pair(lexicon, text, index, g):
 	if left is None:
 		return None
 	start = index + 1
-	while start < len(text) and text[start] in g._SPACES and start < index + 5:
+	while start < end and text[start] in g._SPACES and start < index + 5:
 		start += 1
-	if start >= len(text) or not g._is_han(text[start]):
+	if start >= end or not g._is_han(text[start]):
 		return None
-	word, flags = lexicon.longest(text, start, min(len(text), start + 16))
+	word, flags = lexicon.longest(text, start, min(end, start + 16))
 	if not flags & g.VERB or flags & (g.UNKNOWN | g.STOP | g.PREP):
 		return None
 	if flags & g.NOUN and not flags & g.SPEECH_VERB:

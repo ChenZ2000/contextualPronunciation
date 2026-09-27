@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.8
+
+- Enable the full dictionary and bounded grammar whenever Chinese corrections are enabled; remove the extended-lexicon checkbox.
+- Correct counted work trips, counted nights versus astronomical 宿, and both syllables in 倔强. Default 重装 / 重裝 to chóng for reinstall, with explicit heavy-equipment protections.
+- Select rotation, roaming and transfer readings using noun-phrase heads, recipients, beneficiaries, purpose clauses and productive verb complements. Expand dictionary-derived mechanical candidates and share arguments across 转呀转, 转着转着 and 转了又转.
+- Reuse repeated-predicate morphology for existing 盛, 量 and 系 argument frames. Preserve user rules, original offsets and work budgets.
+- Consolidate current documentation, generate installed help from user guides, and exclude local AI instructions and development-session reports from public packages.
+- Add contrastive semantic, source-provenance, synthesis and performance regressions. See [release notes](docs/releases/0.7.8.md) for validation scope and installation.
+
 ## 0.7.4
 
 First public GitHub repository release. The pronunciation runtime is unchanged from 0.7.3.
@@ -21,4 +30,4 @@ First public GitHub repository release. The pronunciation runtime is unchanged f
 - Improve omitted objects with aspect markers, such as 也给我盛了一碗.
 - Improve coordinated military subjects followed by predicates, such as 天兵和天将一起去吃饭.
 
-Earlier local development is documented in the [historical design index](docs/INDEX.md). Those notes describe their named versions and are not current installation instructions.
+Current instructions are in the [documentation index](docs/INDEX.md). Earlier implementation states remain available in Git history.

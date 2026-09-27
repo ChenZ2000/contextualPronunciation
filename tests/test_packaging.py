@@ -56,6 +56,8 @@ class PackagingTests(unittest.TestCase):
 				for required in ("LICENSE", "CONTRIBUTING.md", "SECURITY.md", "docs/RELEASING.md"):
 					self.assertIn(f"{prefix}/{required}", names)
 				self.assertFalse(any("开发方案" in name or "/diagnostics/" in name for name in names))
+				self.assertFalse(any(Path(name).name.casefold() == "agents.md" for name in names))
+				self.assertFalse(any("/docs/history/" in name or "/local/" in name for name in names))
 				archive.extractall(base / "original")
 			original = next((base / "original").iterdir())
 			checkout = base / "checkout"
@@ -119,7 +121,20 @@ class PackagingTests(unittest.TestCase):
 			self.assertIn("locale/zh_TW/symbols-lexicalApostrophe.dic", names)
 			self.assertIn("locale/zh_CN/LC_MESSAGES/nvda.mo", names)
 			self.assertIn("doc/zh_CN/readme.html", names)
+			self.assertEqual(
+				{"doc/en/readme.html", "doc/zh_CN/readme.html"}, {name for name in names if name.startswith("doc/")}
+			)
+			self.assertFalse(any(Path(name).name.casefold() == "agents.md" for name in names))
 			self.assertTrue(all(info.date_time == (1980, 1, 1, 0, 0, 0) for info in archive.infolist()))
+
+	def test_local_instructions_are_rejected_by_publication_audit(self):
+		from scripts.build_addon import is_local_instruction
+		from scripts.check_repository import check_paths
+
+		self.assertTrue(is_local_instruction(Path("addon/nested/AGENTS.md")))
+		self.assertTrue(is_local_instruction(Path("data/agents.md")))
+		with self.assertRaisesRegex(ValueError, "Private/generated path"):
+			check_paths([ROOT / "AGENTS.md"])
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ import tomllib
 from pathlib import Path
 from zipfile import ZipFile
 
-from build_addon import ROOT, build, checked_manifest
+from build_addon import ROOT, build, checked_manifest, is_local_instruction
 from build_source_archive import build as build_source
 
 
@@ -48,7 +48,11 @@ def prepare(tag: str | None = None) -> dict:
 				for entry in names:
 					parts = Path(entry).parts
 					if (
-						any(part in {"vendor", "artifacts", "diagnostics", ".git", "__pycache__"} for part in parts)
+						is_local_instruction(Path(entry))
+						or any(
+							part in {"vendor", "artifacts", "diagnostics", "local", "private", ".git", "__pycache__"}
+							for part in parts
+						)
 						or Path(entry).suffix in {".dll", ".exe", ".wav", ".pyc", ".pem", ".key", ".log"}
 						or any(part.startswith(".env") for part in parts)
 					):

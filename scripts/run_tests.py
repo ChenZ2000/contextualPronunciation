@@ -40,10 +40,19 @@ def source_hashes() -> dict[str, str]:
 			".tsv",
 		}
 		and "__pycache__" not in p.parts
+		and p.name.casefold() != "agents.md"
 	]
 	paths.extend(
 		ROOT / name
-		for name in ("README.md", "manifest.ini", "buildVars.py", "pyproject.toml", "build.ps1", ".gitattributes")
+		for name in (
+			"README.md",
+			"manifest.ini",
+			"buildVars.py",
+			"pyproject.toml",
+			"build.ps1",
+			".gitattributes",
+			".gitignore",
+		)
 	)
 	return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
 

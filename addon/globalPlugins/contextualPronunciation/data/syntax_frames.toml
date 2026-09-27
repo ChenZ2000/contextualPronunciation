@@ -4,6 +4,48 @@
 schemaVersion = 1
 
 [[frames]]
+id = "syntax-motion-predicate"
+target = "转"
+reading = "zhuan4"
+object = "motionPredicate"
+prefixes = [""]
+source = "MOE 轉 zhuan4 rotation/roaming https://dict.revised.moe.edu.tw/dictView.jsp?ID=8114; 轉一轉 https://dict.revised.moe.edu.tw/dictView.jsp?ID=119458; OpenHowNet location and directed-motion sense IDs in grammar_lexicon.json selectionEvidence."
+positive = ["出去转一转", "去公园转转", "让车轮转一转", "卡住不能转", "让风车转起来", "汽轮机会转", "发动机转起来了", "轴承能转起来吗"]
+negative = ["去公园转交文件", "把文件转一转", "车轮旁边的文件不能转", "车轮向左转一转", "附件能给他转吗", "我转了好多给客户", "把风车转给经理"]
+
+[[frames]]
+id = "syntax-motion-predicate-traditional"
+target = "轉"
+reading = "zhuan4"
+object = "motionPredicate"
+prefixes = [""]
+source = "MOE 轉 / 轉一轉; source-authored traditional noun heads and dictionary form aliases."
+positive = ["出去轉一轉", "去公園轉轉", "讓車輪轉一轉", "卡住不能轉"]
+negative = ["去公園轉交文件", "把文件轉一轉", "車輪旁邊的文件不能轉", "車輪向左轉一轉"]
+
+[[frames]]
+id = "syntax-transfer-predicate"
+target = "转"
+reading = "zhuan3"
+preserve = true
+object = "transferPredicate"
+prefixes = [""]
+source = "MOE 轉 indirect transmission zhuan3 https://stroke-order.learningweb.moe.edu.tw/dictMean.jsp?ID=36681; UD Chinese iobj/obl roles; HowNet fund/money/letter/document/InfoElement senses and indefinite quantities. Preserve the source character, annotate its selected reading."
+positive = ["邮件能转给经理吗", "附件能给他转吗", "钱给他转了吗", "我转了好多给客户", "把风车转给经理"]
+negative = ["让风车转起来", "汽轮机会转", "给我转一转车轮", "发动机转起来给大家看", "文件旁边的车轮不能转起来"]
+
+[[frames]]
+id = "syntax-transfer-predicate-traditional"
+target = "轉"
+reading = "zhuan3"
+preserve = true
+object = "transferPredicate"
+prefixes = [""]
+source = "Same transfer frame with source-authored traditional forms and original text offsets."
+positive = ["郵件能轉給經理嗎", "附件能給他轉嗎", "錢給他轉了嗎", "我轉了好多給客戶"]
+negative = ["讓風車轉起來", "汽輪機會轉", "給我轉一轉車輪"]
+
+[[frames]]
 id = "syntax-coordinated-predicates"
 target = "和"
 reading = "he2"
@@ -48,6 +90,22 @@ source = "CC-CEDICT/KFCD physical powder/granule/sand/item/cargo/material/liquid
 [nounHeads.container]
 words = ["容器", "试管", "試管", "烧杯", "燒杯", "量筒", "储罐", "儲罐", "储槽", "儲槽", "托盘", "托盤"]
 source = "CC-CEDICT lab/storage vessel senses; MOE 盛 container/hold valency. Containers are external heads, not automatically contained material."
+
+[nounHeads.rotor]
+words = ["车轮", "車輪", "轮子", "輪子", "轮胎", "輪胎", "齿轮", "齒輪", "飞轮", "飛輪", "风扇", "風扇", "扇叶", "扇葉", "转盘", "轉盤", "陀螺", "地球仪", "地球儀", "电机", "電機", "马达", "馬達", "电扇", "電扇", "机器", "機器", "发动机", "發動機", "轴承", "軸承", "轴", "軸", "水车", "水車", "摩天轮", "摩天輪", "唱片"]
+source = "Reviewed CC-CEDICT physical wheel/rotor/rotating-machine senses. These are selection candidates only when attached as a predicate argument; a mention inside a modifier is insufficient."
+
+[nounHeads.place]
+words = ["商场", "商場", "校园", "校園"]
+source = "CC-CEDICT physical shopping-mall and campus senses omitted by the core HowNet location root projection. Requires a locative construction."
+
+[nounHeads.duration]
+words = ["小时", "小時", "钟头", "鐘頭", "分钟", "分鐘", "秒钟", "秒鐘", "天", "日", "星期", "周", "週", "月", "年"]
+source = "CC-CEDICT duration units; only quantified duration complements, never bare nouns or arbitrary number phrases."
+
+[nounHeads.actionMeasure]
+words = ["圈"]
+source = "CC-CEDICT 圈 quan1: classifier for loops/orbits/laps/turns; supplements HowNet ActUnit roots. An action extent is not an omitted transferred item."
 
 # These ambiguous nouns acquire the culinary sense ONLY as the head of a
 # noun-noun compound (红豆 + 汤), not as standalone words or surname guesses.

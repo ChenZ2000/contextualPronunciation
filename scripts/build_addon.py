@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import re
 import runpy
+import tomllib
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
@@ -13,6 +14,10 @@ ADDON_ROOT = ROOT / "addon"
 MANIFEST = ROOT / "manifest.ini"
 DIST = ROOT / "dist"
 _ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
+
+
+def is_local_instruction(path: Path) -> bool:
+	return path.name.casefold() == "agents.md"
 
 
 def _manifest_value(name: str, text: str) -> str:
@@ -46,6 +51,9 @@ def checked_manifest() -> tuple[str, str, str]:
 	manifest_text = MANIFEST.read_text(encoding="utf-8")
 	name = _manifest_value("name", manifest_text)
 	version = _manifest_value("version", manifest_text)
+	project = tomllib.loads((ROOT / "pyproject.toml").read_text("utf-8"))
+	if project["project"]["version"] != version:
+		raise ValueError("Manifest/project version mismatch; refusing to create/overwrite a package")
 	metadata = runpy.run_path(str(ROOT / "buildVars.py"))["addon_info"]
 	for field, key in (
 		("name", "addon_name"),
@@ -74,7 +82,12 @@ def build(*, output_dir: Path | None = None) -> Path:
 	with ZipFile(output, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
 		_write_file(archive, MANIFEST, "manifest.ini")
 		for path in sorted(ADDON_ROOT.rglob("*")):
-			if not path.is_file() or "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
+			if (
+				not path.is_file()
+				or is_local_instruction(path)
+				or "__pycache__" in path.parts
+				or path.suffix in {".pyc", ".pyo"}
+			):
 				continue
 			destination = path.relative_to(ADDON_ROOT).as_posix()
 			# The official SCons route generates this intermediate file. The

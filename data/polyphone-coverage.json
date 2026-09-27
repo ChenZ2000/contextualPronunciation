@@ -19,9 +19,9 @@
     "charactersWithPhraseEvidence": 2879
   },
   "readingStatuses": {
-    "annotation_evidence_only": 2893,
-    "curated_contexts": 15,
-    "lexicon_candidates": 658,
+    "annotation_evidence_only": 2892,
+    "curated_contexts": 18,
+    "lexicon_candidates": 656,
     "needs_context_evidence": 16004
   },
   "characters": {
@@ -541,7 +541,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -747,7 +747,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -8040,7 +8040,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -9322,7 +9322,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -10790,7 +10790,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -11500,7 +11500,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -13112,7 +13112,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -13818,7 +13818,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -14266,7 +14266,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -19754,7 +19754,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -20596,7 +20596,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -21096,7 +21096,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -24520,7 +24520,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -25342,7 +25342,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -26556,7 +26556,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -31206,10 +31206,12 @@
             "倔強",
             "倔强"
           ],
-          "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "curatedRuleIds": [
+            "jue-stubborn-compound"
+          ],
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         },
         "jue4": {
           "headwords": 4,
@@ -32469,7 +32471,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -39589,7 +39591,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -41353,7 +41355,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -46253,7 +46255,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -49665,7 +49667,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -50385,7 +50387,7 @@
             "过屠门而大嚼"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         }
@@ -52436,7 +52438,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -54542,7 +54544,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -55286,7 +55288,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -56705,7 +56707,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -60890,10 +60892,12 @@
             "半宿",
             "整宿"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "nightCount"
+          ],
           "homophoneCandidate": "朽",
           "automaticLexiconSpeechEligible": true,
-          "status": "lexicon_candidates"
+          "status": "curated_contexts"
         },
         "xiu4": {
           "headwords": 5,
@@ -62162,7 +62166,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -63094,7 +63098,7 @@
             "崛起"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -63204,7 +63208,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -63955,7 +63959,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -64430,10 +64434,12 @@
             "兼差",
             "出大差"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "travelAssignment"
+          ],
           "homophoneCandidate": "钗",
           "automaticLexiconSpeechEligible": true,
-          "status": "lexicon_candidates"
+          "status": "curated_contexts"
         },
         "chai4": {
           "headwords": 0,
@@ -66826,7 +66832,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -77179,7 +77185,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -78178,7 +78184,7 @@
             "挖掘"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -81366,7 +81372,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -89827,7 +89833,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -90990,7 +90996,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -93397,7 +93403,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -99081,7 +99087,7 @@
             "先決問題"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -100748,7 +100754,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -106729,7 +106735,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -111643,7 +111649,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -112279,7 +112285,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -113285,7 +113291,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -115804,7 +115810,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -117586,7 +117592,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -122192,7 +122198,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -127540,7 +127546,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -127584,7 +127590,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -135047,7 +135053,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -139707,7 +139713,7 @@
             "脚色"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": true,
           "status": "lexicon_candidates"
         }
@@ -141269,7 +141275,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -149555,7 +149561,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -149577,7 +149583,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -151835,7 +151841,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -152462,7 +152468,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -155165,7 +155171,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -156114,7 +156120,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -158089,7 +158095,7 @@
             "人不知鬼不覺"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         }
@@ -158272,7 +158278,7 @@
             "人不知鬼不觉"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         }
@@ -158314,7 +158320,7 @@
             "宫商角徵羽"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": true,
           "status": "lexicon_candidates"
         },
@@ -158374,7 +158380,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -158585,7 +158591,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -163722,7 +163728,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -163912,7 +163918,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -164632,7 +164638,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -167258,7 +167264,7 @@
             "一蹶不振"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -167357,7 +167363,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -167614,7 +167620,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -168231,7 +168237,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -170613,7 +170619,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -173987,6 +173993,7 @@
           ],
           "curatedRuleIds": [
             "chong-rebirth-bounded",
+            "chong-reinstall-default",
             "chong-repeat"
           ],
           "homophoneCandidate": "崇",
@@ -178902,7 +178909,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -180934,7 +180941,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -181020,7 +181027,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -188081,7 +188088,7 @@
             "駃騠"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -188426,7 +188433,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -189242,7 +189249,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -191724,7 +191731,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -192231,7 +192238,7 @@
             "鶗鴂"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         }
@@ -192848,7 +192855,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -195402,7 +195409,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -196004,7 +196011,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -199750,7 +199757,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -200644,7 +200651,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -201638,7 +201645,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -207264,7 +207271,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -208822,7 +208829,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -214366,7 +214373,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -214550,7 +214557,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -215272,7 +215279,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -215472,7 +215479,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         }
@@ -217374,7 +217381,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "决",
+          "homophoneCandidate": "觉",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },

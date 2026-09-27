@@ -33,6 +33,56 @@ class Scenario:
 
 
 SCENARIOS = (
+	Scenario("chong2_reinstall_default", "P0", "重", "需要重装吗", "虫", "chóng", "chong-reinstall-default"),
+	Scenario("chong2_reinstall_traditional", "P0", "重", "需要重裝嗎", "虫", "chóng", "chong-reinstall-default"),
+	Scenario("zhuan4_screw", "P0", "转", "螺丝会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_screwdriver", "P0", "转", "螺丝刀转呀转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_engine_head", "P0", "转", "引擎会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_generator", "P0", "转", "发电机会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_motor", "P0", "转", "电机会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_durative", "P0", "转", "转呀转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_iterative", "P0", "转", "车轮转了又转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("cheng2_durative", "P0", "盛", "盛呀盛红豆粥", "乘", "chéng", "syntax-serving-object"),
+	Scenario(
+		"zhuan4_windmill_phase", "P0", "转", "让风车转起来", "赚", "zhuàn", "syntax-motion-predicate", extended=True
+	),
+	Scenario("zhuan4_windmill_modal", "P0", "转", "风车会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_turbine_modal", "P0", "转", "汽轮机会转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario(
+		"zhuan4_engine_aspect", "P0", "转", "发动机转起来了", "赚", "zhuàn", "syntax-motion-predicate", extended=True
+	),
+	Scenario(
+		"zhuan4_bearing_question", "P0", "转", "轴承能转起来吗", "赚", "zhuàn", "syntax-motion-predicate", extended=True
+	),
+	Scenario("zhuan4_potential", "P0", "转", "轴承转不起来", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario(
+		"zhuan4_purpose", "P0", "转", "发动机转起来给大家看", "赚", "zhuàn", "syntax-motion-predicate", extended=True
+	),
+	Scenario("zhuan4_serial", "P0", "转", "出去转一转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_place", "P0", "转", "去公园转转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_modal", "P0", "转", "我想出去随便转一转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario(
+		"zhuan4_place_modifier",
+		"P0",
+		"转",
+		"去刚开放的博物馆慢慢转一转",
+		"赚",
+		"zhuàn",
+		"syntax-motion-predicate",
+		extended=True,
+	),
+	Scenario("zhuan4_caused", "P0", "转", "让车轮转一转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario("zhuan4_stuck", "P0", "转", "卡住不能转", "赚", "zhuàn", "syntax-motion-predicate", extended=True),
+	Scenario(
+		"zhuan4_traditional",
+		"P0",
+		"轉",
+		"去公園轉轉",
+		"赚",
+		"zhuàn",
+		"syntax-motion-predicate-traditional",
+		extended=True,
+	),
 	Scenario("bian1_lower_edge", "P0", "边", "下边缘", "鞭", "biān", "syntax-spatial-edge"),
 	Scenario("bian1_upper_frame", "P0", "边", "上边框", "鞭", "biān", "syntax-spatial-edge"),
 	Scenario("he2_coordinated_verbs", "P0", "和", "唱和说", "盒", "hé", "syntax-coordinated-predicates"),
@@ -170,13 +220,13 @@ def _load_rule_engine():
 	return load("rules").load_default_rules(extended=False)
 
 
-def _single_changed_index(source: str, transformed: str) -> int:
+def _changed_indices(source: str, transformed: str) -> list[int]:
 	if len(source) != len(transformed):
 		raise ValueError(f"Renderer rewrite changed length: {source!r} -> {transformed!r}")
 	changed = [index for index, pair in enumerate(zip(source, transformed, strict=True)) if pair[0] != pair[1]]
-	if len(changed) != 1:
-		raise ValueError(f"Expected one changed character: {source!r} -> {transformed!r}")
-	return changed[0]
+	if not changed:
+		raise ValueError(f"Expected a changed target: {source!r} -> {transformed!r}")
+	return changed
 
 
 def build_fixture() -> dict[str, object]:
@@ -189,14 +239,19 @@ def build_fixture() -> dict[str, object]:
 	transformations: list[dict[str, object]] = []
 	for scenario in SCENARIOS:
 		transformed = (broader if scenario.extended else rules).transform(scenario.source, strict=scenario.strict)
-		index = _single_changed_index(scenario.source, transformed)
-		if scenario.source[index] != scenario.character:
+		indices = _changed_indices(scenario.source, transformed)
+		index = indices[0]
+		if any(scenario.source[i] != scenario.character for i in indices):
 			raise ValueError(f"Changed character is not {scenario.character!r}: {scenario.source!r}")
-		anchor_text = transformed[:index] + scenario.alternate_anchor + transformed[index + 1 :]
+		anchor_chars = list(transformed)
+		for i in indices:
+			anchor_chars[i] = scenario.alternate_anchor
+		anchor_text = "".join(anchor_chars)
 		group = f"final_{scenario.id}"
 		common = {
 			"compareGroup": group,
 			"targetCharIndex": index,
+			"targetCharIndices": indices,
 			"tier": scenario.tier,
 			"expectedReading": scenario.expected_reading,
 			"ruleKind": scenario.rule_kind,
@@ -235,6 +290,7 @@ def build_fixture() -> dict[str, object]:
 				"transformed": transformed,
 				"commonAnchor": anchor_text,
 				"targetCharIndex": index,
+				"targetCharIndices": indices,
 				"expectedReading": scenario.expected_reading,
 				"ruleKind": scenario.rule_kind,
 				"strict": scenario.strict,
@@ -261,7 +317,7 @@ def build_fixture() -> dict[str, object]:
 			"strict": "Default scenarios are strict; optional key preference is explicitly non-strict",
 		},
 		"method": (
-			"每组由 source、规则引擎实时生成的 transformed、以及仅将目标字换成另一枚常用同音字的 "
+			"每组由 source、规则引擎实时生成的 transformed、以及将所有目标位置换成另一枚常用同音字的 "
 			"common_anchor 组成；以同一次 Ting-Ting 离线渲染中的完整音素流严格相等为自动判据。"
 		),
 		"limitations": [

@@ -74,6 +74,15 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 		"shortSyntaxOwner": (["量住在隔壁的小名的身高"], short_iterations),
 		"shortSyntaxLiquid": (["盛装液体的容器"], short_iterations),
 		"shortSyntaxQuantity": (["盛了半瓶透明液体"], short_iterations),
+		"shortMotionLocation": (["去公园转转"], short_iterations),
+		"shortMotionSerial": (["我想出去随便转一转"], short_iterations),
+		"shortMotionObject": (["让刚修好的车轮转一转"], short_iterations),
+		"shortMotionDistractor": (["去公园把文件转转"], short_iterations),
+		"shortMotionPhase": (["让风车转起来"], short_iterations),
+		"shortMotionRecipient": (["附件能给他转吗"], short_iterations),
+		"shortMotionEllipsis": (["我转了好多给客户"], short_iterations),
+		"shortMotionPurpose": (["发动机转起来给大家看"], short_iterations),
+		"shortMotionReiteration": (["螺丝刀转呀转呀转"], short_iterations),
 		"shortCrossingDefault": (["降调音频发给调音师"], short_iterations),
 		"shortSentencePair": (["我给孩子盛汤之后盛饭"], short_iterations),
 		"shortSentenceRepeated": (["盛饭盛汤很好"], short_iterations),
@@ -97,6 +106,13 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 		"longMeasureCandidates8k": (["量" * 8192], min(long_iterations, 50)),
 		"longServingCandidates8k": (["盛" * 8192], min(long_iterations, 50)),
 		"longFastenCandidates8k": (["系" * 8192], min(long_iterations, 50)),
+		"longMotionCandidates8k": (["转" * 8192], min(long_iterations, 50)),
+		"longMotionReiterations8k": (["转呀" * 4096], min(long_iterations, 50)),
+		"longMotionSentences8k": (["去公园转转，出去转一转。" * 683], min(long_iterations, 50)),
+		"longMotionRoles8k": (
+			[(("让风车转起来，附件能给他转吗，我转了好多给客户，发动机转起来给大家看。") * 256)[:8192]],
+			min(long_iterations, 50),
+		),
 	}
 	measurements = {
 		name: {
@@ -125,6 +141,15 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 			"shortSyntaxOwner",
 			"shortSyntaxLiquid",
 			"shortSyntaxQuantity",
+			"shortMotionLocation",
+			"shortMotionSerial",
+			"shortMotionObject",
+			"shortMotionDistractor",
+			"shortMotionPhase",
+			"shortMotionRecipient",
+			"shortMotionEllipsis",
+			"shortMotionPurpose",
+			"shortMotionReiteration",
 			"shortCrossingDefault",
 			"shortSentencePair",
 			"shortSentenceRepeated",
@@ -133,7 +158,7 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 		):
 			sequence, iterations = scenarios[name]
 			measurements[f"pluginFilterWithStubs_{name}"] = {
-				"extendedLexiconEnabled": True,
+				"dictionaryLoaded": True,
 				"inputCodePoints": len(sequence[0]),
 				**_measure(
 					lambda sequence=sequence: environment.plugin._speech_filter(sequence),
@@ -153,7 +178,8 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 		):
 			sequence, iterations = scenarios[name]
 			measurements[f"defaultPlugin_{name}"] = {
-				"extendedLexiconEnabled": False,
+				"dictionaryLoaded": True,
+				"legacyConfigValueIgnored": True,
 				"inputCodePoints": len(sequence[0]),
 				**_measure(
 					lambda sequence=sequence: environment.plugin._speech_filter(sequence),
@@ -164,7 +190,8 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 		for name in ("shortSyntaxFood", "shortSyntaxOwner", "shortSyntaxLiquid", "shortSyntaxQuantity"):
 			sequence, iterations = scenarios[name]
 			measurements[f"defaultPlugin_{name}"] = {
-				"extendedLexiconEnabled": False,
+				"dictionaryLoaded": True,
+				"legacyConfigValueIgnored": True,
 				"inputCodePoints": len(sequence[0]),
 				**_measure(
 					lambda sequence=sequence: environment.plugin._speech_filter(sequence),
@@ -195,8 +222,8 @@ def run(*, short_iterations: int, long_iterations: int, rounds: int) -> dict[str
 			"processor": platform.processor(),
 		},
 		"method": (
-			"Broad lexicon enabled except explicitly marked defaultPlugin cases. Legacy NoCandidate names "
-			"refer to the old six-character inventory, not an empty candidate set in the broad lexicon. "
+			"Broad lexicon enabled for every case; defaultPlugin cases set the retired config value to false "
+			"to verify it is ignored. Legacy NoCandidate names refer to the old six-character inventory. "
 			"Median of per-round average wall times, not per-call p99. Normalizer and real plugin filter "
 			"with NVDA property stubs. Excludes real NVDA dispatch, COM, IPC, synthesis, audio "
 			"and interruption latency."

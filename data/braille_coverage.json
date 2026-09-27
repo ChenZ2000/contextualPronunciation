@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "baseTable": "zhcn-cbs.ctb",
   "scheme": "GF 0019-2018",
-  "literalContexts": 12057,
-  "correctionContexts": 11697,
-  "protectionContexts": 360,
-  "compiledMatchRules": 455,
+  "literalContexts": 12075,
+  "correctionContexts": 11699,
+  "protectionContexts": 376,
+  "compiledMatchRules": 473,
   "factoredTemplateRules": 25,
   "readings": {
     "hang2": "125-236",
@@ -49,6 +49,18 @@
       "行、列"
     ],
     [
+      "jiang-stubborn-traditional",
+      "倔強"
+    ],
+    [
+      "jue-stubborn-compound",
+      "倔強"
+    ],
+    [
+      "jue-stubborn-compound",
+      "倔强"
+    ],
+    [
       "liang-physical-quantity",
       "dynamic template"
     ],
@@ -84,7 +96,7 @@
   "notCompiled": [
     "structural number rules",
     "user configuration",
-    "extended CC-CEDICT matching",
+    "dictionary matching and speech-only readings without reviewed braille cells",
     "full word segmentation",
     "full GF 0019-2018 translation"
   ]

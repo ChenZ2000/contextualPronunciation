@@ -24,6 +24,8 @@ CURRENT_DOCS = (
 	"docs/DEVELOPMENT.md",
 	"docs/RELEASING.md",
 	"docs/INDEX.md",
+	"docs/ARCHITECTURE.md",
+	"docs/RULES.md",
 )
 
 
@@ -33,7 +35,8 @@ def public_files() -> list[Path]:
 		check=True,
 		capture_output=True,
 	)
-	return [ROOT / name.decode("utf-8") for name in result.stdout.split(b"\0") if name]
+	# Cached names can be deleted/renamed in the working tree before staging.
+	return [p for name in result.stdout.split(b"\0") if name and (p := ROOT / name.decode("utf-8")).exists()]
 
 
 def check_paths(paths: list[Path]) -> None:
@@ -41,6 +44,7 @@ def check_paths(paths: list[Path]) -> None:
 		relative = path.relative_to(ROOT)
 		if (
 			path.is_symlink()
+			or path.name.casefold() == "agents.md"
 			or relative.parts[0] in PRIVATE_ROOTS
 			or "__pycache__" in relative.parts
 			or path.suffix in PRIVATE_SUFFIXES
@@ -77,6 +81,7 @@ class Links(HTMLParser):
 
 def check_links() -> None:
 	paths = [ROOT / name for name in CURRENT_DOCS]
+	paths.extend((ROOT / "docs/releases").glob("*.md"))
 	paths.extend((ROOT / "addon/doc").rglob("*.html"))
 	missing = []
 	for path in paths:

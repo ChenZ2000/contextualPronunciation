@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers Context-aware Pronunciation 0.7.4. Install the `.nvda-addon` from [Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest) and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.7.8. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 
@@ -18,41 +18,52 @@ Open **NVDA Settings → Context-aware pronunciation**. Changes take effect when
 |---|---|---|
 | Enable contextual pronunciation rewriting | On | Enables text rewriting in the speech pipeline |
 | Correct supported Chinese polyphones | On | Applies the supported Mandarin pronunciation rules |
-| Use extended phrase lexicon | Off | Enables experimental dictionary-based coverage; some ambiguous phrases may be misread |
 | Normalize curly apostrophes inside Latin words | On | Converts an in-word curly apostrophe to a straight apostrophe for speech, as in `doesn’t` |
 | Strict mode | On | Keeps ambiguous text unchanged; turning it off currently also selects the literary yuè preference in 密钥、公钥、私钥 |
 
-Start with the defaults. To try the extended lexicon, enable it and compare text you read regularly. For example, its boundary protection distinguishes 降调音频 (调 → diào) from 调音师 (调 → tiáo). Turn it off again if it introduces unwanted changes.
+The dictionary lexicon and bounded grammar are active whenever Chinese corrections are enabled. The retired extended-lexicon setting no longer gates them. Boundary protection distinguishes 降调音频 (调 → diào) from 调音师 (调 → tiáo). Use a local `keep` rule for a specific unwanted correction.
 
 Chinese corrections specify Mandarin readings under every voice and language tag. Use a voice that supports Mandarin. For Cantonese, Japanese or other readings of Han characters, turn off Chinese corrections in the relevant profile.
 
-## Add a personal pronunciation rule
+## Custom context templates
 
-Enter one rule per line in **Context templates**, then apply the settings. For example:
+Use **Context templates** for a reading tied to surrounding text. Enter one template per line in the form `left context[target:pinyin]right context`. The target is one character; provide context on at least one side. Use ordinary text for a literal match or a supported placeholder for a class of text.
 
 ```text
 仙[乐:yuè]
 [盛:chéng]{number}{container}
 ```
 
-The first line selects yuè for 乐 after 仙. The second selects chéng for 盛 before a recognized number and container expression. Tone marks and numbered pinyin are accepted, such as `yuè` and `yue4`.
+- `仙[乐:yuè]` makes 乐 read yuè after 仙, including within a sentence such as 仙乐飘飘. `仙[乐:yue4]` is equivalent.
+- `[盛:chéng]{number}{container}` selects chéng before a number and a listed container, as in 盛一碗 or 盛两杯. `{number}` matches up to 12 Chinese or Arabic numeral characters; `{container}` matches built-in entries such as 碗、杯、勺、盆.
+- `{space}` allows zero to four supported spaces. For example, `[盛:chéng]{number}{space}{container}` also covers 盛一 碗. Other available classes are listed in the [rule data](../addon/globalPlugins/contextualPronunciation/data/contributions.toml).
 
-To preserve the original character in a context, use `keep`:
+To preserve a character for the synthesizer or a later NVDA speech-dictionary rule, replace the reading with `keep`:
 
 ```text
 仙[乐:keep]
 ```
 
-Use this as an alternative to the first pronunciation rule. It lets later processing, such as your NVDA speech dictionary, receive the original character. Each template targets one character; supported context placeholders and limits are documented in the [rule contribution guide](贡献规则与盲文接口.md) (Chinese).
+Choose this preservation rule instead of the yuè rule for the same context. Each template contains one target. Use half-width `[]`, `:`, and `{}` as shown. Pinyin can use tone marks or tone numbers; ü can be entered as `v`, for example `lǜ` or `lv4`. Available readings are limited to the add-on's supported homophone mappings. Conflicting custom templates of equal priority preserve the original character.
 
-The **Custom literal rules** field accepts the earlier `phrase|target|reading ID` format:
+## Custom literal rules
+
+Use **Custom literal rules** when you want to specify an exact phrase. Enter one line per phrase, separating the three fields with the half-width pipe character `|`:
 
 ```text
 仙乐|乐|yue4
 盛汤|盛|keep
 ```
 
-Reading IDs use numbered pinyin; `lv4` represents lǜ. A reading must have a supported homophone mapping. If NVDA reports an invalid rule, correct the indicated line before saving. **Disabled rule IDs** accepts existing rule IDs separated by commas or newlines; use it when investigating a specific built-in rule with a maintainer.
+The fields are **phrase | target character | reading ID or keep**. The first line selects yuè for 乐 in 仙乐; the second preserves 盛 in 盛汤. Reading IDs use numbered pinyin, such as `yue4`, `chang2` and `lv4`. A phrase must contain 2–64 characters, with the target appearing exactly once. Enter each phrase/target pair once.
+
+If a custom literal rule and a custom template both match the same position, the literal rule takes priority. Usually one format is enough for a particular correction.
+
+## Disable a rule or restore your settings
+
+**Disabled rule IDs** accepts built-in rule identifiers separated by commas or newlines. For example, `rowIndefiniteQuantity` disables the rule for indefinite row counts such as 多行. IDs are recorded in the [core rules](../addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json) and [syntax frames](../addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml), and a maintainer can identify one when troubleshooting. An unrecognized ID produces an error when you save. Other matching rules may still affect the same character; use a local `keep` rule to preserve a specific phrase.
+
+To undo a personal rule or re-enable a disabled rule, remove its line or ID and click **Apply**. To return to the defaults in the current profile, clear all three text fields and turn all four checkboxes on. If a rule is rejected, correct the field indicated by the error before saving.
 
 ## Speech dictionaries and WorldVoice
 
@@ -64,13 +75,13 @@ WorldVoice 6.2 is covered by source-level integration tests in both language-det
 
 In NVDA's braille settings, select **Chinese common braille 2018 - contextual phrases (experimental)** as the output table. It extends the existing `zhcn-cbs.ctb` table with reviewed fixed contexts.
 
-This table operates independently of speech settings. Custom speech templates, extended lexical decisions and dynamic sentence analysis do not automatically carry over to braille. The table covers a limited set of contexts. Expanding the word at the cursor to computer braille uses NVDA's normal behavior and bypasses those context rules. To revert, select your previous output table.
+This table operates independently of speech settings. Custom speech templates, lexical decisions and dynamic sentence analysis do not automatically carry over to braille. The table covers a limited set of contexts. Expanding the word at the cursor to computer braille uses NVDA's normal behavior and bypasses those context rules. To revert, select your previous output table.
 
 ## Troubleshooting
 
 | Symptom | What to check |
 |---|---|
-| A supported phrase still sounds wrong | Confirm that rewriting and Chinese corrections are enabled, then check the same full sentence with the extended lexicon off. Record the voice and versions when reporting it. |
+| A supported phrase still sounds wrong | Confirm that rewriting and Chinese corrections are enabled, then check the same full sentence. Record the voice and versions when reporting it. |
 | A Cantonese or Japanese reading changes | Turn off Chinese corrections in that language's NVDA profile. |
 | Speech Viewer shows different characters | This is the temporary pronunciation text sent to the voice. Check the document itself to see the original characters. |
 | A custom rule cannot be saved | Check the target character, pinyin and field format. Correct the line named by the error. |

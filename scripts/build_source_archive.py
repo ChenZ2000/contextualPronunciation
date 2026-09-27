@@ -6,7 +6,7 @@ import argparse
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from build_addon import ROOT, _write_file, checked_manifest
+from build_addon import ROOT, _write_file, checked_manifest, is_local_instruction
 
 
 def build(*, output_dir: Path | None = None) -> Path:
@@ -37,7 +37,7 @@ def build(*, output_dir: Path | None = None) -> Path:
 		paths.extend(path for path in (ROOT / directory).rglob("*") if path.is_file())
 	with ZipFile(output, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
 		for path in sorted(paths):
-			if "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
+			if is_local_instruction(path) or "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
 				continue
 			_write_file(archive, path, f"{prefix}/{path.relative_to(ROOT).as_posix()}")
 	return output

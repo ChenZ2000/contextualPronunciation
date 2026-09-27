@@ -6,7 +6,12 @@
     "cheng2": {"replacement": "呈"},
     "bing3": {"replacement": "丙"},
     "tan2": {"replacement": "谈"},
-    "yue4": {"replacement": "月"}
+    "yue4": {"replacement": "月"},
+    "jue2": {"replacement": "觉"},
+    "jiang4": {"replacement": "匠"},
+    "chai1": {"replacement": "钗"},
+    "xiu3": {"replacement": "朽"},
+    "zhuan4": {"replacement": "篆"}
   },
   "characters": {
     "行": {
@@ -89,6 +94,13 @@
           ]
         },
         {
+          "id": "chong-reinstall-default",
+          "reading": "chong2",
+          "confidence": "high",
+          "priority": 110,
+          "phrases": ["重装", "重裝"]
+        },
+        {
           "id": "chong-rebirth-bounded",
           "reading": "chong2",
           "confidence": "high",
@@ -104,7 +116,9 @@
             "重要", "重量", "重力", "重心", "重点", "重视", "严重", "尊重", "注重", "看重",
             "慎重", "贵重", "沉重", "重任", "重担", "重伤", "重兵", "重音", "加重", "减重",
             "承重", "载重", "重用", "重创", "重罚", "重判", "重工业", "重武器", "重金属",
-            "重装部队", "重装甲", "重载卡车", "重载铁路", "重载车辆", "重载荷", "重名誉",
+            "重装部队", "重装甲", "重装步兵", "重装骑兵", "重装骑士", "重装战士", "重装上阵", "重装徒步", "重装登山",
+            "重裝部隊", "重裝甲", "重裝步兵", "重裝騎兵", "重裝騎士", "重裝戰士", "重裝上陣", "重裝徒步", "重裝登山",
+            "重载卡车", "重载铁路", "重载车辆", "重载荷", "重名誉",
             "重名声", "重重地", "重读音节", "重读单词", "重读符号", "重读位置", "强调重读",
             "体重", "权重", "举重", "着重", "偏重", "郑重", "自重", "净重", "毛重", "超重",
             "失重", "繁重", "笨重", "轻重", "总重", "空重", "称重", "配重", "负重", "载重",
@@ -197,6 +211,42 @@
             "炮弹", "子弹", "导弹", "炸弹", "核弹", "枪弹", "弹药", "弹头", "弹道", "弹壳",
             "弹匣", "弹丸", "弹片", "弹孔", "实弹", "榴弹", "霰弹", "弹弓", "中弹", "投弹"
           ]
+        }
+      ]
+    },
+    "差": {
+      "structuralRules": ["travelAssignment"],
+      "phraseGroups": []
+    },
+    "宿": {
+      "structuralRules": ["nightCount"],
+      "phraseGroups": []
+    },
+    "转": {
+      "structuralRules": [],
+      "phraseGroups": []
+    },
+    "倔": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "jue-stubborn-compound",
+          "reading": "jue2",
+          "confidence": "high",
+          "priority": 110,
+          "phrases": ["倔强", "倔強"]
+        }
+      ]
+    },
+    "強": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "jiang-stubborn-traditional",
+          "reading": "jiang4",
+          "confidence": "high",
+          "priority": 110,
+          "phrases": ["倔強"]
         }
       ]
     },

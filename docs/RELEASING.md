@@ -1,54 +1,50 @@
-# Releases and NVDA Add-on Store submission
+# Releases and Store submissions
 
-## Official requirements
+## Publication policy
 
-Follow the current [NV Access submission guide](https://github.com/nvaccess/addon-datastore/blob/master/docs/submitters/submissionGuide.md), [API version list](https://github.com/nvaccess/addon-datastore/blob/master/transform/nvdaAPIVersions.json), and [NVDA Add-on Template documentation](https://github.com/nvaccess/AddonTemplate). Requirements can change; check them for each release.
+`main` is the maintained development/release branch. Publish through **Actions → Publish release from main** after native CI succeeds for the exact commit. The workflow creates the version tag; do not manually create release tags, move published tags or overwrite issued assets. Corrections to an issued package require a new version.
 
-The add-on ID is `contextualPronunciation`, the publisher is `ChenZ2000`, and the source is `https://github.com/ChenZ2000/contextualPronunciation`. Keep a numeric `major.minor.patch` version. HTTPS URLs must be permanent, and an issued `.nvda-addon` download URL must always refer to the same bytes. Never replace a released asset or move a released tag to change its contents; make a new patch version.
+**Store updates are on hold until the first submission is approved.** Publishing a GitHub Release does not submit an update to the NVDA Add-on Store. Do not create a duplicate registration issue or metadata pull request while that review is pending. Recheck the first submission's actual status and obtain the maintainer's go-ahead before the next Store submission.
 
-The stable manifest currently declares minimum and last-tested NVDA API 2026.2. Although CI also tests 2026.3beta2, API 2026.3 was marked experimental in the Store list when preparing 0.7.4. Declaring an experimental last-tested API requires the `beta` or `dev` channel. Do not claim a future final version was tested merely because a beta passed.
+## Prepare and publish on GitHub
 
-## Prepare a release
-
-`main` is the only maintained development/release branch. Pull requests, including Dependabot updates, target `main`; their temporary branches are not release branches. Version tags identify published snapshots and are created by the release workflow. Do not manually create a new release tag or use a separate release branch.
-
-1. Update the version and matching metadata in `manifest.ini`, `buildVars.py` and `pyproject.toml`; update CHANGELOG.md and the user guides/installed help. Add `docs/releases/<version>.md` for the release notes.
-2. Reproduce affected data, run relevant tests and check licenses, archive contents and document links. If runtime logic changed, perform the applicable acoustic checks with licensed resources and describe their limits.
-3. Commit or merge the reviewed changes to `main` and wait for both native CI targets to pass. CI measures performance against a fixed baseline on the same runner, retaining raw timings and absolute-budget observations; local strict release checks retain absolute budgets. See [the performance policy](DEVELOPMENT.md). Protect the release scope: no private logs, credentials, voices, local paths or user content may enter Git or an asset.
-4. Open **Actions → Publish release from main → Run workflow**, select `main`, and run it. Alternatively, use `gh workflow run release.yml --repo ChenZ2000/contextualPronunciation --ref main`. The workflow reads the version from the checkout; there is no separate version input. Runs on other branches or tags skip publication. Ordinary pushes and tag pushes do not publish releases.
-5. The workflow checks out the exact `main` commit selected when it was started and requires a completed successful `regression.yml` push run for that commit, including both native targets. A PR result, another commit or a partial run cannot satisfy that gate. If CI is still running, wait for success and start the workflow again. It builds both archives twice and compares bytes, then checks the local package with a pinned official Store manifest/schema/API validator. Finally it creates `v<version>` at that tested commit and publishes the add-on, source bundle, `SHA256SUMS`, `release-metadata.json`, `ci-verification.json` and `store-submission.md`. It refuses to reuse an existing version tag or overwrite a release. Advancing `main` while a run is in progress does not change the source being published. Reusing the exact commit's verified CI result avoids recompiling NVDA again simply to package identical source.
-6. Download the public add-on asset again and compare its SHA-256 with `SHA256SUMS` before submitting it to the Store. Cloud checks do not claim proprietary voice certification.
-
-`python scripts/build_public_release.py` performs the same local package checks and derives the tag from the manifest version. An optional `--tag v<version>` asserts that the requested tag matches. The command writes artifacts under `dist/`; it does not create a Git tag, publish or submit anything. `dist/store-submission.md` contains the issue-form fields for manual review. Successful release runs also show these fields in their Actions summary and attach the file to the Release, so Store submission does not require rebuilding locally.
-
-Keep `addon_sourceURL` in `buildVars.py` set to the canonical repository root, `https://github.com/ChenZ2000/contextualPronunciation`. The release metadata, submission form and official-validation metadata generator derive the version-specific Store Source URL as `https://github.com/ChenZ2000/contextualPronunciation/releases/tag/v<version>`. The Release provides the matching source archive and tag. Do not use a branch URL or `/releases/latest` for a version's Store source; the latter moves when a newer version is published.
-
-The Store license URL comes from `addon_licenseURL` in `buildVars.py`. Both the submission form generator and the official-validation metadata generator use this value: `https://www.gnu.org/licenses/gpl-2.0.html`. Keep the license name `GPL-2.0-or-later` and the bundled license text. Future submissions use this official GNU URL; updating the source repository does not automatically change an existing Store issue or metadata pull request.
-
-## Validate against the official Store tools
-
-The current tools live inside `nvaccess/addon-datastore`, under `validation/_validate`, rather than the archived standalone validation repository. Check out a known upstream commit and install its locked dependencies using uv. The validator compares the actual downloaded package to manifest/JSON metadata and the official API list.
-
-From that checkout, use the current command-line help for `_validate.createJson` to create metadata for the release URL, then run:
+1. Synchronize the numeric `major.minor.patch` version in `manifest.ini`, `buildVars.py` and `pyproject.toml`. Update `CHANGELOG.md`, current guides and `docs/releases/<version>.md`; regenerate installed user help.
+2. Reproduce changed data and run relevant tests. Runtime changes require appropriate contrastive, performance, integration and acoustic evidence. Follow [Development](DEVELOPMENT.md). Check licenses, documentation links and archive contents; local instructions, credentials, private text, voices and development-session reports must not be included.
+3. Commit or merge to `main`. Wait for a successful `regression.yml` **push** run on that exact commit, including both pinned native NVDA targets. A PR run, another commit or a partial run does not satisfy the gate.
+4. Start the publication workflow from `main`:
 
 ```powershell
-uv run --directory validation python -m _validate.validate "../addons/contextualPronunciation/0.7.4.json" ../transform/nvdaAPIVersions.json
+gh workflow run release.yml --repo ChenZ2000/contextualPronunciation --ref main
 ```
 
-The metadata file is prepared locally for validation; the official issue automation creates the Store pull request. Keep generated validation files under ignored `artifacts/` or the ignored upstream checkout.
+The workflow uses the selected commit, reads the version from its manifest, verifies the exact commit's CI evidence, builds both archives twice and compares bytes, then runs the pinned official Store manifest/schema/API validator locally. This validation does not write to the Store. Ordinary pushes and tag pushes do not publish a Release.
 
-## Submit and follow up
+It creates `v<version>` and attaches the add-on, source archive, `SHA256SUMS`, `release-metadata.json`, `ci-verification.json` and `store-submission.md`. It rejects an existing version tag. Advancing `main` during a run does not change its selected source. Store fields are prepared for later review only.
 
-Download `store-submission.md` from the Release generated from `main`, or copy the fields from the successful release run's summary, and use the official [Add-on registration issue form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml). It applies the `autoSubmissionFromIssue` label that starts the official workflow. Ordinary outside contributors should use this form: GitHub's API can drop labels when the caller lacks permission to set them. Filling the same text in a plain issue without the label does not start Store validation.
+5. Download the public package and verify its hash against `SHA256SUMS`. Check the release tag points to the tested commit. Public CI does not certify every proprietary voice.
 
-Only if you have label permissions on the official repository, GitHub CLI can submit the same exact headings:
+## Local package preparation
 
 ```powershell
-gh issue create --repo nvaccess/addon-datastore --title "[Submit add-on]: contextualPronunciation 0.7.4" --label autoSubmissionFromIssue --body-file dist/store-submission.md
+python scripts/check_repository.py
+python scripts/build_public_release.py
 ```
 
-This sends a public submission as the authenticated maintainer; inspect the body before running it. Do not submit duplicate issues while review is pending. Store submissions are a separate maintainer action; the release workflow does not automatically send them.
+This performs deterministic package checks and writes release files under ignored `dist/`. It does not create a tag, publish or submit anything. Optional `--tag v<version>` asserts an exact manifest-version match. The normal package builders also work without local AI instructions or private archives.
 
-The official bot creates a metadata pull request and runs validation and security checks. A first submission requires NV Access to approve the publisher for this add-on, which may take up to two weeks. Staff may also review VirusTotal findings. Record the issue/PR URL and actual status; a pending review is not Store acceptance. If validation fails, fix the cause and follow the bot's resubmission instructions. A permanent release URL must keep its original bytes.
+The add-on ID is `contextualPronunciation`; publisher is `ChenZ2000`. Keep `addon_sourceURL` at the canonical repository root, `https://github.com/ChenZ2000/contextualPronunciation`. Metadata derives the version-specific source URL `https://github.com/ChenZ2000/contextualPronunciation/releases/tag/v<version>`. A moving branch or `/releases/latest` is not a version-specific Store source.
 
-After acceptance, verify the bot's confirmation and actual listing in [the Add-on Store](https://addonstore.nvaccess.org/). NV Access controls review, merge and indexing; this repository cannot guarantee their decision or date. Translation system registration is optional and separate.
+Keep license name `GPL-2.0-or-later`, bundled license text and `addon_licenseURL` pointing to `https://www.gnu.org/licenses/gpl-2.0.html`. Dictionary data retains its own notices. Stable compatibility is declared in the manifest; experimental NVDA API values must not be advertised as a tested final stable API.
+
+## Store submission after approval
+
+Consult the current [NV Access submission guide](https://github.com/nvaccess/addon-datastore/blob/master/docs/submitters/submissionGuide.md) and [API version list](https://github.com/nvaccess/addon-datastore/blob/master/transform/nvdaAPIVersions.json) before a separately authorized submission. Store requirements and review status can change.
+
+After the first submission is approved and the maintainer authorizes an update:
+
+1. Review `store-submission.md` from the immutable Release and verify the public package's bytes again.
+2. Use the official [registration issue form](https://github.com/nvaccess/addon-datastore/issues/new?template=registerAddon.yml). Its label starts the official automation; an ordinary issue without that label does not necessarily start validation.
+3. Follow the bot's metadata pull request, validation and review results. Record the issue/PR URL; pending review is not acceptance. Follow resubmission instructions if validation fails, without replacing issued assets.
+4. Verify actual listing in the [Add-on Store](https://addonstore.nvaccess.org/) after acceptance. NV Access controls review and indexing.
+
+Official validation tools are in `nvaccess/addon-datastore/validation/_validate`. The release workflow pins the upstream revision and locked dependencies; `scripts/check_store_metadata.py` validates the local archive using those tools. Source preparation and package validation do not authorize a Store submission.
