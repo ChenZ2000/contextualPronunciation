@@ -208,6 +208,24 @@ class EventRoleTests(unittest.TestCase):
 					with self.subTest(text=text, index=index):
 						self.assertEqual(reading, self.rules.syntax.analyze(text, index, context).reading)
 
+	def test_resolver_reuses_group_readings_at_each_original_offset(self):
+		for text, char, reading in (
+			("让车轮转一转", "转", "zhuan4"),
+			("出去转转", "转", "zhuan4"),
+			("盛呀盛红豆粥", "盛", "cheng2"),
+		):
+			with (
+				self.subTest(text=text),
+				mock.patch.object(self.rules.syntax, "analyze", wraps=self.rules.syntax.analyze) as analyze,
+			):
+				decisions = self.rules.resolve(text)
+				self.assertEqual(1, sum("_verb_end" not in call.kwargs for call in analyze.call_args_list))
+				for i, value in enumerate(text):
+					if value == char:
+						self.assertEqual(reading, decisions[i].reading_id)
+		rules = load("rules").load_default_rules(custom_entries="车轮转|转|keep")
+		self.assertEqual("让车轮转一篆", rules.transform("让车轮转一转"))
+
 
 if __name__ == "__main__":
 	unittest.main()

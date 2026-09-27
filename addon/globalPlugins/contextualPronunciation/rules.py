@@ -430,7 +430,14 @@ class CompiledRules:
 					continue
 				if syntax_context is None:
 					syntax_context = self.syntax.context(text)
-				if (parsed := self.syntax.analyze(text, index, syntax_context)) is not None:
+				# Group members already share one argument analysis. Resolution
+				# needs only its reading; avoid cloning a full dependency record
+				# for each repeated stem. The decision retains THIS original index.
+				if index in syntax_context.motion_readings:
+					parsed = syntax_context.motion_readings[index]
+				else:
+					parsed = self.syntax.analyze(text, index, syntax_context)
+				if parsed is not None:
 					decisions[index] = ReadingDecision(
 						parsed.reading, speech=not parsed.preserve, rule_id=parsed.rule_id
 					)

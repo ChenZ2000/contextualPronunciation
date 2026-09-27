@@ -164,36 +164,36 @@ def _prefix(parser, text, end, context, g):
 
 def motion_reading(parser, text, index, frames, context, g):
 	"""One role analysis selects between rotation/roaming and transfer frames."""
-	# An overlapping VVV run is rejected by the bounded VV production.
-	# Avoid allocating a group/cache entry for each position of a long run.
-	if (
-		index + 1 < len(text)
-		and text[index + 1] == text[index]
-		and (index and text[index - 1] == text[index] or index + 2 < len(text) and text[index + 2] == text[index])
-	):
-		return None
-	# Ordinary lexical compounds never enter the bare-verb grammar. Only
-	# take this shortcut when neither neighbor can extend a productive
-	# group/complement; a final stem may share a preceding group's analysis.
-	if (
-		index + 1 < len(text)
-		and text[index + 1] not in "转轉一了呀啊着著起下出进進回动動得不过過给給"
-		and (not index or text[index - 1] not in "转轉一了呀啊着著又再")
-	):
-		word, _flags = parser.lexicon.longest(text, index, min(len(text), index + 16))
-		if len(word) > 1:
+	if context is None or index not in context.motion_readings:
+		# An overlapping VVV run is rejected by the bounded VV production.
+		# Avoid allocating a group/cache entry for each position of a long run.
+		if (
+			index + 1 < len(text)
+			and text[index + 1] == text[index]
+			and (index and text[index - 1] == text[index] or index + 2 < len(text) and text[index + 2] == text[index])
+		):
 			return None
-	if (
-		index + 3 == len(text)
-		and text[index + 1] in g._NUMBERS
-		and not text.startswith(_SUFFIXES.get(text[index + 1], ()), index + 1)
-	):
-		unit_flags = parser.lexicon.words.get(text[index + 2], 0)
-		if unit_flags & g.ACTION_MEASURE and not unit_flags & (g.ROTOR | g.TRANSFER_THEME | g.DURATION):
-			return None
-	if context is None:
-		return _motion_reading(parser, text, index, frames, context, g)
-	if index not in context.motion_readings:
+		# Ordinary lexical compounds never enter the bare-verb grammar. Only
+		# take this shortcut when neither neighbor can extend a productive
+		# group/complement; a final stem may share a preceding group's analysis.
+		if (
+			index + 1 < len(text)
+			and text[index + 1] not in "转轉一了呀啊着著起下出进進回动動得不过過给給"
+			and (not index or text[index - 1] not in "转轉一了呀啊着著又再")
+		):
+			word, _flags = parser.lexicon.longest(text, index, min(len(text), index + 16))
+			if len(word) > 1:
+				return None
+		if (
+			index + 3 == len(text)
+			and text[index + 1] in g._NUMBERS
+			and not text.startswith(_SUFFIXES.get(text[index + 1], ()), index + 1)
+		):
+			unit_flags = parser.lexicon.words.get(text[index + 2], 0)
+			if unit_flags & g.ACTION_MEASURE and not unit_flags & (g.ROTOR | g.TRANSFER_THEME | g.DURATION):
+				return None
+		if context is None:
+			return _motion_reading(parser, text, index, frames, context, g)
 		if len(context.motion_readings) >= g.MAX_CHART_STATES:
 			return None
 		form = predicate_form(text, index)
