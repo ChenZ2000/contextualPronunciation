@@ -55,6 +55,8 @@ jobs:
             artifacts/performance-report.json
             artifacts/startup-report.json
             artifacts/cpp-evaluation.json
+            artifacts/colloquial-meng-evaluation.json
+            artifacts/colloquial-meng-performance.json
             artifacts/grammar-evaluation.json
             artifacts/grammar-performance.json
             artifacts/hosted-performance-comparison.json

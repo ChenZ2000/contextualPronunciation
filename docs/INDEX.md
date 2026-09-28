@@ -17,6 +17,7 @@ Installed NVDA help contains the same current user guides. Published changes are
 | [Development](DEVELOPMENT.md) | Setup, repository layout, generators, tests and performance policy |
 | [Architecture](ARCHITECTURE.md) | Lexical evidence, grammar, reading selection and limits |
 | [Rules and annotation API](RULES.md) | Formats, source review, original offsets and braille integration |
+| [Colloquial 懵 design](COLLOQUIAL_MENG.md) | Positive-context policy, linguistic sources, constructed examples and limits |
 | [Sources and references](REFERENCES.md) | Pinned datasets, linguistic references and licenses |
 | [Release process](RELEASING.md) | GitHub publication, immutable assets and separate Store submission |
 

@@ -23,6 +23,14 @@ It creates `v<version>` and attaches the add-on, source archive, `SHA256SUMS`, `
 
 5. Download the public package and verify its hash against `SHA256SUMS`. Check the release tag points to the tested commit. Public CI does not certify every proprietary voice.
 
+## 0.8.0 maintainer acceptance
+
+Before publishing 0.8.0, install the candidate and listen to both the positive and preservation examples in the [context-only 懵 design](COLLOQUIAL_MENG.md). In particular compare isolated 懵, 懵的读音 and 懵懂 against 一脸懵, 看懵了 and 懵得说不出话; include a mixed sentence and character navigation. Keep source SHA and candidate package hash with the result. A successful text test is not proprietary-voice certification.
+
+The three version fields, current guides, installed help and `docs/releases/0.8.0.md` must agree. After maintainer listening acceptance and both native targets passing for the exact main SHA, use the normal **Publish release from main** workflow above. Preparation and candidate builds do not authorize publication, tag creation, replacing 0.7.9 assets or a Store submission.
+
+0.8.0 发布前应先人工试听正例与保留例，并确认 main 同一提交的两个原生 NVDA CI 目标均通过，再触发上述工作流；不需要另建标签或修改工作流。候选包生成不会自动发布，旧版附件不覆盖，商店提交仍是单独授权的操作。
+
 ## Local package preparation
 
 ```powershell

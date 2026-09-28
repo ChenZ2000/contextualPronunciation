@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "baseTable": "zhcn-cbs.ctb",
   "scheme": "GF 0019-2018",
-  "literalContexts": 12148,
+  "literalContexts": 12152,
   "correctionContexts": 11701,
-  "protectionContexts": 447,
-  "compiledMatchRules": 546,
+  "protectionContexts": 451,
+  "compiledMatchRules": 550,
   "factoredTemplateRules": 25,
   "readings": {
     "hang2": "125-236",
@@ -175,7 +175,7 @@
   ],
   "notCompiled": [
     "structural number rules",
-    "colloquial defaults (colloquialMeng)",
+    "positive colloquial contexts (colloquialMeng)",
     "user configuration",
     "dictionary matching and speech-only readings without reviewed braille cells",
     "full word segmentation",

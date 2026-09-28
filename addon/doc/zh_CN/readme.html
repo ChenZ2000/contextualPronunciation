@@ -20,25 +20,31 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 <nav aria-label="目录"><div class="toc">
 <ul>
 <li><a href="#_2">开始朗读</a></li>
-<li><a href="#_3">设置说明</a></li>
-<li><a href="#_4">自定义上下文模板</a></li>
-<li><a href="#_5">自定义固定词规则</a></li>
-<li><a href="#_6">禁用规则与恢复设置</a></li>
+<li><a href="#_3">口语“懵”：必须有上下文依据</a></li>
+<li><a href="#_4">设置说明</a></li>
+<li><a href="#_5">自定义上下文模板</a></li>
+<li><a href="#_6">自定义固定词规则</a></li>
+<li><a href="#_7">禁用规则与恢复设置</a></li>
 <li><a href="#worldvoice">语音词典与 WorldVoice</a></li>
-<li><a href="#_7">可选盲文输出</a></li>
-<li><a href="#_8">常见问题</a></li>
-<li><a href="#_9">报告误读</a></li>
+<li><a href="#_8">可选盲文输出</a></li>
+<li><a href="#_9">常见问题</a></li>
+<li><a href="#_10">报告误读</a></li>
 </ul>
 </div>
 </nav>
 <main id="content">
 <h1 id="_1">使用指南</h1>
 <p><a href="https://github.com/ChenZ2000/contextualPronunciation/blob/main/docs/README-zh_CN.md">项目主页</a> · <a href="../en/readme.html">English</a> · 简体中文</p>
-<p>本指南适用于上下文发音规范化 0.7.9。安装包从 <a href="https://github.com/ChenZ2000/contextualPronunciation/releases/latest">GitHub Releases</a> 下载。安装 <code>.nvda-addon</code> 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。</p>
+<p>本指南适用于上下文发音规范化 0.8.0；测试包可能早于公开 Release。安装包从 <a href="https://github.com/ChenZ2000/contextualPronunciation/releases/latest">GitHub Releases</a> 下载。安装 <code>.nvda-addon</code> 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。</p>
 <h2 id="_2">开始朗读</h2>
 <p>继续使用平时的普通话声音，正常阅读即可。默认规则会自动处理已支持的语境，例如“重吸收”的重复动作、“也给我盛了一碗”的装盛动作，以及“天兵和天将一起去吃饭”的并列名词。逐字和拼读模式保留原字。</p>
 <p>处理过程在本机完成，插件不上传或记录你正在阅读的文本。</p>
-<h2 id="_3">设置说明</h2>
+<h2 id="_3">口语“懵”：必须有上下文依据</h2>
+<p>0.8.0 删除了此前无条件返回 <code>meng1</code> 的默认规则。只有明确表示口语“突然糊涂、不知所措”的语境才选择一声，例如“一脸懵／懵圈、我懵了、看懵／被问懵、有点懵、懵得说不出话、越想越懵”。主语、宾语和补语可以换成新内容，不必逐条登记完整句子。</p>
+<p>单独的“懵”（包括“懵。”或带引号的单字）、“懵懂／懵然”等书面词，以及“懵的读音、输入懵”等字词讨论，均保留原文。<strong>保留是指沿用你的声库既有读音，不是把所有非口语词强制改为二声，也不是修改词典规范字音。</strong>逐字／拼读模式和拆成不同语音文本项的内容不会借用邻项语境。</p>
+<p>命中的语音仍临时使用“擝”（U+64DD；固定 Unihan 数据标一声）。声库必须支持这个生僻字，实际声调仍需试听。Speech Viewer 可能显示替代字，但文档原文不变。可在“禁用规则 ID”中填写 <code>colloquialMeng</code>，或用局部 <code>keep</code> 保留某个词；个人规则优先级不变。</p>
+<p>规则采用有限窗口，不声称穷尽所有口语或自动理解所有专名；陌生构式、歧义、格式边界和过长依存可能保持原文。参见<a href="https://github.com/ChenZ2000/contextualPronunciation/blob/main/docs/COLLOQUIAL_MENG.md">语言学依据、用例与验收方法</a>。静态盲文表不运行这个动态语音规则。</p>
+<h2 id="_4">设置说明</h2>
 <p>打开 <strong>NVDA 设置 → 上下文发音规范化</strong>。点击“应用”或保存设置后，修改立即生效。也可以通过 NVDA 配置方案为不同任务保留不同设置。</p>
 <table>
 <thead>
@@ -73,7 +79,7 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 </table>
 <p>词典词组和有界词性、句法分析现已随中文纠正默认启用。旧配置中的“扩展词组库”值不再控制读音。词边界保护可区分“降调音频”的 diào 与“调音师”的 tiáo；遇到特定误读时，可以使用局部 <code>keep</code> 规则。</p>
 <p>中文纠正会对所有声音和语言标签下的汉字指定普通话读音，请搭配支持普通话的声音。使用粤语、日语等汉字读法时，在相应的配置方案中关闭中文纠正。</p>
-<h2 id="_4">自定义上下文模板</h2>
+<h2 id="_5">自定义上下文模板</h2>
 <p>三个自定义输入框均支持多行：按 <strong>Enter</strong> 或数字键盘回车换行，也可直接粘贴多行内容；按 <strong>Tab</strong> 移到下一项，按 <strong>Ctrl+S</strong> 应用设置。输入框内按回车不会关闭设置窗口。</p>
 <p>在“<strong>上下文模板</strong>”中，每行输入一条“<code>前文[目标字:拼音]后文</code>”规则。目标字为单个汉字，前文和后文至少填写一侧；普通文字按原样匹配，也可以使用已支持的占位符表示一类文本。</p>
 <pre><code class="language-text">仙[乐:yuè]
@@ -88,23 +94,23 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 <pre><code class="language-text">仙[乐:keep]
 </code></pre>
 <p>对同一语境，可用这条保留规则替换上面的 yuè 规则。每条模板只指定一个目标字，请按示例使用英文半角 <code>[]</code>、<code>:</code> 和 <code>{}</code>。拼音支持声调符号或数字声调，ü 可写成 <code>v</code>，例如 <code>lǜ</code> 或 <code>lv4</code>。可用读音受插件已有同音映射范围限制；同优先级的个人模板出现读音冲突时，会保留原字。</p>
-<h2 id="_5">自定义固定词规则</h2>
+<h2 id="_6">自定义固定词规则</h2>
 <p>希望为一个确定的短语指定读音时，在“<strong>自定义固定词规则</strong>”中每行填写一条，用英文半角竖线 <code>|</code> 分隔三个字段：</p>
 <pre><code class="language-text">仙乐|乐|yue4
 盛汤|盛|keep
 </code></pre>
 <p>三个字段依次为“<strong>短语 | 目标字 | 读音 ID 或 keep</strong>”。第一行让“仙乐”中的“乐”读 yuè；第二行保留“盛汤”中的“盛”。读音 ID 使用数字声调，如 <code>yue4</code>、<code>chang2</code>、<code>lv4</code>。短语长度为 2–64 个字符，目标字必须在短语中恰好出现一次，同一短语和目标字的组合只填写一条。</p>
 <p>同一位置同时匹配个人固定词规则和个人上下文模板时，固定词规则优先。通常为一处读音选择一种格式即可。</p>
-<h2 id="_6">禁用规则与恢复设置</h2>
+<h2 id="_7">禁用规则与恢复设置</h2>
 <p>“<strong>禁用规则 ID</strong>”接受用英文逗号或换行分隔的内置规则标识。例如，填写 <code>rowIndefiniteQuantity</code> 可停用处理“多行”等不定行数的一条规则。可用 ID 记录在<a href="https://github.com/ChenZ2000/contextualPronunciation/blob/main/addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json">核心规则</a>和<a href="https://github.com/ChenZ2000/contextualPronunciation/blob/main/addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml">句法框架</a>中，也可在排查时由维护者协助确认。填写未知 ID 会在保存时提示错误。其他匹配规则仍可能影响同一个字；希望某个短语保留原字时，可使用局部 <code>keep</code> 规则。</p>
 <p>撤销个人规则或恢复某条内置规则时，删除相应行或 ID，再点击“应用”。要恢复当前配置方案中的默认设置，请清空三个文本框，并开启四个复选框。若保存时提示规则无效，请按错误信息修改相应字段后再保存。</p>
 <h2 id="worldvoice">语音词典与 WorldVoice</h2>
 <p>插件先分析语音文本，再在 NVDA 词典和符号处理之后复查已支持的“和、边、邊、行”语境。选定的读音通过临时同音字发送给合成器，因此语音查看器可能显示替代字；文档、剪贴板和无障碍对象仍保留原文。</p>
 <p>WorldVoice 6.2 的两种语言检测模式均有源码集成测试。它的词典输出可以继续参与读音纠正。Unicode 替换顺序由 WorldVoice 设置决定：“before”会先执行这些替换；“after”可能收到本插件已经改写的字符。后续替换必须接收原字时，可添加局部 <code>keep</code> 规则。源码测试使用隔离的声音替身，实际声音效果仍需试听。</p>
-<h2 id="_7">可选盲文输出</h2>
+<h2 id="_8">可选盲文输出</h2>
 <p>在 NVDA 盲文设置中，将输出表选择为 <strong>Chinese common braille 2018 - contextual phrases (experimental)</strong>。它基于已有的 <code>zhcn-cbs.ctb</code> 表，增加经过审阅的固定语境修正。</p>
 <p>此表独立于语音设置工作。个人语音模板、词库的读音判断和动态句法分析不会自动同步到盲文，当前覆盖范围限于表内的固定语境。“在光标处展开为计算机盲文”遵循 NVDA 原有行为，会绕过相应的上下文规则。选择原来的输出表即可恢复。</p>
-<h2 id="_8">常见问题</h2>
+<h2 id="_9">常见问题</h2>
 <table>
 <thead>
 <tr>
@@ -140,7 +146,7 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 </tbody>
 </table>
 <p>未知词、歧义句子或被语音命令分开的文本可能保留合成器自己的读法。不同声音的处理方式也会影响最终音频。</p>
-<h2 id="_9">报告误读</h2>
+<h2 id="_10">报告误读</h2>
 <p>请在 <a href="https://github.com/ChenZ2000/contextualPronunciation/issues">Issue</a> 中提供：</p>
 <ul>
 <li>去除隐私信息后的完整句子及目标字。</li>

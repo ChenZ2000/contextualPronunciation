@@ -2,13 +2,23 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers version 0.7.9. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.8.0; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 
 Use your usual Mandarin voice and read normally. Default corrections apply automatically to supported text, including repeated actions such as 重吸收, serving phrases such as 也给我盛了一碗, and coordinated nouns such as 天兵和天将一起去吃饭. Spelling and character mode preserve the original characters.
 
 All processing takes place on your computer. The add-on does not upload or record the text you read.
+
+## Colloquial 懵: context required
+
+Version 0.8.0 removes the old unconditional `meng1` fallback. The add-on uses first-tone `mēng` only with positive evidence for the colloquial confusion sense: 一脸懵 / 懵圈, 我懵了, 看懵 / 被问懵, 有点懵, 懵得说不出话, 越想越懵 and similar grammatical combinations. New subjects, objects and complement clauses do not need complete phrases added individually.
+
+An isolated 懵 (also 懵。 or “懵”), 懵懂 / 懵然, and lexical mentions such as 懵的读音 or 输入懵 keep the original characters. Preservation means keeping the voice's existing reading, **not** globally forcing second tone or changing normative dictionary readings. Spelling mode and text split into separate speech items do not borrow neighbouring context.
+
+Matched speech still temporarily uses 擝 (U+64DD), whose pinned Unihan reading is first tone. Actual recognition of this rare character depends on your voice; it can appear in Speech Viewer but does not change your document. Test both positive and negative examples with your normal voice. Disable `colloquialMeng` to preserve all affected colloquial forms, or apply a local `keep` rule. Explicit personal rules retain precedence.
+
+The matcher is bounded and conservative, not an exhaustive semantic classifier. Ambiguous names, unfamiliar constructions, formatting boundaries and very long dependencies can be left unchanged. See [linguistic evidence and acceptance examples](COLLOQUIAL_MENG.md). The static braille table does not run this dynamic speech rule.
 
 ## Settings
 

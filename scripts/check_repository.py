@@ -26,6 +26,7 @@ CURRENT_DOCS = (
 	"docs/INDEX.md",
 	"docs/ARCHITECTURE.md",
 	"docs/RULES.md",
+	"docs/COLLOQUIAL_MENG.md",
 )
 
 
