@@ -1,0 +1,93 @@
+name: Finalize tested 0.8.0 source (no release)
+on:
+  push:
+    branches: [maintenance/meng080-finalize-20260928]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ba7c0c1160b7c79d7d9917d3749bc465be113ecc
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13.13'
+      - name: Restore source bound to passing tests and dedicated performance evidence
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/10958073987/zip" > /tmp/meng080-tested.zip
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          raw = Path('/tmp/meng080-tested.zip').read_bytes()
+          assert hashlib.sha256(raw).hexdigest() == '2ef10f4a8b9e34ddac827c1965d46ac31d83ffd42e07542423b47ba007673d40'
+          with zipfile.ZipFile('/tmp/meng080-tested.zip') as z:
+              for name in z.namelist():
+                  p = Path(name)
+                  assert not p.is_absolute() and '..' not in p.parts and p.parts[0] == 'artifacts'
+                  p.parent.mkdir(parents=True, exist_ok=True)
+                  p.write_bytes(z.read(name))
+          assert hashlib.sha256(Path('artifacts/meng080-candidate-input.patch').read_bytes()).hexdigest() == '9321918749e88af3d120bc42f3ee656d28cc43215710676516371493f1c39004'
+          PY
+          git apply artifacts/meng080-candidate-input.patch
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          tests = json.loads(Path('artifacts/addon-tests.json').read_text())
+          assert tests['passed'] and tests['testsRun'] == 341
+          assert tests['failures'] == tests['errors'] == tests['skipped'] == 0
+          for name, digest in tests['sourceSha256'].items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == digest, name
+          evaluation = json.loads(Path('artifacts/colloquial-meng-evaluation.json').read_text())
+          assert evaluation['passed'] and evaluation['uniqueTexts'] == 1569
+          from tools.benchmark_colloquial_meng import validate
+          performance = json.loads(Path('artifacts/colloquial-meng-performance.json').read_text())
+          validate(performance)
+          assert performance['passed']
+          for name, digest in performance['sourceSha256'].items():
+              assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == digest, name
+          print('Verified exact source for 341 tests, 1569 constructed cases in four modes, and dedicated latency budgets.')
+          print('Full hosted comparison remains a separate run; this job does not mark native CI or publication complete.')
+          PY
+      - name: Reproducible package and public-content audit
+        shell: bash
+        run: |
+          test ! -e .github/workflows/finalize-tested-meng080.yml
+          test ! -e .github/meng080
+          python scripts/check_repository.py
+          python scripts/build_public_release.py --tag v0.8.0
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          assert hashlib.sha256(Path('dist/contextualPronunciation-0.8.0.nvda-addon').read_bytes()).hexdigest() == 'f4d6b1975e24aa9e4af0f988a3a100be6cb3f379fb1e0982251157b703f097c7'
+          PY
+          git diff --check
+      - name: Create clean candidate commit (main is advanced separately by maintainer)
+        shell: bash
+        run: |
+          git config user.name 'ChenZ'
+          git config user.email 'mail@chenz.cloud'
+          git add -u
+          git add addon/globalPlugins/contextualPronunciation/colloquial_meng.py tests/meng_cases.py tests/test_meng_contexts.py tools/evaluate_colloquial_meng.py tools/benchmark_colloquial_meng.py docs/COLLOQUIAL_MENG.md docs/releases/0.8.0.md
+          git diff --cached --check
+          git commit -m 'fix: restrict colloquial meng to grammatical contexts and prepare 0.8.0'
+          test "$(git rev-parse HEAD^)" = ba7c0c1160b7c79d7d9917d3749bc465be113ecc
+          git push origin HEAD:refs/heads/maintenance/meng080-ready-20260928
+          git show --stat --oneline HEAD > artifacts/meng080-final-commit.txt
+          git archive --format=zip --output=artifacts/meng080-final-source.zip HEAD
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: meng080-finalized-source
+          path: |
+            artifacts/meng080-final-*
+            artifacts/addon-tests.json
+            artifacts/colloquial-meng-*.json
+            dist/*
+          retention-days: 14
