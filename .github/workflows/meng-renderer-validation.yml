@@ -3,37 +3,98 @@ on:
   push:
     branches: [maintenance/meng-renderer-validation-20260928]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  inspect:
+  validate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
-          ref: d29ec969a43985ef25865e679287f097468e71b1
-          persist-credentials: false
-      - name: Export exact baseline and inspect available Mandarin renderer
+          python-version: '3.13.13'
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9
+        with:
+          version: '0.11.32'
+          enable-cache: false
+      - name: Apply only the reviewed fix to the exact main baseline
         shell: bash
         run: |
-          mkdir -p /tmp/meng-evidence
-          git archive --format=zip --output=/tmp/meng-evidence/source-main.zip HEAD
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq espeak-ng
+          cp .github/meng-fix.py /tmp/meng-fix.py
+          git fetch --depth=1 origin d29ec969a43985ef25865e679287f097468e71b1
+          git checkout --detach d29ec969a43985ef25865e679287f097468e71b1
+          test ! -e .github/workflows/meng-renderer-validation.yml
+          python /tmp/meng-fix.py
+          uv tool run --from ruff==0.15.9 ruff format tests/test_colloquial_tones.py tests/test_nvda_symbol_integration.py
+          mkdir -p artifacts
+      - name: Prepare pinned public integration sources
+        shell: bash
+        run: |
+          python scripts/prepare_nvda.py
+          python scripts/prepare_worldvoice.py
+          python scripts/prepare_cpp.py
+      - name: Regenerate dependent data and acoustic INPUT fixtures
+        shell: bash
+        run: |
+          python tools/build_polyphone_coverage.py
+          python tools/generate_final_renderer_fixture.py > artifacts/meng-fixture-generation.log
+          python tools/boundary_acoustics.py generate >> artifacts/meng-fixture-generation.log
+          python tools/sentence_acoustics.py generate >> artifacts/meng-fixture-generation.log
           python - <<'PY'
-          import json
-          import subprocess
           from pathlib import Path
-          texts = ["懵", "蒙", "矇", "擝", "掹", "一脸蒙逼", "一脸矇逼", "一脸擝逼", "一脸掹逼", "一脸蒙", "一脸矇", "蒙了", "矇了", "蒙圈", "矇圈", "meng1", "meng2", "meng3"]
-          report = {"version": subprocess.check_output(["espeak-ng", "--version"], text=True), "voice": "cmn", "cases": []}
-          for text in texts:
-              p = subprocess.run(["espeak-ng", "-v", "cmn", "-q", "-x", text], capture_output=True, text=True, check=True)
-              report["cases"].append({"text": text, "phonemes": p.stdout.strip()})
-          Path("/tmp/meng-evidence/espeak-probe.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(json.dumps(report, ensure_ascii=False, indent=2))
+          import subprocess
+          for name in ('final_renderer_regression.json', 'boundary_regression.json', 'sentence_regression.json'):
+              path = Path('tests/fixtures/vocalizer_expressive2') / name
+              original = subprocess.check_output(['git', 'show', 'HEAD:' + path.as_posix()])
+              newline = b'\r\n' if b'\r\n' in original else b'\n'
+              path.write_bytes(path.read_bytes().replace(b'\r\n', b'\n').replace(b'\n', newline))
           PY
+      - name: Lint and reproducibility checks
+        shell: bash
+        run: |
+          uv tool run --from ruff==0.15.9 ruff check addon tests tools scripts buildVars.py
+          uv tool run --from ruff==0.15.9 ruff format --check addon tests tools scripts buildVars.py
+          python tools/import_cedict.py --check
+          python tools/build_segmentation_data.py --check
+          python tools/build_syntax_data.py --check
+          python tools/build_grammar_data.py --check
+          python tools/build_polyphone_coverage.py --check
+          python tools/build_dictionary_database.py --check
+          python tools/build_braille_table.py --check
+          python tools/pronunciation.py --check-contributions
+          uv run --no-project --with markdown==3.10.2 python tools/build_user_help.py --check
+      - name: All add-on tests (zero skips)
+        run: python scripts/run_tests.py > artifacts/meng-addon-tests.log 2>&1
+      - name: Evaluate and build candidate
+        shell: bash
+        run: |
+          python tools/evaluate_cpp.py > artifacts/meng-cpp-evaluation.log
+          python tools/evaluate_grammar.py > artifacts/meng-grammar-evaluation.log
+          python scripts/check_repository.py
+          python scripts/build_addon.py
+          git diff --check
+      - name: Commit only validated fix on a temporary candidate branch
+        shell: bash
+        run: |
+          test ! -e .github/meng-fix.py
+          test ! -e .github/workflows/meng-renderer-validation.yml
+          git config user.name 'ChenZ'
+          git config user.email 'mail@chenz.cloud'
+          git add CHANGELOG.md addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json data/polyphone-coverage.json docs/ARCHITECTURE.md docs/REFERENCES.md docs/RULES.md tests/fixtures/vocalizer_expressive2/README.md tests/fixtures/vocalizer_expressive2/renderer_cases.json tests/fixtures/vocalizer_expressive2/final_renderer_regression.json tests/fixtures/vocalizer_expressive2/boundary_regression.json tests/fixtures/vocalizer_expressive2/sentence_regression.json tests/test_colloquial_tones.py tests/test_nvda_symbol_integration.py
+          git commit -m 'fix: avoid second-tone homophone in colloquial meng speech rendering'
+          test "$(git rev-parse HEAD^)" = d29ec969a43985ef25865e679287f097468e71b1
+          git push origin HEAD:refs/heads/maintenance/meng-first-tone-fix-20260928
+          git show --stat --oneline HEAD > artifacts/meng-candidate.txt
+          git diff HEAD^ HEAD --binary > artifacts/meng-fix.patch
+          git archive --format=zip --output=artifacts/meng-fixed-source.zip HEAD
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
         with:
-          name: meng-renderer-baseline
-          path: /tmp/meng-evidence/*
+          name: meng-fix-validation
+          path: |
+            artifacts/meng-*
+            artifacts/addon-tests.json
+            artifacts/cpp-evaluation.json
+            artifacts/grammar-evaluation.json
+            dist/*.nvda-addon
           retention-days: 7
