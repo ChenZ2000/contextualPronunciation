@@ -11,9 +11,189 @@
     "jiang4": {"replacement": "匠"},
     "chai1": {"replacement": "钗"},
     "xiu3": {"replacement": "朽"},
-    "zhuan4": {"replacement": "篆"}
+    "zhuan4": {"replacement": "篆"},
+    "meng1": {"replacement": "蒙"},
+    "zhe1": {"replacement": "遮"},
+    "dao3": {"replacement": "导"},
+    "nao4": {"replacement": "闹"},
+    "xian1": {"replacement": "先"},
+    "teng5": {"annotationOnly": true}
   },
   "characters": {
+    "懵": {
+      "structuralRules": ["colloquialMeng"],
+      "source": "Oral compatibility, not normative respelling: That's Mandarin, Colloquial Chinese Phrases vol. 1 p. 6 https://tm.thatsmandarin.com/wp-content/uploads/2017/07/30-phrases-book-VOLUME-1.pdf ; People's Daily Overseas Edition, 2019-03-02 https://paper.people.com.cn/rmrbhwb/html/2019-03/02/content_1911553.htm",
+      "phraseGroups": [
+        {
+          "id": "meng-literary-protection",
+          "protect": true,
+          "confidence": "high",
+          "priority": 200,
+          "source": "People's Daily Overseas Edition (above); https://www.zdic.net/hans/懵 ; https://www.zdic.net/hans/愚懵 ; https://www.zdic.net/hans/宿懵 ; https://dict.revised.moe.edu.tw/dictView.jsp?ID=30616&la=0&powerMode=0",
+          "phrases": [
+            "懵懂", "懵懵懂懂", "懵里懵懂", "懵裡懵懂", "懵然", "懵董", "懵憧", "懵昧",
+            "懵钝", "懵鈍", "懵头懵脑", "懵頭懵腦", "愚懵", "宿懵"
+          ]
+        }
+      ]
+    },
+    "折": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "zhe-teng-crossing-protection",
+          "confidence": "high",
+          "protect": true,
+          "source": "CC-CEDICT left-hand lexemes 曲折/波折/转折/挫折/骨折/打折 + a following 腾/騰 word; abstain at the word boundary instead of annotating the crossing substring as 折腾. No right-prefix exclusion: 折腾空调 remains valid.",
+          "phrases": [
+            "曲折腾", "波折腾", "转折腾", "挫折腾", "骨折腾", "打折腾",
+            "曲折騰", "波折騰", "轉折騰", "挫折騰", "骨折騰", "打折騰"
+          ]
+        },
+        {
+          "id": "zhe-neutral-word",
+          "confidence": "high",
+          "reading": "zhe1",
+          "speech": false,
+          "source": "CC-CEDICT 折腾 zhe1 teng5; keep the whole word for the voice's neutral-tone lexicon instead of 遮腾",
+          "phrases": ["折腾", "折騰"]
+        }
+      ]
+    },
+    "倒": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "dao-teng-crossing-protection",
+          "confidence": "high",
+          "protect": true,
+          "source": "CC-CEDICT left-hand lexemes 打倒/摔倒/跌倒/绊倒/推倒/压倒/倾倒 + a following 腾/騰 word; abstain at the word boundary instead of annotating the crossing substring as 倒腾. No right-prefix exclusion: 倒腾空间/倒腾飞机 remain valid.",
+          "phrases": [
+            "打倒腾", "摔倒腾", "跌倒腾", "绊倒腾", "推倒腾", "压倒腾", "倾倒腾",
+            "打倒騰", "摔倒騰", "跌倒騰", "絆倒騰", "推倒騰", "壓倒騰", "傾倒騰"
+          ]
+        },
+        {
+          "id": "dao-neutral-word",
+          "confidence": "high",
+          "reading": "dao3",
+          "speech": false,
+          "source": "CC-CEDICT 倒腾 dao3 teng5; keep the whole word instead of 导腾",
+          "phrases": ["倒腾", "倒騰"]
+        }
+      ]
+    },
+    "捣": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "dao-stir-neutral-word",
+          "confidence": "high",
+          "reading": "dao3",
+          "speech": false,
+          "source": "https://www.zdic.net/hans/倒腾 lists 捣腾 as a variant",
+          "phrases": ["捣腾"]
+        }
+      ]
+    },
+    "搗": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "dao-stir-neutral-word-traditional",
+          "confidence": "high",
+          "reading": "dao3",
+          "speech": false,
+          "source": "https://www.zdic.net/hant/倒騰 lists 搗騰 as a variant",
+          "phrases": ["搗騰"]
+        }
+      ]
+    },
+    "闹": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "nao-neutral-word",
+          "confidence": "high",
+          "reading": "nao4",
+          "speech": false,
+          "source": "CC-CEDICT 闹腾 nao4 teng5",
+          "phrases": ["闹腾"]
+        }
+      ]
+    },
+    "鬧": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "nao-neutral-word-traditional",
+          "confidence": "high",
+          "reading": "nao4",
+          "speech": false,
+          "source": "CC-CEDICT 鬧騰 nao4 teng5",
+          "phrases": ["鬧騰"]
+        }
+      ]
+    },
+    "掀": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "xian-neutral-word",
+          "confidence": "high",
+          "reading": "xian1",
+          "speech": false,
+          "source": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=107826&la=0&powerMode=0",
+          "phrases": ["掀腾", "掀騰"]
+        }
+      ]
+    },
+    "腾": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "teng-crossing-protection",
+          "confidence": "high",
+          "protect": true,
+          "source": "CC-CEDICT left-hand lexemes 曲折/波折/转折/挫折/骨折/打折 and 打倒/摔倒/跌倒/绊倒/推倒/压倒/倾倒; a following 腾 belongs to the next word. Protect the boundary rather than asserting neutral tone from the crossing 折腾/倒腾 substring.",
+          "phrases": [
+            "曲折腾", "波折腾", "转折腾", "挫折腾", "骨折腾", "打折腾",
+            "打倒腾", "摔倒腾", "跌倒腾", "绊倒腾", "推倒腾", "压倒腾", "倾倒腾"
+          ]
+        },
+        {
+          "id": "teng-neutral-word",
+          "confidence": "high",
+          "reading": "teng5",
+          "speech": false,
+          "source": "https://putonghua.szu.edu.cn/info/1014/2870.htm ; CC-CEDICT 折腾/倒腾/闹腾; https://www.zdic.net/hans/倒腾 ; https://dict.revised.moe.edu.tw/dictView.jsp?ID=107826&la=0&powerMode=0",
+          "phrases": ["折腾", "倒腾", "捣腾", "闹腾", "掀腾"]
+        }
+      ]
+    },
+    "騰": {
+      "structuralRules": [],
+      "phraseGroups": [
+        {
+          "id": "teng-crossing-protection-traditional",
+          "confidence": "high",
+          "protect": true,
+          "source": "CC-CEDICT traditional left-hand lexemes 曲折/波折/轉折/挫折/骨折/打折 and 打倒/摔倒/跌倒/絆倒/推倒/壓倒/傾倒; a following 騰 belongs to the next word. Protect the boundary rather than asserting neutral tone from the crossing 折騰/倒騰 substring.",
+          "phrases": [
+            "曲折騰", "波折騰", "轉折騰", "挫折騰", "骨折騰", "打折騰",
+            "打倒騰", "摔倒騰", "跌倒騰", "絆倒騰", "推倒騰", "壓倒騰", "傾倒騰"
+          ]
+        },
+        {
+          "id": "teng-neutral-word-traditional",
+          "confidence": "high",
+          "reading": "teng5",
+          "speech": false,
+          "source": "CC-CEDICT traditional headwords; https://dict.revised.moe.edu.tw/dictView.jsp?ID=56745&la=0&powerMode=0 ; https://dict.revised.moe.edu.tw/dictView.jsp?ID=107826&la=0&powerMode=0",
+          "phrases": ["折騰", "倒騰", "搗騰", "鬧騰", "掀騰"]
+        }
+      ]
+    },
     "行": {
       "structuralRules": ["rowOrdinal", "rowColumnCount", "rowCount", "rowIndefiniteQuantity", "rankOrder", "rowLabel"],
       "phraseGroups": [

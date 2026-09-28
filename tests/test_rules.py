@@ -127,6 +127,32 @@ class ChineseRulesTests(unittest.TestCase):
 		with self.assertRaises(rules_module.RuleDataError):
 			rules_module.CompiledRules.from_mapping({"schemaVersion": 999})
 
+	def test_annotation_only_readings_require_explicit_non_speaking_rules(self):
+		data = {
+			"schemaVersion": 1,
+			"readings": {"teng5": {"annotationOnly": True}},
+			"characters": {
+				"腾": {
+					"phraseGroups": [{"id": "neutral", "reading": "teng5", "speech": False, "phrases": ["折腾"]}],
+				},
+			},
+		}
+		rules = rules_module.CompiledRules.from_mapping(data)
+		self.assertEqual("teng5", rules.resolve("折腾")[1].reading_id)
+		self.assertEqual({}, rules.resolve("折腾", speech_only=True))
+		self.assertNotIn("teng5", rules.renderings)
+		self.assertEqual("折腾", rules.transform("折腾"))
+		group = data["characters"]["腾"]["phraseGroups"][0]
+		for invalid in (True, "false", 0, None):
+			group["speech"] = invalid
+			with self.subTest(speech=invalid), self.assertRaises(rules_module.RuleDataError):
+				rules_module.CompiledRules.from_mapping(data)
+		group["speech"] = False
+		for invalid in ({"annotationOnly": "true"}, {"annotationOnly": True, "replacement": "疼"}, {}):
+			data["readings"]["teng5"] = invalid
+			with self.subTest(definition=invalid), self.assertRaises(rules_module.RuleDataError):
+				rules_module.CompiledRules.from_mapping(data)
+
 
 if __name__ == "__main__":
 	unittest.main()

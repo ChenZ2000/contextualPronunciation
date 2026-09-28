@@ -128,6 +128,7 @@ class PhraseRule:
 	right_boundary: bool
 	layer: int
 	contextual: bool = False
+	speech: bool = True
 
 	@property
 	def sort_key(self) -> tuple[int, int, int, int, int]:
@@ -222,6 +223,13 @@ class CompiledRules:
 		for reading_id, definition in readings.items():
 			if not isinstance(reading_id, str) or not isinstance(definition, dict):
 				raise RuleDataError("Invalid reading definition")
+			annotation_only = definition.get("annotationOnly", False)
+			if not isinstance(annotation_only, bool):
+				raise RuleDataError(f"Invalid annotationOnly flag for {reading_id!r}")
+			if annotation_only:
+				if "replacement" in definition:
+					raise RuleDataError(f"Annotation-only reading {reading_id!r} cannot have a replacement")
+				continue
 			replacement = definition.get("replacement")
 			if not isinstance(replacement, str) or len(replacement) != 1 or not replacement.isalpha():
 				raise RuleDataError(f"Reading {reading_id!r} must have a single-letter/character replacement")
@@ -260,8 +268,13 @@ class CompiledRules:
 				reading_id = group.get("reading")
 				if not isinstance(protect, bool) or (protect == (reading_id is not None)):
 					raise RuleDataError(f"Rule {group_id!r} must specify exactly one of protect/readings")
-				if reading_id is not None and reading_id not in replacements:
+				if reading_id is not None and reading_id not in readings:
 					raise RuleDataError(f"Unknown reading {reading_id!r} in {group_id!r}")
+				speech = group.get("speech", True)
+				if not isinstance(speech, bool) or (
+					speech and reading_id is not None and reading_id not in replacements
+				):
+					raise RuleDataError(f"Rule {group_id!r} needs a speech replacement or speech=false")
 				confidence = group.get("confidence", "high")
 				if confidence not in _CONFIDENCE_LEVELS:
 					raise RuleDataError(f"Invalid confidence in {group_id!r}")
@@ -312,6 +325,7 @@ class CompiledRules:
 							right_boundary=right_boundary,
 							layer=layer,
 							contextual=phrase in contextual,
+							speech=speech,
 						)
 						order += 1
 						mutable_buckets.setdefault((target, left, right), []).append(rule)
@@ -475,6 +489,7 @@ class CompiledRules:
 		return ReadingDecision(
 			reading_id=best.reading_id,
 			protect=best.protect,
+			speech=best.speech,
 			rule_id=best.id,
 			user=bool(best.layer),
 			contextual=best.contextual,
@@ -737,6 +752,16 @@ def _night_count(text: str, index: int) -> str | None:
 	return None
 
 
+def _colloquial_meng(text: str, index: int) -> str:
+	"""Oral compatibility default; reviewed literary phrases take precedence.
+
+	This deliberately covers new predicates and internet spellings without a
+	finite suffix list. It is not a claim that normative 懵 has changed tone.
+	Sources and the disableable policy are documented in docs/REFERENCES.md.
+	"""
+	return "meng1"
+
+
 _STRUCTURAL_HANDLERS: Final = {
 	"rowOrdinal": _row_ordinal,
 	"rowColumnCount": _row_column_count,
@@ -747,6 +772,7 @@ _STRUCTURAL_HANDLERS: Final = {
 	"servingQuantity": _serving_quantity,
 	"travelAssignment": _travel_assignment,
 	"nightCount": _night_count,
+	"colloquialMeng": _colloquial_meng,
 }
 _STRUCTURAL_REQUIREMENTS: Final = {
 	"rowOrdinal": ("行", "hang2"),
@@ -758,6 +784,7 @@ _STRUCTURAL_REQUIREMENTS: Final = {
 	"servingQuantity": ("盛", "cheng2"),
 	"travelAssignment": ("差", "chai1"),
 	"nightCount": ("宿", "xiu3"),
+	"colloquialMeng": ("懵", "meng1"),
 }
 
 
@@ -768,7 +795,8 @@ def load_default_rules(
 		data = json.load(source)
 	database = load_reading_metadata()
 	lexicon = load_default_lexicon() if extended else None
-	templates = load_templates(database.allowed_readings, custom_templates)
+	# Reviewed annotation-only readings need not have a generated homophone.
+	templates = load_templates(database.allowed_readings | frozenset(data["readings"]), custom_templates)
 	disabled = frozenset(value.strip() for value in disabled_rules.replace(",", "\n").splitlines() if value.strip())
 	syntax = load_argument_parser(database.allowed_readings, disabled)
 	all_syntax = load_argument_parser(database.allowed_readings)
@@ -839,7 +867,9 @@ def apply_user_overrides(
 			or (phrase, target) in seen
 		):
 			raise RuleDataError(f"Line {line_number}: use a unique 2–64 character phrase with one target character")
-		if reading_id != "keep" and reading_id not in data["readings"]:
+		if reading_id != "keep" and (
+			reading_id not in data["readings"] or data["readings"][reading_id].get("annotationOnly", False)
+		):
 			raise RuleDataError(f"Line {line_number}: unknown reading ID {reading_id!r}")
 		seen.add((phrase, target))
 		group = {

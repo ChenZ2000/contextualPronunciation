@@ -20,6 +20,26 @@ noback match \x4e0d\x0020? \x91cd \x0020?\x751f\x0020?\x7537 =
 noback match \x53ea\x0020? \x91cd \x0020?\x751f\x0020?\x5973 =
 # zhong-protection: 强调重读 (keep)
 noback match \x5f3a\x0020?\x8c03\x0020? \x91cd \x0020?\x8bfb =
+# meng-literary-protection: 懵头懵脑 (keep)
+noback match - \x61f5 \x0020?\x5934\x0020?\x61f5\x0020?\x8111 =
+# meng-literary-protection: 懵头懵脑 (keep)
+noback match \x61f5\x0020?\x5934\x0020? \x61f5 \x0020?\x8111 =
+# meng-literary-protection: 懵懵懂懂 (keep)
+noback match - \x61f5 \x0020?\x61f5\x0020?\x61c2\x0020?\x61c2 =
+# meng-literary-protection: 懵懵懂懂 (keep)
+noback match \x61f5\x0020? \x61f5 \x0020?\x61c2\x0020?\x61c2 =
+# meng-literary-protection: 懵裡懵懂 (keep)
+noback match - \x61f5 \x0020?\x88e1\x0020?\x61f5\x0020?\x61c2 =
+# meng-literary-protection: 懵裡懵懂 (keep)
+noback match \x61f5\x0020?\x88e1\x0020? \x61f5 \x0020?\x61c2 =
+# meng-literary-protection: 懵里懵懂 (keep)
+noback match - \x61f5 \x0020?\x91cc\x0020?\x61f5\x0020?\x61c2 =
+# meng-literary-protection: 懵里懵懂 (keep)
+noback match \x61f5\x0020?\x91cc\x0020? \x61f5 \x0020?\x61c2 =
+# meng-literary-protection: 懵頭懵腦 (keep)
+noback match - \x61f5 \x0020?\x982d\x0020?\x61f5\x0020?\x8166 =
+# meng-literary-protection: 懵頭懵腦 (keep)
+noback match \x61f5\x0020?\x982d\x0020? \x61f5 \x0020?\x8166 =
 # xing-protection: 第一行星 (keep)
 noback match \x7b2c\x0020?\x4e00\x0020? \x884c \x0020?\x661f =
 # xing-protection: 第二行星 (keep)
@@ -148,6 +168,110 @@ noback match \x91d1\x0020? \x94a5 \x0020?\x5319 =
 noback match - \x94a5 \x0020?\x5319\x0020?\x6263 =
 # xing-protection: 骑行二 (keep)
 noback match \x9a91\x0020? \x884c \x0020?\x4e8c =
+# dao-teng-crossing-protection: 倾倒腾 (keep)
+noback match \x503e\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 倾倒腾 (keep)
+noback match \x503e\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 傾倒騰 (keep)
+noback match \x50be\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 傾倒騰 (keep)
+noback match \x50be\x0020?\x5012\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 压倒腾 (keep)
+noback match \x538b\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 压倒腾 (keep)
+noback match \x538b\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 壓倒騰 (keep)
+noback match \x58d3\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 壓倒騰 (keep)
+noback match \x58d3\x0020?\x5012\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 打倒腾 (keep)
+noback match \x6253\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 打倒腾 (keep)
+noback match \x6253\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 打倒騰 (keep)
+noback match \x6253\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 打倒騰 (keep)
+noback match \x6253\x0020?\x5012\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 打折腾 (keep)
+noback match \x6253\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 打折腾 (keep)
+noback match \x6253\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 打折騰 (keep)
+noback match \x6253\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 打折騰 (keep)
+noback match \x6253\x0020?\x6298\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 挫折腾 (keep)
+noback match \x632b\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 挫折腾 (keep)
+noback match \x632b\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 挫折騰 (keep)
+noback match \x632b\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 挫折騰 (keep)
+noback match \x632b\x0020?\x6298\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 推倒腾 (keep)
+noback match \x63a8\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 推倒腾 (keep)
+noback match \x63a8\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 推倒騰 (keep)
+noback match \x63a8\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 推倒騰 (keep)
+noback match \x63a8\x0020?\x5012\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 摔倒腾 (keep)
+noback match \x6454\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 摔倒腾 (keep)
+noback match \x6454\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 摔倒騰 (keep)
+noback match \x6454\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 摔倒騰 (keep)
+noback match \x6454\x0020?\x5012\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 曲折腾 (keep)
+noback match \x66f2\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 曲折腾 (keep)
+noback match \x66f2\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 曲折騰 (keep)
+noback match \x66f2\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 曲折騰 (keep)
+noback match \x66f2\x0020?\x6298\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 波折腾 (keep)
+noback match \x6ce2\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 波折腾 (keep)
+noback match \x6ce2\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 波折騰 (keep)
+noback match \x6ce2\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 波折騰 (keep)
+noback match \x6ce2\x0020?\x6298\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 絆倒騰 (keep)
+noback match \x7d46\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 絆倒騰 (keep)
+noback match \x7d46\x0020?\x5012\x0020? \x9a30 - =
+# dao-teng-crossing-protection: 绊倒腾 (keep)
+noback match \x7eca\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 绊倒腾 (keep)
+noback match \x7eca\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 跌倒腾 (keep)
+noback match \x8dcc\x0020? \x5012 \x0020?\x817e =
+# teng-crossing-protection: 跌倒腾 (keep)
+noback match \x8dcc\x0020?\x5012\x0020? \x817e - =
+# dao-teng-crossing-protection: 跌倒騰 (keep)
+noback match \x8dcc\x0020? \x5012 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 跌倒騰 (keep)
+noback match \x8dcc\x0020?\x5012\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 轉折騰 (keep)
+noback match \x8f49\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 轉折騰 (keep)
+noback match \x8f49\x0020?\x6298\x0020? \x9a30 - =
+# zhe-teng-crossing-protection: 转折腾 (keep)
+noback match \x8f6c\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 转折腾 (keep)
+noback match \x8f6c\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 骨折腾 (keep)
+noback match \x9aa8\x0020? \x6298 \x0020?\x817e =
+# teng-crossing-protection: 骨折腾 (keep)
+noback match \x9aa8\x0020?\x6298\x0020? \x817e - =
+# zhe-teng-crossing-protection: 骨折騰 (keep)
+noback match \x9aa8\x0020? \x6298 \x0020?\x9a30 =
+# teng-crossing-protection-traditional: 骨折騰 (keep)
+noback match \x9aa8\x0020?\x6298\x0020? \x9a30 - =
 # dan-projectile-protection: 中弹 (keep)
 noback match \x4e2d\x0020? \x5f39 - =
 # dan-projectile-protection: 子弹 (keep)
@@ -238,6 +362,8 @@ noback match \x5927\x0020? \x5c4f - =
 noback match \x5931\x0020? \x91cd - =
 # xing-protection: 实行 (keep)
 noback match \x5b9e\x0020? \x884c - =
+# meng-literary-protection: 宿懵 (keep)
+noback match \x5bbf\x0020? \x61f5 - =
 # zhong-protection: 尊重 (keep)
 noback match \x5c0a\x0020? \x91cd - =
 # ping-protection: 小屏 (keep)
@@ -260,8 +386,24 @@ noback match \x5c65\x0020? \x884c - =
 noback match \x5f3a\x0020? \x76db - =
 # zhong-protection: 总重 (keep)
 noback match \x603b\x0020? \x91cd - =
+# meng-literary-protection: 愚懵 (keep)
+noback match \x611a\x0020? \x61f5 - =
 # zhong-protection: 慎重 (keep)
 noback match \x614e\x0020? \x91cd - =
+# meng-literary-protection: 懵憧 (keep)
+noback match - \x61f5 \x0020?\x61a7 =
+# meng-literary-protection: 懵懂 (keep)
+noback match - \x61f5 \x0020?\x61c2 =
+# meng-literary-protection: 懵昧 (keep)
+noback match - \x61f5 \x0020?\x6627 =
+# meng-literary-protection: 懵然 (keep)
+noback match - \x61f5 \x0020?\x7136 =
+# meng-literary-protection: 懵董 (keep)
+noback match - \x61f5 \x0020?\x8463 =
+# meng-literary-protection: 懵鈍 (keep)
+noback match - \x61f5 \x0020?\x920d =
+# meng-literary-protection: 懵钝 (keep)
+noback match - \x61f5 \x0020?\x949d =
 # xing-protection: 执行 (keep)
 noback match \x6267\x0020? \x884c - =
 # zhong-protection: 承重 (keep)

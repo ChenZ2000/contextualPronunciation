@@ -19,9 +19,9 @@
     "charactersWithPhraseEvidence": 2879
   },
   "readingStatuses": {
-    "annotation_evidence_only": 2892,
-    "curated_contexts": 18,
-    "lexicon_candidates": 656,
+    "annotation_evidence_only": 2891,
+    "curated_contexts": 21,
+    "lexicon_candidates": 654,
     "needs_context_evidence": 16004
   },
   "characters": {
@@ -31145,10 +31145,12 @@
             "三班倒",
             "不倒翁"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "dao-neutral-word"
+          ],
           "homophoneCandidate": "导",
           "automaticLexiconSpeechEligible": true,
-          "status": "lexicon_candidates"
+          "status": "curated_contexts"
         },
         "dao4": {
           "headwords": 111,
@@ -74543,10 +74545,12 @@
             "折跟头",
             "折跟頭"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "zhe-neutral-word"
+          ],
           "homophoneCandidate": "遮",
           "automaticLexiconSpeechEligible": true,
-          "status": "lexicon_candidates"
+          "status": "curated_contexts"
         },
         "zhe2": {
           "headwords": 161,
@@ -77825,10 +77829,12 @@
             "掀掉",
             "掀涌"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "xian-neutral-word"
+          ],
           "homophoneCandidate": "先",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         }
       }
     },
@@ -147901,7 +147907,7 @@
             "灰蒙蒙"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": null,
+          "homophoneCandidate": "蒙",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
