@@ -21,6 +21,7 @@ jobs:
         shell: bash
         run: |
           cp .github/meng080/optimize.py /tmp/meng080-optimize.py
+          cp .github/meng080/optimize2.py /tmp/meng080-optimize2.py
           python - <<'PY'
           import base64, hashlib, lzma
           from pathlib import Path
@@ -38,6 +39,7 @@ jobs:
           uv tool run --from ruff==0.15.9 ruff check --fix addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
           python /tmp/meng080-optimize.py
+          python /tmp/meng080-optimize2.py
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff check --fix addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
