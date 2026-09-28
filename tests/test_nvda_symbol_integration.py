@@ -131,6 +131,32 @@ class NVDASymbolDictionaryIntegrationTests(unittest.TestCase):
 				self.assertNotIn("Doesn 撇 t", processed)
 				self.assertGreaterEqual(processed.count(reported_name), 2)
 
+	def test_colloquial_meng_renderer_survives_real_symbol_processing(self):
+		from tests.test_pipeline import CharacterModeCommand
+
+		normalizer = pipeline.SpeechSequenceNormalizer(
+			rules=rules_module.load_default_rules(),
+			character_mode_command_type=CharacterModeCommand,
+		)
+		options = pipeline.RuntimeOptions()
+		source = "一脸懵逼，一脸懵；懵懂；蒙、矇"
+		sequence = normalizer.normalize([source], options=options)
+		self.assertEqual(["一脸擝逼，一脸擝；懵懂；蒙、矇"], sequence)
+		for locale in ("zh_CN", "en"):
+			processor = self._processor(locale)
+			for level_name in ("NONE", "SOME", "MOST", "ALL", "CHAR"):
+				with self.subTest(locale=locale, level=level_name):
+					level = getattr(self.character_processing.SymbolLevel, level_name)
+					queued = [processor.processText(sequence[0], level)]
+					guard = pipeline.FailOpenSpeechFilter(normalizer=normalizer, options_provider=lambda: options)
+					guard.guard_queued_readings(queued)
+					self.assertIn("一脸擝逼", queued[0])
+					self.assertEqual(2, queued[0].count("擝"))
+					self.assertIn("懵懂", queued[0])
+					self.assertIn("蒙", queued[0])
+					self.assertIn("矇", queued[0])
+		self.assertEqual("一脸懵逼，一脸懵；懵懂；蒙、矇", source)
+
 	def test_polyphones_reach_real_symbol_processor_at_every_user_level(self):
 		from tests.test_boundaries import REPORTED_SYMBOLS, SCENARIOS
 		from tests.test_pipeline import CharacterModeCommand

@@ -65,9 +65,9 @@ The approach draws on slot/POS constraints in [北京大学构式知识库规范
 
 Disabled rules and user `keep` remain authoritative. The resolver works on original text before rendering. An unavailable homophone can leave speech unchanged while an annotation still records a known reading. Absence of an annotation means unknown, not a guessed default.
 
-`colloquialMeng` supplies a broad `meng1` default for 懵 after reviewed literary protections and explicit user rules. It covers informal uses such as 一脸懵逼 and 懵了; `meng-literary-protection` preserves established third-tone contexts such as 懵懂. This is a configurable colloquial compatibility policy, not a claim that normative dictionaries changed the character's reading. 蒙 is the temporary rendering, but its own multiple readings mean that the chosen annotation is not an acoustic guarantee.
+`colloquialMeng` supplies a broad `meng1` default for 懵 after reviewed literary protections and explicit user rules. It covers informal uses such as 一脸懵逼 and 懵了; `meng-literary-protection` preserves established third-tone contexts such as 懵懂. This is a configurable colloquial compatibility policy, not a claim that normative dictionaries changed the character's reading. The temporary rendering is now 擝 (U+64DD), whose pinned Unicode 17.0.0 Unihan `kMandarin` reading is `mēng`. The previous 蒙 rendering could be spoken as `méng`; 矇 has the same second-tone default and is not a suitable substitute. The shared rendering map is used by both default and extended modes. This fixes the ambiguous text rendering, not every voice's Unicode coverage: a voice that does not recognize 擝 can still mispronounce or omit it. Tests verify independent lexical evidence and the NVDA text pipeline, not target-voice audio.
 
-`colloquialMeng` 在审定书面词保护和用户规则之后，为“懵”提供广泛的 `meng1` 默认，覆盖“一脸懵逼、懵了”等口语用法；`meng-literary-protection` 保留“懵懂”等三声语境。这是可配置的口语兼容政策，并不表示规范词典已改变字音。语音临时替代字“蒙”本身多音，选定注音不等于实际声调保证。
+`colloquialMeng` 在审定书面词保护和用户规则之后，为“懵”提供广泛的 `meng1` 默认，覆盖“一脸懵逼、懵了”等口语用法；`meng-literary-protection` 保留“懵懂”等三声语境。这是可配置的口语兼容政策，并不表示规范词典已改变字音。语音临时替代字改为“擝”（U+64DD），固定版本 Unicode 17.0.0 Unihan 的 `kMandarin` 将其标为 `mēng`。原替代字“蒙”可能被读成二声；“矇”的默认音也是二声，不作为替代。基础与扩展模式共用同一映射。这修复的是替代文本的多音歧义，不能补全声库的字库：不支持“擝”的声音仍可能误读或漏读。测试验证独立字音证据和 NVDA 文本管线，不冒充目标声音的音频验证。
 
 ## Neutral-tone rendering / 轻声输出
 

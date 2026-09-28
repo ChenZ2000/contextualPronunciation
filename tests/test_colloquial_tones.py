@@ -2,13 +2,19 @@
 
 from __future__ import annotations
 
+import gzip
+import hashlib
+import json
 import unittest
+from pathlib import Path
 
 from tests.core_loader import load
 
 COLLOQUIAL_MENG = (
 	"懵",
 	"一脸懵逼",
+	"一脸懵",
+	"一臉懵",
 	"一臉懵逼",
 	"懵了",
 	"懵圈",
@@ -24,6 +30,7 @@ COLLOQUIAL_MENG = (
 	"越想越懵",
 	"从懵到清醒",
 	"懵得答不上话",
+	"懵得说不出话",
 	"懵一会儿",
 	"懵来懵去",
 	"懵上加懵",
@@ -84,6 +91,46 @@ class ColloquialToneTests(unittest.TestCase):
 	def setUpClass(cls):
 		cls.defaults = {extended: load("rules").load_default_rules(extended=extended) for extended in (False, True)}
 
+	def test_meng_renderer_has_first_tone_in_independent_pinned_source(self):
+		# Checking only the selected reading or replacement text missed the
+		# 0.7.9 bug: 蒙 (also 矇) defaults to meng2 in this independent source.
+		# Lexical evidence is not an acoustic guarantee for every synthesizer.
+		from tools.import_cedict import PINS, UNIHAN, read_unihan
+
+		source = gzip.decompress(UNIHAN.read_bytes())
+		self.assertEqual(PINS["unihan"], hashlib.sha256(source).hexdigest())
+		defaults, readings, _common = read_unihan(source.decode("utf-8").splitlines())
+		for ambiguous in ("蒙", "矇"):
+			self.assertEqual("meng2", defaults[ambiguous])
+		for extended, rules in self.defaults.items():
+			with self.subTest(extended=extended):
+				renderer = rules.renderings["meng1"]
+				self.assertEqual("meng1", defaults[renderer])
+				self.assertEqual({"meng1"}, readings[renderer])
+				self.assertEqual(1, len(renderer))
+				self.assertEqual(2, len(renderer.encode("utf-16-le")))
+
+	def test_meng_listening_probe_uses_current_output_without_claiming_certified_anchors(self):
+		fixture = Path(__file__).parent / "fixtures/vocalizer_expressive2/renderer_cases.json"
+		cases = json.loads(fixture.read_text("utf-8"))["cases"]
+		groups = {}
+		for case in cases:
+			if case["id"].startswith("meng1_colloquial_"):
+				groups.setdefault(case["compareGroup"], {})[case["role"]] = case
+		self.assertEqual(
+			{"一脸懵逼", "一脸懵", "懵了", "懵圈", "看懵了", "懵得说不出话", "被新通知整懵了"},
+			{group["source"]["text"] for group in groups.values()},
+		)
+		for group in groups.values():
+			self.assertEqual({"source", "candidate", "previous_renderer"}, set(group))
+			source = group["source"]["text"]
+			self.assertEqual(source.replace("懵", "蒙"), group["previous_renderer"]["text"])
+			for rules in self.defaults.values():
+				self.assertEqual(rules.transform(source), group["candidate"]["text"])
+				self.assertEqual("meng1", group["candidate"]["expectedReading"])
+			for case in group.values():
+				self.assertEqual(source.index("懵"), case["targetCharIndex"])
+
 	def test_colloquial_meng_is_productive_in_every_default_mode(self):
 		for extended, rules in self.defaults.items():
 			for strict in (False, True):
@@ -97,7 +144,7 @@ class ColloquialToneTests(unittest.TestCase):
 								if character == "懵":
 									self.assertEqual("meng1", decisions[index].reading_id)
 									self.assertEqual("colloquialMeng", decisions[index].rule_id)
-									self.assertEqual("蒙", spoken[index])
+									self.assertEqual("擝", spoken[index])
 
 	def test_unlisted_contexts_do_not_require_a_finite_phrase_inventory(self):
 		for rules in self.defaults.values():
@@ -105,7 +152,7 @@ class ColloquialToneTests(unittest.TestCase):
 				for suffix in ("了一秒", "到忘记回复", "得睁大眼睛", "归懵还得继续", "……"):
 					text = prefix + "懵" + suffix
 					with self.subTest(text=text):
-						self.assertEqual(text.replace("懵", "蒙"), rules.transform(text, targets=frozenset("懵")))
+						self.assertEqual(text.replace("懵", "擝"), rules.transform(text, targets=frozenset("懵")))
 
 	def test_every_occurrence_in_literary_words_is_protected(self):
 		for extended, rules in self.defaults.items():
@@ -127,7 +174,7 @@ class ColloquialToneTests(unittest.TestCase):
 			for phrase in LITERARY_MENG:
 				for separator in ("", "、", "😀", "\n"):
 					text = "懵了" + separator + phrase + separator + "懵逼"
-					expected = "蒙了" + separator + phrase + separator + "蒙逼"
+					expected = "擝了" + separator + phrase + separator + "擝逼"
 					with self.subTest(text=text):
 						self.assertEqual(expected, rules.transform(text, targets=frozenset("懵")))
 			for text in ("一脸懵懂", "一脸懵然无知", "一臉懵懂", "一臉懵然無知"):
@@ -178,7 +225,22 @@ class ColloquialToneTests(unittest.TestCase):
 						if character in "腾騰":
 							decision = decisions.get(index)
 							self.assertNotEqual("teng5", decision.reading_id if decision else None)
-			for text in ("蒙", "檬", "夢", "梦", "濛", "腾", "騰", "折，腾", "倒\n腾"):
+			for text in (
+				"蒙",
+				"矇",
+				"擝",
+				"蒙古",
+				"蒙面",
+				"启蒙",
+				"檬",
+				"夢",
+				"梦",
+				"濛",
+				"腾",
+				"騰",
+				"折，腾",
+				"倒\n腾",
+			):
 				self.assertEqual(text, rules.transform(text), text)
 			# Dictionaries disagree on these words; the new reviewed groups must abstain.
 			for text in ("翻腾", "扑腾", "翻騰", "撲騰"):
@@ -270,9 +332,9 @@ class ColloquialToneTests(unittest.TestCase):
 	def test_user_keep_and_explicit_readings_take_priority(self):
 		for extended in (False, True):
 			for entry, text, expected, index, reading in (
-				("懵了|懵|keep", "懵了，懵逼", "懵了，蒙逼", 0, None),
+				("懵了|懵|keep", "懵了，懵逼", "懵了，擝逼", 0, None),
 				("懵了|懵|meng3", "懵了", "猛了", 0, "meng3"),
-				("懵懂|懵|meng1", "懵懂", "蒙懂", 0, "meng1"),
+				("懵懂|懵|meng1", "懵懂", "擝懂", 0, "meng1"),
 				("折腾|折|keep", "折腾", "折腾", 0, None),
 				("折腾|折|zhe2", "折腾", "哲腾", 0, "zhe2"),
 				("倒腾|倒|dao4", "倒腾", "到腾", 0, "dao4"),
@@ -288,8 +350,8 @@ class ColloquialToneTests(unittest.TestCase):
 	def test_user_templates_override_keep_and_annotate_without_a_neutral_anchor(self):
 		for extended in (False, True):
 			for pattern, text, expected, index, reading in (
-				("[懵:keep]了", "懵了，懵逼", "懵了，蒙逼", 0, None),
-				("[懵:meng1]懂", "懵懂", "蒙懂", 0, "meng1"),
+				("[懵:keep]了", "懵了，懵逼", "懵了，擝逼", 0, None),
+				("[懵:meng1]懂", "懵懂", "擝懂", 0, "meng1"),
 				("折[腾:keep]", "折腾", "折腾", 1, None),
 				("倒[騰:teng5]", "倒騰", "倒騰", 1, "teng5"),
 				("翻[腾:teng5]", "翻腾", "翻腾", 1, "teng5"),
@@ -363,11 +425,11 @@ class ColloquialToneTests(unittest.TestCase):
 			on, off = CharacterMode(True), CharacterMode(False)
 			sequence = ["一脸懵逼，折腾", marker, on, "懵了倒腾", off, "懵懂，懵了倒腾"]
 			self.assertEqual(
-				["一脸蒙逼，折腾", marker, on, "懵了倒腾", off, "懵懂，蒙了倒腾"],
+				["一脸擝逼，折腾", marker, on, "懵了倒腾", off, "懵懂，擝了倒腾"],
 				normalizer.normalize(sequence, options=pipeline.RuntimeOptions()),
 			)
 			# A word's protection cannot be reconstructed across speech items or commands.
 			for split in (["懵", "懂"], ["懵", marker, "懂"]):
-				self.assertEqual(["蒙", *split[1:]], normalizer.normalize(split, options=pipeline.RuntimeOptions()))
+				self.assertEqual(["擝", *split[1:]], normalizer.normalize(split, options=pipeline.RuntimeOptions()))
 			sequence = ["懵了折腾", marker]
 			self.assertIs(sequence, normalizer.normalize(sequence, options=pipeline.RuntimeOptions(enabled=False)))

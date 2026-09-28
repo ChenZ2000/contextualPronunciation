@@ -55,3 +55,11 @@ python tools/probe_vocalizer_expressive2.py render `
 - `盛汤、盛饭、盛粥、盛一碗` 中表示把食物装入器皿的动词“盛”读 `chéng`。
 
 fixture 同时收录 `成 / 乘`、`航 / 杭`、`崇 / 虫` 候选。候选字词在语义上可能很怪，所以必须检查整句韵律；不能仅因为孤立目标音素相同就自动选定。
+
+## 口语“懵”的一声回归
+
+`renderer_cases.json` 新增 `meng1_colloquial_*` 组，覆盖“一脸懵逼、一脸懵、懵了、懵圈、看懵了、懵得说不出话”及新语境。每组并列原文、当前“擝”替代输出和旧版“蒙”替代输出。使用上面的 `render` 命令生成当前目标声库的 WAV；这些条目只是待渲染输入，不是已有试听结果。
+
+这一组不把“蒙”“矇”或尚未试听的“擝”标为 `anchor`，因此不会因自身比较相等而产生“一声已通过”的假结论。必须确认整个词的目标音确实为一声；二声、三声、读字母、未知字符提示、漏字均不是通过。“擝”是生僻字，固定 Unihan 的一声证据不能证明声库支持它。未支持的声音可停用 `colloquialMeng` 保留原文，不应静默退回已知多音的“蒙”。
+
+The `meng1_colloquial_*` cases compare original text, the current 擝 renderer and the old 蒙 renderer. They are listening-probe inputs, not recorded results. No first-tone acoustic anchor is assumed. Verify the target tone and complete word on the actual voice; an unknown/omitted character or a different tone is not a pass. The pinned Unicode reading does not certify voice coverage.

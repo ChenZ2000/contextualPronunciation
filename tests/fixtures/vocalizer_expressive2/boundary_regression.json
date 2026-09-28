@@ -13,7 +13,7 @@
     "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "524547b5d7948f9c888d1a6d4bcd1402434272746bb6bdf94537ebf6f4166ccc",
     "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
     "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
-    "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "0f33feb720e62fb5bff260d69fb4746a52479f978953c87323408f84055caa7a",
+    "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "19d8d2f0be72544534eded42b94909b9578f011e18406c4acf76adb62a1e470f",
     "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
     "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "c9386273141237f96b27b36b68a6515af165e30f57b224559cf1b8884f88fab0",
     "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",

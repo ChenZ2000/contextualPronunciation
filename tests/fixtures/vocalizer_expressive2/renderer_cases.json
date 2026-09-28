@@ -296,6 +296,195 @@
       "compareGroup": "sheng4_grand",
       "role": "anchor",
       "expectedReading": "shèng"
+    },
+    {
+      "id": "meng1_colloquial_0_source",
+      "text": "一脸懵逼",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_0",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_0_candidate",
+      "text": "一脸擝逼",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_0",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_0_previous_renderer",
+      "text": "一脸蒙逼",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_0",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_1_source",
+      "text": "一脸懵",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_1",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_1_candidate",
+      "text": "一脸擝",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_1",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_1_previous_renderer",
+      "text": "一脸蒙",
+      "targetCharIndex": 2,
+      "compareGroup": "meng1_colloquial_1",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_2_source",
+      "text": "懵了",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_2",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_2_candidate",
+      "text": "擝了",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_2",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_2_previous_renderer",
+      "text": "蒙了",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_2",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_3_source",
+      "text": "懵圈",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_3",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_3_candidate",
+      "text": "擝圈",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_3",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_3_previous_renderer",
+      "text": "蒙圈",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_3",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_4_source",
+      "text": "看懵了",
+      "targetCharIndex": 1,
+      "compareGroup": "meng1_colloquial_4",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_4_candidate",
+      "text": "看擝了",
+      "targetCharIndex": 1,
+      "compareGroup": "meng1_colloquial_4",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_4_previous_renderer",
+      "text": "看蒙了",
+      "targetCharIndex": 1,
+      "compareGroup": "meng1_colloquial_4",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_5_source",
+      "text": "懵得说不出话",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_5",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_5_candidate",
+      "text": "擝得说不出话",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_5",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_5_previous_renderer",
+      "text": "蒙得说不出话",
+      "targetCharIndex": 0,
+      "compareGroup": "meng1_colloquial_5",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_6_source",
+      "text": "被新通知整懵了",
+      "targetCharIndex": 5,
+      "compareGroup": "meng1_colloquial_6",
+      "role": "source",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_6_candidate",
+      "text": "被新通知整擝了",
+      "targetCharIndex": 5,
+      "compareGroup": "meng1_colloquial_6",
+      "role": "candidate",
+      "expectedReading": "meng1",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
+    },
+    {
+      "id": "meng1_colloquial_6_previous_renderer",
+      "text": "被新通知整蒙了",
+      "targetCharIndex": 5,
+      "compareGroup": "meng1_colloquial_6",
+      "role": "previous_renderer",
+      "expectedReading": "voice-dependent; observed meng2 in 0.7.9",
+      "note": "Listening probe input, not certified audio. No first-tone anchor is assumed; unknown/omitted characters or second tone are failures, not successful correction."
     }
   ]
 }

@@ -12,7 +12,7 @@
     "chai1": {"replacement": "钗"},
     "xiu3": {"replacement": "朽"},
     "zhuan4": {"replacement": "篆"},
-    "meng1": {"replacement": "蒙"},
+    "meng1": {"replacement": "擝", "source": "Unicode 17.0.0 Unihan: U+64DD kMandarin mēng (pinned snapshot in data/sources); avoid polyphonic 蒙/矇, whose kMandarin default is méng. Lexical evidence, not all-voice acoustic certification."},
     "zhe1": {"replacement": "遮"},
     "dao3": {"replacement": "导"},
     "nao4": {"replacement": "闹"},

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Fix colloquial 懵 speech rendering: `meng1` now uses 擝 (U+64DD) instead of the polyphonic 蒙, which could be read as second-tone `méng` despite the correct annotation. Preserve productive context matching, literary protections, user overrides and original offsets.
+- Add the exact 一脸懵 / 一脸懵逼 reproducers, independent pinned-Unicode default-tone checks and real NVDA symbol-pipeline regressions. These are text/lexical checks; target-voice acoustic support for the rare renderer must still be verified.
+- 修复口语“懵”的语音替代：一声 `meng1` 改用“擝”，不再交给多音字“蒙”让声库重新选择二声。新语境覆盖、“懵懂”等保护、用户覆盖与原文位置保持不变；生僻字支持及实际声调仍需目标声库验证。
+
 ## 0.7.9
 
 - Default colloquial 懵 to mēng in 一脸懵逼, 懵了 and other contexts, while preserving 懵懂 and reviewed literary forms with third-tone readings. The colloquial policy can be disabled with `colloquialMeng`.
