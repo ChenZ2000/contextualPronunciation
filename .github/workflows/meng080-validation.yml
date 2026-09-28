@@ -3,13 +3,15 @@ on:
   push:
     branches: [maintenance/meng-context-080-validation-20260928]
 permissions:
-  contents: write
+  contents: read
 jobs:
-  validate:
+  recover:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.13.13'
@@ -17,114 +19,38 @@ jobs:
         with:
           version: '0.11.32'
           enable-cache: false
-      - name: Apply reviewed patch to the exact main baseline
+      - name: Recover exact candidate and pinned public integration inputs
         shell: bash
         run: |
+          mkdir -p /tmp/meng080-recovery
+          cp .github/workflows/meng080-validation.yml /tmp/meng080-recovery/recovery-workflow.yml
           python - <<'PY'
           import base64, hashlib, lzma
           from pathlib import Path
           data = base64.b64decode(''.join(Path(f'.github/meng080/part{i}.b64').read_text() for i in range(5)), validate=True)
           assert hashlib.sha256(data).hexdigest() == '7e521d1090ee6de1e4fd02bf5f55746e58c00e9190d8935ee64554377a1b152d'
-          Path('/tmp/meng080.patch').write_bytes(lzma.decompress(data))
+          Path('/tmp/meng080-recovery/original.patch').write_bytes(lzma.decompress(data))
           PY
           git fetch --depth=1 origin ba7c0c1160b7c79d7d9917d3749bc465be113ecc
           git checkout --detach ba7c0c1160b7c79d7d9917d3749bc465be113ecc
-          test ! -e .github/workflows/meng080-validation.yml
-          test ! -e .github/meng080
-          git apply --unidiff-zero /tmp/meng080.patch
-          mkdir -p artifacts
+          git apply --unidiff-zero /tmp/meng080-recovery/original.patch
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff check --fix addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
-      - name: Prepare pinned public integration sources
-        shell: bash
-        run: |
           python scripts/prepare_nvda.py
           python scripts/prepare_worldvoice.py
           python scripts/prepare_cpp.py
-      - name: Generate matching help data and acoustic INPUT fixtures
-        shell: bash
-        run: |
           uv run --no-project --with markdown==3.10.2 python tools/build_user_help.py
           python tools/build_polyphone_coverage.py
           python tools/build_braille_table.py
-          python tools/generate_final_renderer_fixture.py > artifacts/meng080-generation.log
-          python tools/boundary_acoustics.py generate >> artifacts/meng080-generation.log
-          python tools/sentence_acoustics.py generate >> artifacts/meng080-generation.log
-          python - <<'PY'
-          from pathlib import Path
-          import subprocess
-          for name in ('final_renderer_regression.json', 'boundary_regression.json', 'sentence_regression.json'):
-              path = Path('tests/fixtures/vocalizer_expressive2') / name
-              original = subprocess.check_output(['git', 'show', 'HEAD:' + path.as_posix()])
-              newline = b'\r\n' if b'\r\n' in original else b'\n'
-              path.write_bytes(path.read_bytes().replace(b'\r\n', b'\n').replace(b'\n', newline))
-          PY
-      - name: Lint and reproducibility checks
-        shell: bash
-        run: |
-          uv tool run --from ruff==0.15.9 ruff check addon tests tools scripts buildVars.py
-          uv tool run --from ruff==0.15.9 ruff format --check addon tests tools scripts buildVars.py
-          python tools/import_cedict.py --check
-          python tools/build_segmentation_data.py --check
-          python tools/build_syntax_data.py --check
-          python tools/build_grammar_data.py --check
-          python tools/build_polyphone_coverage.py --check
-          python tools/build_dictionary_database.py --check
-          python tools/build_braille_table.py --check
-          python tools/pronunciation.py --check-contributions
-          uv run --no-project --with markdown==3.10.2 python tools/build_user_help.py --check
-      - name: All add-on tests with zero skips
-        run: python scripts/run_tests.py > artifacts/meng080-addon-tests.log 2>&1
-      - name: Independent correctness and performance gates
-        shell: bash
-        run: |
-          python tools/evaluate_colloquial_meng.py > artifacts/meng080-context-evaluation.log
-          python tools/benchmark_colloquial_meng.py > artifacts/meng080-context-performance.log
-          python tools/evaluate_cpp.py > artifacts/meng080-cpp-evaluation.log
-          python tools/evaluate_grammar.py > artifacts/meng080-grammar-evaluation.log
-          python tools/benchmark_hot_path.py --short-iterations 1000 --long-iterations 20 --rounds 7 --output artifacts/performance-report.json > artifacts/meng080-hot-path.log
-          python tools/benchmark_grammar.py > artifacts/meng080-grammar-performance.log
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          from scripts.evidence import validate_performance, validate_grammar_performance
-          validate_performance(json.loads(Path('artifacts/performance-report.json').read_text()))
-          validate_grammar_performance(json.loads(Path('artifacts/grammar-performance.json').read_text()))
-          print('All original absolute latency guardrails passed without changes.')
-          PY
-      - name: Audit and prepare reproducible 0.8.0 assets without publishing
-        shell: bash
-        run: |
-          python scripts/check_repository.py
-          python scripts/build_public_release.py --tag v0.8.0 > artifacts/meng080-release-build.log
-          git diff --check
-      - name: Commit validated code on a temporary candidate branch only
-        shell: bash
-        run: |
-          test ! -e .github/meng080
-          test ! -e .github/workflows/meng080-validation.yml
-          git config user.name 'ChenZ'
-          git config user.email 'mail@chenz.cloud'
           git add -u
           git add addon/globalPlugins/contextualPronunciation/colloquial_meng.py tests/meng_cases.py tests/test_meng_contexts.py tools/evaluate_colloquial_meng.py tools/benchmark_colloquial_meng.py docs/COLLOQUIAL_MENG.md docs/releases/0.8.0.md
-          git commit -m 'fix: restrict colloquial meng to positive grammatical contexts; prepare 0.8.0'
-          test "$(git rev-parse HEAD^)" = ba7c0c1160b7c79d7d9917d3749bc465be113ecc
-          git push origin HEAD:refs/heads/maintenance/meng-context-080-candidate-20260928
-          git show --stat --oneline HEAD > artifacts/meng080-candidate.txt
-          git diff HEAD^ HEAD --binary > artifacts/meng080-fix.patch
-          git archive --format=zip --output=artifacts/meng080-fixed-source.zip HEAD
+          git diff --cached --binary > /tmp/meng080-recovery/formatted.patch
+          git -c user.name=Validation -c user.email=validation@example.invalid commit -m 'Local recovery snapshot only'
+          git archive --format=zip --output=/tmp/meng080-recovery/candidate-source.zip HEAD
+          tar --exclude=.git --exclude=__pycache__ -czf /tmp/meng080-recovery/public-test-sources.tar.gz vendor
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
-        if: always()
         with:
-          name: meng080-validation
-          path: |
-            artifacts/meng080-*
-            artifacts/addon-tests.json
-            artifacts/colloquial-meng-*.json
-            artifacts/cpp-evaluation.json
-            artifacts/grammar-evaluation.json
-            artifacts/performance-report.json
-            artifacts/grammar-performance.json
-            dist/*
-          retention-days: 14
+          name: meng080-recovery
+          path: /tmp/meng080-recovery/*
+          retention-days: 7
