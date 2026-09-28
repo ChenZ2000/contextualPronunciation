@@ -24,6 +24,8 @@ noback match \x5f3a\x0020?\x8c03\x0020? \x91cd \x0020?\x8bfb =
 noback match - \x61f5 \x0020?\x5934\x0020?\x61f5\x0020?\x8111 =
 # meng-literary-protection: 懵头懵脑 (keep)
 noback match \x61f5\x0020?\x5934\x0020? \x61f5 \x0020?\x8111 =
+# meng-literary-protection: 懵头转向 (keep)
+noback match - \x61f5 \x0020?\x5934\x0020?\x8f6c\x0020?\x5411 =
 # meng-literary-protection: 懵懵懂懂 (keep)
 noback match - \x61f5 \x0020?\x61f5\x0020?\x61c2\x0020?\x61c2 =
 # meng-literary-protection: 懵懵懂懂 (keep)
@@ -40,6 +42,8 @@ noback match \x61f5\x0020?\x91cc\x0020? \x61f5 \x0020?\x61c2 =
 noback match - \x61f5 \x0020?\x982d\x0020?\x61f5\x0020?\x8166 =
 # meng-literary-protection: 懵頭懵腦 (keep)
 noback match \x61f5\x0020?\x982d\x0020? \x61f5 \x0020?\x8166 =
+# meng-literary-protection: 懵頭轉向 (keep)
+noback match - \x61f5 \x0020?\x982d\x0020?\x8f49\x0020?\x5411 =
 # xing-protection: 第一行星 (keep)
 noback match \x7b2c\x0020?\x4e00\x0020? \x884c \x0020?\x661f =
 # xing-protection: 第二行星 (keep)
@@ -106,6 +110,10 @@ noback match (\x4e16|\x4e2d\x0020?\x6587|\x4e43|\x4f53|\x5173|\x5316\x0020?\x5b6
 noback match \x5148\x0020? \x884c \x0020?\x4e8c =
 # xing-protection: 再行二 (keep)
 noback match \x518d\x0020? \x884c \x0020?\x4e8c =
+# meng-literary-protection: 懵懵然 (keep)
+noback match - \x61f5 \x0020?\x61f5\x0020?\x7136 =
+# meng-literary-protection: 懵懵然 (keep)
+noback match \x61f5\x0020? \x61f5 \x0020?\x7136 =
 # xing-protection: 日行二 (keep)
 noback match \x65e5\x0020? \x884c \x0020?\x4e8c =
 # ping-protection: 显示屏 (keep)

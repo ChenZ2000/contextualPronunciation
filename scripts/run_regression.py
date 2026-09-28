@@ -141,6 +141,8 @@ def main() -> int:
 			)
 		stage("cpp-evaluation", [py, "tools/evaluate_cpp.py"])
 		stage("grammar-evaluation", [py, "tools/evaluate_grammar.py"])
+		stage("colloquial-meng-evaluation", [py, "tools/evaluate_colloquial_meng.py"])
+		stage("colloquial-meng-performance", [py, "tools/benchmark_colloquial_meng.py"])
 		if args.native:
 			build = [
 				"powershell.exe",

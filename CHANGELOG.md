@@ -1,10 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.8.0
 
-- Fix colloquial 懵 speech rendering: `meng1` now uses 擝 (U+64DD) instead of the polyphonic 蒙, which could be read as second-tone `méng` despite the correct annotation. Preserve productive context matching, literary protections, user overrides and original offsets.
-- Add the exact 一脸懵 / 一脸懵逼 reproducers, independent pinned-Unicode default-tone checks and real NVDA symbol-pipeline regressions. These are text/lexical checks; target-voice acoustic support for the rare renderer must still be verified.
-- 修复口语“懵”的语音替代：一声 `meng1` 改用“擝”，不再交给多音字“蒙”让声库重新选择二声。新语境覆盖、“懵懂”等保护、用户覆盖与原文位置保持不变；生僻字支持及实际声调仍需目标声库验证。
+- Replace the unconditional colloquial 懵 fallback with bounded positive grammatical evidence. Isolated 懵, literary words, lexical mentions and unsupported contexts keep the original text and synthesizer reading; no global second-tone rule is installed.
+- Generalize first-tone matching through colloquial lexemes, facial states, state predicates, resultatives, degree/result/duration complements, grounded subjects, questions, comparison and bounded reiteration. Retain literary protection, personal-rule priority and speech-item/spelling boundaries.
+- Use 擝 (U+64DD) instead of the ambiguous 蒙 speech renderer from the published 0.7.9 package. Rare-character support still requires target-voice listening checks.
+- Add independent constructed positive, negative and mixed cases, real NVDA symbol-pipeline contrasts and dedicated fail-closed short/8K performance gates. Synchronize metadata, bilingual guides, installed help and [0.8.0 release notes](docs/releases/0.8.0.md).
+- 删除“未命中保护词即默认一声”的过度规范化，仅对有依据的口语语境选一声；单字、书面词和字音讨论保留声库原有读音。新增可组合语法用例、反例、混合语境和性能门禁，保留个人覆盖与逐字模式。
 
 ## 0.7.9
 

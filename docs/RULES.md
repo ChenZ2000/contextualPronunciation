@@ -40,9 +40,11 @@ negative = ["快乐", "乐观", "乐高"]
 
 ## 口语默认与轻声 / Colloquial defaults and neutral tone
 
-`colloquialMeng` 为未命中保护词的“懵”选择 `meng1`，语音临时替换为“擝”（U+64DD，`mēng`），覆盖“一脸懵逼、懵了、被问懵”等及新的口语组合。它是兼容当代口语写法的广泛默认；规范资料仍将“懵懂”等的“懵”读作三声，并建议突然糊涂的动词写为“蒙”。`meng-literary-protection` 保留“懵懂、懵懵懂懂、懵里懵懂、懵然、懵昧、愚懵、宿懵”等审定词及规则中列出的繁体形式。用户可停用 `colloquialMeng`，或使用固定词、模板和 `keep` 覆盖个别语境。资料见 [References](REFERENCES.md)。
+`colloquialMeng` 只在有正向口语语法依据时，为“懵”选择 `meng1` 并临时输出“擝”（U+64DD）。它不再是“未命中保护词就改一声”的默认。支持词汇化口语、数量＋脸、状态谓语、动作结果补语、程度／结果／时量补语、带主语的状态、疑问、比较和受限重叠；完整句子不必逐条列入。孤立字、字词提及、书面词和无充分依据的语境保留原文及声库原读音，不全局强制 `meng2`。资料、对比用例和识别边界见 [Colloquial 懵](COLLOQUIAL_MENG.md)。
 
-`colloquialMeng` selects `meng1` and temporarily renders 擝 (U+64DD, `mēng`) for unprotected 懵, covering 一脸懵逼, 懵了, 被问懵 and new colloquial combinations. This broad compatibility default follows contemporary informal spelling; normative references retain third-tone 懵 in literary words and recommend 蒙 for becoming suddenly confused. `meng-literary-protection` preserves the reviewed words above and their listed traditional forms. Users may disable `colloquialMeng` or override individual contexts with literal rules, templates and `keep`.
+`colloquialMeng` selects `meng1` and renders 擝 only with positive evidence for a supported colloquial construction. It no longer defaults every unprotected occurrence to first tone. Lexicalized forms, numeral + 脸, state predicates, resultative compounds, degree/result/duration complements, grounded subjects, questions, comparison and bounded reiteration generalize beyond a finite list of complete sentences. Isolated characters, lexical mentions, literary words and unsupported contexts keep the original text and voice reading; no global `meng2` rewrite is added.
+
+`meng-literary-protection` 继续先于口语结构判断，扩充“懵头转向／懵頭轉向、懵懵然”等保护。用户可停用 `colloquialMeng`，或使用固定词、模板与 `keep` 覆盖个别语境。用户固定词优先于用户模板，用户模板仍可覆盖内置书面保护。`meng-literary-protection` still precedes colloquial structural matching and now also covers 懵头转向 / 懵頭轉向 and 懵懵然. Disabling `colloquialMeng`, literal rules, templates and `keep` retain their existing semantics and precedence.
 
 核心读音定义 `"teng5": {"annotationOnly": true}` 登记没有同音替代字的轻声，不能同时指定 `replacement`。词组的 `speech: false` 保留已知读音及原字，仍先于扩展词典裁决；它与撤回注音的 `protect` 不同。当前对折腾、倒腾、捣腾、闹腾、掀腾及各自繁体形式的两个音节使用这一策略，避免“遮腾、导腾”等替换破坏整词识别。新规则不推广到翻腾、扑腾或所有“腾”。用户固定词仍只接受可用同音替代读音或 `keep`；模板可以记录 `teng5`。个人覆盖权限与规则停用机制保持不变。
 
@@ -52,9 +54,9 @@ The core definition `"teng5": {"annotationOnly": true}` registers a neutral-tone
 
 Whole words let the voice apply its neutral-tone lexicon; the add-on has no universal interface to force neutral tone. The 0.7.9 蒙 renderer could produce second tone; the replacement 擝 is first tone in the pinned Unihan data. 擝 is rare and must be supported by the voice. Text, lexical-source and annotation tests do not certify its actual tone. Verify it on the target voice; disabling `colloquialMeng` restores the original text if unsupported, rather than silently falling back to the ambiguous 蒙 renderer.
 
-保护和纠音只使用当前语音文本项，不跨字符串或命令拼接上下文；例如拆成两个文本项的“懵”“懂”无法按完整“懵懂”匹配。轻声规则也保留“曲折｜腾挪”“打倒｜腾空”等已审定跨词竞争语境，不把相邻字一律认作轻声词。
+保护和纠音只使用当前语音文本项，不跨字符串或命令拼接上下文；例如拆成两个文本项的“懵”“懂”无法按完整“懵懂”匹配，但孤立“懵”现已弃权，不再被默认改成一声；“懵”“了”拆项也不会合并判断。轻声规则也保留“曲折｜腾挪”“打倒｜腾空”等已审定跨词竞争语境，不把相邻字一律认作轻声词。
 
-Protection and correction use only the current speech text item; strings and commands are not joined. Separate items containing 懵 and 懂 cannot match the complete protected word. Reviewed crossing-word contexts such as 曲折 | 腾挪 and 打倒 | 腾空 also block neutral-word matching.
+Protection and correction use only the current speech text item; strings and commands are not joined. Separate items containing 懵 and 懂 cannot match the complete protected word, but isolated 懵 now abstains rather than defaulting to first tone; separate 懵 and 了 items are not joined either. Reviewed crossing-word contexts such as 曲折 | 腾挪 and 打倒 | 腾空 also block neutral-word matching.
 
 ## 词典与生成数据
 

@@ -210,7 +210,7 @@ def generate(*, compact=True) -> tuple[bytes, dict]:
 		"excludedContexts": [list(value) for value in sorted(excluded)],
 		"notCompiled": [
 			"structural number rules",
-			"colloquial defaults (colloquialMeng)",
+			"positive colloquial contexts (colloquialMeng)",
 			"user configuration",
 			"dictionary matching and speech-only readings without reviewed braille cells",
 			"full word segmentation",

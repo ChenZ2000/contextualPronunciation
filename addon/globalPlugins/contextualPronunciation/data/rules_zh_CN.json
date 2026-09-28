@@ -22,7 +22,7 @@
   "characters": {
     "懵": {
       "structuralRules": ["colloquialMeng"],
-      "source": "Oral compatibility, not normative respelling: That's Mandarin, Colloquial Chinese Phrases vol. 1 p. 6 https://tm.thatsmandarin.com/wp-content/uploads/2017/07/30-phrases-book-VOLUME-1.pdf ; People's Daily Overseas Edition, 2019-03-02 https://paper.people.com.cn/rmrbhwb/html/2019-03/02/content_1911553.htm",
+      "source": "Positive-context oral compatibility (no isolated-character default), not normative respelling: That's Mandarin, Colloquial Chinese Phrases vol. 1 p. 6 https://tm.thatsmandarin.com/wp-content/uploads/2017/07/30-phrases-book-VOLUME-1.pdf ; People's Daily Overseas Edition, 2019-03-02 https://paper.people.com.cn/rmrbhwb/html/2019-03/02/content_1911553.htm",
       "phraseGroups": [
         {
           "id": "meng-literary-protection",
@@ -32,7 +32,7 @@
           "source": "People's Daily Overseas Edition (above); https://www.zdic.net/hans/懵 ; https://www.zdic.net/hans/愚懵 ; https://www.zdic.net/hans/宿懵 ; https://dict.revised.moe.edu.tw/dictView.jsp?ID=30616&la=0&powerMode=0",
           "phrases": [
             "懵懂", "懵懵懂懂", "懵里懵懂", "懵裡懵懂", "懵然", "懵董", "懵憧", "懵昧",
-            "懵钝", "懵鈍", "懵头懵脑", "懵頭懵腦", "愚懵", "宿懵"
+            "懵钝", "懵鈍", "懵头懵脑", "懵頭懵腦", "愚懵", "宿懵", "懵头转向", "懵頭轉向", "懵懵然"
           ]
         }
       ]

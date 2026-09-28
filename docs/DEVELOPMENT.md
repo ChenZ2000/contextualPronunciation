@@ -128,3 +128,15 @@ python scripts/check_repository.py
 ```
 
 CI checks generated help, links and publication exclusions. The package builder uses the checked-in HTML and does not need Markdown or network access.
+
+## Context-only colloquial 懵 regression
+
+The [linguistic design](COLLOQUIAL_MENG.md) distinguishes sourced usage from constructed policy examples. `tests/meng_cases.py` supplies independent positive, negative and mixed expectations; it does not derive them from runtime rules.
+
+```powershell
+python -m unittest tests.test_meng_contexts tests.test_colloquial_tones
+python tools/evaluate_colloquial_meng.py
+python tools/benchmark_colloquial_meng.py
+```
+
+Both evaluation and performance are mandatory stages of `scripts/run_regression.py`, including native CI. The dedicated benchmark runs both default and extended engines through the speech sequence normalizer. It fails if any measured median exceeds 200 microseconds for short inputs or 30 milliseconds for long inputs; each case has at least 100 timed calls. Existing global benchmarks, immutable-baseline comparison and their limits are unchanged. Timing is host-specific and excludes startup, synthesis and NVDA event dispatch, not an end-to-end latency promise. Evidence belongs under ignored `artifacts/` and is uploaded by CI. Missing evidence or failure must not be described as a pass.

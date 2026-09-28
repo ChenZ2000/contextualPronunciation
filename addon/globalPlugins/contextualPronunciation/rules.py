@@ -18,6 +18,7 @@ from pathlib import Path
 from types import MappingProxyType
 from typing import Any, Final
 
+from .colloquial_meng import classify as classify_colloquial_meng
 from .lexicon import PhraseLexicon, load_default_lexicon, load_reading_metadata
 from .syntax import ArgumentParser, load_argument_parser
 from .templates import CompiledTemplates, load_templates
@@ -752,14 +753,9 @@ def _night_count(text: str, index: int) -> str | None:
 	return None
 
 
-def _colloquial_meng(text: str, index: int) -> str:
-	"""Oral compatibility default; reviewed literary phrases take precedence.
-
-	This deliberately covers new predicates and internet spellings without a
-	finite suffix list. It is not a claim that normative 懵 has changed tone.
-	Sources and the disableable policy are documented in docs/REFERENCES.md.
-	"""
-	return "meng1"
+def _colloquial_meng(text: str, index: int) -> str | None:
+	"""Select first tone only with positive local evidence of colloquial confusion."""
+	return "meng1" if classify_colloquial_meng(text, index) is not None else None
 
 
 _STRUCTURAL_HANDLERS: Final = {
