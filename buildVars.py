@@ -6,10 +6,10 @@ addon_info = {
 		"Corrects selected Chinese polyphones and preserves lexical apostrophes "
 		"before text reaches the active speech synthesizer."
 	),
-	"addon_version": "0.7.8",
+	"addon_version": "0.7.9",
 	"addon_changelog": (
-		"Enable dictionary and grammar analysis by default, retire the extended phrase checkbox, "
-		"and improve travel, night, stubborn-compound and physical-rotation readings."
+		"Default colloquial 懵 to first tone while protecting literary readings, "
+		"and preserve complete neutral-tone 腾 words for synthesizer recognition."
 	),
 	"addon_author": "ChenZ2000 and contributors",
 	"addon_docFileName": "readme.html",

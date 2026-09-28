@@ -32,7 +32,7 @@
 
 ### 安装并启用
 
-本页介绍 **0.7.8** 的功能，已发布安装包请从 GitHub Releases 下载。最低要求及最后测试的稳定版均为 **NVDA 2026.2**。CI 另外验证 **2026.3beta2**。
+本页介绍 **0.7.9** 的功能，已发布安装包请从 GitHub Releases 下载。最低要求及最后测试的稳定版均为 **NVDA 2026.2**。CI 另外验证 **2026.3beta2**。
 
 1. 从 [Releases 页面](https://github.com/ChenZ2000/contextualPronunciation/releases/latest)下载 `.nvda-addon` 文件。
 2. 打开文件，按 NVDA 提示安装并重启。

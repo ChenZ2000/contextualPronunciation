@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers version 0.7.8. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.7.9. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 

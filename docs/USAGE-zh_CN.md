@@ -2,7 +2,7 @@
 
 [项目主页](README-zh_CN.md) · [English](README-en.md) · 简体中文
 
-本指南适用于上下文发音规范化 0.7.8。安装包从 [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest) 下载。安装 `.nvda-addon` 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。
+本指南适用于上下文发音规范化 0.7.9。安装包从 [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest) 下载。安装 `.nvda-addon` 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。
 
 ## 开始朗读
 

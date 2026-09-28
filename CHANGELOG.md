@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.9
+
+- Default colloquial 懵 to mēng in 一脸懵逼, 懵了 and other contexts, while preserving 懵懂 and reviewed literary forms with third-tone readings. The colloquial policy can be disabled with `colloquialMeng`.
+- Annotate neutral-tone 腾 in 折腾, 倒腾, 捣腾, 闹腾, 掀腾 and traditional forms; preserve complete words for the synthesizer instead of rewriting their first syllables to homophones.
+- Protect word boundaries such as 曲折／腾挪 and 打倒／腾空 without blocking 折腾空调 or 倒腾飞机. Add regression coverage for speech decisions, annotations, user rules and configuration modes.
+- These changes do not force neutral-tone audio in every synthesizer. See the [release notes](docs/releases/0.7.9.md) for scope and limitations.
+
 ## 0.7.8
 
 - Default 装盛 / 裝盛 to chéng; recognize 盛装 action nominals and container goals while preserving attire contexts.

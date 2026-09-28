@@ -1,6 +1,6 @@
 [project]
 name = "contextual-pronunciation-nvda"
-version = "0.7.8"
+version = "0.7.9"
 description = "Context-aware pronunciation normalization for NVDA"
 requires-python = ">=3.13"
 license = "GPL-2.0-or-later"
