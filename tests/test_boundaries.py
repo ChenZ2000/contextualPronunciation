@@ -67,7 +67,7 @@ class BoundaryRegressionTests(unittest.TestCase):
 				for phrase in group["phrases"]:
 					expected_phrase = (
 						phrase
-						if group.get("protect")
+						if group.get("protect") or not group.get("speech", True)
 						else phrase.replace(target, data["readings"][group["reading"]]["replacement"])
 					)
 					for symbol in self.boundaries:

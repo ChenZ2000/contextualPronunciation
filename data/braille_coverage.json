@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "baseTable": "zhcn-cbs.ctb",
   "scheme": "GF 0019-2018",
-  "literalContexts": 12077,
+  "literalContexts": 12148,
   "correctionContexts": 11701,
-  "protectionContexts": 376,
-  "compiledMatchRules": 475,
+  "protectionContexts": 447,
+  "compiledMatchRules": 546,
   "factoredTemplateRules": 25,
   "readings": {
     "hang2": "125-236",
@@ -41,6 +41,22 @@
   ],
   "excludedContexts": [
     [
+      "dao-neutral-word",
+      "倒腾"
+    ],
+    [
+      "dao-neutral-word",
+      "倒騰"
+    ],
+    [
+      "dao-stir-neutral-word",
+      "捣腾"
+    ],
+    [
+      "dao-stir-neutral-word-traditional",
+      "搗騰"
+    ],
+    [
       "hang-row-layout",
       "行/列"
     ],
@@ -63,6 +79,62 @@
     [
       "liang-physical-quantity",
       "dynamic template"
+    ],
+    [
+      "nao-neutral-word",
+      "闹腾"
+    ],
+    [
+      "nao-neutral-word-traditional",
+      "鬧騰"
+    ],
+    [
+      "teng-neutral-word",
+      "倒腾"
+    ],
+    [
+      "teng-neutral-word",
+      "折腾"
+    ],
+    [
+      "teng-neutral-word",
+      "捣腾"
+    ],
+    [
+      "teng-neutral-word",
+      "掀腾"
+    ],
+    [
+      "teng-neutral-word",
+      "闹腾"
+    ],
+    [
+      "teng-neutral-word-traditional",
+      "倒騰"
+    ],
+    [
+      "teng-neutral-word-traditional",
+      "折騰"
+    ],
+    [
+      "teng-neutral-word-traditional",
+      "掀騰"
+    ],
+    [
+      "teng-neutral-word-traditional",
+      "搗騰"
+    ],
+    [
+      "teng-neutral-word-traditional",
+      "鬧騰"
+    ],
+    [
+      "xian-neutral-word",
+      "掀腾"
+    ],
+    [
+      "xian-neutral-word",
+      "掀騰"
     ],
     [
       "yue-key-technical",
@@ -91,10 +163,19 @@
     [
       "yue-key-technical",
       "私钥"
+    ],
+    [
+      "zhe-neutral-word",
+      "折腾"
+    ],
+    [
+      "zhe-neutral-word",
+      "折騰"
     ]
   ],
   "notCompiled": [
     "structural number rules",
+    "colloquial defaults (colloquialMeng)",
     "user configuration",
     "dictionary matching and speech-only readings without reviewed braille cells",
     "full word segmentation",

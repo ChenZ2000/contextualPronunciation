@@ -57,7 +57,11 @@ class ResearchToolTests(unittest.TestCase):
 		self.assertEqual(
 			{
 				**load("lexicon").load_default_lexicon().renderings,
-				**{key: value["replacement"] for key, value in data["readings"].items()},
+				**{
+					key: value["replacement"]
+					for key, value in data["readings"].items()
+					if not value.get("annotationOnly")
+				},
 			},
 			dict(load("rules").load_default_rules(extended=False).renderings),
 		)

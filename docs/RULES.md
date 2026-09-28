@@ -38,6 +38,24 @@ negative = ["快乐", "乐观", "乐高"]
 
 同级不同读音冲突时弃权。用户固定词规则优先于用户模板；用户模板优先于内置模板；内置核心保护优先于内置模板。合法拼音只证明格式受支持，仍须核对目标字是否有该读音。
 
+## 口语默认与轻声 / Colloquial defaults and neutral tone
+
+`colloquialMeng` 为未命中保护词的“懵”选择 `meng1`，语音临时替换为“蒙”，覆盖“一脸懵逼、懵了、被问懵”等及新的口语组合。它是兼容当代口语写法的广泛默认；规范资料仍将“懵懂”等的“懵”读作三声，并建议突然糊涂的动词写为“蒙”。`meng-literary-protection` 保留“懵懂、懵懵懂懂、懵里懵懂、懵然、懵昧、愚懵、宿懵”等审定词及规则中列出的繁体形式。用户可停用 `colloquialMeng`，或使用固定词、模板和 `keep` 覆盖个别语境。资料见 [References](REFERENCES.md)。
+
+`colloquialMeng` selects `meng1` and temporarily renders 蒙 for unprotected 懵, covering 一脸懵逼, 懵了, 被问懵 and new colloquial combinations. This broad compatibility default follows contemporary informal spelling; normative references retain third-tone 懵 in literary words and recommend 蒙 for becoming suddenly confused. `meng-literary-protection` preserves the reviewed words above and their listed traditional forms. Users may disable `colloquialMeng` or override individual contexts with literal rules, templates and `keep`.
+
+核心读音定义 `"teng5": {"annotationOnly": true}` 登记没有同音替代字的轻声，不能同时指定 `replacement`。词组的 `speech: false` 保留已知读音及原字，仍先于扩展词典裁决；它与撤回注音的 `protect` 不同。当前对折腾、倒腾、捣腾、闹腾、掀腾及各自繁体形式的两个音节使用这一策略，避免“遮腾、导腾”等替换破坏整词识别。新规则不推广到翻腾、扑腾或所有“腾”。用户固定词仍只接受可用同音替代读音或 `keep`；模板可以记录 `teng5`。个人覆盖权限与规则停用机制保持不变。
+
+The core definition `"teng5": {"annotationOnly": true}` registers a neutral-tone reading without a homophone; it cannot also contain `replacement`. A phrase rule with `speech: false` retains its known reading and original character while overriding extended lexical decisions. Unlike `protect`, it does not withdraw the annotation. Both syllables of 折腾, 倒腾, 捣腾, 闹腾, 掀腾 and their traditional forms use this policy, preventing replacements such as 遮腾 and 导腾 from breaking whole-word recognition. The new rules do not extend to 翻腾, 扑腾 or every 腾. User literal rules still accept only available homophone readings or `keep`; templates may annotate `teng5`. Existing user precedence and rule disabling remain unchanged.
+
+完整词交给声库识别轻声；插件没有跨声库强制轻声的通用接口。“蒙”本身也有多个读音，因此文本与注音测试不能证明每个声音的实际声调，仍需在目标声库上实测。
+
+Whole words let the voice apply its neutral-tone lexicon; the add-on has no universal interface to force neutral tone. 蒙 is also polyphonic, so text and annotation tests do not establish the actual tone of every voice. Acoustic verification on the target voice is still required.
+
+保护和纠音只使用当前语音文本项，不跨字符串或命令拼接上下文；例如拆成两个文本项的“懵”“懂”无法按完整“懵懂”匹配。轻声规则也保留“曲折｜腾挪”“打倒｜腾空”等已审定跨词竞争语境，不把相邻字一律认作轻声词。
+
+Protection and correction use only the current speech text item; strings and commands are not joined. Separate items containing 懵 and 懂 cannot match the complete protected word. Reviewed crossing-word contexts such as 曲折 | 腾挪 and 打倒 | 腾空 also block neutral-word matching.
+
 ## 词典与生成数据
 
 `data/sources/` 保存固定版本、带校验和的许可源文件。`kind=word` 的对齐拼音序列与 `kind=characterSense` 的候选读音集合不同。词库 `?` 表示未知位置，API 对应 `None`，不能补成默认读音。
