@@ -68,9 +68,13 @@ jobs:
           assert hashlib.sha256(Path('dist/contextualPronunciation-0.8.0.nvda-addon').read_bytes()).hexdigest() == 'f4d6b1975e24aa9e4af0f988a3a100be6cb3f379fb1e0982251157b703f097c7'
           PY
           git diff --check
-      - name: Create clean candidate commit (main is advanced separately by maintainer)
+      - name: Push non-workflow source for maintainer-authorized final tree
         shell: bash
         run: |
+          cp .github/workflows/regression.yml artifacts/meng080-final-intended-regression.yml
+          # GITHUB_TOKEN lacks workflows permission. The authorized maintainer
+          # connection applies these two artifact paths in the final Git tree.
+          git restore --source=HEAD --staged --worktree .github/workflows/regression.yml
           git config user.name 'ChenZ'
           git config user.email 'mail@chenz.cloud'
           git add -u
@@ -78,9 +82,11 @@ jobs:
           git diff --cached --check
           git commit -m 'fix: restrict colloquial meng to grammatical contexts and prepare 0.8.0'
           test "$(git rev-parse HEAD^)" = ba7c0c1160b7c79d7d9917d3749bc465be113ecc
-          git push origin HEAD:refs/heads/maintenance/meng080-ready-20260928
+          git rev-parse HEAD > artifacts/meng080-final-sha.txt
+          git rev-parse HEAD^{tree} > artifacts/meng080-final-tree.txt
           git show --stat --oneline HEAD > artifacts/meng080-final-commit.txt
           git archive --format=zip --output=artifacts/meng080-final-source.zip HEAD
+          git push origin HEAD:refs/heads/maintenance/meng080-ready-20260928
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
