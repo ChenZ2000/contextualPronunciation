@@ -33,6 +33,7 @@ jobs:
           test ! -e .github/meng080
           git apply --unidiff-zero /tmp/meng080.patch
           mkdir -p artifacts
+          uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff check --fix addon tests tools scripts buildVars.py
           uv tool run --from ruff==0.15.9 ruff format addon tests tools scripts buildVars.py
       - name: Prepare pinned public integration sources
