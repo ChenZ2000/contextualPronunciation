@@ -143,7 +143,15 @@ def main() -> int:
 		stage("grammar-evaluation", [py, "tools/evaluate_grammar.py"])
 		stage("colloquial-meng-evaluation", [py, "tools/evaluate_colloquial_meng.py"])
 		stage("colloquial-meng-performance", [py, "tools/benchmark_colloquial_meng.py"])
-		stage("growth-performance", [py, "tools/benchmark_growth.py"])
+		stage(
+			"growth-performance",
+			[py, "tools/benchmark_growth.py", *(["--observe-absolute"] if args.hosted_performance else [])],
+		)
+		if args.hosted_performance:
+			growth = json.loads((ARTIFACTS / "growth-performance.json").read_text("utf-8"))
+			if not growth["passed"]:
+				record.setdefault("absolutePerformanceObservations", []).append(growth["error"])
+				save()
 		if args.native:
 			build = [
 				"powershell.exe",

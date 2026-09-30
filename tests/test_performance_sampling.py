@@ -5,6 +5,7 @@ import unittest
 
 from scripts.compare_hosted_performance import compare
 from scripts.sample_hosted_performance import PROCESS_ROUNDS, aggregate
+from tools.benchmark_growth import SCENARIOS, validate
 
 
 class PerformanceSamplingTests(unittest.TestCase):
@@ -54,6 +55,11 @@ class PerformanceSamplingTests(unittest.TestCase):
 		reports[-1]["sourceSha256"]["runtime.py"] = "changed"
 		with self.assertRaises(ValueError):
 			aggregate(reports, "hot_path")
+		for field in ("benchmarkSha256", "measurementEnvironment"):
+			reports = self.reports()
+			reports[-1][field] = "changed"
+			with self.subTest(field=field), self.assertRaises(ValueError):
+				aggregate(reports, "hot_path")
 
 	def test_invalid_timing_cannot_be_hidden_by_a_valid_median(self):
 		for invalid in (0, -1, float("nan"), float("inf")):
@@ -78,3 +84,42 @@ class PerformanceSamplingTests(unittest.TestCase):
 		current["text"]["totalTimedCalls"] -= 1
 		with self.assertRaises(ValueError):
 			compare(current, baseline, "medianMicrosecondsPerCall")
+
+	def test_growth_rounds_retain_call_totals_and_absolute_failure_is_an_observation(self):
+		reports = []
+		for value in (31000, 32000, 33000, 34000, 90000):
+			reports.append(
+				{
+					"sourceSha256": {"runtime.py": "fixed"},
+					"passed": True,
+					"modes": {
+						mode: {
+							"measurements": {
+								name: {
+									"codepoints": len(text),
+									"samples": (100 if len(text) > 1000 else 250) // PROCESS_ROUNDS,
+									"medianUs": value if len(text) > 1000 else 50,
+									"p95Us": value * 2,
+								}
+								for name, text in SCENARIOS.items()
+							}
+						}
+						for mode in ("default", "extended")
+					},
+				}
+			)
+		result = aggregate(reports, "growth")
+		self.assertFalse(result["passed"])
+		rows = result["modes"]["default"]["measurements"]
+		self.assertEqual(33000, rows["generic8k"]["medianUs"])
+		self.assertEqual(100, rows["generic8k"]["totalTimedCalls"])
+		self.assertEqual(250, rows["classifiedGeneric"]["totalTimedCalls"])
+		self.assertEqual([31000, 32000, 33000, 34000, 90000], rows["generic8k"]["processMediansUs"])
+		self.assertNotIn("p95Us", rows["generic8k"])
+		report = {"modes": {mode: data["measurements"] for mode, data in result["modes"].items()}}
+		validate(report, check_latency=False, minimum_samples=20)
+		with self.assertRaises(ValueError):
+			validate(report, minimum_samples=20)
+		rows["generic8k"]["medianUs"] = float("nan")
+		with self.assertRaises(ValueError):
+			validate(report, check_latency=False, minimum_samples=20)

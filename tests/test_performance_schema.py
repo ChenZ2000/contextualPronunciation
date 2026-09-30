@@ -2,7 +2,9 @@
 
 import unittest
 
-from scripts.compare_hosted_performance import MOTION_ADDITIONS, compare_hot_path
+from scripts.compare_hosted_performance import MOTION_ADDITIONS, compare_growth, compare_hot_path
+from scripts.sample_hosted_performance import PROCESS_ROUNDS
+from tools.benchmark_growth import SCENARIOS
 
 
 class PerformanceSchemaTests(unittest.TestCase):
@@ -37,3 +39,89 @@ class PerformanceSchemaTests(unittest.TestCase):
 		current["longMotionSentences8k"]["medianMicrosecondsPerCall"] = float("nan")
 		with self.assertRaises(ValueError):
 			compare_hot_path(current, baseline)
+
+	def growth_reports(self, speed=1):
+		current = {"modes": {}}
+		baseline = {"modes": {}}
+		for mode in ("default", "extended"):
+			current["modes"][mode] = {
+				"measurements": {
+					name: {
+						"codepoints": len(text),
+						"samples": (100 if len(text) > 1000 else 250) // PROCESS_ROUNDS,
+						"totalTimedCalls": 100 if len(text) > 1000 else 250,
+						"processRounds": PROCESS_ROUNDS,
+						"medianUs": (25000 if len(text) > 1000 else 100) * speed,
+					}
+					for name, text in SCENARIOS.items()
+				}
+			}
+			baseline["modes"][mode] = {
+				"measurements": {
+					"short": {
+						"codepoints": 10,
+						"samples": 200,
+						"totalTimedCalls": 1000,
+						"processRounds": PROCESS_ROUNDS,
+						"medianUs": 60 * speed,
+					},
+					"page": {
+						"codepoints": 8192,
+						"samples": 20,
+						"totalTimedCalls": 100,
+						"processRounds": PROCESS_ROUNDS,
+						"medianUs": 15000 * speed,
+					},
+				}
+			}
+		return current, baseline
+
+	def test_growth_envelope_accounts_for_host_speed_and_still_detects_excess_cost(self):
+		for speed in (1, 2):
+			current, baseline = self.growth_reports(speed)
+			rows = compare_growth(current, baseline)
+			self.assertEqual(2 * len(SCENARIOS), len(rows))
+			self.assertTrue(all(row["passed"] for row in rows))
+			self.assertTrue(all(row["comparisonType"] == "new-feature-envelope" for row in rows))
+			current["modes"]["default"]["measurements"]["generic8k"]["medianUs"] = 31000 * speed
+			rows = compare_growth(current, baseline)
+			self.assertFalse(next(row for row in rows if row["scenario"] == "growth/default/generic8k")["passed"])
+
+	def test_growth_unknown_missing_or_invalid_samples_cannot_pass(self):
+		for field, value in (
+			("samples", 1),
+			("totalTimedCalls", 1),
+			("processRounds", 1),
+			("codepoints", 1),
+			("medianUs", float("nan")),
+			("medianUs", float("inf")),
+			("medianUs", 0),
+		):
+			current, baseline = self.growth_reports()
+			current["modes"]["default"]["measurements"]["generic8k"][field] = value
+			with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+				compare_growth(current, baseline)
+		for name in ("generic8k", "neutral8k"):
+			current, baseline = self.growth_reports()
+			del current["modes"]["default"]["measurements"][name]
+			with self.subTest(missing=name), self.assertRaises(ValueError):
+				compare_growth(current, baseline)
+		current, baseline = self.growth_reports()
+		current["modes"]["default"]["measurements"]["unexpected"] = {}
+		with self.assertRaises(ValueError):
+			compare_growth(current, baseline)
+
+	def test_growth_reference_requires_both_sizes_modes_and_valid_sampling(self):
+		for field, value in (("samples", 0), ("totalTimedCalls", 1), ("medianUs", float("nan"))):
+			current, baseline = self.growth_reports()
+			baseline["modes"]["default"]["measurements"]["page"][field] = value
+			with self.subTest(field=field), self.assertRaises(ValueError):
+				compare_growth(current, baseline)
+		current, baseline = self.growth_reports()
+		del baseline["modes"]["default"]["measurements"]["page"]
+		with self.assertRaises(ValueError):
+			compare_growth(current, baseline)
+		current, baseline = self.growth_reports()
+		del baseline["modes"]["extended"]
+		with self.assertRaises(ValueError):
+			compare_growth(current, baseline)

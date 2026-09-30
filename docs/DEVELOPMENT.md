@@ -103,9 +103,11 @@ Performance reports separate initialization, per-call measurements and batch-med
 
 GitHub runners use `--hosted-performance`: current code and immutable baseline `82bdb20ae72a849f9cefac6073a1111d82bc52fc` use the same interpreter, fixed Python hash seed and processor core. The harness selects the lowest allowed processor before sampling and pins only its own process and children. It runs five predetermined process rounds, alternating which version runs first for each benchmark. Each hot-path process uses seven rounds of 2,000 short or 4 long calls: total timed calls remain 70,000 and 140 per version. Each grammar process measures 200 short or 20 long samples, retaining totals of 1,000 and 100. Normal warmups run in each process. Each version uses its own benchmark and runtime files; the baseline checkout is never edited.
 
-The comparison uses the median of all five process medians for each scenario, with no dropped rounds or retries inside the benchmark. Every scenario must remain within the greater of 1.30 times its baseline median or the baseline median plus 5 microseconds. Scenario names, input lengths, sample counts and process-round totals must match. The baseline is the initial public commit with the previously validated 0.7.3 runtime. This detects relative regressions; it does not establish an absolute latency guarantee. Baseline changes require explicit review and must not be used to conceal a regression.
+The comparison uses the median of all five process medians for each scenario, with no dropped rounds or retries inside the benchmark. Existing comparable scenarios must remain within the greater of 1.30 times their baseline median or the baseline median plus 5 microseconds. Their scenario names, input lengths, sample counts and process-round totals must match. The baseline is the initial public commit with the previously validated 0.7.3 runtime. This detects relative regressions; it does not establish an absolute latency guarantee. Baseline changes require explicit review and must not be used to conceal a regression.
 
-CI retains all process reports under `artifacts/hosted-performance-samples/`, their execution order and processor affinity, both aggregates, the original unpinned reports, startup timings, comparison results and any absolute-budget failure in the workflow report. Aggregate reports do not claim pooled p95/p99 values; per-process quantiles remain in the raw grammar reports. The relative policy addresses variable hosted hardware; it does not turn an exceeded absolute budget into a pass. The local strict release mode rejects the hosted option. Investigate failures before changing either policy.
+The fixed baseline predates the growth, clipped stature and neutral-word capabilities. Their dedicated benchmark now participates in the same-core alternating five-process workflow: each current growth process runs 50 short or 20 long samples, retaining totals of 250 and 100. Its adjacent reference process runs the baseline's own unchanged grammar benchmark. Each new scenario is explicitly labelled `new-feature-envelope`, with a limit of twice the slowest baseline grammar scenario in the same mode and short/page size class (or that reference plus 5 microseconds, whichever is greater). This reuses the existing new-feature multiplier; it is a capability cost budget, not a claim of identical input or semantics in the old baseline. Missing scenarios, modes, invalid timings, altered call totals, interpreter/configuration differences and processor differences fail the gate.
+
+CI retains all process reports under `artifacts/hosted-performance-samples/`, their execution order and processor affinity, the aggregates, the original unpinned reports, startup timings, comparison results and any absolute-budget failure in the workflow report. Growth evidence includes `paired-current-growth-performance.json` and `baseline-growth-reference.json`; the comparison report also records the aggregate growth absolute observation. Aggregate reports do not claim pooled p95/p99 values; per-process quantiles remain in the raw reports. Hosted absolute growth overruns are recorded without stopping before the mandatory same-runner gate; an exceeded absolute budget remains a failed absolute observation. Local regression and strict release still reject those overruns, and strict release rejects the hosted option. Investigate failures before changing either policy.
 
 ## Optional acoustic verification
 
@@ -168,9 +170,14 @@ python tools/evaluate_grammar.py
 python tools/benchmark_growth.py
 ```
 
-The standard regression and native CI run the growth benchmark with the same
-200 µs short / 30 ms long median budgets and at least 100 measured calls per
-case in both modes. The report is `artifacts/growth-performance.json`. Exact
+Local regression runs the growth/neutral benchmark with unchanged 200 µs short /
+30 ms long median budgets and at least 100 measured calls per case in both modes.
+It includes clipped stature, classifier objects with modifiers, quantities and
+locations, measurement contrasts, complete neutral words and dense pages.
+Hosted CI records that absolute check with `--observe-absolute` and requires the
+paired new-feature envelope described above. The original absolute report is
+`artifacts/growth-performance.json`. Invalid data still fails observation mode.
+Exact
 closed predicates avoid unnecessary charts; repeated stems share argument
 analysis within one item, including separate readings for a growth stem and
 length result. No whole-text result cache or cross-item text retention is used.

@@ -65,6 +65,8 @@ jobs:
             artifacts/baseline-grammar-performance.json
             artifacts/paired-current-performance.json
             artifacts/paired-current-grammar-performance.json
+            artifacts/paired-current-growth-performance.json
+            artifacts/baseline-growth-reference.json
             artifacts/hosted-performance-samples/*.json
             artifacts/hosted-baseline-benchmark.log
             data/dictionary-sources.json

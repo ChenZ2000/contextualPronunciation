@@ -17,11 +17,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.sample_hosted_performance import PROCESS_ROUNDS, aggregate, pin_process  # noqa: E402
+from tools.benchmark_growth import SCENARIOS as GROWTH_SCENARIOS  # noqa: E402
+from tools.benchmark_growth import validate as validate_growth  # noqa: E402
 
 BASELINE = "82bdb20ae72a849f9cefac6073a1111d82bc52fc"
 BASE = ROOT / "vendor/performance-baseline"
 RATIO = 1.30
 NOISE_FLOOR_US = 5.0
+NEW_FEATURE_MULTIPLIER = 2
 MOTION_ADDITIONS = frozenset(
 	f"{prefix}shortMotion{kind}"
 	for prefix in ("", "pluginFilterWithStubs_")
@@ -103,7 +106,7 @@ def compare_hot_path(current: dict, baseline: dict) -> tuple[list[dict], dict]:
 		value, reference = current[name][metric], baseline[reference_name][metric]
 		if not all(isinstance(v, (int, float)) and math.isfinite(v) and v > 0 for v in (value, reference)):
 			raise ValueError(f"Invalid new-feature timing: {name}")
-		limit = max(reference * 2, reference + NOISE_FLOOR_US)
+		limit = max(reference * NEW_FEATURE_MULTIPLIER, reference + NOISE_FLOOR_US)
 		rows.append(
 			{
 				"scenario": name,
@@ -117,6 +120,66 @@ def compare_hot_path(current: dict, baseline: dict) -> tuple[list[dict], dict]:
 			}
 		)
 	return rows, aliases
+
+
+def compare_growth(current: dict, baseline: dict) -> list[dict]:
+	"""New growth/neutral paths use the existing same-size feature envelope.
+
+	The immutable baseline predates these senses and has no growth benchmark.
+	Its own grammar benchmark supplies a measured short/page cost envelope,
+	separately sampled adjacent to current growth on the same processor.
+	This is a capability budget, not an identical-workload regression ratio.
+	"""
+	if set(current["modes"]) != {"default", "extended"} or set(baseline["modes"]) != {"default", "extended"}:
+		raise ValueError("Missing growth/reference benchmark mode")
+	validate_growth(
+		{"modes": {mode: data["measurements"] for mode, data in current["modes"].items()}},
+		check_latency=False,
+		minimum_samples=100 // PROCESS_ROUNDS,
+	)
+	rows = []
+	for mode in ("default", "extended"):
+		references = baseline["modes"][mode]["measurements"]
+		for reference in references.values():
+			expected_calls = 100 if reference["codepoints"] > 1000 else 1000
+			if (
+				not math.isfinite(reference["medianUs"])
+				or reference["medianUs"] <= 0
+				or reference["codepoints"] <= 0
+				or reference["processRounds"] != PROCESS_ROUNDS
+				or reference["samples"] * PROCESS_ROUNDS != expected_calls
+				or reference["totalTimedCalls"] != expected_calls
+			):
+				raise ValueError("Invalid growth reference timing/sampling")
+		for name, text in GROWTH_SCENARIOS.items():
+			row = current["modes"][mode]["measurements"][name]
+			long = len(text) > 1000
+			expected_calls = 100 if long else 250
+			if (
+				row["processRounds"] != PROCESS_ROUNDS
+				or row["samples"] * PROCESS_ROUNDS != expected_calls
+				or row["totalTimedCalls"] != expected_calls
+			):
+				raise ValueError("Different growth benchmark sampling")
+			candidates = [key for key, value in references.items() if (value["codepoints"] > 1000) == long]
+			if not candidates:
+				raise ValueError(f"Missing comparable size envelope: growth/{mode}/{name}")
+			reference_name = max(candidates, key=lambda key: references[key]["medianUs"])
+			value, reference = row["medianUs"], references[reference_name]["medianUs"]
+			limit = max(reference * NEW_FEATURE_MULTIPLIER, reference + NOISE_FLOOR_US)
+			rows.append(
+				{
+					"scenario": f"growth/{mode}/{name}",
+					"comparisonType": "new-feature-envelope",
+					"referenceScenario": f"grammar/{mode}/{reference_name}",
+					"currentUs": value,
+					"baselineUs": reference,
+					"ratio": value / reference,
+					"limitUs": limit,
+					"passed": value <= limit,
+				}
+			)
+	return rows
 
 
 def main() -> None:
@@ -137,14 +200,16 @@ def main() -> None:
 	affinity = pin_process()
 	samples = artifacts / "hosted-performance-samples"
 	samples.mkdir(exist_ok=True)
-	collected = {(kind, label): [] for kind in ("hot_path", "grammar") for label in ("current", "baseline")}
+	collected = {(kind, label): [] for kind in ("hot_path", "grammar", "growth") for label in ("current", "baseline")}
 	order = []
+	environment = None
 	with (artifacts / "hosted-baseline-benchmark.log").open("w", encoding="utf-8") as log:
 		for round_index in range(PROCESS_ROUNDS):
-			for kind_index, kind in enumerate(("hot_path", "grammar")):
+			for kind_index, kind in enumerate(("hot_path", "grammar", "growth")):
 				labels = ("current", "baseline") if (round_index + kind_index) % 2 == 0 else ("baseline", "current")
 				for label in labels:
 					checkout = ROOT if label == "current" else BASE
+					sample_kind = "grammar" if kind == "growth" and label == "baseline" else kind
 					output = samples / f"{round_index + 1}-{kind}-{label}.json"
 					print(f"Paired sampling {round_index + 1}/{PROCESS_ROUNDS}: {kind}/{label}", flush=True)
 					subprocess.run(
@@ -154,7 +219,7 @@ def main() -> None:
 							"--checkout",
 							str(checkout),
 							"--kind",
-							kind,
+							sample_kind,
 							"--output",
 							str(output),
 						],
@@ -165,6 +230,10 @@ def main() -> None:
 						stderr=subprocess.STDOUT,
 					)
 					sample = json.loads(output.read_text("utf-8"))
+					if environment is None:
+						environment = sample["measurementEnvironment"]
+					if sample["measurementEnvironment"] != environment:
+						raise ValueError("Benchmark child used a different interpreter/configuration")
 					for key in ("selectedMask", "selectedCpu"):
 						if sample["measurementAffinity"].get(key) != affinity.get(key):
 							raise ValueError("Benchmark child used a different processor")
@@ -174,11 +243,15 @@ def main() -> None:
 	baseline_hot = aggregate(collected["hot_path", "baseline"], "hot_path")
 	current_grammar = aggregate(collected["grammar", "current"], "grammar")
 	baseline_grammar = aggregate(collected["grammar", "baseline"], "grammar")
+	current_growth = aggregate(collected["growth", "current"], "growth")
+	baseline_growth_reference = aggregate(collected["growth", "baseline"], "grammar")
 	for path, data in (
 		(artifacts / "paired-current-performance.json", current_hot),
 		(artifacts / "paired-current-grammar-performance.json", current_grammar),
 		(base_hot, baseline_hot),
 		(base_grammar, baseline_grammar),
+		(artifacts / "paired-current-growth-performance.json", current_growth),
+		(artifacts / "baseline-growth-reference.json", baseline_growth_reference),
 	):
 		path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", "utf-8")
 	rows, aliases = compare_hot_path(current_hot["measurements"], baseline_hot["measurements"])
@@ -187,16 +260,21 @@ def main() -> None:
 			current_grammar["modes"][mode]["measurements"], baseline_grammar["modes"][mode]["measurements"], "medianUs"
 		):
 			rows.append({**row, "scenario": mode + "/" + row["scenario"]})
+	rows.extend(compare_growth(current_growth, baseline_growth_reference))
 	report = {
 		"baselineCommit": BASELINE,
 		"ratioLimit": RATIO,
 		"noiseFloorUs": NOISE_FLOOR_US,
 		"baselineModeAliases": aliases,
-		"newMotionEnvelopeMultiplier": 2,
+		"newMotionEnvelopeMultiplier": NEW_FEATURE_MULTIPLIER,
+		"newGrowthEnvelopeMultiplier": NEW_FEATURE_MULTIPLIER,
+		"growthReference": "Immutable baseline's own grammar workloads, paired by size and mode; not identical senses",
+		"growthAbsoluteObservation": {"passed": current_growth["passed"], "error": current_growth.get("error")},
 		"scope": (
 			"Same-core alternating five-process median comparison; original timed-call totals and thresholds retained"
 		),
 		"affinity": affinity,
+		"measurementEnvironment": environment,
 		"processRounds": PROCESS_ROUNDS,
 		"sampleOrder": order,
 		"passed": all(row["passed"] for row in rows),

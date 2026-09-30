@@ -10,11 +10,13 @@ from __future__ import annotations
 import argparse
 import copy
 import ctypes
+import hashlib
 import importlib.util
 import json
 import math
 import os
 import statistics
+import sys
 from pathlib import Path
 
 PROCESS_ROUNDS = 5
@@ -53,6 +55,10 @@ def sample(checkout: Path, kind: str) -> dict:
 	assert spec is not None and spec.loader is not None
 	module = importlib.util.module_from_spec(spec)
 	spec.loader.exec_module(module)
+	if kind == "growth":
+		report = module.run(process_rounds=PROCESS_ROUNDS)
+		report["modes"] = {mode: {"measurements": rows} for mode, rows in report["modes"].items()}
+		return report
 	if kind == "hot_path":
 		return module.run(short_iterations=10_000 // PROCESS_ROUNDS, long_iterations=20 // PROCESS_ROUNDS, rounds=7)
 	original_measure = module.measure
@@ -70,7 +76,7 @@ def aggregate(reports: list[dict], kind: str) -> dict:
 	if len(reports) != PROCESS_ROUNDS:
 		raise ValueError("Every predetermined process round is required")
 	for report in reports[1:]:
-		for field in ("sourceSha256", "benchmarkSha256"):
+		for field in ("sourceSha256", "benchmarkSha256", "measurementEnvironment"):
 			if report.get(field) != reports[0].get(field):
 				raise ValueError(f"Benchmark source changed during sampling: {field}")
 	result = copy.deepcopy(reports[0])
@@ -103,16 +109,36 @@ def aggregate(reports: list[dict], kind: str) -> dict:
 				* row.get("samples", row.get("iterationsPerRound", 0) * row.get("rounds", 1)),
 			}
 	result["aggregation"] = "Median of all five process medians; no discarded rounds; raw quantiles stored separately"
+	if kind == "growth":
+		from tools.benchmark_growth import validate
+
+		result.pop("error", None)
+		try:
+			validate(
+				{"modes": {mode: data["measurements"] for mode, data in result["modes"].items()}},
+				minimum_samples=100 // PROCESS_ROUNDS,
+			)
+			result["passed"] = True
+		except ValueError as error:
+			result.update(passed=False, error=str(error))
 	return result
 
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("--checkout", type=Path, required=True)
-	parser.add_argument("--kind", choices=("hot_path", "grammar"), required=True)
+	parser.add_argument("--kind", choices=("hot_path", "grammar", "growth"), required=True)
 	parser.add_argument("--output", type=Path, required=True)
 	args = parser.parse_args()
 	affinity = pin_process()
 	report = sample(args.checkout.resolve(), args.kind)
+	report["benchmarkSha256"] = hashlib.sha256(
+		(args.checkout / "tools" / f"benchmark_{args.kind}.py").read_bytes()
+	).hexdigest()
+	report["measurementEnvironment"] = {
+		"python": sys.version,
+		"executable": sys.executable,
+		"hashSeed": os.environ.get("PYTHONHASHSEED"),
+	}
 	report["measurementAffinity"] = affinity
 	args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", "utf-8")
