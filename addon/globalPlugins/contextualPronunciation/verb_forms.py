@@ -89,6 +89,8 @@ def predicate_tail(text, end, *, results=None):
 	if potential:
 		end += 1
 	complements = _COMPLEMENTS.get(text[end : end + 1], ())
+	if potential and text[end : end + 1] == "了":
+		complements = (("了", "compound:ability"),)
 	if results is not None:
 		complements = results.get(text[end : end + 1], ()) + complements
 	for word, relation in complements:

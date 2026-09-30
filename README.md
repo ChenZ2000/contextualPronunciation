@@ -43,7 +43,7 @@ Version **0.8.1** supports the features described here. Main-branch test builds 
 
 ### Settings and personal rules
 
-Open **NVDA Settings → Context-aware pronunciation**. Rewriting, Chinese corrections, apostrophe normalization and strict mode are enabled by default. The [user guide](docs/README-en.md) explains each setting, personal templates, literal rules, preservation and troubleshooting.
+Open **NVDA Settings → Context-aware pronunciation**. Rewriting, automatic Chinese reading selection and apostrophe normalization are enabled by default. The [user guide](docs/README-en.md) explains each setting, personal templates, literal rules, preservation and troubleshooting.
 
 ## How it works
 

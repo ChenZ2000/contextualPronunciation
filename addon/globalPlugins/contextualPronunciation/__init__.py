@@ -103,7 +103,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return ()
 		from .braille_readings import annotate
 
-		return annotate(text, self._rules, strict=self._options.strict_mode)
+		return annotate(text, self._rules)
 
 	def _report_filter_error(self) -> None:
 		now = time.monotonic()

@@ -5,7 +5,7 @@ from __future__ import annotations
 import unittest
 
 from tests.core_loader import load
-from tests.growth_cases import GROWTH, LENGTH, LEXICAL, PRESERVED, generated_locations
+from tests.growth_cases import GROWTH, LENGTH, LEXICAL, PRESERVED, generated_age, generated_locations, generated_stature
 
 
 class GrowthTests(unittest.TestCase):
@@ -32,6 +32,73 @@ class GrowthTests(unittest.TestCase):
 					i = text.index("长")
 					self.assertEqual("zhang3", rules.resolve(text)[i].reading_id)
 					self.assertEqual("掌", rules.transform(text)[i])
+
+	def test_productive_stature_and_clipped_noun_outside_phrase_inventory(self):
+		for rules in self.modes.values():
+			for text in generated_stature():
+				with self.subTest(text=text):
+					self.assertEqual(text.replace("长", "掌"), rules.transform(text, targets=frozenset("长")))
+
+	def test_ellipsis_and_classifier_select_different_heads_and_original_offsets(self):
+		from tools.pronunciation import explain
+
+		rules = self.modes[True]
+		for text, head, relation in (("长个了", "个", "ellipsis:stature"), ("长个新的痘痘", "痘痘", "clf")):
+			parsed = rules.syntax.analyze(text, 0)
+			self.assertEqual(head, text[parsed.head_start : parsed.head_end])
+			self.assertIn(relation, {d.relation for d in parsed.dependencies})
+			self.assertTrue(explain(text, rules)["syntaxProposals"][0]["selected"])
+			for dep in parsed.dependencies:
+				self.assertTrue(0 <= dep.start < dep.end <= len(text))
+		for text in ("長個了嗎", "長不了個", "身量又長了", "給我長不了臉"):
+			self.assertEqual(text.replace("長", "掌"), rules.transform(text, targets=frozenset("長")))
+
+	def test_age_arguments_quantities_and_competing_heads(self):
+		for rules in self.modes.values():
+			for text in generated_age():
+				with self.subTest(text=text):
+					self.assertEqual(text.replace("长", "掌"), rules.transform(text, targets=frozenset("长")))
+			for text in ("長我兩歲", "他比我長三歲", "年紀長了"):
+				self.assertEqual(text.replace("長", "掌"), rules.transform(text, targets=frozenset("長")))
+			p = rules.syntax.analyze("他比我长三岁", 3)
+			self.assertEqual({"extent:age", "obl:comparison", "nsubj"}, {d.relation for d in p.dependencies})
+
+	def test_new_constructions_obey_user_keep_and_disabled_sense(self):
+		texts = ("长个了", "长我两岁", "他比我长三岁")
+		for extended in (False, True):
+			for options in (
+				{"disabled_rules": "syntax-growth"},
+				{"custom_entries": "\n".join(f"{t}|长|keep" for t in texts)},
+			):
+				rules = load("rules").load_default_rules(extended=extended, **options)
+				for text in texts:
+					self.assertEqual(text, rules.transform(text, targets=frozenset("长")))
+
+	def test_source_semantic_projection_retains_candidate_record_ids(self):
+		import json
+		from pathlib import Path
+
+		from tools.build_grammar_data import projected_families, projection_rules
+
+		data = json.loads(
+			Path("addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json").read_text("utf-8")
+		)
+		for word, category in (
+			("菖蒲", "grower"),
+			("脚踝", "bodySite"),
+			("身高", "stature"),
+			("智慧", "growthIncrement"),
+		):
+			self.assertTrue(data["selectionEvidence"][category][word])
+		for gloss in (
+			"hair salon",
+			"memory card",
+			"plant factory",
+			"to grow",
+			"shoot (photography)",
+			"root (computing)",
+		):
+			self.assertFalse(projected_families([gloss], projection_rules()), gloss)
 
 	def test_ambiguous_and_distant_evidence_does_not_supply_readings(self):
 		for rules in self.modes.values():
@@ -63,7 +130,13 @@ class GrowthTests(unittest.TestCase):
 	def test_traditional_punctuation_and_original_offsets(self):
 		braille = load("braille_readings")
 		for rules in self.modes.values():
-			for base, reading in (("胸前長了", "zhang3"), ("頭髮很長", "chang2"), ("背上长", "zhang3")):
+			for base, reading in (
+				("胸前長了", "zhang3"),
+				("頭髮很長", "chang2"),
+				("背上长", "zhang3"),
+				("長個了", "zhang3"),
+				("他比我長三歲", "zhang3"),
+			):
 				for suffix in ("", "。", "！", "？", ".", "…", "；", "\n", "😀"):
 					text = "😀" + base + suffix
 					i = next(i for i, ch in enumerate(text) if ch in "长長")

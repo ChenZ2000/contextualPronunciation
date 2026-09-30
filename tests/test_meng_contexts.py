@@ -16,16 +16,13 @@ class MengContextTests(unittest.TestCase):
 	def test_confirmed_and_productive_contexts_in_all_modes(self):
 		texts = [text for group in POSITIVE.values() for text in group] + list(generated_positives())
 		for extended, rules in self.modes.items():
-			for strict in (False, True):
-				for text in texts:
-					with self.subTest(extended=extended, strict=strict, text=text):
-						self.assertEqual(
-							text.replace("懵", "擝"), rules.transform(text, strict=strict, targets=frozenset("懵"))
-						)
-						decisions = rules.resolve(text, strict=strict)
-						for index, character in enumerate(text):
-							if character == "懵":
-								self.assertEqual("meng1", decisions[index].reading_id)
+			for text in texts:
+				with self.subTest(extended=extended, text=text):
+					self.assertEqual(text.replace("懵", "擝"), rules.transform(text, targets=frozenset("懵")))
+					decisions = rules.resolve(text)
+					for index, character in enumerate(text):
+						if character == "懵":
+							self.assertEqual("meng1", decisions[index].reading_id)
 
 	def test_isolated_non_colloquial_and_ambiguous_contexts_are_preserved(self):
 		texts = (
@@ -34,25 +31,23 @@ class MengContextTests(unittest.TestCase):
 			+ list(generated_mentions())
 		)
 		for extended, rules in self.modes.items():
-			for strict in (False, True):
-				for text in texts:
-					with self.subTest(extended=extended, strict=strict, text=text):
-						self.assertEqual(text, rules.transform(text, strict=strict, targets=frozenset("懵")))
-						for index, item in rules.resolve(text, strict=strict).items():
-							if text[index] == "懵":
-								self.assertNotEqual("meng1", item.reading_id)
+			for text in texts:
+				with self.subTest(extended=extended, text=text):
+					self.assertEqual(text, rules.transform(text, targets=frozenset("懵")))
+					for index, item in rules.resolve(text).items():
+						if text[index] == "懵":
+							self.assertNotEqual("meng1", item.reading_id)
 
 	def test_mixed_text_keeps_each_decision_local(self):
 		for rules in self.modes.values():
-			for strict in (False, True):
-				for source, expected in MIXED:
-					with self.subTest(source=source, strict=strict):
-						self.assertEqual(expected, rules.transform(source, strict=strict, targets=frozenset("懵")))
-						full = rules.resolve(source, strict=strict)
-						self.assertEqual(
-							{i: d for i, d in full.items() if d.speech},
-							rules.resolve(source, strict=strict, speech_only=True),
-						)
+			for source, expected in MIXED:
+				with self.subTest(source=source):
+					self.assertEqual(expected, rules.transform(source, targets=frozenset("懵")))
+					full = rules.resolve(source)
+					self.assertEqual(
+						{i: d for i, d in full.items() if d.speech},
+						rules.resolve(source, speech_only=True),
+					)
 
 	def test_user_overrides_and_disable_preserve_precedence(self):
 		for extended in (False, True):

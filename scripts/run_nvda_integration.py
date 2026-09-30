@@ -195,6 +195,20 @@ class NativeSpeechChainTests(unittest.TestCase):
 
 	def test_actual_speak_filter_dictionary_symbol_chain(self):
 		pairs = (
+			("长个", "掌个"),
+			("长个了。", "掌个了。"),
+			("长个了没？", "掌个了没？"),
+			("長不了個", "掌不了個"),
+			("长个新的痘痘", "掌个新的痘痘"),
+			("长胡子了", "掌胡子了"),
+			("给我长不了脸", "给我掌不了脸"),
+			("长胖一点", "掌胖一点"),
+			("菖蒲长了", "菖蒲掌了"),
+			("菖蒲的照片长了", "菖蒲的照片偿了"),
+			("长我两岁", "掌我两岁"),
+			("他比我长三岁", "他比我掌三岁"),
+			("長我兩歲", "掌我兩歲"),
+			("年龄的照片长了", "年龄的照片偿了"),
 			("下边缘", "下编缘"),
 			("唱和说", "唱河说"),
 			("多行", "多航"),
@@ -359,6 +373,21 @@ class NativeSpeechChainTests(unittest.TestCase):
 		# The user can re-enable globally without the retired field turning it off.
 		section["chinesePolyphonesEnabled"] = True
 		self.assertTrue(settings.get_runtime_options().chinese_polyphones_enabled)
+
+	def test_retired_strict_mode_with_real_aggregated_config_section(self):
+		settings = sys.modules[self.module.__name__ + ".settings"]
+		section = config.conf[settings.CONFIG_SECTION]
+		self.assertNotIn("strictMode", settings.CONFIG_SPEC)
+		for legacy in (True, False):
+			section["strictMode"] = legacy
+			self.plugin._on_profile_switch()
+			output = self.capture(["长个了，密钥"], cp.SymbolLevel.NONE)
+			self.assertEqual(
+				[core_speech.processText("zh_CN", "掌个了，密钥", cp.SymbolLevel.NONE) + core_speech.CHUNK_SEPARATOR],
+				[item for item in output if isinstance(item, str)],
+			)
+			annotation = self.plugin.getReadingAnnotations("长个了")[0]
+			self.assertEqual(("长", "zhang3", 0), (annotation.character, annotation.reading, annotation.start))
 
 	def test_extended_lexicon_in_real_speech_chain_and_braille_unchanged(self):
 		from unittest.mock import PropertyMock

@@ -24,7 +24,7 @@ OUTPUT = ROOT / "artifacts/global-voice-probes"
 
 
 def cases():
-	# Share the SAME reviewed inputs and explicit strict/extended modes with
+	# Share the SAME reviewed inputs and explicit automatic policy and explicit extended modes with
 	# the VE probe. Do not silently run extended cases with the lexicon off.
 	for item in build_fixture()["transformations"]:
 		yield {
@@ -33,7 +33,6 @@ def cases():
 			"normalized": item["transformed"],
 			"anchor": item["commonAnchor"],
 			"reading": item["expectedReading"],
-			"strict": item["strict"],
 			"extended": item["extended"],
 		}
 

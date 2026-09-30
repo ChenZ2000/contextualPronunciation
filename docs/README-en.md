@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers version 0.8.1; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.8.2; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 
@@ -16,6 +16,13 @@ Body locations and growth expressions such as 身上长、背上长了、胸前�
 Length and face-shape descriptions such as 头发很长、绳子长三米、一张长脸
 select cháng. In 头发长长了 the two syllables are zhǎng then cháng; ambiguous
 头发长了 retains your voice's original interpretation.
+
+Version 0.8.2 also recognizes clipped stature 个 in 长个/长个了, questions,
+negation, potential complements and new quantified objects. It uses the actual
+head: 菖蒲长了 selects growth, while 菖蒲的照片长了 selects the photograph's
+length. Result quantity in 长胖一点 does not masquerade as a noun object.
+Age comparisons such as 长我两岁/他比我长三岁 select zhǎng; duration in
+寿命比我长三年 retains the length sense.
 
 ## Colloquial 懵: context required
 
@@ -36,7 +43,12 @@ Open **NVDA Settings → Context-aware pronunciation**. Changes take effect when
 | Enable contextual pronunciation rewriting | On | Enables text rewriting in the speech pipeline |
 | Correct supported Chinese polyphones | On | Applies the supported Mandarin pronunciation rules |
 | Normalize curly apostrophes inside Latin words | On | Converts an in-word curly apostrophe to a straight apostrophe for speech, as in `doesn’t` |
-| Strict mode | On | Keeps ambiguous text unchanged; turning it off currently also selects the literary yuè preference in 密钥、公钥、私钥 |
+
+Readings use one automatic policy based on lexical senses, actual argument heads
+and complements. Strict mode has been removed; old profile values are ignored
+without needing to recreate the profile. Unsupported ambiguity keeps the source
+character. Attested key-reading variants in 密钥/公钥/私钥 are preserved rather
+than forcing yuè; personal reading rules remain available.
 
 The dictionary lexicon and bounded grammar are active whenever Chinese corrections are enabled. The retired extended-lexicon setting no longer gates them. Boundary protection distinguishes 降调音频 (调 → diào) from 调音师 (调 → tiáo). Use a local `keep` rule for a specific unwanted correction.
 

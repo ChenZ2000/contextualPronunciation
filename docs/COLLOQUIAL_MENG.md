@@ -76,7 +76,7 @@ python tools/evaluate_colloquial_meng.py
 python tools/benchmark_colloquial_meng.py
 ```
 
-Independent positive/negative/mixed cases and generated grammatical slots run under both default/extended engines and strict/non-strict settings. Further tests cover literal/template precedence, disabling, original UTF-16 positions, spelling commands, split items, real NVDA symbol processing and bounded source slices. The evaluator deduplicates texts and reports its exact counts; a passing generated inventory is **not** an estimate of real-world accuracy.
+Independent positive/negative/mixed cases and generated grammatical slots run under both default/extended engines with the unified automatic reading policy. Further tests cover literal/template precedence, disabling, original UTF-16 positions, spelling commands, split items, real NVDA symbol processing and bounded source slices. The evaluator deduplicates texts and reports its exact counts; a passing generated inventory is **not** an estimate of real-world accuracy.
 
 The dedicated benchmark is a required regression-workflow stage. Short-input median budget: **200 microseconds**. Long-input median budget: **30 milliseconds**. Each case has at least 100 timed calls in both engine modes. It includes 8K bare runs, dense positives, mixed literary/colloquial text, lexical mentions and adversarial distant cues. Existing overall performance limits and immutable-baseline comparisons are not relaxed. Measurements exclude startup, actual synthesis and NVDA dispatch; artifacts record host and source hashes. Static bounds complement measured guardrails rather than promising every machine's latency.
 

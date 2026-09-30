@@ -50,6 +50,9 @@ def audit_contributions(rules) -> dict:
 
 def explain(text: str, rules) -> dict:
 	decisions = rules.resolve(text)
+	lexical_evidence = json.loads(
+		(ROOT / "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json").read_text("utf-8")
+	)["selectionEvidence"]
 	return {
 		"original": text,
 		"speechText": rules.transform(text),
@@ -63,6 +66,11 @@ def explain(text: str, rules) -> dict:
 			{
 				**asdict(proposal),
 				"selected": decisions.get(index) is not None and decisions[index].rule_id == proposal.rule_id,
+				"selectionEvidence": {
+					category: entries[head]
+					for category, entries in lexical_evidence.items()
+					if (head := text[proposal.head_start : proposal.head_end]) in entries
+				},
 			}
 			for index, character in enumerate(text)
 			if rules.syntax is not None

@@ -256,14 +256,13 @@ class GlobalPluginIntegrationTests(unittest.TestCase):
 		panel.chinese_checkbox = FakeCheckBox(True)
 		panel.lexicon_checkbox = FakeCheckBox(True)
 		panel.apostrophe_checkbox = FakeCheckBox(False)
-		panel.strict_checkbox = FakeCheckBox(False)
 		panel.custom_entries_edit = FakeCheckBox("")
 		panel.custom_templates_edit = FakeCheckBox("")
 		panel.disabled_rules_edit = FakeCheckBox("")
 		panel.onSave()
 		self.assertTrue(plugin._options.chinese_polyphones_enabled)
 		self.assertFalse(plugin._options.normalize_apostrophes)
-		self.assertFalse(plugin._options.strict_mode)
+		self.assertNotIn("strictMode", settings.CONFIG_SPEC)
 		self.assertEqual(["航首"], environment.filter_point.apply(["行首"]))
 
 		plugin.terminate()
@@ -273,6 +272,23 @@ class GlobalPluginIntegrationTests(unittest.TestCase):
 		self.assertEqual([], settings.options_changed.handlers)
 		self.assertEqual([], environment.settings_categories)
 		self.assertTrue(plugin.base_terminated)
+
+	def test_retired_strict_values_do_not_change_automatic_speech_or_braille(self):
+		environment = _load_plugin()
+		plugin = environment.plugin
+		self.addCleanup(plugin.terminate)
+		section = environment.config.conf[environment.settings.CONFIG_SECTION]
+		text = "长个了，密钥，一点都不快乐。"
+		observed = []
+		with mock.patch.dict(sys.modules, {PACKAGE_NAME: environment.module}):
+			for legacy in (True, False, "false", "unused"):
+				section["strictMode"] = legacy
+				environment.profile_point.notify(prevConf={})
+				observed.append((environment.filter_point.apply([text]), plugin.getReadingAnnotations(text)))
+		self.assertTrue(all(value == observed[0] for value in observed))
+		self.assertIn("掌个了，密钥", observed[0][0][0])
+		self.assertNotIn("strictMode", environment.settings.CONFIG_SPEC)
+		self.assertNotIn("strict_mode", plugin._options.__dataclass_fields__)
 
 	def test_no_synth_or_language_queries_are_needed_for_global_rewriting(self):
 		environment = _load_plugin()

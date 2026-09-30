@@ -77,7 +77,7 @@ python tools/pronunciation.py --check-contributions
 
 ## 共享读音 API
 
-活跃插件的 `getReadingAnnotations(text)` 返回不可变注音元组，服从启用、严格模式及用户规则。纯 Python `braille_readings.annotate(text, compiled_rules)` 不加载 NVDA。
+活跃插件的 `getReadingAnnotations(text)` 返回不可变注音元组，服从启用状态、自动词义判断及用户规则。纯 Python `braille_readings.annotate(text, compiled_rules)` 不加载 NVDA。
 
 | 字段 | 含义 |
 |---|---|

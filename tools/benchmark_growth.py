@@ -22,11 +22,18 @@ SCENARIOS = {
 	"honor": "给我长脸了",
 	"stature": "长个子了",
 	"distributed": "各自长了",
+	"clippedStature": "长个了",
+	"classifiedProduct": "长个新的痘痘",
+	"projectedGrower": "菖蒲又长了",
+	"resultQuantity": "长胖一点",
+	"ageComparison": "他比我长三岁",
 	"bare8k": "长" * 8192,
 	"locations8k": "背上长了。" * 1638,
 	"mixed8k": "头发长长了。" * 1365,
 	"roles8k": "给我长脸了，各自长了。" * 744,
 	"adversarial8k": ("我的" * 64 + "背上长了。") * 62,
+	"ellipsis8k": "长个了。" * 2048,
+	"age8k": "长我两岁。" * 1638,
 }
 
 

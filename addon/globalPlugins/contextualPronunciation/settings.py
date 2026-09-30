@@ -20,7 +20,6 @@ CONFIG_SPEC = {
 	"enabled": "boolean(default=True)",
 	"chinesePolyphonesEnabled": "boolean(default=True)",
 	"normalizeApostrophes": "boolean(default=True)",
-	"strictMode": "boolean(default=True)",
 	"customEntries": "string(default='')",
 	"customTemplates": "string(default='')",
 	"disabledRules": "string(default='')",
@@ -65,7 +64,6 @@ def get_runtime_options() -> RuntimeOptions:
 		enabled=bool(section["enabled"]),
 		chinese_polyphones_enabled=bool(section["chinesePolyphonesEnabled"]),
 		normalize_apostrophes=bool(section["normalizeApostrophes"]),
-		strict_mode=bool(section["strictMode"]),
 		custom_entries=str(section["customEntries"]),
 		custom_templates=str(section["customTemplates"]),
 		disabled_rules=str(section["disabledRules"]),
@@ -108,22 +106,6 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 		)
 		self.apostrophe_checkbox.SetValue(section["normalizeApostrophes"])
 
-		# Translators: Prefer leaving ambiguous text unchanged over guessing a pronunciation.
-		self.strict_checkbox = helper.addItem(
-			wx.CheckBox(self, label=_("Strict mode (leave ambiguous text unchanged)")),
-		)
-		self.strict_checkbox.SetValue(section["strictMode"])
-		# Translators: In this release, disabling strict mode enables only a
-		# literary yuè preference in the technical words for cryptographic keys.
-		helper.addItem(
-			wx.StaticText(
-				self,
-				label=_(
-					"Turning off strict mode also prefers yuè in 密钥、公钥、私钥. "
-					"This is a reading preference, not a proven error.",
-				),
-			)
-		)
 		# Translators: Literal custom rules. keep preserves the original text so
 		# that a user's existing NVDA speech dictionary can process it later.
 		self.custom_templates_edit = helper.addLabeledControl(
@@ -174,7 +156,6 @@ class ContextualPronunciationSettingsPanel(SettingsPanel):
 		section["enabled"] = self.enable_checkbox.GetValue()
 		section["chinesePolyphonesEnabled"] = self.chinese_checkbox.GetValue()
 		section["normalizeApostrophes"] = self.apostrophe_checkbox.GetValue()
-		section["strictMode"] = self.strict_checkbox.GetValue()
 		section["customEntries"] = self.custom_entries_edit.GetValue()
 		section["customTemplates"] = self.custom_templates_edit.GetValue()
 		section["disabledRules"] = self.disabled_rules_edit.GetValue()

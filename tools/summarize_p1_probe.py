@@ -193,7 +193,7 @@ def render_markdown(summary: dict[str, Any]) -> str:
 		if item["status"] == "tone_ambiguous":
 			reason = "音素 ID 不编码声调，多个声调锚同流"
 		elif item["status"] == "reading_preference":
-			reason = "文白读音偏好，不作为明确误读；严格模式不改写"
+			reason = "文白读音变体，不作为明确误读；自动判断保留原字"
 		elif item["status"].startswith("expected_match"):
 			reason = "实验锚命中，需人工确认锚字本身"
 		else:

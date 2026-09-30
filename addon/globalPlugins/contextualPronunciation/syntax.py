@@ -43,6 +43,8 @@ ACTION_MEASURE = 1 << 39
 PLAYED_INSTRUMENT = 1 << 40
 ACTION_NOMINAL = 1 << 41
 BODY_SITE, GROWER, GROWTH_PRODUCT, LENGTH_BEARER = (1 << n for n in range(42, 46))
+STATURE, GROWTH_INCREMENT = (1 << n for n in range(46, 48))
+AGE_NOUN, AGE_MEASURE = (1 << n for n in range(48, 50))
 MAX_CHARS = 512
 MAX_TOKENS = 256
 MAX_DEPTH = 16
@@ -395,9 +397,20 @@ class _NounParser(ConstituentParser):
 
 
 class ArgumentParser:
-	@staticmethod
-	def contextual_form(word, offset=0):
-		return motion_form(word) or growth_lexeme(word, offset)
+	def contextual_form(self, word, offset=0):
+		return motion_form(word) or self._growth_lexeme(word, offset)
+
+	def _growth_lexeme(self, word, offset=0):
+		return growth_lexeme(word, offset) or (
+			offset == 0
+			and len(word) > 1
+			and word[0] in "长長"
+			and (
+				bool(self.lexicon.words.get(word[1:], 0) & (BODY_SITE | GROWTH_PRODUCT | STATURE | GROWTH_INCREMENT))
+				or len(word) <= 9
+				and all(ch in _NUMBERS for ch in word[1:])
+			)
+		)
 
 	def __init__(self, lexicon, frames):
 		self.lexicon = lexicon
@@ -421,7 +434,7 @@ class ArgumentParser:
 	def contextual_lexeme(self, word, offset=0):
 		"""A bound nominal head may overlap a dictionary future auxiliary."""
 		return (
-			growth_lexeme(word, offset)
+			self._growth_lexeme(word, offset)
 			or offset == 0
 			and word in {"转给", "轉給"}
 			or word[offset : offset + 1] in {"边", "邊"}
@@ -815,6 +828,13 @@ def _load_data():
 		"transferTheme": NOUN | TRANSFER_THEME,
 		"indefiniteQuantity": NUMBER | INDEFINITE_QUANTITY,
 		"actionMeasure": CLASSIFIER | ACTION_MEASURE,
+		"bodySite": NOUN | BODY_SITE,
+		"grower": NOUN | GROWER,
+		"growthProduct": NOUN | GROWTH_PRODUCT,
+		"stature": NOUN | STATURE | GROWTH_PRODUCT,
+		"growthIncrement": NOUN | GROWTH_INCREMENT,
+		"ageNoun": NOUN | AGE_NOUN | GROWTH_INCREMENT,
+		"ageMeasure": CLASSIFIER | AGE_MEASURE,
 	}
 	for name, entries in evidence["selection"].items():
 		if name not in selection_flags:
@@ -829,6 +849,8 @@ def _load_data():
 	semantic_mask |= CLASSIFIER | CONTAINER_MEASURE | PERSON_MEASURE
 	semantic_mask |= EDGE_NOUN | SPEECH_VERB
 	semantic_mask |= PLACE | PATH_MOTION | ROTOR | TRANSFER_THEME | INDEFINITE_QUANTITY | ACTION_MEASURE
+	semantic_mask |= BODY_SITE | GROWER | GROWTH_PRODUCT | STATURE | GROWTH_INCREMENT
+	semantic_mask |= AGE_NOUN | AGE_MEASURE
 	for traditional, simplified in evidence["formAliases"].items():
 		if not all(_is_han(c) for c in traditional + simplified):
 			raise ValueError("Invalid dictionary form pair")
@@ -865,6 +887,7 @@ def _load_data():
 			"grower": GROWER,
 			"growthProduct": GROWTH_PRODUCT,
 			"lengthBearer": LENGTH_BEARER,
+			"stature": STATURE | GROWTH_PRODUCT,
 		}.get(name)
 		if feature is None or not row.get("source") or not 1 <= len(row["words"]) <= 128:
 			raise ValueError("Invalid reviewed noun class")

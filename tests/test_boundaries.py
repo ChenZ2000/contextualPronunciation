@@ -74,7 +74,7 @@ class BoundaryRegressionTests(unittest.TestCase):
 						# Both sides, including repeated and paired punctuation; retain bytes/codepoints.
 						source = symbol + phrase + symbol * 2
 						expected = symbol + expected_phrase + symbol * 2
-						if self.rules.transform(source, strict=False) != expected:
+						if self.rules.transform(source) != expected:
 							self.fail(f"{group['id']} / {phrase!r} / U+{ord(symbol):04X}")
 					tested += 1
 		self.assertGreater(tested, 0, "This regression must not silently become an empty test")

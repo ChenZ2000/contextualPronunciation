@@ -9,8 +9,8 @@ target = "长"
 reading = "zhang3"
 object = "growthPredicate"
 prefixes = [""]
-source = "MOE 長 zhang3 生長/發育 https://dict.revised.moe.edu.tw/dictView.jsp?ID=7910 ; pinned CC-CEDICT 长大/长出/长得/长脸 zhang3 lian3 (honor), 长个子 stature; body-site location, growing subject and actual product head attach locally."
-positive = ["身上长", "背上长了", "胸前长了", "我的脸上又长了两个痘痘", "孩子长高了", "树长出新叶", "他长得很高", "给我长脸了", "长脸了", "长个子了", "个子长了", "各自长了"]
+source = "MOE 長 zhang3 生長/發育 https://dict.revised.moe.edu.tw/dictView.jsp?ID=7910 ; age difference https://stroke-order.learningweb.moe.edu.tw/dictMean.jsp?ID=38263 ; pinned CC-CEDICT 长大/长出/长得/长脸 zhang3 lian3 (honor), stature; body location, actual growth heads, age quantities and comparison arguments attach locally."
+positive = ["身上长", "背上长了", "胸前长了", "我的脸上又长了两个痘痘", "孩子长高了", "树长出新叶", "他长得很高", "给我长脸了", "长脸了", "长个子了", "个子长了", "各自长了", "长个了", "长我两岁", "他比我长三岁"]
 negative = ["头发很长", "这条绳子长三米", "长江大桥", "身上长裙很好看", "痘痘的照片长三米", "背上，长"]
 
 [[frames]]
@@ -58,6 +58,10 @@ source = "Reviewed anatomical growth, lesions and plant-product noun senses from
 [nounHeads.lengthBearer]
 words = ["头发", "頭髮", "毛发", "毛髮", "胡子", "鬍子", "指甲", "绳", "繩", "绳子", "繩子", "丝带", "絲帶", "缎带", "緞帶", "线", "線", "电线", "電線", "裤子", "褲子", "裙子", "袖子", "衣服", "路", "道路", "公路", "铁路", "鐵路", "桥", "橋", "桥梁", "橋梁", "桌子", "木板", "棍子", "竹竿", "队伍", "隊伍", "队列", "隊列", "文章", "句子", "照片", "名单", "名單", "时间", "時間", "时长", "時長", "假期", "暑假", "寿命", "壽命", "距离", "距離"]
 source = "Reviewed spatial/duration bearer senses from pinned CC-CEDICT/KFCD. Hair/ nails also have growth-product senses; aspect alone does not disambiguate 头发长了."
+
+[nounHeads.stature]
+words = ["个子", "個子", "个儿", "個兒", "个头", "個頭", "身高", "身量", "块头", "塊頭"]
+source = "CC-CEDICT cc-cedict:8579/8581/8596/26219/105527/105539 and HowNet Stature human-host senses; MOE 個身高 sense https://dict.variants.moe.edu.tw/dictView.jsp?ID=1539. The clipped 个/個 is licensed only at a complete nominal boundary by the grammar, never added as a global noun/classifier sense."
 
 [[frames]]
 id = "syntax-motion-predicate"

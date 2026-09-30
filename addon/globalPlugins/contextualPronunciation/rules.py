@@ -362,7 +362,6 @@ class CompiledRules:
 		self,
 		text: str,
 		*,
-		strict: bool = True,
 		renderings: Mapping[str, str] | None = None,
 		targets: frozenset[str] | None = None,
 	) -> str:
@@ -375,7 +374,7 @@ class CompiledRules:
 		if not text or self.triggers.isdisjoint(text):
 			return text
 		replacements = {}
-		for index, decision in self.resolve(text, strict=strict, speech_only=True).items():
+		for index, decision in self.resolve(text, speech_only=True).items():
 			if targets is not None and text[index] not in targets:
 				continue
 			if decision.speech and not decision.protect and decision.reading_id is not None:
@@ -389,7 +388,7 @@ class CompiledRules:
 			result[index] = replacement
 		return "".join(result)
 
-	def resolve(self, text: str, *, strict: bool = True, speech_only: bool = False) -> dict[int, ReadingDecision]:
+	def resolve(self, text: str, *, speech_only: bool = False) -> dict[int, ReadingDecision]:
 		"""Shared speech/braille reading decisions, at ORIGINAL code-point offsets.
 
 		Missing entries and protected decisions are abstentions. No homophone is
@@ -432,7 +431,7 @@ class CompiledRules:
 		for index, target in enumerate(text):
 			core_decision = None
 			if target in self._curated_triggers:
-				core_decision = self._phrase_decision(text, index, target, strict=strict)
+				core_decision = self._phrase_decision(text, index, target)
 				if self._structural_rules.get(target) and (
 					core_decision is None or core_decision.contextual and not core_decision.user
 				):
@@ -458,7 +457,7 @@ class CompiledRules:
 				# BUILT-IN protections can yield to syntax; user keep never can.
 				blockers = self._syntax_blockers
 				if blockers is not None and (
-					blockers._phrase_decision(text, index, target, strict=False) is not None
+					blockers._phrase_decision(text, index, target) is not None
 					or blockers._structural_decision(text, index, target) is not None
 					or blockers.templates is not None
 					and blockers.templates.decision(text, index) is not None
@@ -479,7 +478,7 @@ class CompiledRules:
 					)
 		return {index: value for index, value in decisions.items() if value.speech} if speech_only else decisions
 
-	def _phrase_decision(self, text: str, index: int, target: str, *, strict: bool) -> ReadingDecision | None:
+	def _phrase_decision(self, text: str, index: int, target: str) -> ReadingDecision | None:
 		left = text[index - 1] if index else None
 		right = text[index + 1] if index + 1 < len(text) else None
 		keys = (
@@ -491,7 +490,9 @@ class CompiledRules:
 		best: PhraseRule | None = None
 		for key in keys:
 			for rule in self._buckets.get(key, ()):
-				if strict and not rule.protect and rule.confidence != "high":
+				# Built-in preferences cannot override competing attested variants.
+				# Productive syntax selects readings independently of this gate.
+				if not rule.protect and rule.confidence != "high":
 					continue
 				start = index - rule.pivot
 				if start < 0 or not text.startswith(rule.phrase, start):

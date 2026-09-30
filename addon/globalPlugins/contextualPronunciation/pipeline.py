@@ -19,7 +19,6 @@ class RuntimeOptions:
 	enabled: bool = True
 	chinese_polyphones_enabled: bool = True
 	normalize_apostrophes: bool = True
-	strict_mode: bool = True
 	custom_entries: str = ""
 	custom_templates: str = ""
 	disabled_rules: str = ""
@@ -58,7 +57,7 @@ class SpeechSequenceNormalizer:
 					)
 				if options.enabled and options.chinese_polyphones_enabled:
 					kwargs = {} if reading_targets is None else {"targets": reading_targets}
-					new_item = self._rules.transform(new_item, strict=options.strict_mode, **kwargs)
+					new_item = self._rules.transform(new_item, **kwargs)
 			if result is None:
 				if new_item is item or new_item == item:
 					continue

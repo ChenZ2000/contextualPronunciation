@@ -60,8 +60,7 @@ def summarize(fixture: dict, report: dict) -> dict:
 		"counts": {
 			"groups": len(results),
 			"cases": len(cases),
-			"defaultGroups": sum(item["strict"] for item in results),
-			"optionalGroups": sum(not item["strict"] for item in results),
+			"automaticGroups": len(results),
 			"extendedLexiconGroups": sum(item["extended"] for item in results),
 			"phonemeMatches": sum(item["completePhonemesEqual"] for item in results),
 			"pcmMatches": sum(item["pcmEqual"] for item in results),
@@ -79,8 +78,8 @@ def render_markdown(summary: dict) -> str:
 		"# Ting-Ting 最终 renderer 声学回归",
 		"",
 		f"结果：{'通过' if summary['passed'] else '存在不一致，需复查'}。"
-		f"{c['groups']} 组 / {c['cases']} 条渲染，其中严格模式 {c['defaultGroups']} 组，"
-		f"可选读音偏好 {c['optionalGroups']} 组；其中启用扩展词库 {c['extendedLexiconGroups']} 组。",
+		f"{c['groups']} 组 / {c['cases']} 条渲染，统一自动判断；"
+		f"其中启用扩展词库 {c['extendedLexiconGroups']} 组。",
 		f"完整音素序列一致 {c['phonemeMatches']}/{c['groups']}；"
 		f"整段 PCM SHA-256 一致 {c['pcmMatches']}/{c['groups']}。",
 		"",
@@ -93,7 +92,7 @@ def render_markdown(summary: dict) -> str:
 	]
 	for item in summary["results"]:
 		lines.append(
-			f"| {'严格' if item['strict'] else '可选偏好'}{'＋扩展词库' if item['extended'] else ''} | "
+			f"| 自动{'＋扩展词库' if item['extended'] else ''} | "
 			f"{item['source']} | {item['transformed']} | "
 			f"{item['commonAnchor']} | {item['expectedReading']} | {item['completePhonemesEqual']} | "
 			f"{item['pcmEqual']} | {item['sourcePhonemesEqual']} |",

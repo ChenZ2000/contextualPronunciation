@@ -3,7 +3,7 @@
 schemaVersion = 1
 source = "CC-CEDICT record IDs in dictionary-records.jsonl.gz; MOE 螺絲起子 https://dict.revised.moe.edu.tw/dictView.jsp?ID=66368"
 # Parenthetic sense labels are retained: a screwdriver cocktail is not a tool.
-excludedLabels = ['cocktail', 'figurative', 'fig\.', 'slang', 'computing', 'software']
+excludedLabels = ['cocktail', 'figurative', 'fig\.', 'slang', 'computing', 'software', 'photograph', 'weapon']
 
 [[families]]
 id = "rotary-power"
@@ -26,3 +26,41 @@ heads = ['screwdriver', 'spanner', 'wrench', 'auger', 'gimlet', 'drill bit', 'dr
 id = "rotating-part-control"
 modifiers = ['guide', 'hand', 'thread', 'fishing', 'record', 'rotary', 'rotating', 'weaving']
 heads = ['knob', 'doorknob', 'crank handle', 'hand crank', 'crankshaft', 'spindle', 'pulley', 'turntable', 'swivel chair', 'swivel table', 'spool', 'fishing reel', 'windlass']
+
+# These projections select nominal sense candidates, never a pronunciation.
+# Taxonomic living/body-part roots also retain their HowNet sense IDs.
+[[families]]
+id = "stature"
+selection = "stature"
+modifiers = []
+heads = ['stature', 'height']
+# Generic height belongs to buildings too. Unlabelled height is admitted only
+# for the attested colloquial 个儿/个头 records; other senses need a human host.
+requires = { height = 'person' }
+
+[[families]]
+id = "growing-organism"
+selection = "grower"
+modifiers = ['young', 'small', 'large', 'wild', 'cultivated', 'bamboo', 'rice', 'wheat', 'corn']
+heads = ['plant', 'sapling', 'seedling', 'sprout', 'tree', 'shrub', 'grass', 'vine', 'moss', 'fungus', 'bacterium', 'bacteria', 'child', 'baby', 'infant', 'puppy', 'kitten']
+requires = { plant = 'organism' }
+
+[[families]]
+id = "growth-product"
+selection = "growthProduct"
+modifiers = ['new', 'young', 'body', 'facial', 'pubic', 'nasal', 'head', 'skin', 'plant', 'tree', 'bamboo', 'finger', 'toe']
+heads = ['hair', 'fingernail', 'toenail', 'nail', 'beard', 'eyelash', 'pimple', 'wart', 'tumor', 'tumour', 'blister', 'callus', 'bud', 'sprout', 'leaf', 'root', 'twig', 'shoot']
+requires = { nail = 'finger', shoot = 'plant', root = 'plant' }
+
+[[families]]
+id = "development-attribute"
+selection = "growthIncrement"
+modifiers = ['physical', 'mental', 'general', 'practical']
+heads = ['knowledge', 'wisdom', 'insight', 'experience', 'ability', 'strength', 'memory']
+
+[[families]]
+id = "life-age"
+selection = "ageNoun"
+modifiers = []
+heads = ['age']
+requires = { age = 'person' }

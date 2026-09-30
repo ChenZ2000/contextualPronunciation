@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.2
+
+- Generalize stature to clipped 个/個 and semantic stature heads, including 长个、长个了、长个了没、长不长个、长不了个、长点个吧、个头长了 and 身高长了. Select the actual noun after a bare classifier in 长个新的痘痘, retain original offsets and reject unknown continuations.
+- Recognize age nouns and independently attached age quantities/comparands in 长我两岁、他比我长三岁 and 比妹妹长几岁. Prevent the historical lexeme 长三 from consuming the predicate and numeral; preserve duration/length competitors and age modifiers with a different actual head.
+- Project living, anatomical, stature and development noun senses from pinned HowNet and CC-CEDICT sources with sense/record provenance. Handle product-final aspect, honor complements and result quantities without enumerating complete sentences; preserve length, competing heads and unresolved ambiguity.
+- Remove strict mode from the settings panel, configuration schema, runtime options and speech/braille APIs. Use one automatic evidence policy; old profile values have no effect. Preserve attested key-reading variants instead of enabling an arbitrary yuè preference. Explicit personal rules and disabled rules remain authoritative.
+- Add independent generated stature cases, classifier/ellipsis contrasts, semantic projection checks, native profile coverage and short/8K latency cases. See [0.8.2 notes](docs/releases/0.8.2.md).
+- 支持“长个／长个了”及疑问、否定、可能补语等变化；扩展植物、身体部位和身高词义判断，删除“严格模式”，统一自动判断，兼容旧配置。
+
 ## 0.8.1
 
 - Lock lè in 快乐/快樂 with or without following punctuation. Preserve original offsets and personal overrides through the real NVDA symbol and speech pipeline.

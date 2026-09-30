@@ -122,6 +122,39 @@ The growth and length distinction follows
 [MOE 長](https://dict.revised.moe.edu.tw/dictView.jsp?ID=7910), with
 [拉長臉](https://dict.revised.moe.edu.tw/dictView.jsp?ID=59153) as a contrast.
 
+## Unified selection and productive nominal senses
+
+There is one automatic reading policy. Lexical variants are candidates, actual
+heads and complements select productive senses, and unresolved ambiguity is
+preserved. Strict mode no longer appears in configuration, runtime options or
+speech/braille APIs. Legacy profile keys are ignored. The old medium-confidence
+yuè key preference remains an inactive record so saved disabled-rule IDs stay
+valid; an explicit personal rule can choose a variant.
+
+`data/semantic_projection.toml` binds build-time nominal definition-head families
+to semantic classes. The generator also projects living taxonomy roots,
+physiological body parts with explicit hosts, and human-host stature senses from
+pinned HowNet. Parenthetic restrictions and original sense/record IDs remain in
+`grammar_lexicon.json`; runtime classes are competing candidates, not sentence POS
+labels. The offline pronunciation tool reports the selected head's candidate
+evidence alongside dependency offsets.
+
+The growth grammar recognizes clipped 个/個 only at a complete nominal boundary,
+including aspect and finite question particles. An overt following noun instead
+uses the shared bare-classifier object production. No missing 子/儿 or fictional
+source offset is inserted. Stature subjects, product-final aspect, independent
+quantity complements and shared potential morphology support productive forms
+without complete-sentence entries. Dense clipped nouns use the same validated
+production directly, avoiding a redundant NP chart and speech-only dependencies.
+
+Age quantities use animate age and explicitly restricted age-unit senses, with
+independent human/pronominal comparands and original `extent:age` offsets.
+“长我两岁 / 他比我长三岁” select zhǎng; an age mention inside an NP cannot
+override its actual length-bearing head. Numeric overlaps such as dictionary
+“长三” yield to productive quantity analysis. A closed quantity needs no general
+object chart, while a following modifier requires the full head analysis.
+The pronunciation follows [MOE 長 age/growth senses](https://stroke-order.learningweb.moe.edu.tw/dictMean.jsp?ID=38263).
+
 ## Bounds and validation
 
 The syntax lexicon indexes candidate lengths by the first two source-word

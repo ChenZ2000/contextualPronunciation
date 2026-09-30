@@ -48,15 +48,12 @@ def run() -> dict:
 	}
 	for extended in (False, True):
 		rules = load("rules").load_default_rules(extended=extended)
-		for strict in (False, True):
-			failures = []
-			for source, expected in cases.items():
-				actual = rules.transform(source, strict=strict, targets=frozenset("懵"))
-				if actual != expected:
-					failures.append({"source": source, "expected": expected, "actual": actual})
-			report["matrix"].append(
-				{"extended": extended, "strict": strict, "tested": len(cases), "failures": failures}
-			)
+		failures = []
+		for source, expected in cases.items():
+			actual = rules.transform(source, targets=frozenset("懵"))
+			if actual != expected:
+				failures.append({"source": source, "expected": expected, "actual": actual})
+		report["matrix"].append({"extended": extended, "tested": len(cases), "failures": failures})
 	report["passed"] = all(not row["failures"] for row in report["matrix"])
 	return report
 

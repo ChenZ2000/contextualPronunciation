@@ -28,13 +28,12 @@ class SentenceRegressionTests(unittest.TestCase):
 				self.assertEqual(expected, self.rules.transform(source))
 
 	def test_independent_sentence_oracles_and_protections(self):
-		for strict in (True, False):
-			for source, expected in SENTENCE_CASES:
-				with self.subTest(source=source, strict=strict):
-					self.assertEqual(expected, self.rules.transform(source, strict=strict))
-			for source in PROTECTED_CASES:
-				with self.subTest(protected=source, strict=strict):
-					self.assertIs(source, self.rules.transform(source, strict=strict))
+		for source, expected in SENTENCE_CASES:
+			with self.subTest(source=source):
+				self.assertEqual(expected, self.rules.transform(source))
+		for source in PROTECTED_CASES:
+			with self.subTest(protected=source):
+				self.assertIs(source, self.rules.transform(source))
 
 	def test_all_serving_objects_at_multiple_positions_and_in_both_orders(self):
 		count = 0

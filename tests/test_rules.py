@@ -12,8 +12,8 @@ class ChineseRulesTests(unittest.TestCase):
 	def setUpClass(cls):
 		cls.rules = rules_module.CompiledRules.from_json_file(PLUGIN_PATH / "data" / "rules_zh_CN.json")
 
-	def assertNormalized(self, expected: str, source: str, *, strict: bool = True):  # noqa: N802
-		self.assertEqual(expected, self.rules.transform(source, strict=strict))
+	def assertNormalized(self, expected: str, source: str):  # noqa: N802
+		self.assertEqual(expected, self.rules.transform(source))
 
 	def test_row_layout_phrases(self):
 		self.assertNormalized("航首、航尾、航号和航数", "行首、行尾、行号和行数")
@@ -101,11 +101,16 @@ class ChineseRulesTests(unittest.TestCase):
 		self.assertNormalized("丙住呼吸并丙息", "屏住呼吸并屏息")
 		self.assertNormalized("回谈效果，谈出窗口，关闭谈窗", "回弹效果，弹出窗口，关闭弹窗")
 		self.assertNormalized("密钥库、公钥、私钥和密钥对", "密钥库、公钥、私钥和密钥对")
-		self.assertNormalized("密月库、公月、私月和密月对", "密钥库、公钥、私钥和密钥对", strict=False)
 
 	def test_engine_verified_p1_counterexamples(self):
 		self.assertNormalized("协调试验、调整设置、大屏住院、投屏住户", "协调试验、调整设置、大屏住院、投屏住户")
 		self.assertNormalized("炮弹出膛、子弹出膛、弹药库、金钥匙", "炮弹出膛、子弹出膛、弹药库、金钥匙")
+
+	def test_variant_preference_requires_an_explicit_user_rule(self):
+		text = "密钥库、公钥、私钥和密钥对"
+		self.assertEqual(text, self.rules.transform(text))
+		r = rules_module.load_default_rules(custom_entries="密钥|钥|yue4\n公钥|钥|yue4\n私钥|钥|yue4")
+		self.assertEqual("密月库、公月、私月和密月对", r.transform(text))
 		self.assertNormalized(
 			"空调试验、单调试验、音调试验、显示屏住院部、电子屏住院部、中弹窗口期",
 			"空调试验、单调试验、音调试验、显示屏住院部、电子屏住院部、中弹窗口期",

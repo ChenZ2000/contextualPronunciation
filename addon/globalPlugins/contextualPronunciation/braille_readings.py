@@ -83,7 +83,7 @@ class BrailleReading:
 	source: str
 
 
-def annotate(text: str, rules, *, strict: bool = True) -> tuple[BrailleReading, ...]:
+def annotate(text: str, rules) -> tuple[BrailleReading, ...]:
 	"""Read the SAME rule decisions used by speech; never invent missing ones.
 
 	Consumers must keep absent/unencodable spans as unknown, not shift subsequent
@@ -95,7 +95,7 @@ def annotate(text: str, rules, *, strict: bool = True) -> tuple[BrailleReading, 
 			for offset, reading in enumerate(span.readings, span.start):
 				if reading is not None and text[offset] not in rules.lexicon.reserved_targets:
 					readings[offset] = (reading, span.source)
-	for index, decision in rules.resolve(text, strict=strict).items():
+	for index, decision in rules.resolve(text).items():
 		if decision.protect or decision.reading_id is None:
 			readings.pop(index, None)
 		else:

@@ -49,3 +49,25 @@ def quantity_ellipsis(tokens, grammar):
 	return bool(
 		tokens[0].features & (g.NUMBER | g.DET) and all(t.features & (g.NUMBER | g.DET | g.CLASSIFIER) for t in tokens)
 	)
+
+
+def classified_object(tokens, grammar, context):
+	"""Bare Clf NP after a verb, with an omitted numeral (长个新的痘).
+
+	The overt noun remains the head. This does not license classifier-only
+	ellipsis or skip a conflicting noun, unknown token or clause boundary.
+	"""
+	g = grammar
+	if len(tokens) < 2 or not tokens[0].features & g.CLASSIFIER or tokens[1].text in {"了", "过", "過", "着", "著"}:
+		return None
+	np = ConstituentParser(tokens, g, context).parse(start=1)
+	if np is None:
+		return None
+	head = tokens[np.head]
+	return g.NounPhrase(
+		np.end,
+		np.head,
+		np.features,
+		np.front_head,
+		(g.Dependency("clf", head.start, tokens[0].start, tokens[0].end), *np.dependencies),
+	)

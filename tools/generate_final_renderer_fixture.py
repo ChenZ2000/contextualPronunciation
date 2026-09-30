@@ -28,7 +28,6 @@ class Scenario:
 	alternate_anchor: str
 	expected_reading: str
 	rule_kind: str
-	strict: bool = True
 	extended: bool = False
 
 
@@ -41,6 +40,20 @@ SCENARIOS = (
 	Scenario("zhang3_honor", "P0", "长", "给我长脸了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_honor_bare", "P0", "长", "长脸了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_stature", "P0", "长", "长个子了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_clipped", "P0", "长", "长个", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_clipped_aspect", "P0", "长", "长个了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_clipped_question", "P0", "长", "长个了没？", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_clipped_potential", "P0", "长", "长不了个。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_stature_head", "P0", "长", "身高长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_classifier_product", "P0", "长", "长个新的痘痘。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_result_quantity", "P0", "长", "长胖一点。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_projected_grower", "P0", "长", "菖蒲长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_object_aspect", "P0", "长", "长胡子了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_honor_potential", "P0", "长", "给我长不了脸。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_clipped_traditional", "P0", "長", "長個了嗎？", "涨", "zhǎng", "syntax-growth-traditional"),
+	Scenario("zhang3_age_recipient", "P0", "长", "长我两岁。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_age_comparison", "P0", "长", "他比我长三岁。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_age_noun", "P0", "长", "年纪长了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_stature_subject", "P0", "长", "个子长了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_distributed", "P0", "长", "各自长了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("chang2_length", "P0", "长", "头发很长。", "常", "cháng", "syntax-length"),
@@ -178,7 +191,6 @@ SCENARIOS = (
 	),
 	Scenario("bing3_hold_breath", "P1", "屏", "请屏住呼吸", "饼", "bǐng", "phrase"),
 	Scenario("tan2_popup", "P1", "弹", "关闭弹窗", "坛", "tán", "phrase"),
-	Scenario("yue4_secret_key", "optional", "钥", "读取密钥文件", "越", "yuè", "preference", strict=False),
 	Scenario("hang2_spaced_label", "P0", "行", "行 12", "杭", "háng", "structural:rowLabel"),
 	Scenario("hang2_spaced_count", "P0", "行", "12 行 8 列", "杭", "háng", "structural:rowColumnCount"),
 	Scenario("cheng2_half_bowl", "P0", "盛", "盛半碗饭", "乘", "chéng", "structural:servingQuantity"),
@@ -258,7 +270,7 @@ def build_fixture() -> dict[str, object]:
 	cases: list[dict[str, object]] = []
 	transformations: list[dict[str, object]] = []
 	for scenario in SCENARIOS:
-		transformed = (broader if scenario.extended else rules).transform(scenario.source, strict=scenario.strict)
+		transformed = (broader if scenario.extended else rules).transform(scenario.source)
 		changed = _changed_indices(scenario.source, transformed)
 		indices = [i for i in changed if scenario.source[i] == scenario.character]
 		if not indices:
@@ -280,7 +292,6 @@ def build_fixture() -> dict[str, object]:
 			"tier": scenario.tier,
 			"expectedReading": scenario.expected_reading,
 			"ruleKind": scenario.rule_kind,
-			"strict": scenario.strict,
 			"extended": scenario.extended,
 		}
 		cases.extend(
@@ -319,7 +330,6 @@ def build_fixture() -> dict[str, object]:
 				"additionalNormalizedOffsets": additional,
 				"expectedReading": scenario.expected_reading,
 				"ruleKind": scenario.rule_kind,
-				"strict": scenario.strict,
 				"extended": scenario.extended,
 			},
 		)
@@ -340,7 +350,6 @@ def build_fixture() -> dict[str, object]:
 			"ruleEngineSha256": hashlib.sha256(RULE_ENGINE_PATH.read_bytes()).hexdigest(),
 			"renderer": "addon/globalPlugins/contextualPronunciation/rules.py",
 			"rendererSha256": hashlib.sha256(RULE_ENGINE_PATH.read_bytes()).hexdigest(),
-			"strict": "Default scenarios are strict; optional key preference is explicitly non-strict",
 		},
 		"method": (
 			"每组由 source、规则引擎实时生成的 transformed、以及将所有目标位置换成另一枚常用同音字的 "

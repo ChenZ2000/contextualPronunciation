@@ -16,6 +16,11 @@ import tomllib
 from collections import defaultdict
 from pathlib import Path
 
+if __package__:
+	from .build_syntax_data import TAXONOMY, TAXONOMY_SHA256, descendants
+else:
+	from build_syntax_data import TAXONOMY, TAXONOMY_SHA256, descendants
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "addon/globalPlugins/contextualPronunciation/data"
 OUTPUT = DATA / "grammar_lexicon.json"
@@ -41,6 +46,11 @@ def projection_rules():
 			pattern = re.compile(r"^(?:(?:" + modifiers + r") )*" + re.escape(head) + r"(?=$|\s*[;,(])", re.I)
 			rules.append((family["id"], pattern, family.get("requires", {}).get(head)))
 	return excluded, tuple(rules)
+
+
+def projection_classes():
+	data = tomllib.loads(PROJECTION_PATH.read_text("utf-8"))
+	return {family["id"]: family.get("selection", "rotorNoun") for family in data["families"]}
 
 
 def projected_families(glosses, rules):
@@ -95,6 +105,14 @@ def jieba_pos(tag):
 
 def generate():
 	projection = projection_rules()
+	family_classes = projection_classes()
+	taxonomy = checked(TAXONOMY, TAXONOMY_SHA256).decode("utf-8")
+	living_roots = descendants(taxonomy, ("plant|植物", "AnimalHuman|动物", "bacteria|微生物")) - {
+		"human|人",
+		"humanized|拟人",
+		"fruit|水果",
+		"vegetable|蔬菜",
+	}
 	derivations = defaultdict(lambda: defaultdict(set))
 	words = defaultdict(int)
 	selection = defaultdict(set)
@@ -107,6 +125,25 @@ def generate():
 		for name in argument_classes(pos, kdml):
 			selection[name].add(word)
 			motion_evidence[name][word].append("openhownet:" + str(sense_id))
+		if pos == "noun":
+			root = kdml[1:].split(":", 1)[0].split("}", 1)[0]
+			growth_classes = []
+			if root in living_roots or kdml.startswith("{human|人:modifier={child|少儿}"):
+				growth_classes.append("grower")
+			if root == "part|部件" and "domain={physiology|生理学}" in kdml:
+				if "whole={AnimalHuman|动物}" in kdml or "whole={human|人}" in kdml:
+					growth_classes.extend(("bodySite", "growthProduct"))
+				elif "whole={plant|植物}" in kdml or "whole={vegetable|蔬菜}" in kdml:
+					growth_classes.append("growthProduct")
+			if root == "Stature|高矮" and "host={human|人}" in kdml:
+				growth_classes.append("stature")
+			if root == "Age|年龄" and "host={animate|生物}" in kdml:
+				growth_classes.append("ageNoun")
+			if root == "Unit|单位" and "restrictive={Age|年龄:" in kdml:
+				growth_classes.append("ageMeasure")
+			for name in growth_classes:
+				selection[name].add(word)
+				motion_evidence[name][word].append("openhownet:" + str(sense_id))
 		# These are argument-type candidates, not a sentence pronunciation.
 		# Select the root sense or an explicit location role of this noun;
 		# an incidental place mentioned elsewhere in a gloss is insufficient.
@@ -182,9 +219,10 @@ def generate():
 					continue
 				if families:
 					words[word] |= 1 | CEDICT
-					selection["rotorNoun"].add(word)
-					motion_evidence["rotorNoun"][word].append(row["id"])
 					for family in families:
+						name = family_classes[family]
+						selection[name].add(word)
+						motion_evidence[name][word].append(row["id"])
 						derivations[family][word].add(row["id"])
 				# Project attested nominal morphology, never complete sentences.
 				# Balanced military compounds contain two nominal constituents;
@@ -260,6 +298,9 @@ def generate():
 					"Root location/directed-motion candidates retain their HowNet sense IDs. "
 					"Rotation-agent roles and nominal definition heads, transfer-theme roots and "
 					"indefinite quantities retain source sense/record IDs; all are candidates, not labels. "
+					"Pinned taxonomy living roots, physiological body parts with explicit hosts, "
+					"human-host stature, animate age and restricted age units, and reviewed development "
+					"definition heads retain sense/record IDs. "
 					"Derived compilation CC-BY-SA-4.0; original MIT and CC-BY notices retained."
 				),
 				"counts": {
@@ -281,6 +322,7 @@ def generate():
 				},
 				"semanticProjection": {
 					"sha256": hashlib.sha256(PROJECTION_PATH.read_bytes()).hexdigest(),
+					"taxonomySha256": TAXONOMY_SHA256,
 					"families": {
 						name: {word: sorted(ids) for word, ids in sorted(entries.items())}
 						for name, entries in sorted(derivations.items())

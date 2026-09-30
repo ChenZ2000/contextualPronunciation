@@ -131,18 +131,17 @@ class ColloquialToneTests(unittest.TestCase):
 
 	def test_colloquial_meng_is_productive_in_every_default_mode(self):
 		for extended, rules in self.defaults.items():
-			for strict in (False, True):
-				for phrase in COLLOQUIAL_MENG:
-					for prefix, suffix in (("", ""), ("他说", "之后才回过神"), ("😀|", "\n")):
-						text = prefix + phrase + suffix
-						with self.subTest(extended=extended, strict=strict, text=text):
-							decisions = rules.resolve(text, strict=strict)
-							spoken = rules.transform(text, strict=strict)
-							for index, character in enumerate(text):
-								if character == "懵":
-									self.assertEqual("meng1", decisions[index].reading_id)
-									self.assertEqual("colloquialMeng", decisions[index].rule_id)
-									self.assertEqual("擝", spoken[index])
+			for phrase in COLLOQUIAL_MENG:
+				for prefix, suffix in (("", ""), ("他说", "之后才回过神"), ("😀|", "\n")):
+					text = prefix + phrase + suffix
+					with self.subTest(extended=extended, text=text):
+						decisions = rules.resolve(text)
+						spoken = rules.transform(text)
+						for index, character in enumerate(text):
+							if character == "懵":
+								self.assertEqual("meng1", decisions[index].reading_id)
+								self.assertEqual("colloquialMeng", decisions[index].rule_id)
+								self.assertEqual("擝", spoken[index])
 
 	def test_unlisted_contexts_do_not_require_a_finite_phrase_inventory(self):
 		for rules in self.defaults.values():
@@ -154,18 +153,17 @@ class ColloquialToneTests(unittest.TestCase):
 
 	def test_every_occurrence_in_literary_words_is_protected(self):
 		for extended, rules in self.defaults.items():
-			for strict in (False, True):
-				for phrase in LITERARY_MENG:
-					text = "😀他说" + phrase + "，仍然" + phrase
-					with self.subTest(extended=extended, strict=strict, text=text):
-						decisions = rules.resolve(text, strict=strict)
-						spoken = rules.transform(text, strict=strict)
-						for index, character in enumerate(text):
-							if character == "懵":
-								self.assertTrue(decisions[index].protect)
-								self.assertEqual("meng-literary-protection", decisions[index].rule_id)
-								self.assertNotEqual("meng1", decisions[index].reading_id)
-								self.assertEqual("懵", spoken[index])
+			for phrase in LITERARY_MENG:
+				text = "😀他说" + phrase + "，仍然" + phrase
+				with self.subTest(extended=extended, text=text):
+					decisions = rules.resolve(text)
+					spoken = rules.transform(text)
+					for index, character in enumerate(text):
+						if character == "懵":
+							self.assertTrue(decisions[index].protect)
+							self.assertEqual("meng-literary-protection", decisions[index].rule_id)
+							self.assertNotEqual("meng1", decisions[index].reading_id)
+							self.assertEqual("懵", spoken[index])
 
 	def test_protection_is_local_even_when_words_touch(self):
 		for rules in self.defaults.values():
@@ -182,18 +180,17 @@ class ColloquialToneTests(unittest.TestCase):
 	def test_neutral_teng_preserves_complete_words_and_explicit_readings(self):
 		for extended, rules in self.defaults.items():
 			self.assertNotIn("teng5", rules.renderings)
-			for strict in (False, True):
-				for phrase, first_reading in NEUTRAL_TENG:
-					for prefix, suffix in (("", ""), ("别再", "了"), ("😀", "了一整天")):
-						text = prefix + phrase + suffix
-						start = len(prefix)
-						with self.subTest(extended=extended, strict=strict, text=text):
-							decisions = rules.resolve(text, strict=strict)
-							self.assertEqual(first_reading, decisions[start].reading_id)
-							self.assertEqual("teng5", decisions[start + 1].reading_id)
-							self.assertFalse(decisions[start].speech)
-							self.assertFalse(decisions[start + 1].speech)
-							self.assertEqual(phrase, rules.transform(text, strict=strict)[start : start + 2])
+			for phrase, first_reading in NEUTRAL_TENG:
+				for prefix, suffix in (("", ""), ("别再", "了"), ("😀", "了一整天")):
+					text = prefix + phrase + suffix
+					start = len(prefix)
+					with self.subTest(extended=extended, text=text):
+						decisions = rules.resolve(text)
+						self.assertEqual(first_reading, decisions[start].reading_id)
+						self.assertEqual("teng5", decisions[start + 1].reading_id)
+						self.assertFalse(decisions[start].speech)
+						self.assertFalse(decisions[start + 1].speech)
+						self.assertEqual(phrase, rules.transform(text)[start : start + 2])
 
 	def test_repeated_neutral_teng_words_resolve_each_original_character(self):
 		for rules in self.defaults.values():
@@ -251,20 +248,19 @@ class ColloquialToneTests(unittest.TestCase):
 
 	def test_speech_projection_suppresses_dictionary_rewrites_consistently(self):
 		for rules in self.defaults.values():
-			for strict in (False, True):
-				for text in (
-					"😀懵了，懵懵懂懂，折腾倒腾捣腾闹腾掀腾",
-					"一臉懵逼，懵裡懵懂，折騰倒騰搗騰鬧騰掀騰",
-					"反复折腾之后懵了，懵懂的人又开始倒腾",
-				):
-					with self.subTest(strict=strict, text=text):
-						full = rules.resolve(text, strict=strict)
-						self.assertEqual(
-							{index: decision for index, decision in full.items() if decision.speech},
-							rules.resolve(text, strict=strict, speech_only=True),
-						)
-						self.assertNotIn("遮腾", rules.transform(text, strict=strict))
-						self.assertNotIn("导腾", rules.transform(text, strict=strict))
+			for text in (
+				"😀懵了，懵懵懂懂，折腾倒腾捣腾闹腾掀腾",
+				"一臉懵逼，懵裡懵懂，折騰倒騰搗騰鬧騰掀騰",
+				"反复折腾之后懵了，懵懂的人又开始倒腾",
+			):
+				with self.subTest(text=text):
+					full = rules.resolve(text)
+					self.assertEqual(
+						{index: decision for index, decision in full.items() if decision.speech},
+						rules.resolve(text, speech_only=True),
+					)
+					self.assertNotIn("遮腾", rules.transform(text))
+					self.assertNotIn("导腾", rules.transform(text))
 
 	def test_neutral_teng_does_not_cross_completed_left_words(self):
 		left_words = (
@@ -292,40 +288,36 @@ class ColloquialToneTests(unittest.TestCase):
 			)
 		)
 		for extended, rules in self.defaults.items():
-			for strict in (False, True):
-				for text in texts:
-					with self.subTest(extended=extended, strict=strict, text=text):
-						full = rules.resolve(text, strict=strict)
-						speech = rules.resolve(text, strict=strict, speech_only=True)
-						self.assertEqual(
-							{index: decision for index, decision in full.items() if decision.speech}, speech
-						)
-						spoken = rules.transform(text, strict=strict)
-						for index, character in enumerate(text):
-							if character not in "折倒腾騰":
-								continue
-							for decisions in (full, speech):
-								self.assertTrue(decisions[index].protect)
-								self.assertIsNone(decisions[index].reading_id)
-							self.assertEqual(character, spoken[index])
-						annotations = load("braille_readings").annotate(text, rules, strict=strict)
-						self.assertTrue(all(item.character not in "折倒腾騰" for item in annotations))
+			for text in texts:
+				with self.subTest(extended=extended, text=text):
+					full = rules.resolve(text)
+					speech = rules.resolve(text, speech_only=True)
+					self.assertEqual({index: decision for index, decision in full.items() if decision.speech}, speech)
+					spoken = rules.transform(text)
+					for index, character in enumerate(text):
+						if character not in "折倒腾騰":
+							continue
+						for decisions in (full, speech):
+							self.assertTrue(decisions[index].protect)
+							self.assertIsNone(decisions[index].reading_id)
+						self.assertEqual(character, spoken[index])
+					annotations = load("braille_readings").annotate(text, rules)
+					self.assertTrue(all(item.character not in "折倒腾騰" for item in annotations))
 
 	def test_neutral_teng_before_full_tone_word_prefixes_remains_valid(self):
 		for extended, rules in self.defaults.items():
-			for strict in (False, True):
-				for phrase, first_reading in NEUTRAL_TENG:
-					for suffix in ("空调", "空间", "飞机", "空調", "空間", "飛機"):
-						text = "别再" + phrase + suffix + "了"
-						with self.subTest(extended=extended, strict=strict, text=text):
-							full = rules.resolve(text, strict=strict)
-							speech = rules.resolve(text, strict=strict, speech_only=True)
-							self.assertEqual(first_reading, full[2].reading_id)
-							self.assertEqual("teng5", full[3].reading_id)
-							self.assertFalse(full[2].protect or full[3].protect)
-							self.assertNotIn(2, speech)
-							self.assertNotIn(3, speech)
-							self.assertEqual(phrase, rules.transform(text, strict=strict)[2:4])
+			for phrase, first_reading in NEUTRAL_TENG:
+				for suffix in ("空调", "空间", "飞机", "空調", "空間", "飛機"):
+					text = "别再" + phrase + suffix + "了"
+					with self.subTest(extended=extended, text=text):
+						full = rules.resolve(text)
+						speech = rules.resolve(text, speech_only=True)
+						self.assertEqual(first_reading, full[2].reading_id)
+						self.assertEqual("teng5", full[3].reading_id)
+						self.assertFalse(full[2].protect or full[3].protect)
+						self.assertNotIn(2, speech)
+						self.assertNotIn(3, speech)
+						self.assertEqual(phrase, rules.transform(text)[2:4])
 
 	def test_user_keep_and_explicit_readings_take_priority(self):
 		for extended in (False, True):
@@ -385,11 +377,10 @@ class ColloquialToneTests(unittest.TestCase):
 
 	def test_disabling_colloquial_default_keeps_protections_and_teng_rules(self):
 		for extended in (False, True):
-			for strict in (False, True):
-				rules = load("rules").load_default_rules(extended=extended, disabled_rules="colloquialMeng")
-				text = "一脸懵逼，懵了，懵懵懂懂，折腾倒腾"
-				self.assertEqual(text, rules.transform(text, strict=strict))
-				self.assertEqual("teng5", rules.resolve(text, strict=strict)[text.index("腾")].reading_id)
+			rules = load("rules").load_default_rules(extended=extended, disabled_rules="colloquialMeng")
+			text = "一脸懵逼，懵了，懵懵懂懂，折腾倒腾"
+			self.assertEqual(text, rules.transform(text))
+			self.assertEqual("teng5", rules.resolve(text)[text.index("腾")].reading_id)
 
 	def test_annotations_keep_original_characters_and_utf16_offsets(self):
 		text = "😀懵了，折腾；懵懂，倒騰"

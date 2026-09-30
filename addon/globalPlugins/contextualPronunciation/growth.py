@@ -7,11 +7,12 @@ constructions instead select length. Unknown bare uses remain undecided.
 
 from __future__ import annotations
 
+from .argument_roles import classified_object, quantity_ellipsis
 from .constituents import ConstituentParser
 from .verb_forms import predicate_form, predicate_tail
 
 MAX_WINDOW = 96
-_HEIGHT_HEADS = frozenset(("个子", "個子", "个儿", "個兒"))
+_STATURE_FORMS = frozenset(("个子", "個子", "个儿", "個兒", "个头", "個頭"))
 _DISTRIBUTIVE = frozenset(("各自", "分别", "分別"))
 _LOCALIZERS = (
 	"里面",
@@ -142,7 +143,7 @@ def contextual_lexeme(word, offset=0):
 		and (
 			word in _FORMS
 			or word[1:] in _RESULTS
-			or word[1:] in _HEIGHT_HEADS | {"脸", "臉", "脸型", "臉型", "个", "個"}
+			or word[1:] in _STATURE_FORMS | {"脸", "臉", "脸型", "臉型", "个", "個"}
 		)
 	)
 
@@ -154,9 +155,10 @@ def _frame(frames, reading):
 	return None
 
 
-def _face_reading(parser, text, start, index, frames, left, context, g):
+def _face_reading(parser, text, start, index, frames, left, context, g, *, face_start=None, spans=()):
 	ltokens, subject, _, degree, modifiers = left
-	end = start + 2
+	face_start = start + 1 if face_start is None else face_start
+	end = face_start + 1
 	before, after = text[max(0, start - 12) : start], text[end : end + 12]
 	shape = after.startswith("型") or before.endswith(
 		("张", "張", "拉", "拉着", "拉著", "板着", "板著", "绷着", "繃著", "是")
@@ -169,6 +171,7 @@ def _face_reading(parser, text, start, index, frames, left, context, g):
 				beneficiary = (token.start, ltokens[-1].end)
 	honor = (
 		beneficiary is not None
+		or any(relation == "aspect" for relation, _, _ in spans)
 		or after.startswith(("了", "过", "過", "吧", "啊", "呀"))
 		or (not before and (not after or not g._is_han(after[0])))
 	)
@@ -183,7 +186,8 @@ def _face_reading(parser, text, start, index, frames, left, context, g):
 		return None
 	deps = []
 	if context is None or context.details:
-		deps.append(g.Dependency("compound:idiom" if honor and not shape else "amod", start, start + 1, end))
+		deps.append(g.Dependency("compound:idiom" if honor and not shape else "amod", start, face_start, end))
+		deps.extend(g.Dependency(relation, start, a, b) for relation, a, b in spans)
 		if beneficiary is not None:
 			deps.append(g.Dependency("obl:beneficiary", start, *beneficiary))
 		if after.startswith("了"):
@@ -196,11 +200,11 @@ def _face_reading(parser, text, start, index, frames, left, context, g):
 		frame.id,
 		frame.object_class,
 		index,
-		start + 1,
+		face_start,
 		end,
-		start + 1,
+		face_start,
 		end,
-		(g.Token(start + 1, end, text[start + 1 : end], g.NOUN | g.BODY_SITE),),
+		(g.Token(face_start, end, text[face_start:end], g.NOUN | g.BODY_SITE),),
 		tuple(deps),
 		construction,
 	)
@@ -270,6 +274,9 @@ def _left(parser, text, end, context, g):
 		if features & (g.NOUN | g.PRON)
 		else parser.lexicon.tokenize(text, start, end)
 	)
+	if tokens and tokens[-1].text in {"个", "個"} and (len(tokens) == 1 or tokens[-2].features == g.DE):
+		head = tokens[-1]
+		tokens = (*tokens[:-1], g.Token(head.start, head.end, head.text, g.NOUN | g.STATURE | g.GROWTH_PRODUCT))
 	np = _noun(tokens, context, g, complete=True)
 	for i, token in enumerate(tokens):
 		if token.text != "比":
@@ -294,24 +301,163 @@ def _measurement(tokens, g):
 	return len(tokens) >= 2 and tokens[0].features & g.NUMBER and tokens[1].text in _UNITS
 
 
+def _stature_ellipsis(text, tokens, g):
+	"""Clipped 个/個 denotes stature only at a complete nominal boundary.
+
+	With an overt NP after it, 个 is a classifier and cannot supply stature.
+	No absent 子 or 儿 and no fabricated source offsets are inserted.
+	"""
+	i = 0
+	if tokens and tokens[0].text in {"点", "點", "一点", "一點", "一点儿", "一點兒"}:
+		i += 1
+	elif len(tokens) > 1 and tokens[0].text == "一" and tokens[1].text in {"点", "點"}:
+		i += 2
+	if i >= len(tokens) or tokens[i].text not in {"个", "個"}:
+		return None
+	head = tokens[i]
+	end = head.end
+	for _ in range(4):
+		if text[end : end + 1] not in {"了", "吧", "呢", "啊", "呀", "吗", "嗎", "么", "麼"}:
+			break
+		end += 1
+	else:
+		return None
+	if text[head.end : end].startswith("了"):
+		for word in ("没有", "沒有", "没", "沒"):
+			if text.startswith(word, end):
+				end += len(word)
+				break
+	for _ in range(4):
+		if end >= len(text) or text[end] not in g._SPACES:
+			break
+		end += 1
+	else:
+		return None
+	if end < len(text) and (g._is_han(text[end]) or text[end] in g._NUMBERS):
+		return None
+	return g.NounPhrase(
+		i + 1,
+		i,
+		g.NOUN | g.STATURE | g.GROWTH_PRODUCT,
+		i,
+		(g.Dependency("ellipsis:stature", head.start, head.start, head.end),),
+	)
+
+
+def _quantity_extent(tokens, g):
+	items = []
+	for token in tokens[:8]:
+		if token.features & g.STOP:
+			break
+		items.append(token)
+	return quantity_ellipsis(items, g)
+
+
+def _age_reading(parser, text, index, start, tail, left, obj, frames, context, g, *, closed=False):
+	"""Age difference is an independent complement, not a nearby person hit."""
+	ltokens, subject, _, _, modifiers = left
+	if subject is not None and subject.features & g.LENGTH_BEARER:
+		return None
+	if obj is not None and not obj.features & (g.AGE_NOUN | g.AGE_MEASURE | g.HUMAN | g.PRON):
+		return None  # An age modifier cannot donate its class to the actual head.
+	for qstart in range(tail, min(len(text), tail + 64)):
+		if context is not None and not context.consume(1):
+			return None
+		if text[qstart] in g._NUMBERS:
+			break
+		if not g._is_han(text[qstart]):
+			return None
+	else:
+		return None
+	qend = qstart
+	while qend < len(text) and qend - qstart < 8 and text[qend] in g._NUMBERS:
+		qend += 1
+	if context is not None and not context.consume(qend - qstart + 1):
+		return None
+	if qend == len(text) or text[qend] in g._NUMBERS:
+		return None
+	unit, flags = parser.lexicon.longest(text, qend, min(len(text), qend + 16))
+	if not flags & g.AGE_MEASURE:
+		return None
+	unit_end = qend + len(unit)
+	if closed and unit_end < len(text) and (g._is_han(text[unit_end]) or text[unit_end] in g._NUMBERS | g._SPACES):
+		return None  # A following modifier/name requires the full head chart.
+	rival_tokens = parser.lexicon.tokenize(text, tail, qstart)
+	rival = _noun(rival_tokens, context, g, complete=True) if rival_tokens else None
+	if rival_tokens and (rival is None or not rival.features & (g.HUMAN | g.PRON)):
+		return None
+	comparison = None
+	for i, token in enumerate(ltokens):
+		if token.text == "比":
+			compared = _noun(ltokens[:i], context, g, complete=True)
+			other = _noun(ltokens[i + 1 :], context, g, complete=True)
+			if (
+				(i and (compared is None or not compared.features & (g.HUMAN | g.PRON)))
+				or other is None
+				or not other.features & (g.HUMAN | g.PRON)
+			):
+				return None
+			comparison = (token.start, ltokens[-1].end)
+			subject = compared
+			break
+	else:
+		if ltokens and subject is None:
+			return None
+	frame = _frame(frames, "zhang3")
+	if frame is None:
+		return None
+	head = g.Token(qend, qend + len(unit), unit, flags)
+	deps = []
+	if context is None or context.details:
+		deps.append(g.Dependency("extent:age", start, qstart, head.end))
+		if rival is not None:
+			deps.extend(rival.dependencies)
+			deps.append(g.Dependency("obl:comparison", start, rival_tokens[0].start, rival_tokens[-1].end))
+		if comparison is not None:
+			deps.append(g.Dependency("obl:comparison", start, *comparison))
+		if subject is not None:
+			deps.extend(subject.dependencies)
+			deps.append(g.Dependency("nsubj", start, ltokens[0].start, ltokens[subject.end - 1].end))
+		deps.extend(g.Dependency("advmod", start, a, b) for a, b in modifiers)
+	return g.SyntaxReading(
+		"zhang3",
+		frame.id,
+		frame.object_class,
+		index,
+		qstart,
+		head.end,
+		head.start,
+		head.end,
+		(head,),
+		tuple(deps),
+		"age-comparison",
+	)
+
+
 def _closed_reading(text, index, start, end, stems, left, frames, context, g):
 	"""Closed predicates need no right NP chart or complement search."""
 	tokens, np, location, degree, modifiers = left
 	flags = np.features if np is not None else 0
+	stature = None
+	if text[end : end + 1] in {"个", "個"}:
+		object_head = g.Token(end, end + 1, text[end], g.CLASSIFIER)
+		stature = _stature_ellipsis(text, (object_head,), g)
 	aspect = text[end : end + 1] in {"了", "着", "著", "过", "過"}
 	tail = end + int(aspect)
-	if tail < len(text) and (g._is_han(text[tail]) or text[tail] in g._NUMBERS | g._SPACES):
+	if stature is None and tail < len(text) and (g._is_han(text[tail]) or text[tail] in g._NUMBERS | g._SPACES):
 		return None
 	distributed = any(text[a:b] in _DISTRIBUTIVE for a, b in modifiers)
 	mixed = len(stems) == 2 and end - start == 2 and aspect and flags & (g.GROWER | g.GROWTH_PRODUCT)
-	if degree:
+	if stature is not None or aspect and flags & g.STATURE:
+		reading, construction = "zhang3", "stature-growth"
+	elif degree:
 		reading, construction = "chang2", "degree-length"
 	elif mixed:
 		reading, construction = ("zhang3" if index == start else "chang2"), "growth-length-result"
 	elif location is not None and flags & g.BODY_SITE:
 		reading, construction = "zhang3", "locative-growth"
-	elif aspect and np is not None and tokens[np.head].text in _HEIGHT_HEADS:
-		reading, construction = "zhang3", "stature-growth"
+	elif aspect and flags & g.GROWTH_INCREMENT:
+		reading, construction = "zhang3", "development-increment"
 	elif flags & g.GROWER or aspect and flags & g.PRON:
 		reading, construction = "zhang3", "growing-subject"
 	elif aspect and distributed and (np is None or flags & (g.GROWTH_PRODUCT | g.PRON)):
@@ -341,6 +487,14 @@ def _closed_reading(text, index, start, end, stems, left, frames, context, g):
 	else:
 		head = g.Token(start, start + 1, text[start], g.VERB if reading == "zhang3" else g.ADJ)
 		begin, finish, tokens = start, tail, (head,)
+	if stature is not None:
+		head = object_head
+		begin, finish, tokens = head.start, head.end, (head,)
+		if details:
+			deps.extend(stature.dependencies)
+			deps.append(g.Dependency("obj", start, begin, finish))
+			if text[finish : finish + 1] == "了":
+				deps.append(g.Dependency("aspect", start, finish, finish + 1))
 	parsed = g.SyntaxReading(
 		reading,
 		frame.id,
@@ -398,7 +552,7 @@ def growth_reading(parser, text, index, frames, context, g):
 	word, _ = parser.lexicon.longest(text, start, min(len(text), start + 16))
 	if (
 		len(word) > 1
-		and not contextual_lexeme(word)
+		and not parser._growth_lexeme(word)
 		and not _measurement(parser.lexicon.tokenize(text, start + 1, start + 17), g)
 	):
 		return None  # Preserve intact compounds and names (长江 / 长裙 / 长子).
@@ -408,20 +562,49 @@ def growth_reading(parser, text, index, frames, context, g):
 	ltokens, subject, location, degree, modifiers = left
 	if text.startswith(("长脸", "長臉"), start):
 		return _face_reading(parser, text, start, index, frames, left, context, g)
+	if text[end : end + 1] in g._NUMBERS or parser.lexicon.words.get(text[end : end + 1], 0) & g.PRON:
+		age = _age_reading(parser, text, index, start, end, left, None, frames, context, g, closed=True)
+		if age is not None:
+			_cache(age, stems, start, frames, context, g)
+			return age
 	if (closed := _closed_reading(text, index, start, end, stems, left, frames, context, g)) is not None:
 		return closed
 	flags = subject.features if subject is not None else 0
 	tail, spans = predicate_tail(text, end, results=_RESULT_TAILS)
 	right = parser.lexicon.tokenize(text, tail, min(len(text), tail + MAX_WINDOW))
-	obj = _noun(right, context, g)
+	obj = (
+		classified_object(right, g, context)
+		if right and right[0].features & g.CLASSIFIER and not right[0].features & g.NOUN
+		else _noun(right, context, g)
+	)
+	if obj is None:
+		obj = _stature_ellipsis(text, right, g)
+	if (age := _age_reading(parser, text, index, start, tail, left, obj, frames, context, g)) is not None:
+		_cache(age, stems, start, frames, context, g)
+		return age
+	if obj is not None and obj.features & g.AGE_MEASURE:
+		return None  # A rejected age complement cannot fall back to growth.
+	if obj is not None and obj.head == 0 and right[0].text in {"脸", "臉"}:
+		face = _face_reading(
+			parser, text, start, index, frames, left, context, g, face_start=right[0].start, spans=spans
+		)
+		if face is not None:
+			_cache(face, stems, start, frames, context, g)
+			return face
 	product = obj is not None and bool(obj.features & g.GROWTH_PRODUCT)
-	height = obj is not None and right[obj.head].text in _HEIGHT_HEADS
+	height = obj is not None and bool(obj.features & g.STATURE)
+	increment = obj is not None and bool(obj.features & g.GROWTH_INCREMENT)
+	quantity = _quantity_extent(right, g) if right and right[0].features & (g.NUMBER | g.DET) else False
 	distributive = any(text[a:b] in _DISTRIBUTIVE for a, b in modifiers)
 	measurement = _measurement(right, g)
 	result = any(relation.startswith("compound:") for relation, _, _ in spans)
-	if result and obj is not None and not obj.features & (g.GROWTH_PRODUCT | g.GROWER | g.HUMAN):
+	if result and obj is not None and not quantity and not obj.features & (g.GROWTH_PRODUCT | g.GROWER | g.HUMAN):
 		return None
 	aspect = any(relation == "aspect" for relation, _, _ in spans)
+	object_aspect = obj is not None and text[right[obj.end - 1].end : right[obj.end - 1].end + 1] == "了"
+	if object_aspect:
+		pos = right[obj.end - 1].end
+		spans += (("aspect", pos, pos + 1),)
 	appearance = text[end : end + 1] == "得" and not result
 	relative = text[end : end + 1] == "的"
 	external = _noun(parser.lexicon.tokenize(text, end + 1, end + 1 + MAX_WINDOW), context, g) if relative else None
@@ -435,7 +618,26 @@ def growth_reading(parser, text, index, frames, context, g):
 	if len(right) >= 4 and right[0].features & g.COORD and right[1].features & g.ADJ and right[2].features == g.DE:
 		head = _noun(right[3:], context, g)
 		coordinated_attribute = head is not None and bool(head.features & g.LENGTH_BEARER)
-	# Degree + 长 is adjectival even if its subject is a body part or person.
+	# A degree/confirmation adverb can modify a verb too (真长个了 /
+	# 真长得好看). Independent verb arguments and complements outrank its
+	# adjectival alternative; plain 很长头发 still retains the length analysis.
+	verbal_evidence = (
+		height
+		or aspect
+		and flags & g.STATURE
+		or result
+		and (not flags & g.LENGTH_BEARER or flags & (g.GROWER | g.GROWTH_PRODUCT))
+		or appearance
+		and (not flags or flags & (g.GROWER | g.GROWTH_PRODUCT | g.PRON))
+		or measurement
+		and aspect
+		and flags & g.GROWTH_PRODUCT
+		or product
+		and obj is not None
+		and any(d.relation == "clf" for d in obj.dependencies)
+	)
+	degree = degree and not verbal_evidence
+	# Remaining degree evidence is adjectival, after independent verb cues.
 	# A repeated stem needs the independent 的/地 production or an argument.
 	reading, construction = None, None
 	if mixed_result:
@@ -447,14 +649,20 @@ def growth_reading(parser, text, index, frames, context, g):
 			reading, construction = "zhang3", "locative-growth"
 	elif result:
 		# A length-bearing artifact does not grow merely because 大 follows.
-		if obj is not None and not obj.features & (g.GROWTH_PRODUCT | g.GROWER | g.HUMAN):
+		if obj is not None and not quantity and not obj.features & (g.GROWTH_PRODUCT | g.GROWER | g.HUMAN):
 			return None
 		if not flags & g.LENGTH_BEARER or flags & (g.GROWER | g.GROWTH_PRODUCT):
 			reading, construction = "zhang3", "growth-result"
 	elif appearance and (not flags or flags & (g.GROWER | g.GROWTH_PRODUCT | g.PRON)):
 		reading, construction = "zhang3", "growth-description"
-	elif height or aspect and subject is not None and ltokens[subject.head].text in _HEIGHT_HEADS:
+	elif height or aspect and flags & g.STATURE:
 		reading, construction = "zhang3", "stature-growth"
+	elif increment and not degree:
+		reading, construction = "zhang3", "development-increment"
+	elif (
+		product and obj is not None and (aspect or object_aspect or any(d.relation == "clf" for d in obj.dependencies))
+	):
+		reading, construction = "zhang3", "classified-growth-object"
 	elif product and subject is not None and flags & (g.GROWER | g.BODY_SITE | g.GROWTH_PRODUCT | g.PRON):
 		reading, construction = "zhang3", "growth-object"
 	elif subject is not None and flags & g.GROWER:
@@ -488,7 +696,7 @@ def growth_reading(parser, text, index, frames, context, g):
 		deps.extend(subject.dependencies)
 		if location:
 			deps.append(g.Dependency("case:localizer", ltokens[subject.head].start, *location))
-	if product and reading == "zhang3":
+	if (product or increment) and reading == "zhang3":
 		deps.append(g.Dependency("obj", start, right[0].start, right[obj.end - 1].end))
 		deps.extend(obj.dependencies)
 		argument, np = right, obj
