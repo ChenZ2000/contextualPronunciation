@@ -34,7 +34,7 @@ The engine preserves ambiguous or unsupported text for the synthesizer to read. 
 
 **Colloquial 懵 is context-only:** 一脸懵, 看懵了 and 懵得说不出话 select first-tone `mēng`; isolated 懵, literary words and character-name discussions keep the original text and voice reading. It is no longer a blanket default. See the [policy, examples and limits](docs/COLLOQUIAL_MENG.md).
 
-Version **0.8.0** supports the features described here. Main-branch test builds can precede the public Release. Download published packages from Releases. **NVDA 2026.2** is the minimum and last-tested stable version. CI also tests **2026.3beta2**.
+Version **0.8.1** supports the features described here. Main-branch test builds can precede the public Release. Download published packages from Releases. **NVDA 2026.2** is the minimum and last-tested stable version. CI also tests **2026.3beta2**.
 
 1. Download the `.nvda-addon` file from [Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest).
 2. Open the file, accept NVDA's installation prompt and restart NVDA when prompted.

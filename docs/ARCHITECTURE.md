@@ -83,7 +83,54 @@ There is no universal neutral-tone homophone or supported cross-driver command t
 
 不存在可通用于声库的轻声同音字或强制 `teng5` 命令。NVDA 公开的 `PhonemeCommand` 接收 IPA，但固定版本的 eSpeak、SAPI5 适配器无法编码这些普通话音节，已审查的 Vocalizer 驱动只读回退文本。因此插件保留完整词形，不注入音素命令。自动测试验证读音决策、文本保留和命令处理；这些改动的实际声调仍需在真实声音上检查。参见[驱动调查](../tests/fixtures/vocalizer_expressive2/README.md)及[资料来源](REFERENCES.md)。
 
+## Growth, length and honor / “长”的语境选择
+
+`growth.py` selects zhǎng for a locally attached body location, growing subject,
+growth-product object or growth complement. Reviewed noun senses in
+`syntax_frames.toml` remain candidates until the noun chart identifies the head.
+“身上长、背上长了、胸前长了” support an omitted product; “皮肤的文章很长”
+uses the article head rather than borrowing the body-part modifier. Degree,
+measured extent and adjectival 的/地 select cháng. Shared morphology in
+`verb_forms.py` recognizes complements and repetition before sense selection;
+“头发长长了” has a zhǎng stem and a cháng result, while “长长的头发” has two
+adjectival cháng syllables.
+
+“长个子” selects stature growth, including aspect inserted before its object
+or an aspect-marked stature subject (“个子长了”).
+Distributive adverbs such as 各自/分别 may accompany an omitted growing subject,
+as in “各自长了”; a parsed length-bearing head retains the length sense.
+The reviewed honor expression “长脸” uses zhǎng in “长脸了、给我长脸了”, with
+the beneficiary attached independently. “一张长脸、长脸型、拉长脸” instead
+select cháng. Ambiguous “长脸的孩子” and bare “头发长了” remain unchanged.
+
+Pinned lexical words with an independently resolved zhǎng reading, including
+生长、增长、校长、长辈, lock that inventory default for speech just as cháng
+alternatives are rendered. Productive lexical forms yield to grammar and
+cannot restore an unselected reading. User preservation and disabled senses
+remain authoritative. The offline pronunciation tool reports argument heads,
+localizers, aspects, beneficiaries and distinct stem/result dependencies.
+
+Analysis uses a 96-character local window and the existing item/chart work
+budgets. It does not cross punctuation or speech items. Constructed tests and
+a separate short/8K latency gate cover these supported constructions; they do
+not establish complete Chinese ambiguity resolution.
+
+“快乐/快樂” explicitly locks lè before voice processing, whether punctuation
+follows or not. This is a sourced lexical reading from
+[MOE 快樂](https://dict.revised.moe.edu.tw/dictView.jsp?ID=78094).
+The growth and length distinction follows
+[MOE 長](https://dict.revised.moe.edu.tw/dictView.jsp?ID=7910), with
+[拉長臉](https://dict.revised.moe.edu.tw/dictView.jsp?ID=59153) as a contrast.
+
 ## Bounds and validation
+
+The syntax lexicon indexes candidate lengths by the first two source-word
+characters, with a separate singleton fallback. It retains the same longest
+word and original limits while avoiding unrelated candidates. This index holds
+licensed lexical entries only. Speech-only analysis omits final dependency
+record allocation; full offline analysis retains the same selected heads and
+dependencies. Reading-decision parity is checked across the growth and motion
+corpora, and startup reports include the static index's allocation cost.
 
 Local analysis has character, token, depth, chart and per-item work limits. Repeated stems reuse results within the current speech item. Exhausted or incomplete analyses abstain. Cross-sentence reference, new words, metaphor, dialect and genuinely ambiguous attachment remain outside complete coverage.
 

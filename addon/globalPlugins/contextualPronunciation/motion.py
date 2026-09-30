@@ -36,7 +36,7 @@ _SUFFIXES = {
 
 def contextual_form(word):
 	"""An AA dictionary entry cannot determine the sense of a full clause."""
-	return len(word) == 2 and word[0] in "转轉" and word[1] == word[0]
+	return len(word) == 2 and word[0] in "转轉长長" and word[1] == word[0]
 
 
 def _tokens(lexicon, text, start, g, depth=0, stop=None):
@@ -140,6 +140,12 @@ def _prefix(parser, text, end, context, g):
 		start -= 1
 	if context is not None and not context.consume(end - start + 1):
 		return ()
+	word = text[start:end]
+	features = parser.lexicon.words.get(word, 0)
+	# An intact motion lexeme without a splittable initial already has its
+	# complete token boundary. Keep modal/location compounds on _tokens.
+	if features & g.PATH_MOTION and word[0] not in _SPLIT_INITIALS:
+		return (g.Token(start, end, word, features),)
 	# Only grammatical clause links can start a new local clause. Unknown
 	# text, punctuation and exhausted token budgets never disappear.
 	for _ in range(16):
@@ -276,10 +282,15 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 	arguments, modifiers = _modifiers(left, g)
 	if any(t.text in _DIRECTIONS for t in modifiers):
 		return None
-	deps = tuple(g.Dependency("aux" if t.text in _AUXILIARIES else "advmod", start, t.start, t.end) for t in modifiers)
-	deps += tuple(g.Dependency("redup", start, p, p + 1) for p in stems[1:])
-	if tail:
-		deps += tuple(g.Dependency(relation, start, a, b) for relation, a, b in tail)
+	details = context is None or context.details
+	deps = ()
+	if details:
+		deps = tuple(
+			g.Dependency("aux" if t.text in _AUXILIARIES else "advmod", start, t.start, t.end) for t in modifiers
+		)
+		deps += tuple(g.Dependency("redup", start, p, p + 1) for p in stems[1:])
+		if tail:
+			deps += tuple(g.Dependency(relation, start, a, b) for relation, a, b in tail)
 
 	def result(kind, evidence, np=None, relation="obl:loc", *, transfer=False):
 		selected = "transferPredicate" if transfer else "motionPredicate"
@@ -289,14 +300,16 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		else:
 			return None
 		head = evidence[np.head] if np is not None else evidence[-1]
-		relations = deps + (g.Dependency(relation, start, evidence[0].start, evidence[-1].end),)
-		if transfer and pre_recipient is not None:
-			relations = tuple(
-				g.Dependency("obl:recipient", d.head, d.start, d.end) if d.relation == "obl:beneficiary" else d
-				for d in relations
-			)
-		if np is not None:
-			relations += np.dependencies
+		relations = ()
+		if details:
+			relations = deps + (g.Dependency(relation, start, evidence[0].start, evidence[-1].end),)
+			if transfer and pre_recipient is not None:
+				relations = tuple(
+					g.Dependency("obl:recipient", d.head, d.start, d.end) if d.relation == "obl:beneficiary" else d
+					for d in relations
+				)
+			if np is not None:
+				relations += np.dependencies
 		return g.SyntaxReading(
 			frame.reading,
 			frame.id,
@@ -326,7 +339,8 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		else ()
 	)
 	if tail and right and right[0].text in _TEMPORAL_BOUNDARIES:
-		deps += (g.Dependency("mark:temporal", start, right[0].start, right[0].end),)
+		if details:
+			deps += (g.Dependency("mark:temporal", start, right[0].start, right[0].end),)
 		right = ()
 	pre_recipient = None
 	# Closed clauses with a single path predicate or a simple locative NP
@@ -376,10 +390,11 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 			or durative_subject is not None
 			and durative_subject.features & g.ROTOR
 		):
-			deps += (g.Dependency("advcl:purpose", start, token.start, after[-1].end),)
+			if details:
+				deps += (g.Dependency("advcl:purpose", start, token.start, after[-1].end),)
 			right = before
 			break
-		if before:
+		if before and details:
 			deps += (g.Dependency("obj:ellipsis" if quantity else "obj", start, before[0].start, before[-1].end),)
 		return result("transfer-recipient", after[: rnp.end], rnp, "obl:recipient", transfer=True)
 
@@ -393,11 +408,12 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		if rnp is not None and rnp.end == len(after):
 			pre_recipient = after, rnp
 			arguments, more_modifiers = _modifiers(arguments[:marker], g)
-			deps += tuple(
-				g.Dependency("aux" if t.text in _AUXILIARIES else "advmod", start, t.start, t.end)
-				for t in more_modifiers
-			)
-			deps += (g.Dependency("obl:beneficiary", start, after[0].start, after[-1].end), *rnp.dependencies)
+			if details:
+				deps += tuple(
+					g.Dependency("aux" if t.text in _AUXILIARIES else "advmod", start, t.start, t.end)
+					for t in more_modifiers
+				)
+				deps += (g.Dependency("obl:beneficiary", start, after[0].start, after[-1].end), *rnp.dependencies)
 		break
 
 	if pre_recipient is not None:
@@ -419,7 +435,8 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 			return result("rotating-object", right[: np.end], np, "obj")
 		if not np.features & g.DURATION or not right[0].features & (g.NUMBER | g.DET):
 			return None
-		deps += (g.Dependency("obl:duration", start, right[0].start, right[np.end - 1].end),)
+		if details:
+			deps += (g.Dependency("obl:duration", start, right[0].start, right[np.end - 1].end),)
 	if not arguments:
 		# A closed, standalone durative depiction has the conventional motion
 		# reading. Overt transfer objects/recipients were resolved above.
@@ -468,8 +485,9 @@ def _motion_reading(parser, text, index, frames, context, g, form=None):
 		topic = arguments[:-1]
 		np = _noun(topic, g, context)
 		if np is not None and np.features & (g.TRANSFER_THEME | g.ROTOR):
-			agent = arguments[-1]
-			deps += (g.Dependency("nsubj", start, agent.start, agent.end),)
+			if details:
+				agent = arguments[-1]
+				deps += (g.Dependency("nsubj", start, agent.start, agent.end),)
 			return result("topicalized-object", topic, np, "obj:topic", transfer=bool(np.features & g.TRANSFER_THEME))
 	for begin in range(min(len(arguments), 32)):
 		if begin and arguments[begin - 1].text not in _DIRECTIVES and not arguments[begin - 1].features & g.VERB:

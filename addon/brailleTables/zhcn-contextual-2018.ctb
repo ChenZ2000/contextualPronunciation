@@ -850,14 +850,16 @@ noback match \x8bf7\x0020? \x91cd \x0020?\x8bfb 12345-256
 noback match - \x91cd \x0020?\x547d\x0020?\x540d 12345-256
 # hang-formation: 两行泪 (hang2)
 noback match \x4e24\x0020? \x884c \x0020?\x6cea 125-236
-# Factored finite template: yue-music-prefix
-noback match (\x4ea4\x0020?\x54cd|\x4ed9|\x5668|\x58f0|\x793c|\x7ba1\x0020?\x5f26|\x97f3)\x0020? \x4e50 - 23456
+# yue-music-prefix: 交响乐 (yue4)
+noback match \x4ea4\x0020?\x54cd\x0020? \x4e50 - 23456
 # dei-must-hurry: 得赶快 (dei3)
 noback match - \x5f97 \x0020?\x8d76\x0020?\x5feb 145-2346-3
 # zhao-catching-fire: 着了火 (zhao2)
 noback match - \x7740 \x0020?\x4e86\x0020?\x706b 34-235-2
 # zhao-falling-asleep: 睡着了 (zhao2)
 noback match \x7761\x0020? \x7740 \x0020?\x4e86 34-235-2
+# yue-music-prefix: 管弦乐 (yue4)
+noback match \x7ba1\x0020?\x5f26\x0020? \x4e50 - 23456
 # huan-give-back: 请还给 (huan2)
 noback match \x8bf7\x0020? \x8fd8 \x0020?\x7ed9 125-12456
 # Factored finite template: liang-measure-object
@@ -1054,26 +1056,48 @@ noback match - \x91cd \x0020?\x9633 12345-256
 noback match - \x91cd \x0020?\x9a8c 12345-256
 # Factored finite template: liang-measure-verb
 noback match (\x4e08|\x6d4b|\x6e2c|\x79f0|\x7a31|\x8861)\x0020? \x91cf - 123-1346-2
-# Factored finite template: yue-music-form
-noback match - \x4e50 \x0020?(\x5668|\x56e2|\x66f2|\x7ae0|\x8c31|\x961f) 23456
+# yue-music-form: 乐器 (yue4)
+noback match - \x4e50 \x0020?\x5668 23456
+# yue-music-form: 乐团 (yue4)
+noback match - \x4e50 \x0020?\x56e2 23456
+# yue-music-form: 乐曲 (yue4)
+noback match - \x4e50 \x0020?\x66f2 23456
 # qu-musical-composition: 乐曲 (qu3)
 noback match \x4e50\x0020? \x66f2 - 13-346-3
+# yue-music-form: 乐章 (yue4)
+noback match - \x4e50 \x0020?\x7ae0 23456
+# yue-music-form: 乐谱 (yue4)
+noback match - \x4e50 \x0020?\x8c31 23456
+# yue-music-form: 乐队 (yue4)
+noback match - \x4e50 \x0020?\x961f 23456
+# yue-music-prefix: 仙乐 (yue4)
+noback match \x4ed9\x0020? \x4e50 - 23456
 # hang-lexical: 内行 (hang2)
 noback match \x5185\x0020? \x884c - 125-236
 # hang-lexical: 分行 (hang2)
 noback match \x5206\x0020? \x884c - 125-236
 # hang-lexical: 商行 (hang2)
 noback match \x5546\x0020? \x884c - 125-236
+# yue-music-prefix: 器乐 (yue4)
+noback match \x5668\x0020? \x4e50 - 23456
+# yue-music-prefix: 声乐 (yue4)
+noback match \x58f0\x0020? \x4e50 - 23456
 # hang-lexical: 外行 (hang2)
 noback match \x5916\x0020? \x884c - 125-236
 # hang-lexical: 央行 (hang2)
 noback match \x592e\x0020? \x884c - 125-236
+# le-happiness: 快乐 (le4)
+noback match \x5feb\x0020? \x4e50 - 123-26-23
+# le-happiness-traditional: 快樂 (le4)
+noback match \x5feb\x0020? \x6a02 - 123-26-23
 # hang-lexical: 总行 (hang2)
 noback match \x603b\x0020? \x884c - 125-236
 # hang-lexical: 支行 (hang2)
 noback match \x652f\x0020? \x884c - 125-236
 # hang-lexical: 牙行 (hang2)
 noback match \x7259\x0020? \x884c - 125-236
+# yue-music-prefix: 礼乐 (yue4)
+noback match \x793c\x0020? \x4e50 - 23456
 # hang-lexical: 粮行 (hang2)
 noback match \x7cae\x0020? \x884c - 125-236
 # hang-lexical: 行业 (hang2)
@@ -1098,6 +1122,8 @@ noback match - \x884c \x0020?\x957f 125-236
 noback match \x8f66\x0020? \x884c - 125-236
 # hang-lexical: 银行 (hang2)
 noback match \x94f6\x0020? \x884c - 125-236
+# yue-music-prefix: 音乐 (yue4)
+noback match \x97f3\x0020? \x4e50 - 23456
 # liang-measure-ti-before-physical-dimension: GF 0019-2018 liang2 + ti3; liblouis zhcn-cbs.ctb always 量体 groups these same two characters with liang4; measurement sense before 温/重/积 only
 noback match - \x91cf\x4f53 \x0020?\x6e29 123-1346-2-2345-24-3
 # liang-measure-ti-before-physical-dimension: GF 0019-2018 liang2 + ti3; liblouis zhcn-cbs.ctb always 量体 groups these same two characters with liang4; measurement sense before 温/重/积 only

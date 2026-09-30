@@ -658,8 +658,10 @@ def classify(text: str, index: int) -> str | None:
 		before, after = text[max(0, start - WINDOW) : start], text[end : end + WINDOW]
 		if _blocked(before, after):
 			return None
+		if after[:1] in {"哒", "噠"} and _blocked(before, after[1:]):
+			return None
 		if (
-			after.startswith("的") or after.startswith("地") and len(after) > 1 and _han(after[1])
+			after.startswith(("的", "哒", "噠")) or after.startswith("地") and len(after) > 1 and _han(after[1])
 		) and not after.startswith(_MENTION_RIGHT):
 			return "reduplicated-state"
 		return _base(before, after)

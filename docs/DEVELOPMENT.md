@@ -42,7 +42,7 @@ Preview cache cleanup with `pwsh -File scripts/clean_workspace.ps1 -WhatIf`. Omi
 1. `__init__.py` registers public speech, queue, profile and settings events and unregisters them on termination.
 2. `pipeline.py` preserves speech commands and character mode, analyzes string items and commits successful normalization results. The queue guard acts after native dictionaries/symbols on residual reviewed target characters.
 3. `rules.py` combines user preservation, reviewed phrases, structural evidence and the always-enabled lexicon into decisions at original offsets before rendering temporary homophones.
-4. `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py` and `motion.py` provide lexical boundaries and bounded structural analysis. `verb_forms.py` and `argument_roles.py` expose shared complement, recipient and quantity productions. Static POS alternatives are evidence, not an infallible contextual POS classifier. See [event roles and sense selection](ARCHITECTURE.md) for competing transfer/rotation frames.
+4. `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py`, `motion.py` and `growth.py` provide lexical boundaries and bounded structural analysis. `verb_forms.py` and `argument_roles.py` expose shared complement, recipient and quantity productions. Static POS alternatives are evidence, not an infallible contextual POS classifier. See [event roles and sense selection](ARCHITECTURE.md) for competing transfer/rotation and growth/length frames.
 5. `braille_readings.py` exposes original-character annotations. The optional installed static Liblouis table is separate and does not dynamically execute the speech parser.
 
 Runtime data is loaded from packaged JSON/TOML. Templates are bounded and cannot execute arbitrary Python or regular expressions. Speech-time processing does not fetch data, query SQLite or retain previous utterances.
@@ -54,7 +54,7 @@ The local performance gate includes short motion predicates and dense 8K motion 
 | Change | Main entry points | Validation |
 |---|---|---|
 | Reviewed phrase or grammatical context | `data/contributions.toml` and `data/syntax_frames.toml` inside the plugin | Add reading and preservation cases, run contribution checks and the grammar evaluator |
-| Segmentation or sentence analysis | `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py`, `motion.py`, `verb_forms.py`, `argument_roles.py` | Unit and grammar tests, native integration, performance and applicable acoustic checks |
+| Segmentation or sentence analysis | `segmentation.py`, `syntax.py`, `constituents.py`, `predicates.py`, `nominals.py`, `edges.py`, `motion.py`, `growth.py`, `verb_forms.py`, `argument_roles.py` | Unit and grammar tests, native integration, performance and applicable acoustic checks |
 | Dictionary snapshot or lexical features | Root `data/sources/` and the corresponding generator under `tools/` | Review the source/license, regenerate outputs and run the affected `--check` commands |
 | Settings or NVDA integration | `settings.py`, `__init__.py`, `pipeline.py`, `lifecycle.py` | Settings/profile, command-preservation and native integration tests |
 | UI translation or installed help | `addon/locale/` and `addon/doc/` | Compile changed translation catalogs; check links and package contents |
@@ -140,3 +140,25 @@ python tools/benchmark_colloquial_meng.py
 ```
 
 Both evaluation and performance are mandatory stages of `scripts/run_regression.py`, including native CI. The dedicated benchmark runs both default and extended engines through the speech sequence normalizer. It fails if any measured median exceeds 200 microseconds for short inputs or 30 milliseconds for long inputs; each case has at least 100 timed calls. Existing global benchmarks, immutable-baseline comparison and their limits are unchanged. Timing is host-specific and excludes startup, synthesis and NVDA event dispatch, not an end-to-end latency promise. Evidence belongs under ignored `artifacts/` and is uploaded by CI. Missing evidence or failure must not be described as a pass.
+
+## Growth and length validation
+
+`tests/growth_cases.py` contains independent body-location, growth, stature,
+honor, length and preservation expectations, including vocabulary combinations
+outside runtime phrase entries. `growth.py` attaches those arguments locally;
+the reviewed nominal classes live in `syntax_frames.toml`. Use the ordinary
+pronunciation explainer to inspect heads, localizers, beneficiaries, aspects and
+stem/result offsets. Ambiguous hair growth/length and face descriptions abstain.
+
+```powershell
+python -m unittest tests.test_growth tests.test_reported_readings
+python tools/evaluate_grammar.py
+python tools/benchmark_growth.py
+```
+
+The standard regression and native CI run the growth benchmark with the same
+200 µs short / 30 ms long median budgets and at least 100 measured calls per
+case in both modes. The report is `artifacts/growth-performance.json`. Exact
+closed predicates avoid unnecessary charts; repeated stems share argument
+analysis within one item, including separate readings for a growth stem and
+length result. No whole-text result cache or cross-item text retention is used.

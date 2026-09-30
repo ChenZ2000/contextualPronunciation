@@ -131,6 +131,30 @@ class NVDASymbolDictionaryIntegrationTests(unittest.TestCase):
 				self.assertNotIn("Doesn 撇 t", processed)
 				self.assertGreaterEqual(processed.count(reported_name), 2)
 
+	def test_happiness_and_growth_renderers_survive_real_symbol_processing(self):
+		from tests.test_pipeline import CharacterModeCommand
+
+		normalizer = pipeline.SpeechSequenceNormalizer(
+			rules=rules_module.load_default_rules(), character_mode_command_type=CharacterModeCommand
+		)
+		processor = self._processor("zh_CN")
+		for source, expected in (
+			("一点都不快乐", "一点都不快泐"),
+			("一点都不快乐。", "一点都不快泐。"),
+			("背上长了。", "背上掌了。"),
+			("胸前长了！", "胸前掌了！"),
+			("给我长脸了。", "给我掌脸了。"),
+			("长个子了。", "掌个子了。"),
+			("各自长了。", "各自掌了。"),
+		):
+			with self.subTest(source=source):
+				transformed = normalizer.normalize([source], options=pipeline.RuntimeOptions())[0]
+				self.assertEqual(expected, transformed)
+				for level in self.character_processing.SymbolLevel:
+					processed = processor.processText(transformed, level)
+					self.assertIn("泐" if "乐" in source else "掌", processed)
+					self.assertNotIn("乐" if "乐" in source else "长", processed)
+
 	def test_colloquial_meng_renderer_survives_real_symbol_processing(self):
 		from tests.test_pipeline import CharacterModeCommand
 

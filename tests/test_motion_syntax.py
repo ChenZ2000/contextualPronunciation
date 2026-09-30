@@ -110,6 +110,18 @@ class MotionSyntaxTests(unittest.TestCase):
 			self.assertTrue(0 <= dep.head < len(text))
 			self.assertTrue(0 <= dep.start < dep.end <= len(text))
 
+	def test_speech_projection_retains_motion_and_transfer_decisions(self):
+		from tests.grammar_cases import CASES
+
+		for text, target, _expected in CASES:
+			if target not in "转轉":
+				continue
+			with self.subTest(text=text):
+				self.assertEqual(
+					{i: d for i, d in self.rules.resolve(text).items() if d.speech},
+					self.rules.resolve(text, speech_only=True),
+				)
+
 	def test_traditional_and_user_overrides(self):
 		for text in ("出去轉一轉", "去公園轉轉", "讓車輪轉一轉", "到商場轉轉"):
 			self.assert_motion(text)

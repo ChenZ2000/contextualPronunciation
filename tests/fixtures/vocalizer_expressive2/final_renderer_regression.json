@@ -7,39 +7,40 @@
       "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
       "addon/globalPlugins/contextualPronunciation/argument_roles.py": "04a6c61443d7849dd7549ac2cf2789b1964bb5d1053c63d25e1b50c70c227183",
       "addon/globalPlugins/contextualPronunciation/braille_readings.py": "0f9f36eb217ddae12294e334810d43e2a86f075736ecd7876b11a90b83cb8dfb",
-      "addon/globalPlugins/contextualPronunciation/colloquial_meng.py": "47f33c929972a5955550f1568a8809104ff35cda0893ea657de43acef2c80aeb",
+      "addon/globalPlugins/contextualPronunciation/colloquial_meng.py": "32f531382f7eecbb361098d9283e59eb569a57797c6079af6cdf2f5d728dcae0",
       "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
       "addon/globalPlugins/contextualPronunciation/containment.py": "a24cae6fff0a6a4ed8f8a882e91f643b85b118c4fbc846b709348bb9ee65d81b",
       "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
-      "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "17f5da785faf8489021d6c312ecb6fc64fbd56a8f9e6328da9701ff3399bd727",
+      "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "3ba7cd4d46405d3f5d855a17774b60261043bae348354f48781c356e94dd7b7a",
       "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "524547b5d7948f9c888d1a6d4bcd1402434272746bb6bdf94537ebf6f4166ccc",
-      "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "351dbc8167ef8ce8c28bcdbbe18f3829e2e18bf7c8c7ddd3b9b30c8b399717ea",
+      "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "3471166acef839330c215e41ae2d71f247496b55f8f8c432ab34d32ca177f0a7",
       "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
       "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "6d465d3514d918a55639fc1ca53b4f878ac598851821dad7e4413bdf2164a20a",
       "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
-      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "c9386273141237f96b27b36b68a6515af165e30f57b224559cf1b8884f88fab0",
+      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "abe3b19fba07ab069669857cd926af7b36e8fbf6f97244795ba2ff8770acc636",
       "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
       "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
-      "addon/globalPlugins/contextualPronunciation/lexicon.py": "d6da46dc2e685b604735023613a064562c9b16b768b51f95a84834d3ea065b53",
+      "addon/globalPlugins/contextualPronunciation/growth.py": "fd8d5111890c54c25a03add869730713bad41d076afc1bb9dfe8213fe273d739",
+      "addon/globalPlugins/contextualPronunciation/lexicon.py": "e115ef72a8a643fade9f764289bd5bc5fdf50c39f1c00ee5d86ec9b253776094",
       "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
-      "addon/globalPlugins/contextualPronunciation/motion.py": "6d1eab97d57efa6c43d89b6ce5c091be9a191b2dd7785d418299a8e2874be4e4",
+      "addon/globalPlugins/contextualPronunciation/motion.py": "79c6a9c2e3f0cc53065f8263326b5dd8d53413859ec4875a61e18ba2802a8d5f",
       "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
       "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
       "addon/globalPlugins/contextualPronunciation/pipeline.py": "e5f21e74ceb007c683c7ef34c0c987d7b7a5705d7d6a45ca7933ec7e7fc47e97",
       "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
-      "addon/globalPlugins/contextualPronunciation/rules.py": "f871f54a89e8d96ab19b2b9d01d7542bf8a1075b007b6ad9324236f849e42a2f",
+      "addon/globalPlugins/contextualPronunciation/rules.py": "55f13fbe191695a844ac99801a8e39ac2fe9abc87957acbebdd4907a9e8a6949",
       "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
       "addon/globalPlugins/contextualPronunciation/settings.py": "ddd080ac2c4f03eb50d6ca0a382bd8b7a2d59290762b270b7c2c238c95885175",
-      "addon/globalPlugins/contextualPronunciation/syntax.py": "ce72cc353303469d0b46d5ace8b79b1db17165cbcc842c5d6caab8c565a35874",
+      "addon/globalPlugins/contextualPronunciation/syntax.py": "9b1ffb43bc67442ee99054999c4e6c38b172f0731c78f9719ec78a68faab10dc",
       "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
-      "addon/globalPlugins/contextualPronunciation/verb_forms.py": "b681a970752feabf9f64df55f126d75c1b04ff24604d8fc403eaa881954092b1"
+      "addon/globalPlugins/contextualPronunciation/verb_forms.py": "292dc7b7e18faa677bd879083175b4de0a599e178bb3fe71b54697d727b155ea"
     },
     "ruleEngine": "addon/globalPlugins/contextualPronunciation/rules.py",
     "ruleData": "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json",
     "ruleDataSha256": "6d465d3514d918a55639fc1ca53b4f878ac598851821dad7e4413bdf2164a20a",
-    "ruleEngineSha256": "f871f54a89e8d96ab19b2b9d01d7542bf8a1075b007b6ad9324236f849e42a2f",
+    "ruleEngineSha256": "55f13fbe191695a844ac99801a8e39ac2fe9abc87957acbebdd4907a9e8a6949",
     "renderer": "addon/globalPlugins/contextualPronunciation/rules.py",
-    "rendererSha256": "f871f54a89e8d96ab19b2b9d01d7542bf8a1075b007b6ad9324236f849e42a2f",
+    "rendererSha256": "55f13fbe191695a844ac99801a8e39ac2fe9abc87957acbebdd4907a9e8a6949",
     "strict": "Default scenarios are strict; optional key preference is explicitly non-strict"
   },
   "method": "每组由 source、规则引擎实时生成的 transformed、以及将所有目标位置换成另一枚常用同音字的 common_anchor 组成；以同一次 Ting-Ting 离线渲染中的完整音素流严格相等为自动判据。",
@@ -50,6 +51,186 @@
   ],
   "transformations": [
     {
+      "id": "le4_happiness",
+      "source": "一点都不快乐",
+      "transformed": "一点都不快泐",
+      "commonAnchor": "一点都不快勒",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_period",
+      "source": "一点都不快乐。",
+      "transformed": "一点都不快泐。",
+      "commonAnchor": "一点都不快勒。",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_body",
+      "source": "身上长",
+      "transformed": "身上掌",
+      "commonAnchor": "身上涨",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_back",
+      "source": "背上长了。",
+      "transformed": "背上掌了。",
+      "commonAnchor": "背上涨了。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_chest",
+      "source": "胸前长了。",
+      "transformed": "胸前掌了。",
+      "commonAnchor": "胸前涨了。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor",
+      "source": "给我长脸了。",
+      "transformed": "给我掌脸了。",
+      "commonAnchor": "给我涨脸了。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_bare",
+      "source": "长脸了。",
+      "transformed": "掌脸了。",
+      "commonAnchor": "涨脸了。",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature",
+      "source": "长个子了。",
+      "transformed": "掌个子了。",
+      "commonAnchor": "涨个子了。",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_subject",
+      "source": "个子长了。",
+      "transformed": "个子掌了。",
+      "commonAnchor": "个子涨了。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_distributed",
+      "source": "各自长了。",
+      "transformed": "各自掌了。",
+      "commonAnchor": "各自涨了。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_length",
+      "source": "头发很长。",
+      "transformed": "头发很偿。",
+      "commonAnchor": "头发很常。",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_shape",
+      "source": "一张长脸。",
+      "transformed": "一张偿脸。",
+      "commonAnchor": "一张常脸。",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
       "id": "cheng2_zhuangsheng",
       "source": "装盛",
       "transformed": "装呈",
@@ -58,6 +239,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "cheng-zhuangsheng-default",
       "strict": true,
@@ -72,6 +254,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -86,6 +269,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -100,6 +284,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
       "strict": true,
@@ -114,6 +299,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
       "strict": true,
@@ -128,6 +314,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument-traditional",
       "strict": true,
@@ -142,6 +329,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
       "strict": true,
@@ -156,6 +344,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
       "strict": true,
@@ -170,6 +359,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -185,6 +375,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -199,6 +390,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -213,6 +405,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -227,6 +420,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -242,6 +436,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -257,6 +452,7 @@
         2,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -272,6 +468,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -286,6 +483,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -300,6 +498,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -314,6 +513,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -328,6 +528,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -342,6 +543,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -356,6 +558,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -370,6 +573,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -385,6 +589,7 @@
         2,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -400,6 +605,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -415,6 +621,7 @@
         6,
         8
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -430,6 +637,7 @@
         10,
         12
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -445,6 +653,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -459,6 +668,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
       "strict": true,
@@ -474,6 +684,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate-traditional",
       "strict": true,
@@ -488,6 +699,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
       "strict": true,
@@ -502,6 +714,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
       "strict": true,
@@ -516,6 +729,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
       "strict": true,
@@ -530,6 +744,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
       "strict": true,
@@ -544,6 +759,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -558,6 +774,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -572,6 +789,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "phrase",
       "strict": true,
@@ -586,6 +804,7 @@
       "targetCharIndices": [
         6
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
       "strict": true,
@@ -600,6 +819,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "phrase",
       "strict": true,
@@ -614,6 +834,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -628,6 +849,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -642,6 +864,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -656,6 +879,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -670,6 +894,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -684,6 +909,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
       "strict": true,
@@ -698,6 +924,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -712,6 +939,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -726,6 +954,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -740,6 +969,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -754,6 +984,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -768,6 +999,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -782,6 +1014,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -796,6 +1029,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -810,6 +1044,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -824,6 +1059,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -838,6 +1074,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -852,6 +1089,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
       "strict": true,
@@ -866,6 +1104,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -880,6 +1119,7 @@
       "targetCharIndices": [
         9
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -894,6 +1134,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -902,11 +1143,14 @@
     {
       "id": "ji4_coordinated_adjectives",
       "source": "系那条又细又长的红色丝带",
-      "transformed": "冀那条又细又长的红色丝带",
-      "commonAnchor": "季那条又细又长的红色丝带",
+      "transformed": "冀那条又细又偿的红色丝带",
+      "commonAnchor": "季那条又细又偿的红色丝带",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
+      ],
+      "additionalNormalizedOffsets": [
+        6
       ],
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -922,6 +1166,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "phrase",
       "strict": true,
@@ -936,6 +1181,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
       "strict": true,
@@ -950,6 +1196,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
       "strict": true,
@@ -964,6 +1211,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tán",
       "ruleKind": "phrase",
       "strict": true,
@@ -978,6 +1226,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "yuè",
       "ruleKind": "preference",
       "strict": false,
@@ -992,6 +1241,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
       "strict": true,
@@ -1006,6 +1256,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
       "strict": true,
@@ -1020,6 +1271,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
       "strict": true,
@@ -1034,6 +1286,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -1048,6 +1301,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -1062,6 +1316,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -1076,6 +1331,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
       "strict": true,
@@ -1090,6 +1346,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -1104,6 +1361,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -1118,6 +1376,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -1132,6 +1391,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "phrase",
       "strict": true,
@@ -1146,6 +1406,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
       "strict": true,
@@ -1160,6 +1421,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tán",
       "ruleKind": "phrase",
       "strict": true,
@@ -1168,11 +1430,14 @@
     {
       "id": "tan2_spring",
       "source": "这根弹簧很长",
-      "transformed": "这根谈簧很长",
-      "commonAnchor": "这根坛簧很长",
+      "transformed": "这根谈簧很偿",
+      "commonAnchor": "这根坛簧很偿",
       "targetCharIndex": 2,
       "targetCharIndices": [
         2
+      ],
+      "additionalNormalizedOffsets": [
+        5
       ],
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -1188,6 +1453,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
       "strict": true,
@@ -1202,6 +1468,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -1216,6 +1483,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
       "strict": true,
@@ -1230,6 +1498,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
       "strict": true,
@@ -1244,6 +1513,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -1258,6 +1528,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
       "strict": true,
@@ -1272,6 +1543,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
       "strict": true,
@@ -1286,6 +1558,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -1300,6 +1573,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -1314,6 +1588,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
       "strict": true,
@@ -1328,6 +1603,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
       "strict": true,
@@ -1342,6 +1618,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
       "strict": true,
@@ -1356,6 +1633,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
       "strict": true,
@@ -1370,6 +1648,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -1384,6 +1663,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -1398,6 +1678,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
       "strict": true,
@@ -1412,6 +1693,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
       "strict": true,
@@ -1426,6 +1708,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
       "strict": true,
@@ -1440,6 +1723,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
       "strict": true,
@@ -1454,6 +1738,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
       "strict": true,
@@ -1468,6 +1753,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
       "strict": true,
@@ -1482,6 +1768,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1496,6 +1783,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1510,6 +1798,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1524,6 +1813,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1538,6 +1828,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1552,6 +1843,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1566,6 +1858,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1580,6 +1873,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1594,6 +1888,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1608,6 +1903,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1622,6 +1918,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
       "strict": true,
@@ -1636,6 +1933,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -1650,6 +1948,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
       "strict": true,
@@ -1664,6 +1963,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
       "strict": true,
@@ -1678,6 +1978,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
       "strict": true,
@@ -1692,6 +1993,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
       "strict": true,
@@ -1706,6 +2008,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
       "strict": true,
@@ -1713,6 +2016,618 @@
     }
   ],
   "cases": [
+    {
+      "id": "le4_happiness_source",
+      "text": "一点都不快乐",
+      "role": "source",
+      "compareGroup": "final_le4_happiness",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_transformed",
+      "text": "一点都不快泐",
+      "role": "transformed",
+      "rendererCandidate": "泐",
+      "compareGroup": "final_le4_happiness",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_common_anchor",
+      "text": "一点都不快勒",
+      "role": "anchor",
+      "anchorCharacter": "勒",
+      "anchorConfidence": "common",
+      "compareGroup": "final_le4_happiness",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_period_source",
+      "text": "一点都不快乐。",
+      "role": "source",
+      "compareGroup": "final_le4_happiness_period",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_period_transformed",
+      "text": "一点都不快泐。",
+      "role": "transformed",
+      "rendererCandidate": "泐",
+      "compareGroup": "final_le4_happiness_period",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "le4_happiness_period_common_anchor",
+      "text": "一点都不快勒。",
+      "role": "anchor",
+      "anchorCharacter": "勒",
+      "anchorConfidence": "common",
+      "compareGroup": "final_le4_happiness_period",
+      "targetCharIndex": 5,
+      "targetCharIndices": [
+        5
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "lè",
+      "ruleKind": "le-happiness",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_body_source",
+      "text": "身上长",
+      "role": "source",
+      "compareGroup": "final_zhang3_body",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_body_transformed",
+      "text": "身上掌",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_body",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_body_common_anchor",
+      "text": "身上涨",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_body",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_back_source",
+      "text": "背上长了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_back",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_back_transformed",
+      "text": "背上掌了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_back",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_back_common_anchor",
+      "text": "背上涨了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_back",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_chest_source",
+      "text": "胸前长了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_chest",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_chest_transformed",
+      "text": "胸前掌了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_chest",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_chest_common_anchor",
+      "text": "胸前涨了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_chest",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_source",
+      "text": "给我长脸了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_honor",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_transformed",
+      "text": "给我掌脸了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_honor",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_common_anchor",
+      "text": "给我涨脸了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_honor",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_bare_source",
+      "text": "长脸了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_honor_bare",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_bare_transformed",
+      "text": "掌脸了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_honor_bare",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_honor_bare_common_anchor",
+      "text": "涨脸了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_honor_bare",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_source",
+      "text": "长个子了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_stature",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_transformed",
+      "text": "掌个子了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_stature",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_common_anchor",
+      "text": "涨个子了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_stature",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_subject_source",
+      "text": "个子长了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_stature_subject",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_subject_transformed",
+      "text": "个子掌了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_stature_subject",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_stature_subject_common_anchor",
+      "text": "个子涨了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_stature_subject",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_distributed_source",
+      "text": "各自长了。",
+      "role": "source",
+      "compareGroup": "final_zhang3_distributed",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_distributed_transformed",
+      "text": "各自掌了。",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_distributed",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "zhang3_distributed_common_anchor",
+      "text": "各自涨了。",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_distributed",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_length_source",
+      "text": "头发很长。",
+      "role": "source",
+      "compareGroup": "final_chang2_length",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_length_transformed",
+      "text": "头发很偿。",
+      "role": "transformed",
+      "rendererCandidate": "偿",
+      "compareGroup": "final_chang2_length",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_length_common_anchor",
+      "text": "头发很常。",
+      "role": "anchor",
+      "anchorCharacter": "常",
+      "anchorConfidence": "common",
+      "compareGroup": "final_chang2_length",
+      "targetCharIndex": 3,
+      "targetCharIndices": [
+        3
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_shape_source",
+      "text": "一张长脸。",
+      "role": "source",
+      "compareGroup": "final_chang2_shape",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_shape_transformed",
+      "text": "一张偿脸。",
+      "role": "transformed",
+      "rendererCandidate": "偿",
+      "compareGroup": "final_chang2_shape",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
+    {
+      "id": "chang2_shape_common_anchor",
+      "text": "一张常脸。",
+      "role": "anchor",
+      "anchorCharacter": "常",
+      "anchorConfidence": "common",
+      "compareGroup": "final_chang2_shape",
+      "targetCharIndex": 2,
+      "targetCharIndices": [
+        2
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "cháng",
+      "ruleKind": "syntax-length",
+      "strict": true,
+      "extended": false
+    },
     {
       "id": "cheng2_zhuangsheng_source",
       "text": "装盛",
@@ -1722,6 +2637,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "cheng-zhuangsheng-default",
@@ -1738,6 +2654,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "cheng-zhuangsheng-default",
@@ -1755,6 +2672,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "cheng-zhuangsheng-default",
@@ -1770,6 +2688,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1786,6 +2705,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1803,6 +2723,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1818,6 +2739,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1834,6 +2756,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1851,6 +2774,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -1866,6 +2790,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1882,6 +2807,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1899,6 +2825,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1914,6 +2841,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1930,6 +2858,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1947,6 +2876,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument",
@@ -1962,6 +2892,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument-traditional",
@@ -1978,6 +2909,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument-traditional",
@@ -1995,6 +2927,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tán",
       "ruleKind": "syntax-played-instrument-traditional",
@@ -2010,6 +2943,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2026,6 +2960,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2043,6 +2978,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2058,6 +2994,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2074,6 +3011,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2091,6 +3029,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "chong-reinstall-default",
@@ -2106,6 +3045,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2122,6 +3062,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2139,6 +3080,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2155,6 +3097,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2172,6 +3115,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2190,6 +3134,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2205,6 +3150,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2221,6 +3167,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2238,6 +3185,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2253,6 +3201,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2269,6 +3218,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2286,6 +3236,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2301,6 +3252,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2317,6 +3269,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2334,6 +3287,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2350,6 +3304,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2367,6 +3322,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2385,6 +3341,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2401,6 +3358,7 @@
         2,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2418,6 +3376,7 @@
         2,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2436,6 +3395,7 @@
         2,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2452,6 +3412,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2469,6 +3430,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2487,6 +3449,7 @@
         0,
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -2502,6 +3465,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2518,6 +3482,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2535,6 +3500,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2550,6 +3516,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2566,6 +3533,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2583,6 +3551,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2598,6 +3567,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2614,6 +3584,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2631,6 +3602,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2646,6 +3618,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2662,6 +3635,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2679,6 +3653,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2694,6 +3669,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2710,6 +3686,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2727,6 +3704,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2742,6 +3720,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2758,6 +3737,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2775,6 +3755,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2790,6 +3771,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2806,6 +3788,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2823,6 +3806,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2839,6 +3823,7 @@
         2,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2856,6 +3841,7 @@
         2,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2874,6 +3860,7 @@
         2,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2890,6 +3877,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2907,6 +3895,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2925,6 +3914,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2941,6 +3931,7 @@
         6,
         8
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2958,6 +3949,7 @@
         6,
         8
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2976,6 +3968,7 @@
         6,
         8
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -2992,6 +3985,7 @@
         10,
         12
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3009,6 +4003,7 @@
         10,
         12
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3027,6 +4022,7 @@
         10,
         12
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3043,6 +4039,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3060,6 +4057,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3078,6 +4076,7 @@
         3,
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3093,6 +4092,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3109,6 +4109,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3126,6 +4127,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate",
@@ -3142,6 +4144,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate-traditional",
@@ -3159,6 +4162,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate-traditional",
@@ -3177,6 +4181,7 @@
         3,
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhuàn",
       "ruleKind": "syntax-motion-predicate-traditional",
@@ -3192,6 +4197,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3208,6 +4214,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3225,6 +4232,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3240,6 +4248,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3256,6 +4265,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3273,6 +4283,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "biān",
       "ruleKind": "syntax-spatial-edge",
@@ -3288,6 +4299,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3304,6 +4316,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3321,6 +4334,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3336,6 +4350,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3352,6 +4367,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3369,6 +4385,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "hé",
       "ruleKind": "syntax-coordinated-predicates",
@@ -3384,6 +4401,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3400,6 +4418,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3417,6 +4436,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3432,6 +4452,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3448,6 +4469,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3465,6 +4487,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -3480,6 +4503,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -3496,6 +4520,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -3513,6 +4538,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -3528,6 +4554,7 @@
       "targetCharIndices": [
         6
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -3544,6 +4571,7 @@
       "targetCharIndices": [
         6
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -3561,6 +4589,7 @@
       "targetCharIndices": [
         6
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowOrdinal",
@@ -3576,6 +4605,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -3592,6 +4622,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -3609,6 +4640,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "phrase",
@@ -3624,6 +4656,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3640,6 +4673,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3657,6 +4691,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3672,6 +4707,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3688,6 +4724,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3705,6 +4742,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3720,6 +4758,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3736,6 +4775,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3753,6 +4793,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3768,6 +4809,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3784,6 +4826,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3801,6 +4844,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3816,6 +4860,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3832,6 +4877,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3849,6 +4895,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3864,6 +4911,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3880,6 +4928,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3897,6 +4946,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chóng",
       "ruleKind": "syntax-repeat-predicate",
@@ -3912,6 +4962,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3928,6 +4979,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3945,6 +4997,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3960,6 +5013,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3976,6 +5030,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -3993,6 +5048,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4008,6 +5064,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4024,6 +5081,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4041,6 +5099,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4056,6 +5115,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4072,6 +5132,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4089,6 +5150,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4104,6 +5166,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4120,6 +5183,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4137,6 +5201,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4152,6 +5217,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4168,6 +5234,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4185,6 +5252,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4200,6 +5268,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4216,6 +5285,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4233,6 +5303,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4248,6 +5319,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4264,6 +5336,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4281,6 +5354,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4296,6 +5370,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4312,6 +5387,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4329,6 +5405,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4344,6 +5421,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4360,6 +5438,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4377,6 +5456,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4392,6 +5472,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4408,6 +5489,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4425,6 +5507,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4440,6 +5523,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4456,6 +5540,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4473,6 +5558,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jiàng",
       "ruleKind": "syntax-general-nominal",
@@ -4488,6 +5574,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4504,6 +5591,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4521,6 +5609,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4536,6 +5625,7 @@
       "targetCharIndices": [
         9
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4552,6 +5642,7 @@
       "targetCharIndices": [
         9
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4569,6 +5660,7 @@
       "targetCharIndices": [
         9
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -4584,6 +5676,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4600,6 +5693,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4617,6 +5711,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -4632,6 +5727,9 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [
+        6
+      ],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -4640,13 +5738,16 @@
     },
     {
       "id": "ji4_coordinated_adjectives_transformed",
-      "text": "冀那条又细又长的红色丝带",
+      "text": "冀那条又细又偿的红色丝带",
       "role": "transformed",
       "rendererCandidate": "冀",
       "compareGroup": "final_ji4_coordinated_adjectives",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
+      ],
+      "additionalNormalizedOffsets": [
+        6
       ],
       "tier": "P0",
       "expectedReading": "jì",
@@ -4656,7 +5757,7 @@
     },
     {
       "id": "ji4_coordinated_adjectives_common_anchor",
-      "text": "季那条又细又长的红色丝带",
+      "text": "季那条又细又偿的红色丝带",
       "role": "anchor",
       "anchorCharacter": "季",
       "anchorConfidence": "common",
@@ -4664,6 +5765,9 @@
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
+      ],
+      "additionalNormalizedOffsets": [
+        6
       ],
       "tier": "P0",
       "expectedReading": "jì",
@@ -4680,6 +5784,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -4696,6 +5801,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -4713,6 +5819,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "phrase",
@@ -4728,6 +5835,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -4744,6 +5852,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -4761,6 +5870,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -4776,6 +5886,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -4792,6 +5903,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -4809,6 +5921,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -4824,6 +5937,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -4840,6 +5954,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -4857,6 +5972,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -4872,6 +5988,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -4888,6 +6005,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -4905,6 +6023,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "optional",
       "expectedReading": "yuè",
       "ruleKind": "preference",
@@ -4920,6 +6039,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -4936,6 +6056,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -4953,6 +6074,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowLabel",
@@ -4968,6 +6090,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -4984,6 +6107,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -5001,6 +6125,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowColumnCount",
@@ -5016,6 +6141,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -5032,6 +6158,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -5049,6 +6176,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "structural:servingQuantity",
@@ -5064,6 +6192,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5080,6 +6209,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5097,6 +6227,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5112,6 +6243,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5128,6 +6260,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5145,6 +6278,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5160,6 +6294,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5176,6 +6311,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5193,6 +6329,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5208,6 +6345,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5224,6 +6362,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5241,6 +6380,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "yuè",
       "ruleKind": "template:yue-music-prefix",
@@ -5256,6 +6396,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5272,6 +6413,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5289,6 +6431,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5304,6 +6447,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5320,6 +6464,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5337,6 +6482,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5352,6 +6498,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5368,6 +6515,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5385,6 +6533,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5400,6 +6549,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -5416,6 +6566,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -5433,6 +6584,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "phrase",
@@ -5448,6 +6600,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -5464,6 +6617,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -5481,6 +6635,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "bǐng",
       "ruleKind": "phrase",
@@ -5496,6 +6651,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -5512,6 +6668,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -5529,6 +6686,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -5544,6 +6702,9 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [
+        5
+      ],
       "tier": "P1",
       "expectedReading": "tán",
       "ruleKind": "phrase",
@@ -5552,13 +6713,16 @@
     },
     {
       "id": "tan2_spring_transformed",
-      "text": "这根谈簧很长",
+      "text": "这根谈簧很偿",
       "role": "transformed",
       "rendererCandidate": "谈",
       "compareGroup": "final_tan2_spring",
       "targetCharIndex": 2,
       "targetCharIndices": [
         2
+      ],
+      "additionalNormalizedOffsets": [
+        5
       ],
       "tier": "P1",
       "expectedReading": "tán",
@@ -5568,7 +6732,7 @@
     },
     {
       "id": "tan2_spring_common_anchor",
-      "text": "这根坛簧很长",
+      "text": "这根坛簧很偿",
       "role": "anchor",
       "anchorCharacter": "坛",
       "anchorConfidence": "common",
@@ -5576,6 +6740,9 @@
       "targetCharIndex": 2,
       "targetCharIndices": [
         2
+      ],
+      "additionalNormalizedOffsets": [
+        5
       ],
       "tier": "P1",
       "expectedReading": "tán",
@@ -5592,6 +6759,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5608,6 +6776,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5625,6 +6794,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "háng",
       "ruleKind": "structural:rowIndefiniteQuantity",
@@ -5640,6 +6810,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5656,6 +6827,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5673,6 +6845,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5688,6 +6861,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -5704,6 +6878,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -5721,6 +6896,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-object",
@@ -5736,6 +6912,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -5752,6 +6929,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -5769,6 +6947,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-object-before-verb",
@@ -5784,6 +6963,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -5800,6 +6980,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -5817,6 +6998,7 @@
       "targetCharIndices": [
         4
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -5832,6 +7014,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -5848,6 +7031,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -5865,6 +7049,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-verb",
@@ -5880,6 +7065,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -5896,6 +7082,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -5913,6 +7100,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-result-object",
@@ -5928,6 +7116,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5944,6 +7133,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5961,6 +7151,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5976,6 +7167,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -5992,6 +7184,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -6009,6 +7202,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -6024,6 +7218,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -6040,6 +7235,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -6057,6 +7253,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-object",
@@ -6072,6 +7269,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -6088,6 +7286,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -6105,6 +7304,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-result-quantity-object",
@@ -6120,6 +7320,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -6136,6 +7337,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -6153,6 +7355,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fasten-knot",
@@ -6168,6 +7371,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -6184,6 +7388,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -6201,6 +7406,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "template:ji-fastener-location",
@@ -6216,6 +7422,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6232,6 +7439,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6249,6 +7457,7 @@
       "targetCharIndices": [
         3
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6264,6 +7473,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6280,6 +7490,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6297,6 +7508,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6312,6 +7524,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6328,6 +7541,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6345,6 +7559,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measure-object",
@@ -6360,6 +7575,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -6376,6 +7592,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -6393,6 +7610,7 @@
       "targetCharIndices": [
         5
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-tool-method",
@@ -6408,6 +7626,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -6424,6 +7643,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -6441,6 +7661,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-object-before-verb",
@@ -6456,6 +7677,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -6472,6 +7694,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -6489,6 +7712,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-owned-measurement",
@@ -6504,6 +7728,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -6520,6 +7745,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -6537,6 +7763,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-physical-quantity",
@@ -6552,6 +7779,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -6568,6 +7796,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -6585,6 +7814,7 @@
       "targetCharIndices": [
         2
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "template:liang-measuring-instrument",
@@ -6600,6 +7830,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6616,6 +7847,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6633,6 +7865,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6648,6 +7881,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6664,6 +7898,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6681,6 +7916,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6696,6 +7932,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6712,6 +7949,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6729,6 +7967,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6744,6 +7983,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6760,6 +8000,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6777,6 +8018,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6792,6 +8034,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6808,6 +8051,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6825,6 +8069,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6840,6 +8085,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6856,6 +8102,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6873,6 +8120,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6888,6 +8136,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6904,6 +8153,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6921,6 +8171,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6936,6 +8187,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6952,6 +8204,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6969,6 +8222,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -6984,6 +8238,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7000,6 +8255,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7017,6 +8273,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7032,6 +8289,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7048,6 +8306,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7065,6 +8324,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7080,6 +8340,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7096,6 +8357,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7113,6 +8375,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "chéng",
       "ruleKind": "syntax-serving-object",
@@ -7128,6 +8391,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7144,6 +8408,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7161,6 +8426,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7176,6 +8442,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7192,6 +8459,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7209,6 +8477,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "liáng",
       "ruleKind": "syntax-measurement-object",
@@ -7224,6 +8493,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -7240,6 +8510,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -7257,6 +8528,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "jì",
       "ruleKind": "syntax-fastening-object",
@@ -7272,6 +8544,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7288,6 +8561,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7305,6 +8579,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7320,6 +8595,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7336,6 +8612,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7353,6 +8630,7 @@
       "targetCharIndices": [
         1
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "diào",
       "ruleKind": "crossing-reading-lock",
@@ -7368,6 +8646,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
@@ -7384,6 +8663,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",
@@ -7401,6 +8681,7 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "tiáo",
       "ruleKind": "lexical",

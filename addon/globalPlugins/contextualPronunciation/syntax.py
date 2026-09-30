@@ -20,7 +20,10 @@ from types import MappingProxyType
 from .constituents import ConstituentParser
 from .containment import complement_reading
 from .edges import DIRECTIONS, coordination_pair, edge_reading
-from .motion import contextual_form, motion_reading
+from .growth import contextual_lexeme as growth_lexeme
+from .growth import growth_reading
+from .motion import contextual_form as motion_form
+from .motion import motion_reading
 from .nominals import general_role
 from .predicates import _MODALS
 from .verb_forms import reiterated_form
@@ -39,6 +42,7 @@ TRANSFER_THEME, INDEFINITE_QUANTITY = 1 << 37, 1 << 38
 ACTION_MEASURE = 1 << 39
 PLAYED_INSTRUMENT = 1 << 40
 ACTION_NOMINAL = 1 << 41
+BODY_SITE, GROWER, GROWTH_PRODUCT, LENGTH_BEARER = (1 << n for n in range(42, 46))
 MAX_CHARS = 512
 MAX_TOKENS = 256
 MAX_DEPTH = 16
@@ -87,6 +91,8 @@ _HEAD_CLASSES = {
 	"motionPredicate": VERB,
 	"transferPredicate": VERB,
 	"playedInstrument": PLAYED_INSTRUMENT,
+	"growthPredicate": VERB,
+	"lengthPredicate": ADJ,
 }
 _FUNCTIONS = {
 	"的": DE,
@@ -197,9 +203,9 @@ class ArgumentFrame:
 class SyntaxContext:
 	"""Ephemeral per-speech-item prefilter; never retained by the parser."""
 
-	__slots__ = ("_head_classes", "_text", "_head_tails", "remaining_work", "motion_readings")
+	__slots__ = ("_head_classes", "_text", "_head_tails", "remaining_work", "motion_readings", "details")
 
-	def __init__(self, text, lexicon):
+	def __init__(self, text, lexicon, *, details=True):
 		# Prefix, coordination and motion frames often resolve without a typed
 		# object. Build this necessary-condition filter only if a frame uses
 		# it. The context and its text remain local to this speech item.
@@ -208,6 +214,7 @@ class SyntaxContext:
 		self._head_tails = lexicon.head_tails
 		self.remaining_work = MAX_ITEM_WORK
 		self.motion_readings = {}
+		self.details = details
 
 	@property
 	def head_classes(self):
@@ -247,8 +254,11 @@ class SyntaxLexicon:
 		self.head_classes = MappingProxyType(dict(_HEAD_CLASSES if head_classes is None else head_classes))
 		lengths = {}
 		for word in words:
-			lengths.setdefault(word[0], set()).add(len(word))
-		self.lengths = MappingProxyType({ch: tuple(sorted(values, reverse=True)) for ch, values in lengths.items()})
+			if len(word) > 1:
+				lengths.setdefault(word[:2], set()).add(len(word))
+		self.lengths = MappingProxyType(
+			{prefix: tuple(sorted(values, reverse=True)) for prefix, values in lengths.items()}
+		)
 		self.head_tails = {
 			name: frozenset(
 				word[-1]
@@ -271,12 +281,15 @@ class SyntaxLexicon:
 			word = text[start:end]
 			if (features := self.words.get(word)) is not None:
 				return word, features
-		for length in self.lengths.get(text[start], ()):
+		# The first two characters exclude irrelevant lengths from other
+		# compounds sharing a common initial. This static source-word index
+		# changes lookup work, never the longest-word decision or its bounds.
+		for length in self.lengths.get(text[start : min(end, start + 2)], ()):
 			if start + length <= end:
 				word = text[start : start + length]
 				if (features := self.words.get(word)) is not None:
 					return word, features
-		return text[start], UNKNOWN
+		return text[start], self.words.get(text[start], UNKNOWN)
 
 	def blocks_repeat(self, text, index, predicate_end, compositional=False):
 		left, right = text[index - 1 : index] if index else "", text[index + 1 : index + 2]
@@ -382,7 +395,9 @@ class _NounParser(ConstituentParser):
 
 
 class ArgumentParser:
-	contextual_form = staticmethod(contextual_form)
+	@staticmethod
+	def contextual_form(word, offset=0):
+		return motion_form(word) or growth_lexeme(word, offset)
 
 	def __init__(self, lexicon, frames):
 		self.lexicon = lexicon
@@ -400,13 +415,14 @@ class ArgumentParser:
 				**{ch: tuple(p for p in frame.prefixes if p.startswith(ch)) + bare for ch in initials},
 			}
 
-	def context(self, text):
-		return SyntaxContext(text, self.lexicon)
+	def context(self, text, *, details=True):
+		return SyntaxContext(text, self.lexicon, details=details)
 
 	def contextual_lexeme(self, word, offset=0):
 		"""A bound nominal head may overlap a dictionary future auxiliary."""
 		return (
-			offset == 0
+			growth_lexeme(word, offset)
+			or offset == 0
 			and word in {"转给", "轉給"}
 			or word[offset : offset + 1] in {"边", "邊"}
 			and bool(self.lexicon.words.get(word, 0) & EDGE_NOUN)
@@ -576,6 +592,8 @@ class ArgumentParser:
 			# Competing meanings share one parse; disabling one never promotes
 			# the losing meaning. No second chart for the same verb group.
 			return motion_reading(self, text, index, frames, context, _GRAMMAR)
+		if frames and frames[0].object_class in {"growthPredicate", "lengthPredicate"}:
+			return growth_reading(self, text, index, frames, context, _GRAMMAR)
 		if (
 			_verb_end is None
 			and frames
@@ -843,6 +861,10 @@ def _load_data():
 			"actionMeasure": ACTION_MEASURE,
 			"playedInstrument": PLAYED_INSTRUMENT,
 			"actionNominal": ACTION_NOMINAL,
+			"bodySite": BODY_SITE,
+			"grower": GROWER,
+			"growthProduct": GROWTH_PRODUCT,
+			"lengthBearer": LENGTH_BEARER,
 		}.get(name)
 		if feature is None or not row.get("source") or not 1 <= len(row["words"]) <= 128:
 			raise ValueError("Invalid reviewed noun class")

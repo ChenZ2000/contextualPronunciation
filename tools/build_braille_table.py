@@ -31,6 +31,8 @@ DOTS = {
 	"bing3": "12-16-3",
 	"tan2": "2345-1236",
 	"yue4": "23456",
+	# Independently reviewed against pinned zhcn-cbs.ctb 快乐 / 伯乐.
+	"le4": "123-26-23",
 	"zhao1": "34-235-1",
 	"zhang3": "34-236-3",
 	"zhao2": "34-235-2",

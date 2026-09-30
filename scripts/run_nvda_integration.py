@@ -43,6 +43,25 @@ sentence_spec.loader.exec_module(sentences)
 
 
 class NativeSpeechChainTests(unittest.TestCase):
+	def test_reported_readings_reach_native_speech_after_symbols(self):
+		for text, rendering, target in (
+			("一点都不快乐", "泐", "乐"),
+			("一点都不快乐。", "泐", "乐"),
+			("背上长了。", "掌", "长"),
+			("胸前长了。", "掌", "长"),
+			("给我长脸了。", "掌", "长"),
+			("长个子了。", "掌", "长"),
+			("各自长了。", "掌", "长"),
+			("头发很长。", "偿", "长"),
+			("一脸懵逼。", "擝", "懵"),
+		):
+			for level in (cp.SymbolLevel.NONE, cp.SymbolLevel.MOST, cp.SymbolLevel.ALL):
+				with self.subTest(text=text, level=level):
+					output = self.capture([text], level)
+					spoken = "".join(item for item in output if isinstance(item, str))
+					self.assertIn(rendering, spoken)
+					self.assertNotIn(target, spoken)
+
 	def test_multiline_editors_intercept_enter_before_dialog_ok(self):
 		import ctypes
 

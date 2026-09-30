@@ -83,6 +83,7 @@ class PhraseLexicon:
 		if any(len(ch) != 1 or not ch.isalpha() for ch in self.renderings.values()):
 			raise ValueError("Invalid homophone rendering")
 		self.reserved_targets = frozenset(data["reservedTargets"])
+		self.locked_defaults = MappingProxyType(dict(data.get("lockedDefaults", {})))
 		# Common neutral-tone characters (的/了/着 etc.) need grammatical
 		# disambiguation. A lexical entry such as 面的 cannot establish whether
 		# the same substring in 盛面的时候 is that noun or a particle boundary.
@@ -92,6 +93,11 @@ class PhraseLexicon:
 			for ch in self.triggers
 		):
 			raise ValueError("Invalid speech target policy")
+		if any(
+			ch not in self.triggers or self.defaults[ch] != reading or reading not in self.renderings
+			for ch, reading in self.locked_defaults.items()
+		):
+			raise ValueError("Invalid locked dictionary default")
 		# Keep the COMPLETE dictionary for segmentation, including blockers.
 		# Speech does not need to allocate annotations for words which cannot
 		# change speech. This index contains no document text and is built once.
@@ -100,7 +106,7 @@ class PhraseLexicon:
 			for word, reading in words.items()
 			if reading
 			and any(
-				ch in self.triggers and p != "?" and p != self.defaults[ch]
+				ch in self.triggers and p != "?" and (p != self.defaults[ch] or ch in self.locked_defaults)
 				for ch, p in zip(word, reading.split(), strict=True)
 			)
 		)
@@ -127,7 +133,7 @@ class PhraseLexicon:
 		self._default_words = frozenset(default_words)
 
 	def _crossing_default_offsets(self, text, start, end, readings):
-		"""Lock only accepted, renderable defaults with an actual crossing rival.
+		"""Lock accepted, renderable defaults by reviewed policy or crossing rival.
 
 		A rival contributes evidence of a possible engine resegmentation, never
 		its pronunciation. Ambiguous/blocked winning spans never reach here.
@@ -138,6 +144,9 @@ class PhraseLexicon:
 			index = start + offset
 			ch = text[index]
 			if ch not in self.triggers or pinyin != self.defaults[ch] or pinyin not in self.renderings:
+				continue
+			if ch in self.locked_defaults:
+				result.append(offset)
 				continue
 			left = text[index - 1] if index else None
 			right = text[index + 1] if index + 1 < len(text) else None
@@ -183,7 +192,7 @@ class PhraseLexicon:
 				position += -1 if reverse else 1
 		return result
 
-	def annotate(self, text: str, *, speech_only: bool = False) -> tuple[ReadingSpan, ...]:
+	def annotate(self, text: str, *, speech_only: bool = False, excluded_words=frozenset()) -> tuple[ReadingSpan, ...]:
 		"""Return agreed lexical readings without mutating speech or braille text.
 
 		Agreement is a conservative heuristic, NOT proof of linguistic certainty.
@@ -216,6 +225,8 @@ class PhraseLexicon:
 		result = []
 		for start, end in sorted(agreed | adjudicated):
 			word = text[start:end]
+			if word in excluded_words:
+				continue
 			reading = self._words[word]
 			if not reading or (speech_only and word not in self._speech_words and word not in self._default_words):
 				continue
@@ -225,7 +236,10 @@ class PhraseLexicon:
 				continue
 			source = ";".join(self._sources[word]) if word in self._sources else "CC-CEDICT + Unihan"
 			source += " [unigram-margin]" if (start, end) in adjudicated else ""
-			source += " [crossing-reading-lock]" if forced else ""
+			source += " [reading-lock]" if any(text[start + i] in self.locked_defaults for i in forced) else ""
+			source += (
+				" [crossing-reading-lock]" if any(text[start + i] not in self.locked_defaults for i in forced) else ""
+			)
 			result.append(ReadingSpan(start, end, word, readings, source, forced))
 		return tuple(result)
 

@@ -19,8 +19,8 @@
     "charactersWithPhraseEvidence": 2879
   },
   "readingStatuses": {
-    "annotation_evidence_only": 2891,
-    "curated_contexts": 21,
+    "annotation_evidence_only": 2889,
+    "curated_contexts": 23,
     "lexicon_candidates": 654,
     "needs_context_evidence": 16004
   },
@@ -26463,10 +26463,12 @@
             "主题乐园",
             "乐不可支"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "le-happiness"
+          ],
           "homophoneCandidate": "泐",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         },
         "yue4": {
           "headwords": 88,
@@ -94006,10 +94008,12 @@
             "享樂",
             "享樂主義"
           ],
-          "curatedRuleIds": [],
+          "curatedRuleIds": [
+            "le-happiness-traditional"
+          ],
           "homophoneCandidate": "泐",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         },
         "liao2": {
           "headwords": 0,

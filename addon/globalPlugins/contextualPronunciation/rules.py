@@ -168,6 +168,21 @@ class CompiledRules:
 		self._templates = templates
 		self.syntax = syntax
 		self._syntax_blockers = syntax_blockers
+		# Productive lexical stems must be selected by syntax anyway. Omit their
+		# unused speech spans while retaining full offline lexical annotations.
+		self._lexical_exclusions = (
+			frozenset(
+				word
+				for word in lexicon._speech_words
+				if syntax.contextual_form(word)
+				and all(
+					ch in "长長转轉" or ch not in lexicon.triggers or p == lexicon.defaults[ch]
+					for ch, p in zip(word, lexicon._words[word].split(), strict=True)
+				)
+			)
+			if lexicon is not None and syntax is not None
+			else frozenset()
+		)
 		self.triggers = triggers | lexicon.triggers if lexicon is not None else triggers
 		if templates is not None:
 			self.triggers |= templates.triggers
@@ -387,7 +402,9 @@ class CompiledRules:
 		syntax_context = None
 		lexicon = self._lexicon
 		if lexicon is not None and not lexicon.analysis_triggers.isdisjoint(text):
-			for span in lexicon.annotate(text, speech_only=speech_only):
+			for span in lexicon.annotate(
+				text, speech_only=speech_only, excluded_words=self._lexical_exclusions if speech_only else frozenset()
+			):
 				for offset, (character, reading) in enumerate(zip(span.text, span.readings, strict=True)):
 					if (
 						reading is not None
@@ -399,7 +416,7 @@ class CompiledRules:
 						)
 						if speech_only and not speech:
 							continue
-						if self.syntax is not None and self.syntax.contextual_form(span.text):
+						if self.syntax is not None and self.syntax.contextual_form(span.text, offset):
 							decisions[span.start + offset] = ReadingDecision(
 								None, protect=True, speech=False, rule_id=span.source + ":" + span.text, contextual=True
 							)
@@ -443,10 +460,12 @@ class CompiledRules:
 				if blockers is not None and (
 					blockers._phrase_decision(text, index, target, strict=False) is not None
 					or blockers._structural_decision(text, index, target) is not None
+					or blockers.templates is not None
+					and blockers.templates.decision(text, index) is not None
 				):
 					continue
 				if syntax_context is None:
-					syntax_context = self.syntax.context(text)
+					syntax_context = self.syntax.context(text, details=not speech_only)
 				# Group members already share one argument analysis. Resolution
 				# needs only its reading; avoid cloning a full dependency record
 				# for each repeated stem. The decision retains THIS original index.
@@ -794,6 +813,10 @@ def load_default_rules(
 	# Reviewed annotation-only readings need not have a generated homophone.
 	templates = load_templates(database.allowed_readings | frozenset(data["readings"]), custom_templates)
 	disabled = frozenset(value.strip() for value in disabled_rules.replace(",", "\n").splitlines() if value.strip())
+	all_templates = tuple(entry for entries in templates.buckets.values() for entry in entries if not entry.user)
+	templates = CompiledTemplates(
+		entry for entries in templates.buckets.values() for entry in entries if entry.id not in disabled
+	)
 	syntax = load_argument_parser(database.allowed_readings, disabled)
 	all_syntax = load_argument_parser(database.allowed_readings)
 	# Turning off broad matching must not disable reviewed/custom templates.
@@ -814,10 +837,16 @@ def load_default_rules(
 					}
 					for target, definition in data["characters"].items()
 				},
-			}
+			},
+			templates=CompiledTemplates(entry for entry in all_templates if entry.id in disabled),
 		)
 	if custom_entries or disabled_rules:
-		apply_user_overrides(data, custom_entries, disabled_rules, extra_disabled_ids={f.id for f in all_syntax.frames})
+		apply_user_overrides(
+			data,
+			custom_entries,
+			disabled_rules,
+			extra_disabled_ids={f.id for f in all_syntax.frames} | {t.id for t in all_templates},
+		)
 	return CompiledRules.from_mapping(
 		data, lexicon=lexicon, templates=templates, syntax=syntax, syntax_blockers=syntax_blockers
 	)

@@ -38,6 +38,10 @@ MAX_WORD_LENGTH = 32
 # The hand-reviewed rule families retain exclusive speech authority. Broad
 # imports must not revive disabled rules or override existing negative cases.
 RESERVED = "行重盛屏弹钥"
+# Inventory defaults are not engine defaults. Lock independently resolved
+# lexical 长/長 zhang3 (growth, elders and chiefs) as well as chang2.
+# Ambiguous entries remain blockers; productive predicates use shared syntax.
+LOCKED_DEFAULTS = {"长": "zhang3", "長": "zhang3"}
 
 
 def read_unihan(lines) -> tuple[dict, dict, set]:
@@ -215,6 +219,7 @@ def compile_lexicon(cedict_lines, unihan_lines, hyzd_lines=()) -> tuple[dict, di
 		},
 		"reservedTargets": RESERVED,
 		"speechTargets": speech_targets,
+		"lockedDefaults": LOCKED_DEFAULTS,
 		"allowedReadings": sorted(set().union(*character_readings.values())),
 		"defaults": {ch: defaults[ch] for ch in sorted(targets)},
 		"renderings": renderings,

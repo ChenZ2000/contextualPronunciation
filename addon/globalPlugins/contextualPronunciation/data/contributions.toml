@@ -29,6 +29,20 @@ liangNeutralPrefix = ["商", "打", "掂", "思"]
 xiUnresolvedForm = ["泊", "留", "马", "馬", "狱", "獄", "带", "帶"]
 
 [[rules]]
+id = "le-happiness"
+pattern = "快[乐:lè]"
+source = "CC-CEDICT 快乐 kuai4 le4; MOE 快樂 https://dict.revised.moe.edu.tw/dictView.jsp?ID=78094 ; lock the default reading before voice punctuation-dependent segmentation."
+positive = ["快乐", "一点都不快乐。", "一点都不快乐", "快乐！", "音乐观众很快乐"]
+negative = ["音乐", "乐曲", "乐谱", "快，乐曲开始了"]
+
+[[rules]]
+id = "le-happiness-traditional"
+pattern = "快[樂:lè]"
+source = "Same source-authored CC-CEDICT 快樂 spelling and MOE 快樂 le4."
+positive = ["快樂", "一點都不快樂。"]
+negative = ["音樂", "樂曲", "快，樂曲開始了"]
+
+[[rules]]
 id = "yue-music-prefix"
 pattern = "{musicPrefix}[乐:yuè]"
 source = "CC-CEDICT music headwords; 仙乐 also MOE https://dict.concised.moe.edu.tw/dictView.jsp?ID=27272&la=0&powerMode=0"

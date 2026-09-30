@@ -59,6 +59,7 @@ jobs:
             artifacts/colloquial-meng-performance.json
             artifacts/grammar-evaluation.json
             artifacts/grammar-performance.json
+            artifacts/growth-performance.json
             artifacts/hosted-performance-comparison.json
             artifacts/baseline-performance.json
             artifacts/baseline-grammar-performance.json

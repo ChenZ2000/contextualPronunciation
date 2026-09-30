@@ -4,6 +4,62 @@
 schemaVersion = 1
 
 [[frames]]
+id = "syntax-growth"
+target = "长"
+reading = "zhang3"
+object = "growthPredicate"
+prefixes = [""]
+source = "MOE 長 zhang3 生長/發育 https://dict.revised.moe.edu.tw/dictView.jsp?ID=7910 ; pinned CC-CEDICT 长大/长出/长得/长脸 zhang3 lian3 (honor), 长个子 stature; body-site location, growing subject and actual product head attach locally."
+positive = ["身上长", "背上长了", "胸前长了", "我的脸上又长了两个痘痘", "孩子长高了", "树长出新叶", "他长得很高", "给我长脸了", "长脸了", "长个子了", "个子长了", "各自长了"]
+negative = ["头发很长", "这条绳子长三米", "长江大桥", "身上长裙很好看", "痘痘的照片长三米", "背上，长"]
+
+[[frames]]
+id = "syntax-length"
+target = "长"
+reading = "chang2"
+object = "lengthPredicate"
+prefixes = [""]
+source = "MOE 長 chang2 length/duration https://dict.mini.moe.edu.tw/SearchIndex/word_detail?wordID=D0000995 ; degree + adjective, AA 的/地 and measured extent; competing growth remains independent."
+positive = ["头发很长", "这条绳子长三米", "长长的路", "时间太长了", "一张长脸", "长脸型"]
+negative = ["身上长", "背上长了", "孩子长高了", "长", "长呀长", "头发长了"]
+
+[[frames]]
+id = "syntax-growth-traditional"
+target = "長"
+reading = "zhang3"
+object = "growthPredicate"
+prefixes = [""]
+source = "Same MOE 長 and source-authored traditional CC-CEDICT noun forms; original offsets preserved."
+positive = ["身上長", "背上長了", "胸前長了", "孩子長高了", "樹長出新葉"]
+negative = ["頭髮很長", "這條繩子長三米", "長江大橋", "身上長裙很好看"]
+
+[[frames]]
+id = "syntax-length-traditional"
+target = "長"
+reading = "chang2"
+object = "lengthPredicate"
+prefixes = [""]
+source = "Same MOE 長 length sense and independent degree/measurement grammar."
+positive = ["頭髮很長", "這條繩子長三米", "長長的路", "時間太長了"]
+negative = ["身上長", "背上長了", "孩子長高了", "長", "頭髮長了"]
+
+[nounHeads.bodySite]
+words = ["身", "身体", "身體", "背", "后背", "後背", "胸", "胸口", "胸部", "脸", "臉", "头", "頭", "头顶", "頭頂", "头皮", "頭皮", "额头", "額頭", "下巴", "脖子", "颈部", "頸部", "肩", "肩膀", "手", "手臂", "手心", "手背", "胳膊", "腋窝", "腋窩", "腋下", "腿", "大腿", "小腿", "脚", "腳", "脚底", "腳底", "脚背", "腳背", "肚子", "腹部", "腰", "臀部", "屁股", "皮肤", "皮膚", "鼻子", "耳朵", "嘴", "嘴角", "牙龈", "牙齦", "眼皮", "眼睛", "伤口", "傷口", "舌头", "舌頭"]
+source = "Reviewed physical body-part senses from pinned CC-CEDICT/KFCD; MOE 長 growth sense. The localizer must attach to this NP head; a body-part modifier alone is insufficient."
+
+[nounHeads.grower]
+words = ["孩子", "小孩", "儿童", "兒童", "宝宝", "寶寶", "婴儿", "嬰兒", "男孩", "女孩", "儿子", "兒子", "女儿", "女兒", "人", "树", "樹", "小树", "小樹", "大树", "大樹", "树苗", "樹苗", "幼苗", "苗", "植物", "花", "草", "青草", "小草", "竹子", "玉米", "小麦", "小麥", "水稻", "豆子", "土豆", "红薯", "紅薯", "蘑菇", "细菌", "細菌", "动物", "動物", "小狗", "小猫", "小貓", "兔子"]
+source = "Reviewed living/growing nominal senses from pinned CC-CEDICT/KFCD. Requires an actual subject head; personal pronouns additionally require an explicit product, complement or aspect."
+
+[nounHeads.growthProduct]
+words = ["个子", "個子", "个儿", "個兒", "毛", "毛发", "毛髮", "头发", "頭髮", "胡子", "鬍子", "眉毛", "睫毛", "汗毛", "指甲", "牙", "牙齿", "牙齒", "肉", "肌肉", "痘", "痘痘", "青春痘", "疙瘩", "包", "水泡", "水疱", "肿块", "腫塊", "瘤", "肿瘤", "腫瘤", "斑", "斑点", "斑點", "红斑", "紅斑", "雀斑", "茧", "繭", "疹子", "湿疹", "濕疹", "蘑菇", "霉", "霉菌", "青苔", "苔藓", "苔蘚", "草", "青草", "芽", "新芽", "叶", "葉", "叶子", "葉子", "新叶", "新葉", "根", "树根", "樹根", "枝", "枝条", "枝條", "花", "果实", "果實"]
+source = "Reviewed anatomical growth, lesions and plant-product noun senses from pinned CC-CEDICT/KFCD. Polysemous 包/肉/花 remain candidates; only an attached growth object selects this class."
+
+[nounHeads.lengthBearer]
+words = ["头发", "頭髮", "毛发", "毛髮", "胡子", "鬍子", "指甲", "绳", "繩", "绳子", "繩子", "丝带", "絲帶", "缎带", "緞帶", "线", "線", "电线", "電線", "裤子", "褲子", "裙子", "袖子", "衣服", "路", "道路", "公路", "铁路", "鐵路", "桥", "橋", "桥梁", "橋梁", "桌子", "木板", "棍子", "竹竿", "队伍", "隊伍", "队列", "隊列", "文章", "句子", "照片", "名单", "名單", "时间", "時間", "时长", "時長", "假期", "暑假", "寿命", "壽命", "距离", "距離"]
+source = "Reviewed spatial/duration bearer senses from pinned CC-CEDICT/KFCD. Hair/ nails also have growth-product senses; aspect alone does not disambiguate 头发长了."
+
+[[frames]]
 id = "syntax-motion-predicate"
 target = "转"
 reading = "zhuan4"

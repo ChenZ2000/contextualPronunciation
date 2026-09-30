@@ -371,3 +371,10 @@ EVENT_CASES = (
 	),
 )
 CASES = tuple(dict.fromkeys((*CASES, *EVENT_CASES)))
+
+# Independent new constructions also run through the standard evaluator.
+from tests.growth_cases import GROWTH, LENGTH, PRESERVED  # noqa: E402
+
+CASES += tuple((text, "长", "zhang3") for text in GROWTH)
+CASES += tuple((text, "长", "chang2") for text in LENGTH)
+CASES += tuple((text, "長" if "長" in text else "长", None) for text in PRESERVED)

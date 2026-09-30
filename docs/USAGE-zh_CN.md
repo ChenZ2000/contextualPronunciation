@@ -2,13 +2,19 @@
 
 [项目主页](README-zh_CN.md) · [English](README-en.md) · 简体中文
 
-本指南适用于上下文发音规范化 0.8.0；测试包可能早于公开 Release。安装包从 [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest) 下载。安装 `.nvda-addon` 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。
+本指南适用于上下文发音规范化 0.8.1；测试包可能早于公开 Release。安装包从 [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest) 下载。安装 `.nvda-addon` 后按提示重启 NVDA。支持的稳定版为 NVDA 2026.2，项目 CI 同时验证 2026.3beta2。
 
 ## 开始朗读
 
 继续使用平时的普通话声音，正常阅读即可。默认规则会自动处理已支持的语境，例如“重吸收”的重复动作、“也给我盛了一碗”的装盛动作，以及“天兵和天将一起去吃饭”的并列名词。逐字和拼读模式保留原字。
 
 处理过程在本机完成，插件不上传或记录你正在阅读的文本。
+
+0.8.1 明确处理“快乐／快樂”的 lè，不受是否跟随句号影响。“身上长、
+背上长了、胸前长了、长个子了、各自长了”和表示争光的“给我长脸了／
+长脸了”读 zhǎng；“头发很长、绳子长三米、一张长脸”等长度与脸型
+描述读 cháng。“头发长长了”依次读 zhǎng、cháng；缺少足够语境的
+“头发长了”仍保留声库自己的处理。
 
 ## 口语“懵”：必须有上下文依据
 

@@ -33,6 +33,18 @@ class Scenario:
 
 
 SCENARIOS = (
+	Scenario("le4_happiness", "P0", "乐", "一点都不快乐", "勒", "lè", "le-happiness"),
+	Scenario("le4_happiness_period", "P0", "乐", "一点都不快乐。", "勒", "lè", "le-happiness"),
+	Scenario("zhang3_body", "P0", "长", "身上长", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_back", "P0", "长", "背上长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_chest", "P0", "长", "胸前长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_honor", "P0", "长", "给我长脸了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_honor_bare", "P0", "长", "长脸了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_stature", "P0", "长", "长个子了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_stature_subject", "P0", "长", "个子长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_distributed", "P0", "长", "各自长了。", "涨", "zhǎng", "syntax-growth"),
+	Scenario("chang2_length", "P0", "长", "头发很长。", "常", "cháng", "syntax-length"),
+	Scenario("chang2_shape", "P0", "长", "一张长脸。", "常", "cháng", "syntax-length"),
 	Scenario("cheng2_zhuangsheng", "P0", "盛", "装盛", "乘", "chéng", "cheng-zhuangsheng-default"),
 	Scenario("cheng2_action_nominal", "P0", "盛", "盛装的动作", "乘", "chéng", "syntax-serving-object"),
 	Scenario("cheng2_container_goal", "P0", "盛", "盛装在小明买的碗里", "乘", "chéng", "syntax-serving-object"),
@@ -247,10 +259,14 @@ def build_fixture() -> dict[str, object]:
 	transformations: list[dict[str, object]] = []
 	for scenario in SCENARIOS:
 		transformed = (broader if scenario.extended else rules).transform(scenario.source, strict=scenario.strict)
-		indices = _changed_indices(scenario.source, transformed)
+		changed = _changed_indices(scenario.source, transformed)
+		indices = [i for i in changed if scenario.source[i] == scenario.character]
+		if not indices:
+			raise ValueError(f"Missing changed {scenario.character!r} target: {scenario.source!r}")
 		index = indices[0]
-		if any(scenario.source[i] != scenario.character for i in indices):
-			raise ValueError(f"Changed character is not {scenario.character!r}: {scenario.source!r}")
+		# Other independently normalized syllables remain IDENTICAL in the
+		# transformed and anchor carriers. Compare only this scenario's target.
+		additional = [i for i in changed if i not in indices]
 		anchor_chars = list(transformed)
 		for i in indices:
 			anchor_chars[i] = scenario.alternate_anchor
@@ -260,6 +276,7 @@ def build_fixture() -> dict[str, object]:
 			"compareGroup": group,
 			"targetCharIndex": index,
 			"targetCharIndices": indices,
+			"additionalNormalizedOffsets": additional,
 			"tier": scenario.tier,
 			"expectedReading": scenario.expected_reading,
 			"ruleKind": scenario.rule_kind,
@@ -299,6 +316,7 @@ def build_fixture() -> dict[str, object]:
 				"commonAnchor": anchor_text,
 				"targetCharIndex": index,
 				"targetCharIndices": indices,
+				"additionalNormalizedOffsets": additional,
 				"expectedReading": scenario.expected_reading,
 				"ruleKind": scenario.rule_kind,
 				"strict": scenario.strict,

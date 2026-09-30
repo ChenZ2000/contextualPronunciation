@@ -64,30 +64,34 @@ def reiterated_form(text, index):
 	return None
 
 
-def predicate_form(text, index):
+def predicate_form(text, index, *, interrogative=False):
 	"""Return one verb group and its stem offsets: V / VV / V一V / V了V."""
 	stem = text[index]
 	start = index
+	links = "一了不" if interrogative else "一了"
 	if index and text[index - 1] == stem:
 		start -= 1
-	elif index > 1 and text[index - 1] in "一了" and text[index - 2] == stem:
+	elif index > 1 and text[index - 1] in links and text[index - 2] == stem:
 		start -= 2
 	if text.startswith(stem * 2, start):
 		return start, start + 2, (start, start + 1)
-	if start + 2 < len(text) and text[start + 1] in "一了" and text[start + 2] == stem:
+	if start + 2 < len(text) and text[start + 1] in links and text[start + 2] == stem:
 		return start, start + 3, (start, start + 2)
 	if (group := reiterated_form(text, index)) is not None:
 		return group
 	return start, start + 1, (start,)
 
 
-def predicate_tail(text, end):
+def predicate_tail(text, end, *, results=None):
 	"""Return tail end and (relation, start, end) spans; never infer pronunciation."""
 	start = end
 	potential = end < len(text) and text[end] in "得不"
 	if potential:
 		end += 1
-	for word, relation in _COMPLEMENTS.get(text[end : end + 1], ()):
+	complements = _COMPLEMENTS.get(text[end : end + 1], ())
+	if results is not None:
+		complements = results.get(text[end : end + 1], ()) + complements
+	for word, relation in complements:
 		if text.startswith(word, end):
 			spans = ((relation, end, end + len(word)),)
 			if potential:

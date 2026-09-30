@@ -35,10 +35,16 @@ code { font-family: ui-monospace, monospace; } nav { border-bottom: 1px solid #6
 <main id="content">
 <h1 id="user-guide">User guide</h1>
 <p><a href="https://github.com/ChenZ2000/contextualPronunciation/blob/main/README.md">Project overview</a> · English · <a href="../zh_CN/readme.html">简体中文</a></p>
-<p>This guide covers version 0.8.0; test builds may precede a public Release. Download the add-on from <a href="https://github.com/ChenZ2000/contextualPronunciation/releases/latest">GitHub Releases</a>. Install a <code>.nvda-addon</code> and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.</p>
+<p>This guide covers version 0.8.1; test builds may precede a public Release. Download the add-on from <a href="https://github.com/ChenZ2000/contextualPronunciation/releases/latest">GitHub Releases</a>. Install a <code>.nvda-addon</code> and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.</p>
 <h2 id="start-reading">Start reading</h2>
 <p>Use your usual Mandarin voice and read normally. Default corrections apply automatically to supported text, including repeated actions such as 重吸收, serving phrases such as 也给我盛了一碗, and coordinated nouns such as 天兵和天将一起去吃饭. Spelling and character mode preserve the original characters.</p>
 <p>All processing takes place on your computer. The add-on does not upload or record the text you read.</p>
+<p>Version 0.8.1 keeps lè in 快乐/快樂 whether a sentence mark follows or not.
+Body locations and growth expressions such as 身上长、背上长了、胸前长了、
+长个子了、各自长了, and the honor idiom 给我长脸了/长脸了 select zhǎng.
+Length and face-shape descriptions such as 头发很长、绳子长三米、一张长脸
+select cháng. In 头发长长了 the two syllables are zhǎng then cháng; ambiguous
+头发长了 retains your voice's original interpretation.</p>
 <h2 id="colloquial-context-required">Colloquial 懵: context required</h2>
 <p>Version 0.8.0 removes the old unconditional <code>meng1</code> fallback. The add-on uses first-tone <code>mēng</code> only with positive evidence for the colloquial confusion sense: 一脸懵 / 懵圈, 我懵了, 看懵 / 被问懵, 有点懵, 懵得说不出话, 越想越懵 and similar grammatical combinations. New subjects, objects and complement clauses do not need complete phrases added individually.</p>
 <p>An isolated 懵 (also 懵。 or “懵”), 懵懂 / 懵然, and lexical mentions such as 懵的读音 or 输入懵 keep the original characters. Preservation means keeping the voice's existing reading, <strong>not</strong> globally forcing second tone or changing normative dictionary readings. Spelling mode and text split into separate speech items do not borrow neighbouring context.</p>

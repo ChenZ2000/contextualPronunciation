@@ -34,7 +34,7 @@
 
 **“懵”只在有口语语境依据时纠正：**“一脸懵、看懵了、懵得说不出话”选择一声；单字“懵”、书面词和字音讨论保留原字及声库原有读音，不再使用无条件默认。详见[语法策略、用例与边界](COLLOQUIAL_MENG.md)。
 
-本页介绍 **0.8.0** 的功能（main 测试包可能早于公开 Release），已发布安装包请从 GitHub Releases 下载。最低要求及最后测试的稳定版均为 **NVDA 2026.2**。CI 另外验证 **2026.3beta2**。
+本页介绍 **0.8.1** 的功能（main 测试包可能早于公开 Release），已发布安装包请从 GitHub Releases 下载。最低要求及最后测试的稳定版均为 **NVDA 2026.2**。CI 另外验证 **2026.3beta2**。
 
 1. 从 [Releases 页面](https://github.com/ChenZ2000/contextualPronunciation/releases/latest)下载 `.nvda-addon` 文件。
 2. 打开文件，按 NVDA 提示安装并重启。

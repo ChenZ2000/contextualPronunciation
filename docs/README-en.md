@@ -2,13 +2,20 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers version 0.8.0; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.8.1; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 
 Use your usual Mandarin voice and read normally. Default corrections apply automatically to supported text, including repeated actions such as 重吸收, serving phrases such as 也给我盛了一碗, and coordinated nouns such as 天兵和天将一起去吃饭. Spelling and character mode preserve the original characters.
 
 All processing takes place on your computer. The add-on does not upload or record the text you read.
+
+Version 0.8.1 keeps lè in 快乐/快樂 whether a sentence mark follows or not.
+Body locations and growth expressions such as 身上长、背上长了、胸前长了、
+长个子了、各自长了, and the honor idiom 给我长脸了/长脸了 select zhǎng.
+Length and face-shape descriptions such as 头发很长、绳子长三米、一张长脸
+select cháng. In 头发长长了 the two syllables are zhǎng then cháng; ambiguous
+头发长了 retains your voice's original interpretation.
 
 ## Colloquial 懵: context required
 

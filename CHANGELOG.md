@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.1
+
+- Lock lè in 快乐/快樂 with or without following punctuation. Preserve original offsets and personal overrides through the real NVDA symbol and speech pipeline.
+- Add bounded shared 长/長 grammar for body locations, growing subjects, product objects, growth complements, stature, distributive adverbs and length comparisons. Select zhǎng in 身上长、背上长了、胸前长了、长个子了、各自长了 and the honor expression 给我长脸了/长脸了; retain cháng for length and face shape. Distinguish the two readings in 头发长长了 and preserve unresolved ambiguity.
+- Lock independently resolved lexical zhǎng words, including 生长、增长、校长、长辈. Keep productive forms conditional on grammar and retain source provenance; regenerate runtime data and static braille output from pinned inputs.
+- Extend colloquial first-tone 懵 to informal 懵懵哒/噠 while preserving isolated characters, literary words and metalinguistic mentions for the voice. Fix disabling reviewed contribution templates, including the new happiness rule.
+- Add independent contrastive/generated cases, native speech tests, source-bound renderer fixtures and a required short/8K growth latency gate. See [0.8.1 notes](docs/releases/0.8.1.md).
+- 修复“一点都不快乐。”句末读音；支持“长”的生长、长出、外貌、长个子、省略主语、争光与长度语境，加入反例和性能检查。单字“懵”和“懵懂”等仍保留声库原有读音。
+
 ## 0.8.0
 
 - Replace the unconditional colloquial 懵 fallback with bounded positive grammatical evidence. Isolated 懵, literary words, lexical mentions and unsupported contexts keep the original text and synthesizer reading; no global second-tone rule is installed.
