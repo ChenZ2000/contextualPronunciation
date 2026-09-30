@@ -195,10 +195,16 @@ class NativeSpeechChainTests(unittest.TestCase):
 
 	def test_actual_speak_filter_dictionary_symbol_chain(self):
 		pairs = (
-			("长个", "掌个"),
-			("长个了。", "掌个了。"),
-			("长个了没？", "掌个了没？"),
-			("長不了個", "掌不了個"),
+			("长个", "掌各"),
+			("长个了。", "掌各了。"),
+			("长个了没？", "掌各了没？"),
+			("长个东西", "掌个东西"),
+			("长个奇怪的东西", "掌个奇怪的东西"),
+			("树上长个东西", "树上掌个东西"),
+			("绳子长个三米", "绳子偿个三米"),
+			("长个三米的东西", "掌个三米的东西"),
+			("数落朋友", "数落朋友"),
+			("長不了個", "掌不了各"),
 			("长个新的痘痘", "掌个新的痘痘"),
 			("长胡子了", "掌胡子了"),
 			("给我长不了脸", "给我掌不了脸"),
@@ -383,7 +389,7 @@ class NativeSpeechChainTests(unittest.TestCase):
 			self.plugin._on_profile_switch()
 			output = self.capture(["长个了，密钥"], cp.SymbolLevel.NONE)
 			self.assertEqual(
-				[core_speech.processText("zh_CN", "掌个了，密钥", cp.SymbolLevel.NONE) + core_speech.CHUNK_SEPARATOR],
+				[core_speech.processText("zh_CN", "掌各了，密钥", cp.SymbolLevel.NONE) + core_speech.CHUNK_SEPARATOR],
 				[item for item in output if isinstance(item, str)],
 			)
 			annotation = self.plugin.getReadingAnnotations("长个了")[0]

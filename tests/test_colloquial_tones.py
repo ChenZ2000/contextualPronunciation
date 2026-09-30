@@ -362,8 +362,8 @@ class ColloquialToneTests(unittest.TestCase):
 	def test_first_syllable_groups_can_be_disabled_independently(self):
 		for extended in (False, True):
 			for group, first, original, fallback in (
-				("zhe-neutral-word", "折", "折腾，倒腾", "遮腾，倒腾"),
-				("dao-neutral-word", "倒", "倒腾，折腾", "导腾，折腾"),
+				("zhe-neutral-word", "折", "折腾，倒腾", "折腾，倒腾"),
+				("dao-neutral-word", "倒", "倒腾，折腾", "倒腾，折腾"),
 			):
 				rules = load("rules").load_default_rules(extended=extended, disabled_rules=group)
 				with self.subTest(extended=extended, group=group):

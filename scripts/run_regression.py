@@ -221,6 +221,7 @@ def main() -> int:
 				("renderer", "final_renderer_regression.json", "final-renderer-ting-ting"),
 				("boundaries", "boundary_regression.json", "boundary-ting-ting"),
 				("sentences", "sentence_regression.json", "sentence-ting-ting"),
+				("neutral", "neutral_regression.json", "neutral-ting-ting"),
 			):
 				stage(
 					f"ve-{name}",
@@ -241,6 +242,7 @@ def main() -> int:
 			stage("ve-renderer-audit", [py, "tools/summarize_final_renderer.py"])
 			stage("ve-boundaries-audit", [py, "tools/boundary_acoustics.py", "summarize"])
 			stage("ve-sentences-audit", [py, "tools/sentence_acoustics.py", "summarize"])
+			stage("ve-neutral-audit", [py, "tools/neutral_acoustics.py", "summarize"])
 		if args.release:
 			stage("release", [py, "scripts/verify_release.py"])
 		else:

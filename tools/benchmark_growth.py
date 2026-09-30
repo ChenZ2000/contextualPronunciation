@@ -24,6 +24,7 @@ SCENARIOS = {
 	"distributed": "各自长了",
 	"clippedStature": "长个了",
 	"classifiedProduct": "长个新的痘痘",
+	"classifiedGeneric": "长个奇怪的东西",
 	"projectedGrower": "菖蒲又长了",
 	"resultQuantity": "长胖一点",
 	"ageComparison": "他比我长三岁",
@@ -33,6 +34,7 @@ SCENARIOS = {
 	"roles8k": "给我长脸了，各自长了。" * 744,
 	"adversarial8k": ("我的" * 64 + "背上长了。") * 62,
 	"ellipsis8k": "长个了。" * 2048,
+	"generic8k": "长个东西。" * 1638,
 	"age8k": "长我两岁。" * 1638,
 }
 

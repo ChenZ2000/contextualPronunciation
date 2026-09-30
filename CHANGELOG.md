@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.3
+
+- Render the clipped stature noun 个/個 as gè, fourth tone, in 长个、长个了 and shared question/potential/repeated forms. Distinguish it from neutral classifiers with overt objects; retain original offsets without adding 儿 or 子.
+- Generalize growth to actual bare/quantified classifier noun phrases, including generic heads in 长个东西、长了两个奇怪的东西 and 树上长个公司的招牌. Fix the locative branch discarding classifier evidence; retain duration, age, unknown and competing-head boundaries.
+- Preserve selected complete 2–4 character words with independently resolved neutral readings from pinned dictionaries, avoiding homophone rewrites that break the voice's neutral-word lexicon. Homographs and suffixes alone do not establish neutral tone.
+- Add 71,280 constructed classifier/object combinations, contrastive head/offset and user-control regressions, closed-production/chart checks and unchanged short/8K latency gates. Add source-bound Ting-Ting PCM comparisons with independent SDK ge4/ge5 controls; SDK markup is used only offline.
+- 修复 VE Ting-Ting 将单独“长个”的“个”读轻声的问题，按身高义输出四声；“长个东西”的“长”读 zhǎng，量词“个”保留轻声。扩展词法轻声保护、语法变形与反例。See [0.8.3 notes](docs/releases/0.8.3.md).
+
 ## 0.8.2
 
 - Generalize stature to clipped 个/個 and semantic stature heads, including 长个、长个了、长个了没、长不长个、长不了个、长点个吧、个头长了 and 身高长了. Select the actual noun after a bare classifier in 长个新的痘痘, retain original offsets and reject unknown continuations.

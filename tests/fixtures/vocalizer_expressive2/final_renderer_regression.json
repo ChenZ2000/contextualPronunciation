@@ -5,7 +5,7 @@
     "runtimeSha256": {
       "addon/globalPlugins/contextualPronunciation/__init__.py": "44769a9a7c0d1664ff33dd49d24706c4427e5e596f5d28ea3256eb312cde3157",
       "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
-      "addon/globalPlugins/contextualPronunciation/argument_roles.py": "6589dbcbfe1209191bdc56f149f93fb1745abbaa224849a7900618132385b5cd",
+      "addon/globalPlugins/contextualPronunciation/argument_roles.py": "e9dcbf32d3b91945b2e289e042986820f7421d582f421d92656d5d9671733e98",
       "addon/globalPlugins/contextualPronunciation/braille_readings.py": "b5b3a65f9a884ada572a618430ab66af5586cc006a54cce91cedbf7096cad4ad",
       "addon/globalPlugins/contextualPronunciation/colloquial_meng.py": "32f531382f7eecbb361098d9283e59eb569a57797c6079af6cdf2f5d728dcae0",
       "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
@@ -15,32 +15,33 @@
       "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "ebbfdbaa2acd2f84fcf3d492c6d5278515934ff8d69541a4a597d78459ce914f",
       "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "3471166acef839330c215e41ae2d71f247496b55f8f8c432ab34d32ca177f0a7",
       "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
-      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "6d465d3514d918a55639fc1ca53b4f878ac598851821dad7e4413bdf2164a20a",
+      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "2811f63b569ca2c505b1778a128038c9c75bd22787f0f7a6974e47825dded5ad",
       "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
       "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "1bb07c36ab9622fc98739ed79609e21c7fce3e57efddca54fa50bb464a4452bc",
       "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
       "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
-      "addon/globalPlugins/contextualPronunciation/growth.py": "a8775819909ecfd1830aa97cbd1b45ec4b29fdc9cce7953be6eec0cfcc7ba8a9",
-      "addon/globalPlugins/contextualPronunciation/lexicon.py": "e115ef72a8a643fade9f764289bd5bc5fdf50c39f1c00ee5d86ec9b253776094",
+      "addon/globalPlugins/contextualPronunciation/growth.py": "862487c7f88b0997571c14f7a589c9fafd12af493eef5db1f422339a6dd4ab8a",
+      "addon/globalPlugins/contextualPronunciation/lexicon.py": "3c0387ce1e4499ad4a4fb2202ce21ba41aec86963c4d5636680103354002be72",
       "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
       "addon/globalPlugins/contextualPronunciation/motion.py": "79c6a9c2e3f0cc53065f8263326b5dd8d53413859ec4875a61e18ba2802a8d5f",
+      "addon/globalPlugins/contextualPronunciation/neutral.py": "f53e1da3600152190d8b5fbad41d1d61a1c25f543255fe391d17ef12aecc275d",
       "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
       "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
       "addon/globalPlugins/contextualPronunciation/pipeline.py": "1d35fabdc111fb1d754ae13e068c48cb50c81f7be1d7200d69526906ec9e7704",
       "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
-      "addon/globalPlugins/contextualPronunciation/rules.py": "0b289626b9e17f76f66a860d7f2b42fa5929beff58c24c6166981e3c8875e74d",
+      "addon/globalPlugins/contextualPronunciation/rules.py": "a6e9303355261f64e7a278ebd51b435e90c0fd588999b0e52120a235f1ee8991",
       "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
       "addon/globalPlugins/contextualPronunciation/settings.py": "be8b50cfa93b1385f08164ff8ffdf948bcfe875d63942fb72f324072ff0e2522",
-      "addon/globalPlugins/contextualPronunciation/syntax.py": "b5969c41cbe89d8e33de5cba39efdfef05bd53ad151fea41a07dd11c142cb550",
+      "addon/globalPlugins/contextualPronunciation/syntax.py": "08f91933e6f7f2417f7a6e6059708c4d4015666ab6636cfcf416ad7ff60b17e3",
       "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
       "addon/globalPlugins/contextualPronunciation/verb_forms.py": "c8986162365c20130f56b126068d524871796e8539a2e67842f2147b2a9dbe3d"
     },
     "ruleEngine": "addon/globalPlugins/contextualPronunciation/rules.py",
     "ruleData": "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json",
-    "ruleDataSha256": "6d465d3514d918a55639fc1ca53b4f878ac598851821dad7e4413bdf2164a20a",
-    "ruleEngineSha256": "0b289626b9e17f76f66a860d7f2b42fa5929beff58c24c6166981e3c8875e74d",
+    "ruleDataSha256": "2811f63b569ca2c505b1778a128038c9c75bd22787f0f7a6974e47825dded5ad",
+    "ruleEngineSha256": "a6e9303355261f64e7a278ebd51b435e90c0fd588999b0e52120a235f1ee8991",
     "renderer": "addon/globalPlugins/contextualPronunciation/rules.py",
-    "rendererSha256": "0b289626b9e17f76f66a860d7f2b42fa5929beff58c24c6166981e3c8875e74d"
+    "rendererSha256": "a6e9303355261f64e7a278ebd51b435e90c0fd588999b0e52120a235f1ee8991"
   },
   "method": "每组由 source、规则引擎实时生成的 transformed、以及将所有目标位置换成另一枚常用同音字的 common_anchor 组成；以同一次 Ting-Ting 离线渲染中的完整音素流严格相等为自动判据。",
   "limitations": [
@@ -164,8 +165,24 @@
     {
       "id": "zhang3_clipped",
       "source": "长个",
-      "transformed": "掌个",
-      "commonAnchor": "涨个",
+      "transformed": "掌各",
+      "commonAnchor": "涨各",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [
+        1
+      ],
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "extended": false
+    },
+    {
+      "id": "zhang3_classifier_generic",
+      "source": "长个东西",
+      "transformed": "掌个东西",
+      "commonAnchor": "涨个东西",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
@@ -176,15 +193,33 @@
       "extended": false
     },
     {
+      "id": "ge4_clipped_stature",
+      "source": "长个",
+      "transformed": "掌各",
+      "commonAnchor": "掌铬",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "additionalNormalizedOffsets": [
+        0
+      ],
+      "expectedReading": "gè",
+      "ruleKind": "structural:neutralGe",
+      "extended": false
+    },
+    {
       "id": "zhang3_clipped_aspect",
       "source": "长个了。",
-      "transformed": "掌个了。",
-      "commonAnchor": "涨个了。",
+      "transformed": "掌各了。",
+      "commonAnchor": "涨各了。",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
       "extended": false
@@ -192,13 +227,15 @@
     {
       "id": "zhang3_clipped_question",
       "source": "长个了没？",
-      "transformed": "掌个了没？",
-      "commonAnchor": "涨个了没？",
+      "transformed": "掌各了没？",
+      "commonAnchor": "涨各了没？",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
       "extended": false
@@ -206,13 +243,15 @@
     {
       "id": "zhang3_clipped_potential",
       "source": "长不了个。",
-      "transformed": "掌不了个。",
-      "commonAnchor": "涨不了个。",
+      "transformed": "掌不了各。",
+      "commonAnchor": "涨不了各。",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        3
+      ],
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
       "extended": false
@@ -304,13 +343,15 @@
     {
       "id": "zhang3_clipped_traditional",
       "source": "長個了嗎？",
-      "transformed": "掌個了嗎？",
-      "commonAnchor": "涨個了嗎？",
+      "transformed": "掌各了嗎？",
+      "commonAnchor": "涨各了嗎？",
       "targetCharIndex": 0,
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth-traditional",
       "extended": false
@@ -2460,7 +2501,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2468,7 +2511,7 @@
     },
     {
       "id": "zhang3_clipped_transformed",
-      "text": "掌个",
+      "text": "掌各",
       "role": "transformed",
       "rendererCandidate": "掌",
       "compareGroup": "final_zhang3_clipped",
@@ -2476,7 +2519,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2484,7 +2529,7 @@
     },
     {
       "id": "zhang3_clipped_common_anchor",
-      "text": "涨个",
+      "text": "涨各",
       "role": "anchor",
       "anchorCharacter": "涨",
       "anchorConfidence": "common",
@@ -2493,10 +2538,114 @@
       "targetCharIndices": [
         0
       ],
+      "additionalNormalizedOffsets": [
+        1
+      ],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "extended": false
+    },
+    {
+      "id": "zhang3_classifier_generic_source",
+      "text": "长个东西",
+      "role": "source",
+      "compareGroup": "final_zhang3_classifier_generic",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
       "additionalNormalizedOffsets": [],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
+      "extended": false
+    },
+    {
+      "id": "zhang3_classifier_generic_transformed",
+      "text": "掌个东西",
+      "role": "transformed",
+      "rendererCandidate": "掌",
+      "compareGroup": "final_zhang3_classifier_generic",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "extended": false
+    },
+    {
+      "id": "zhang3_classifier_generic_common_anchor",
+      "text": "涨个东西",
+      "role": "anchor",
+      "anchorCharacter": "涨",
+      "anchorConfidence": "common",
+      "compareGroup": "final_zhang3_classifier_generic",
+      "targetCharIndex": 0,
+      "targetCharIndices": [
+        0
+      ],
+      "additionalNormalizedOffsets": [],
+      "tier": "P0",
+      "expectedReading": "zhǎng",
+      "ruleKind": "syntax-growth",
+      "extended": false
+    },
+    {
+      "id": "ge4_clipped_stature_source",
+      "text": "长个",
+      "role": "source",
+      "compareGroup": "final_ge4_clipped_stature",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "additionalNormalizedOffsets": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "gè",
+      "ruleKind": "structural:neutralGe",
+      "extended": false
+    },
+    {
+      "id": "ge4_clipped_stature_transformed",
+      "text": "掌各",
+      "role": "transformed",
+      "rendererCandidate": "各",
+      "compareGroup": "final_ge4_clipped_stature",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "additionalNormalizedOffsets": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "gè",
+      "ruleKind": "structural:neutralGe",
+      "extended": false
+    },
+    {
+      "id": "ge4_clipped_stature_common_anchor",
+      "text": "掌铬",
+      "role": "anchor",
+      "anchorCharacter": "铬",
+      "anchorConfidence": "common",
+      "compareGroup": "final_ge4_clipped_stature",
+      "targetCharIndex": 1,
+      "targetCharIndices": [
+        1
+      ],
+      "additionalNormalizedOffsets": [
+        0
+      ],
+      "tier": "P0",
+      "expectedReading": "gè",
+      "ruleKind": "structural:neutralGe",
       "extended": false
     },
     {
@@ -2508,7 +2657,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2516,7 +2667,7 @@
     },
     {
       "id": "zhang3_clipped_aspect_transformed",
-      "text": "掌个了。",
+      "text": "掌各了。",
       "role": "transformed",
       "rendererCandidate": "掌",
       "compareGroup": "final_zhang3_clipped_aspect",
@@ -2524,7 +2675,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2532,7 +2685,7 @@
     },
     {
       "id": "zhang3_clipped_aspect_common_anchor",
-      "text": "涨个了。",
+      "text": "涨各了。",
       "role": "anchor",
       "anchorCharacter": "涨",
       "anchorConfidence": "common",
@@ -2541,7 +2694,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2556,7 +2711,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2564,7 +2721,7 @@
     },
     {
       "id": "zhang3_clipped_question_transformed",
-      "text": "掌个了没？",
+      "text": "掌各了没？",
       "role": "transformed",
       "rendererCandidate": "掌",
       "compareGroup": "final_zhang3_clipped_question",
@@ -2572,7 +2729,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2580,7 +2739,7 @@
     },
     {
       "id": "zhang3_clipped_question_common_anchor",
-      "text": "涨个了没？",
+      "text": "涨各了没？",
       "role": "anchor",
       "anchorCharacter": "涨",
       "anchorConfidence": "common",
@@ -2589,7 +2748,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2604,7 +2765,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2612,7 +2775,7 @@
     },
     {
       "id": "zhang3_clipped_potential_transformed",
-      "text": "掌不了个。",
+      "text": "掌不了各。",
       "role": "transformed",
       "rendererCandidate": "掌",
       "compareGroup": "final_zhang3_clipped_potential",
@@ -2620,7 +2783,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2628,7 +2793,7 @@
     },
     {
       "id": "zhang3_clipped_potential_common_anchor",
-      "text": "涨不了个。",
+      "text": "涨不了各。",
       "role": "anchor",
       "anchorCharacter": "涨",
       "anchorConfidence": "common",
@@ -2637,7 +2802,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        3
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth",
@@ -2940,7 +3107,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth-traditional",
@@ -2948,7 +3117,7 @@
     },
     {
       "id": "zhang3_clipped_traditional_transformed",
-      "text": "掌個了嗎？",
+      "text": "掌各了嗎？",
       "role": "transformed",
       "rendererCandidate": "掌",
       "compareGroup": "final_zhang3_clipped_traditional",
@@ -2956,7 +3125,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth-traditional",
@@ -2964,7 +3135,7 @@
     },
     {
       "id": "zhang3_clipped_traditional_common_anchor",
-      "text": "涨個了嗎？",
+      "text": "涨各了嗎？",
       "role": "anchor",
       "anchorCharacter": "涨",
       "anchorConfidence": "common",
@@ -2973,7 +3144,9 @@
       "targetCharIndices": [
         0
       ],
-      "additionalNormalizedOffsets": [],
+      "additionalNormalizedOffsets": [
+        1
+      ],
       "tier": "P0",
       "expectedReading": "zhǎng",
       "ruleKind": "syntax-growth-traditional",

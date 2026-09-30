@@ -32,6 +32,20 @@ class ResearchToolTests(unittest.TestCase):
 		)
 		self.assertEqual(build_fixture(), fixture)
 
+	def test_tone_fixture_has_actual_plain_output_and_independent_pinyin_controls(self):
+		from tools.neutral_acoustics import FIXTURE, generate
+
+		fixture = generate()
+		self.assertEqual(fixture, json.loads(FIXTURE.read_text("utf-8")))
+		self.assertEqual(9, len(fixture["groups"]))
+		self.assertEqual(36, len(fixture["cases"]))
+		cases = {c["id"]: c["text"] for c in fixture["cases"]}
+		for group in fixture["groups"]:
+			identifier = group["id"]
+			self.assertNotIn("\x1b", cases[identifier + "_transformed"])
+			self.assertIn(group["reading"], cases[identifier + "_anchor"])
+			self.assertNotEqual(cases[identifier + "_anchor"], cases[identifier + "_contrast"])
+
 	def test_cross_engine_probe_uses_both_default_and_extended_modes(self):
 		from tools.generate_final_renderer_fixture import SCENARIOS
 		from tools.probe_global_voices import cases

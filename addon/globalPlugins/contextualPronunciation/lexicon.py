@@ -84,6 +84,14 @@ class PhraseLexicon:
 			raise ValueError("Invalid homophone rendering")
 		self.reserved_targets = frozenset(data["reservedTargets"])
 		self.locked_defaults = MappingProxyType(dict(data.get("lockedDefaults", {})))
+		# A homophone rewrite of an unrelated syllable can destroy the voice's
+		# neutral-word entry. Preserve selected complete lexical words instead
+		# of inventing a neutral-tone character or choosing by a suffix alone.
+		self.neutral_words = frozenset(
+			word
+			for word, reading in words.items()
+			if 2 <= len(word) <= 4 and reading and "?" not in reading and any(p.endswith("5") for p in reading.split())
+		)
 		# Common neutral-tone characters (的/了/着 etc.) need grammatical
 		# disambiguation. A lexical entry such as 面的 cannot establish whether
 		# the same substring in 盛面的时候 is that noun or a particle boundary.

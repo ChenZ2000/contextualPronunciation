@@ -17,9 +17,21 @@
     "dao3": {"replacement": "导"},
     "nao4": {"replacement": "闹"},
     "xian1": {"replacement": "先"},
-    "teng5": {"annotationOnly": true}
+    "teng5": {"annotationOnly": true},
+    "ge4": {"replacement": "各", "source": "Pinned HYZD/CC-CEDICT single-character 各 ge4; clipped stature contrast additionally checked with licensed Ting-Ting and explicit SDK ge4/ge5 controls."},
+    "ge5": {"annotationOnly": true}
   },
   "characters": {
+    "个": {
+      "structuralRules": ["neutralGe"],
+      "phraseGroups": [],
+      "source": "MOE 個 gè noun stature, ge neutral classifier https://dict.variants.moe.edu.tw/dictView.jsp?ID=1539 ; ordinary classifier neutral tone https://www.sxftc.edu.cn/cjc/info/1228/2996.htm ; shared bounded stature ellipsis selects ge4, overt classifier NP selects annotation-only ge5."
+    },
+    "個": {
+      "structuralRules": ["neutralGeTraditional"],
+      "phraseGroups": [],
+      "source": "Source-authored traditional form of 個; same bounded classifier/stature policy."
+    },
     "懵": {
       "structuralRules": ["colloquialMeng"],
       "source": "Positive-context oral compatibility (no isolated-character default), not normative respelling: That's Mandarin, Colloquial Chinese Phrases vol. 1 p. 6 https://tm.thatsmandarin.com/wp-content/uploads/2017/07/30-phrases-book-VOLUME-1.pdf ; People's Daily Overseas Edition, 2019-03-02 https://paper.people.com.cn/rmrbhwb/html/2019-03/02/content_1911553.htm",

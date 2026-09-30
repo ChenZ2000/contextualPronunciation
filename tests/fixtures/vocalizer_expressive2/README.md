@@ -37,6 +37,16 @@ python tools/probe_vocalizer_expressive2.py render `
 
 ## 当前驱动中已确认的行为
 
+`neutral_regression.json` 由 `python tools/neutral_acoustics.py generate` 从
+当前运行时代码生成。9 组对照包含原文、插件实际纯文本输出、独立的 SDK
+拼音正确声调和竞争声调。`python tools/neutral_acoustics.py summarize` 要求
+当前输出与正确对照的音素和完整 PCM 同时相等，且 PCM 与竞争声调不同。
+其中“长个”的身高名词为 gè 四声，“长个东西”的量词为轻声。
+“树上长个奇怪的东西”的 zhǎng 使用明确的 SDK 三声／四声对照：
+同音锚字“涨”在该句中的完整音频不同，不能据其音素相同认定声调。
+SDK 命令只进入离线直接 DLL 探针，不进入 NVDA 或插件运行时。
+报告明确记录未完成人工试听；机器对照通过不能覆盖其他句子、声音或版本。
+
 当前安装的 `vocalizer_expressive2_driver` 2026.6.6 有以下行为，静态探针会再次从源码核对：
 
 - `supportedCommands` 没有声明 `PhonemeCommand`；

@@ -205,7 +205,15 @@ class ArgumentFrame:
 class SyntaxContext:
 	"""Ephemeral per-speech-item prefilter; never retained by the parser."""
 
-	__slots__ = ("_head_classes", "_text", "_head_tails", "remaining_work", "motion_readings", "details")
+	__slots__ = (
+		"_head_classes",
+		"_text",
+		"_head_tails",
+		"remaining_work",
+		"motion_readings",
+		"nominal_readings",
+		"details",
+	)
 
 	def __init__(self, text, lexicon, *, details=True):
 		# Prefix, coordination and motion frames often resolve without a typed
@@ -216,6 +224,7 @@ class SyntaxContext:
 		self._head_tails = lexicon.head_tails
 		self.remaining_work = MAX_ITEM_WORK
 		self.motion_readings = {}
+		self.nominal_readings = {}
 		self.details = details
 
 	@property

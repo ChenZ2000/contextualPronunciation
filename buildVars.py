@@ -6,10 +6,10 @@ addon_info = {
 		"Corrects selected Chinese polyphones and preserves lexical apostrophes "
 		"before text reaches the active speech synthesizer."
 	),
-	"addon_version": "0.8.2",
+	"addon_version": "0.8.3",
 	"addon_changelog": (
-		"Select first-tone colloquial 懵 only with positive grammatical context; preserve "
-		"isolated characters, literary words and lexical mentions."
+		"Distinguish stature gè from neutral classifiers; generalize classified growth "
+		"objects and preserve lexical neutral words."
 	),
 	"addon_author": "ChenZ2000 and contributors",
 	"addon_docFileName": "readme.html",

@@ -286,7 +286,7 @@ class GlobalPluginIntegrationTests(unittest.TestCase):
 				environment.profile_point.notify(prevConf={})
 				observed.append((environment.filter_point.apply([text]), plugin.getReadingAnnotations(text)))
 		self.assertTrue(all(value == observed[0] for value in observed))
-		self.assertIn("掌个了，密钥", observed[0][0][0])
+		self.assertIn("掌各了，密钥", observed[0][0][0])
 		self.assertNotIn("strictMode", environment.settings.CONFIG_SPEC)
 		self.assertNotIn("strict_mode", plugin._options.__dataclass_fields__)
 

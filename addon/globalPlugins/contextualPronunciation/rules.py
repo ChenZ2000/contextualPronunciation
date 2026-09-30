@@ -20,6 +20,7 @@ from typing import Any, Final
 
 from .colloquial_meng import classify as classify_colloquial_meng
 from .lexicon import PhraseLexicon, load_default_lexicon, load_reading_metadata
+from .neutral import classifier_reading, clipped_stature_reading
 from .syntax import ArgumentParser, load_argument_parser
 from .templates import CompiledTemplates, load_templates
 
@@ -404,14 +405,20 @@ class CompiledRules:
 			for span in lexicon.annotate(
 				text, speech_only=speech_only, excluded_words=self._lexical_exclusions if speech_only else frozenset()
 			):
+				neutral_word = span.text in lexicon.neutral_words and not (
+					self.syntax is not None and self.syntax.contextual_form(span.text)
+				)
 				for offset, (character, reading) in enumerate(zip(span.text, span.readings, strict=True)):
 					if (
 						reading is not None
 						and character in lexicon.defaults
 						and character not in lexicon.reserved_targets
 					):
-						speech = character in lexicon.triggers and (
-							reading != lexicon.defaults[character] or offset in span.forced_offsets
+						speech = (
+							not neutral_word
+							and character in lexicon.triggers
+							and reading in self.renderings
+							and (reading != lexicon.defaults[character] or offset in span.forced_offsets)
 						)
 						if speech_only and not speech:
 							continue
@@ -435,7 +442,10 @@ class CompiledRules:
 				if self._structural_rules.get(target) and (
 					core_decision is None or core_decision.contextual and not core_decision.user
 				):
-					core_decision = self._structural_decision(text, index, target) or core_decision
+					core_decision = (
+						self._structural_decision(text, index, target, speech_only=speech_only, context=syntax_context)
+						or core_decision
+					)
 			template = (
 				self._templates.decision(text, index)
 				if self._templates is not None and target in self._templates.triggers
@@ -516,11 +526,20 @@ class CompiledRules:
 			contextual=best.contextual,
 		)
 
-	def _structural_decision(self, text: str, index: int, target: str) -> ReadingDecision | None:
+	def _structural_decision(
+		self, text: str, index: int, target: str, *, speech_only: bool = False, context=None
+	) -> ReadingDecision | None:
 		for name in self._structural_rules.get(target, ()):
-			reading_id = _STRUCTURAL_HANDLERS[name](text, index)
+			if name in {"neutralGe", "neutralGeTraditional"}:
+				reading_id = context.nominal_readings.get(index) if context is not None else None
+				if reading_id is None:
+					reading_id = (clipped_stature_reading if speech_only else classifier_reading)(
+						text, index, self.syntax, context
+					)
+			else:
+				reading_id = _STRUCTURAL_HANDLERS[name](text, index)
 			if reading_id is not None:
-				return ReadingDecision(reading_id=reading_id, rule_id=name)
+				return ReadingDecision(reading_id=reading_id, rule_id=name, speech=reading_id in self.renderings)
 		return None
 
 
@@ -789,6 +808,8 @@ _STRUCTURAL_HANDLERS: Final = {
 	"travelAssignment": _travel_assignment,
 	"nightCount": _night_count,
 	"colloquialMeng": _colloquial_meng,
+	"neutralGe": classifier_reading,
+	"neutralGeTraditional": classifier_reading,
 }
 _STRUCTURAL_REQUIREMENTS: Final = {
 	"rowOrdinal": ("行", "hang2"),
@@ -801,6 +822,8 @@ _STRUCTURAL_REQUIREMENTS: Final = {
 	"travelAssignment": ("差", "chai1"),
 	"nightCount": ("宿", "xiu3"),
 	"colloquialMeng": ("懵", "meng1"),
+	"neutralGe": ("个", "ge4"),
+	"neutralGeTraditional": ("個", "ge4"),
 }
 
 

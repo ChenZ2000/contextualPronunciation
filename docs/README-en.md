@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · English · [简体中文](USAGE-zh_CN.md)
 
-This guide covers version 0.8.2; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
+This guide covers version 0.8.3; test builds may precede a public Release. Download the add-on from [GitHub Releases](https://github.com/ChenZ2000/contextualPronunciation/releases/latest). Install a `.nvda-addon` and restart NVDA. The supported stable version is NVDA 2026.2; the project also tests 2026.3beta2 in CI.
 
 ## Start reading
 
@@ -23,6 +23,16 @@ head: 菖蒲长了 selects growth, while 菖蒲的照片长了 selects the photo
 length. Result quantity in 长胖一点 does not masquerade as a noun object.
 Age comparisons such as 长我两岁/他比我长三岁 select zhǎng; duration in
 寿命比我长三年 retains the length sense.
+
+Version 0.8.3 distinguishes the stature noun in 长个/长个了 (gè, fourth
+tone, without an added 儿) from the neutral classifier in 长个东西. The latter
+selects zhǎng through the actual classifier/object structure, also with new
+heads, modifiers, quantities and locations such as 树上长个奇怪的东西.
+Short words with independently resolved neutral readings retain their complete
+spelling, including 数落、亲家、朋友、麻烦、妈妈、桌子, so a homophone rewrite
+does not break the voice's lexical entry. Homographs, unknown words and suffixes
+alone do not establish neutral tone. Actual neutral pronunciation still depends
+on the voice; personal rules, disabled rules and spelling mode remain effective.
 
 ## Colloquial 懵: context required
 

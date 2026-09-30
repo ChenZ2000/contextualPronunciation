@@ -113,6 +113,18 @@ CI retains all process reports under `artifacts/hosted-performance-samples/`, th
 
 When changing runtime rules, regenerate `tools/generate_final_renderer_fixture.py`, `tools/boundary_acoustics.py generate` and `tools/sentence_acoustics.py generate`, then rerun relevant rendering. Runtime hashes must describe what was actually rendered; updating a hash alone cannot refresh acoustic evidence.
 
+Also regenerate `python tools/neutral_acoustics.py generate`. The optional
+`--vocalizer` workflow renders this fixture and requires actual plain-text output
+to match an independent SDK Pinyin tone control in both phonemes and PCM, while
+differing from the competing tone. Runtime never sends SDK markup. Numeric
+phoneme equality alone cannot establish a Mandarin tone. Generated WAVs remain
+local; passing this audit does not claim human listening or coverage of other voices.
+
+The modified growth location 树上长个奇怪的东西 uses explicit zhǎng/zhàng
+SDK controls: the polyphonic anchor 涨 produces different PCM there, while the
+actual 掌 output matches explicit zhǎng. This case belongs in the SDK fixture;
+do not treat a matching private phoneme ID as a tone assertion.
+
 ## Documentation
 
 The English project overview is `README.md`; its Chinese counterpart is `docs/README-zh_CN.md`. Detailed user instructions are `docs/README-en.md` and `docs/USAGE-zh_CN.md`. Keep their features, settings, examples and compatibility information aligned. Source provenance belongs in `docs/REFERENCES.md`, development procedures here, and release steps in `docs/RELEASING.md`.

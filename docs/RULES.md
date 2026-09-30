@@ -92,6 +92,19 @@ python tools/pronunciation.py --check-contributions
 
 ## 静态盲文表
 
+`ge5` 为 annotation-only 读音。结构规则 `neutralGe`／`neutralGeTraditional`
+使用共用名词边界和量词语法：“长个”的身高名词为 `ge4`，后接实际
+名词的量词为 `ge5`。`ge4` 使用“各”作临时语音替代，轻声量词保留原字。
+固定词形“个性／个子”不会只凭前面的“这／一”被拆成轻声量词。
+词典中已有唯一完整轻声读音的 2–4 字词保留整体拼写；仅语音投影与
+完整注音使用相同分词，不改变用户 keep／个人模板的优先级。
+
+`ge5` is annotation-only. The shared closed nominal boundary selects stature
+`ge4` in 长个, while an overt classifier NP selects `ge5`. The plain renderer
+uses 各 for the former and retains the latter's original character. Complete
+short neutral words preserve their spelling without changing segmentation,
+personal-rule authority, or the shared original-offset annotation contract.
+
 `tools/build_braille_table.py` 编译支持的固定上下文及可枚举模板；动态句法与数字规则明确列为未编入。个人语音设置不会写回静态表。全标调预览不等于国家通用盲文的省调、连写结果。
 
 编译器可合并等价有限类，但必须保留保护优先、冲突审计及位置映射。`--reference-output 新文件.ctb` 生成未合并差分参照，拒绝覆盖已有文件；原生 Liblouis 测试比较盲文格及全部位置映射。`data/braille_contexts.toml` 只处理基础表较长条目阻挡纠正的审定固定语境，须记录点位、边界及来源。

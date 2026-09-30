@@ -19,8 +19,8 @@
     "charactersWithPhraseEvidence": 2879
   },
   "readingStatuses": {
-    "annotation_evidence_only": 2889,
-    "curated_contexts": 23,
+    "annotation_evidence_only": 2887,
+    "curated_contexts": 25,
     "lexicon_candidates": 654,
     "needs_context_evidence": 16004
   },
@@ -25991,10 +25991,12 @@
             "一个将军一个令",
             "一个萝卜一个坑"
           ],
-          "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "curatedRuleIds": [
+            "neutralGe"
+          ],
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         }
       }
     },
@@ -27609,7 +27611,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -31063,10 +31065,12 @@
             "一個將軍一個令",
             "一個蘿蔔一個坑"
           ],
-          "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "curatedRuleIds": [
+            "neutralGeTraditional"
+          ],
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
-          "status": "annotation_evidence_only"
+          "status": "curated_contexts"
         }
       }
     },
@@ -40414,7 +40418,7 @@
             "各位"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         }
@@ -40880,7 +40884,7 @@
           "headwords": 0,
           "examples": [],
           "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
           "status": "needs_context_evidence"
         },
@@ -123126,7 +123130,7 @@
             "硌脚"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },
@@ -175826,7 +175830,7 @@
             "單鉻"
           ],
           "curatedRuleIds": [],
-          "homophoneCandidate": "铬",
+          "homophoneCandidate": "各",
           "automaticLexiconSpeechEligible": false,
           "status": "annotation_evidence_only"
         },

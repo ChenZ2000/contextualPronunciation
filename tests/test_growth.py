@@ -5,7 +5,16 @@ from __future__ import annotations
 import unittest
 
 from tests.core_loader import load
-from tests.growth_cases import GROWTH, LENGTH, LEXICAL, PRESERVED, generated_age, generated_locations, generated_stature
+from tests.growth_cases import (
+	GROWTH,
+	LENGTH,
+	LEXICAL,
+	PRESERVED,
+	generated_age,
+	generated_classified_objects,
+	generated_locations,
+	generated_stature,
+)
 
 
 class GrowthTests(unittest.TestCase):
@@ -39,6 +48,31 @@ class GrowthTests(unittest.TestCase):
 				with self.subTest(text=text):
 					self.assertEqual(text.replace("长", "掌"), rules.transform(text, targets=frozenset("长")))
 
+	def test_productive_classified_heads_outside_phrase_inventory(self):
+		for rules in self.modes.values():
+			for text in generated_classified_objects():
+				with self.subTest(text=text):
+					d = rules.resolve(text).get(text.index("长"))
+					self.assertIsNotNone(d)
+					self.assertEqual("zhang3", d.reading_id)
+
+	def test_classified_head_attachment_and_closed_production_match_the_chart(self):
+		g = load("syntax")
+		roles = load("argument_roles")
+		for tail in ("个东西", "个包", "个照片", "个奇怪的东西", "个公司的招牌", "个长长的东西"):
+			text = "长" + tail
+			rules = self.modes[True]
+			tokens = rules.syntax.lexicon.tokenize(text, 1, len(text))
+			full = roles.classified_object(tokens, g, None)
+			parsed = rules.syntax.analyze(text, 0)
+			self.assertEqual(tokens[full.head].start, parsed.head_start)
+			self.assertEqual(tokens[full.head].end, parsed.head_end)
+			self.assertTrue(set(full.dependencies) <= set(parsed.dependencies))
+		for text in ("时间长个小时", "绳子长个小时", "长个未知东西", "长个小时", "长个子", "长个东西的照片"):
+			self.assertIsNone(
+				roles.closed_classified_object(text, text.index("个"), self.modes[True].syntax.lexicon, g, None)
+			)
+
 	def test_ellipsis_and_classifier_select_different_heads_and_original_offsets(self):
 		from tools.pronunciation import explain
 
@@ -62,6 +96,22 @@ class GrowthTests(unittest.TestCase):
 				self.assertEqual(text.replace("長", "掌"), rules.transform(text, targets=frozenset("長")))
 			p = rules.syntax.analyze("他比我长三岁", 3)
 			self.assertEqual({"extent:age", "obl:comparison", "nsubj"}, {d.relation for d in p.dependencies})
+
+	def test_classifier_measurements_keep_length_and_actual_extent_offsets(self):
+		for text, extent in (
+			("长个三米", "个三米"),
+			("绳子长个厘米", "个厘米"),
+			("袖子比裤子长个两厘米", "个两厘米"),
+			("长几个厘米", "几个厘米"),
+		):
+			parsed = self.modes[True].syntax.analyze(text, text.index("长"))
+			self.assertEqual("chang2", parsed.reading)
+			dep = next(d for d in parsed.dependencies if d.relation == "extent")
+			self.assertEqual(extent, text[dep.start : dep.end])
+		text = "长个三米的东西"
+		parsed = self.modes[True].syntax.analyze(text, 0)
+		self.assertEqual("zhang3", parsed.reading)
+		self.assertEqual("东西", text[parsed.head_start : parsed.head_end])
 
 	def test_new_constructions_obey_user_keep_and_disabled_sense(self):
 		texts = ("长个了", "长我两岁", "他比我长三岁")

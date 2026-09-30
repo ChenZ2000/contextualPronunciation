@@ -41,6 +41,8 @@ SCENARIOS = (
 	Scenario("zhang3_honor_bare", "P0", "长", "长脸了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_stature", "P0", "长", "长个子了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_clipped", "P0", "长", "长个", "涨", "zhǎng", "syntax-growth"),
+	Scenario("zhang3_classifier_generic", "P0", "长", "长个东西", "涨", "zhǎng", "syntax-growth"),
+	Scenario("ge4_clipped_stature", "P0", "个", "长个", "铬", "gè", "structural:neutralGe"),
 	Scenario("zhang3_clipped_aspect", "P0", "长", "长个了。", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_clipped_question", "P0", "长", "长个了没？", "涨", "zhǎng", "syntax-growth"),
 	Scenario("zhang3_clipped_potential", "P0", "长", "长不了个。", "涨", "zhǎng", "syntax-growth"),

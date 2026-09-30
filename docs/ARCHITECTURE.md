@@ -83,6 +83,22 @@ There is no universal neutral-tone homophone or supported cross-driver command t
 
 不存在可通用于声库的轻声同音字或强制 `teng5` 命令。NVDA 公开的 `PhonemeCommand` 接收 IPA，但固定版本的 eSpeak、SAPI5 适配器无法编码这些普通话音节，已审查的 Vocalizer 驱动只读回退文本。因此插件保留完整词形，不注入音素命令。自动测试验证读音决策、文本保留和命令处理；这些改动的实际声调仍需在真实声音上检查。参见[驱动调查](../tests/fixtures/vocalizer_expressive2/README.md)及[资料来源](REFERENCES.md)。
 
+The same preservation now applies to selected 2–4 character lexical entries
+with an unambiguous neutral reading from pinned sources. This is a static
+candidate set, not a suffix heuristic or a new sentence inventory. Ordinary
+lexical annotations remain available to braille; productive forms still yield
+to grammar, and reviewed/personal decisions retain precedence. Homographic
+full/neutral readings are not collapsed. No synthesis-driver hook is needed.
+
+`neutral.py` distinguishes the stature noun `ge4` from annotation-only classifier
+`ge5`. It shares the closed nominal boundary with growth analysis, reuses
+per-item selected heads, and otherwise checks at most 5 predicate positions and
+16 preceding characters. A numerical run is capped at 8 characters. Lexical
+个性/个子 do not become classifier prefixes; 一个性格 selects the head 性格.
+The plain speech renderer uses 各 for `ge4`, retaining original offsets and
+without supplying a missing 子/儿. The offline SDK Pinyin audit compares actual
+plain speech PCM to explicit `ge4`/`ge5` controls; runtime sends no SDK markup.
+
 ## Growth, length and honor / “长”的语境选择
 
 `growth.py` selects zhǎng for a locally attached body location, growing subject,
@@ -146,6 +162,22 @@ source offset is inserted. Stature subjects, product-final aspect, independent
 quantity complements and shared potential morphology support productive forms
 without complete-sentence entries. Dense clipped nouns use the same validated
 production directly, avoiding a redundant NP chart and speech-only dependencies.
+
+An attached bare or quantified classifier NP independently establishes the
+growth verb even when its head is a generic thing, artifact or new combination:
+长个东西、长了两个奇怪的东西、树上长个公司的招牌. Duration and age heads
+retain their separate analyses. The locative branch cannot discard this object
+evidence. A closed classifier plus one known nominal uses the same production
+without a chart; modifiers and unresolved continuations use the bounded chart.
+Both paths retain the actual head and classifier/argument offsets. Tests include
+71,280 constructed combinations, competing duration/head/unknown cases and
+mixed 长个长长的东西; this measures construction coverage, not corpus accuracy.
+
+Classifier-like 个 before a measurement is also independently analyzed:
+绳子长个三米 selects cháng, with the complete 个三米 extent offsets.
+In 长个三米的东西 the unit modifies the actual object head 东西, so it cannot
+replace that head with a length complement. A competing DIMENSION sense alone
+does not block a noun such as 角 whose growth/horn reading remains possible.
 
 Age quantities use animate age and explicitly restricted age-unit senses, with
 independent human/pronominal comparands and original `extent:age` offsets.

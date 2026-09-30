@@ -4,6 +4,20 @@
 
 ## English
 
+### Stature, classifiers and neutral words
+
+[MOE 個](https://dict.variants.moe.edu.tw/dictView.jsp?ID=1539) distinguishes
+gè stature and full-tone lexical meanings from neutral ge in ordinary classifier
+constructions. [Shaanxi teaching material on neutral tone](https://www.sxftc.edu.cn/cjc/info/1228/2996.htm)
+describes classifier 个, particles, nominal suffixes and reduplication, with
+meaningful lexical contrasts. These inform bounded roles, not a global suffix
+rule. Runtime neutral-word readings come from the existing pinned licensed
+CC-CEDICT/KFCD inputs; no complete external teaching word list is copied.
+[MOE 東西](https://dict.revised.moe.edu.tw/dictView.jsp?ID=48843&la=1&powerMode=0)
+illustrates that homographic full/neutral meanings remain competing senses.
+The offline contrast uses [Nuance SDK Pinyin input controls](https://docs.nuance.com/speech-suite/voc-dev/ww-ctrl.html);
+those controls are not an NVDA driver capability and are never injected by runtime.
+
 This page explains which resources supply data, which inform rule design, and which are used for testing. The repository stores fixed snapshots for reproducible builds. Attribution and complete license locations are recorded in [Third-party notices](../addon/THIRD-PARTY-NOTICES.txt).
 
 ### Dictionary and lexical data

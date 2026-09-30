@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Actual plain speech versus SDK tone controls; no all-driver or human-listening certification",
+  "generatedFrom": {
+    "runtimeSha256": {
+      "addon/globalPlugins/contextualPronunciation/__init__.py": "44769a9a7c0d1664ff33dd49d24706c4427e5e596f5d28ea3256eb312cde3157",
+      "addon/globalPlugins/contextualPronunciation/apostrophe.py": "74876096c169b01705e187527a3d70d88a364283da50f12b099ce596c4f5a29a",
+      "addon/globalPlugins/contextualPronunciation/argument_roles.py": "e9dcbf32d3b91945b2e289e042986820f7421d582f421d92656d5d9671733e98",
+      "addon/globalPlugins/contextualPronunciation/braille_readings.py": "b5b3a65f9a884ada572a618430ab66af5586cc006a54cce91cedbf7096cad4ad",
+      "addon/globalPlugins/contextualPronunciation/colloquial_meng.py": "32f531382f7eecbb361098d9283e59eb569a57797c6079af6cdf2f5d728dcae0",
+      "addon/globalPlugins/contextualPronunciation/constituents.py": "fc1d781a2e5d8587144e651280ddb8840c46a811566d56b9a5b37b53fe2f2871",
+      "addon/globalPlugins/contextualPronunciation/containment.py": "a24cae6fff0a6a4ed8f8a882e91f643b85b118c4fbc846b709348bb9ee65d81b",
+      "addon/globalPlugins/contextualPronunciation/data/braille_contexts.toml": "044208d336c6b81f770e4bbf890de3307d906466549a7c77f0195a9535b32beb",
+      "addon/globalPlugins/contextualPronunciation/data/contributions.toml": "3ba7cd4d46405d3f5d855a17774b60261043bae348354f48781c356e94dd7b7a",
+      "addon/globalPlugins/contextualPronunciation/data/grammar_lexicon.json": "ebbfdbaa2acd2f84fcf3d492c6d5278515934ff8d69541a4a597d78459ce914f",
+      "addon/globalPlugins/contextualPronunciation/data/lexicon_zh_CN.json": "3471166acef839330c215e41ae2d71f247496b55f8f8c432ab34d32ca177f0a7",
+      "addon/globalPlugins/contextualPronunciation/data/readings_zh_CN.json": "8579b84dfc392a203453b36f80c27cd608dca144487cc520f0302a79518f712d",
+      "addon/globalPlugins/contextualPronunciation/data/rules_zh_CN.json": "2811f63b569ca2c505b1778a128038c9c75bd22787f0f7a6974e47825dded5ad",
+      "addon/globalPlugins/contextualPronunciation/data/segmentation_zh_CN.json": "6c969f304a751c4080d2acb99998eba3f8f117a790e04dec1f0a1e598c8b09a9",
+      "addon/globalPlugins/contextualPronunciation/data/syntax_frames.toml": "1bb07c36ab9622fc98739ed79609e21c7fce3e57efddca54fa50bb464a4452bc",
+      "addon/globalPlugins/contextualPronunciation/data/syntax_lexicon.json": "ed4e0181e1522a8a2fdc5554c1633419983bac00d6c81639bcafb3b59c914d4e",
+      "addon/globalPlugins/contextualPronunciation/edges.py": "be1c87a6f727350712e541781c841ce5779c8c0244d46c3c2b5f885a6d931c83",
+      "addon/globalPlugins/contextualPronunciation/growth.py": "862487c7f88b0997571c14f7a589c9fafd12af493eef5db1f422339a6dd4ab8a",
+      "addon/globalPlugins/contextualPronunciation/lexicon.py": "3c0387ce1e4499ad4a4fb2202ce21ba41aec86963c4d5636680103354002be72",
+      "addon/globalPlugins/contextualPronunciation/lifecycle.py": "2e941e0cacc5f174209d17685a7a6613cb323201a03d5774f94540dfcae8f6c7",
+      "addon/globalPlugins/contextualPronunciation/motion.py": "79c6a9c2e3f0cc53065f8263326b5dd8d53413859ec4875a61e18ba2802a8d5f",
+      "addon/globalPlugins/contextualPronunciation/neutral.py": "f53e1da3600152190d8b5fbad41d1d61a1c25f543255fe391d17ef12aecc275d",
+      "addon/globalPlugins/contextualPronunciation/nominals.py": "549c3456b276f38f5b820d64651dc1ae25f90e959c4a647cc8375fcdfdc04403",
+      "addon/globalPlugins/contextualPronunciation/pinyin.py": "e46147e140e130676566860e50a08334a04b8238008bf2b787781afec4ac91a5",
+      "addon/globalPlugins/contextualPronunciation/pipeline.py": "1d35fabdc111fb1d754ae13e068c48cb50c81f7be1d7200d69526906ec9e7704",
+      "addon/globalPlugins/contextualPronunciation/predicates.py": "fa7edd27dfe4ff9d81e9e5dd62cc69bad370367e5b7cd1a18cd4c88fb2da30ec",
+      "addon/globalPlugins/contextualPronunciation/rules.py": "a6e9303355261f64e7a278ebd51b435e90c0fd588999b0e52120a235f1ee8991",
+      "addon/globalPlugins/contextualPronunciation/segmentation.py": "e6255634387a6e0aeda1ea92bac4e20ba577614c553fa0dd0574067547648936",
+      "addon/globalPlugins/contextualPronunciation/settings.py": "be8b50cfa93b1385f08164ff8ffdf948bcfe875d63942fb72f324072ff0e2522",
+      "addon/globalPlugins/contextualPronunciation/syntax.py": "08f91933e6f7f2417f7a6e6059708c4d4015666ab6636cfcf416ad7ff60b17e3",
+      "addon/globalPlugins/contextualPronunciation/templates.py": "3249997d7877c48a3e4975aff80b55df2ec7fefe0944a6cf79d1be76b8bdea41",
+      "addon/globalPlugins/contextualPronunciation/verb_forms.py": "c8986162365c20130f56b126068d524871796e8539a2e67842f2147b2a9dbe3d"
+    }
+  },
+  "groups": [
+    {
+      "id": "clipped",
+      "source": "长个",
+      "speechText": "掌各",
+      "reading": "ge4"
+    },
+    {
+      "id": "clipped_aspect",
+      "source": "长个了",
+      "speechText": "掌各了",
+      "reading": "ge4"
+    },
+    {
+      "id": "clipped_question",
+      "source": "长个了没？",
+      "speechText": "掌各了没？",
+      "reading": "ge4"
+    },
+    {
+      "id": "potential",
+      "source": "长不了个",
+      "speechText": "掌不了各",
+      "reading": "ge4"
+    },
+    {
+      "id": "repeated",
+      "source": "长一长个",
+      "speechText": "掌一掌各",
+      "reading": "ge4"
+    },
+    {
+      "id": "traditional",
+      "source": "長個",
+      "speechText": "掌各",
+      "reading": "ge4"
+    },
+    {
+      "id": "classified",
+      "source": "长个东西",
+      "speechText": "掌个东西",
+      "reading": "ge5"
+    },
+    {
+      "id": "modified",
+      "source": "长个奇怪的东西",
+      "speechText": "掌个奇怪的东西",
+      "reading": "ge5"
+    },
+    {
+      "id": "growth_location",
+      "source": "树上长个奇怪的东西",
+      "speechText": "树上掌个奇怪的东西",
+      "reading": "zhang3"
+    }
+  ],
+  "cases": [
+    {
+      "id": "clipped_source",
+      "text": "长个"
+    },
+    {
+      "id": "clipped_transformed",
+      "text": "掌各"
+    },
+    {
+      "id": "clipped_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\"
+    },
+    {
+      "id": "clipped_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\"
+    },
+    {
+      "id": "clipped_aspect_source",
+      "text": "长个了"
+    },
+    {
+      "id": "clipped_aspect_transformed",
+      "text": "掌各了"
+    },
+    {
+      "id": "clipped_aspect_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\了"
+    },
+    {
+      "id": "clipped_aspect_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\了"
+    },
+    {
+      "id": "clipped_question_source",
+      "text": "长个了没？"
+    },
+    {
+      "id": "clipped_question_transformed",
+      "text": "掌各了没？"
+    },
+    {
+      "id": "clipped_question_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\了没？"
+    },
+    {
+      "id": "clipped_question_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\了没？"
+    },
+    {
+      "id": "potential_source",
+      "text": "长不了个"
+    },
+    {
+      "id": "potential_transformed",
+      "text": "掌不了各"
+    },
+    {
+      "id": "potential_anchor",
+      "text": "掌不了\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\"
+    },
+    {
+      "id": "potential_contrast",
+      "text": "掌不了\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\"
+    },
+    {
+      "id": "repeated_source",
+      "text": "长一长个"
+    },
+    {
+      "id": "repeated_transformed",
+      "text": "掌一掌各"
+    },
+    {
+      "id": "repeated_anchor",
+      "text": "掌一掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\"
+    },
+    {
+      "id": "repeated_contrast",
+      "text": "掌一掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\"
+    },
+    {
+      "id": "traditional_source",
+      "text": "長個"
+    },
+    {
+      "id": "traditional_transformed",
+      "text": "掌各"
+    },
+    {
+      "id": "traditional_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\"
+    },
+    {
+      "id": "traditional_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\"
+    },
+    {
+      "id": "classified_source",
+      "text": "长个东西"
+    },
+    {
+      "id": "classified_transformed",
+      "text": "掌个东西"
+    },
+    {
+      "id": "classified_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\东西"
+    },
+    {
+      "id": "classified_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\东西"
+    },
+    {
+      "id": "modified_source",
+      "text": "长个奇怪的东西"
+    },
+    {
+      "id": "modified_transformed",
+      "text": "掌个奇怪的东西"
+    },
+    {
+      "id": "modified_anchor",
+      "text": "掌\u001b\\toi=pyt\\ge5\u001b\\toi=orth\\奇怪的东西"
+    },
+    {
+      "id": "modified_contrast",
+      "text": "掌\u001b\\toi=pyt\\ge4\u001b\\toi=orth\\奇怪的东西"
+    },
+    {
+      "id": "growth_location_source",
+      "text": "树上长个奇怪的东西"
+    },
+    {
+      "id": "growth_location_transformed",
+      "text": "树上掌个奇怪的东西"
+    },
+    {
+      "id": "growth_location_anchor",
+      "text": "树上\u001b\\toi=pyt\\zhang3\u001b\\toi=orth\\个奇怪的东西"
+    },
+    {
+      "id": "growth_location_contrast",
+      "text": "树上\u001b\\toi=pyt\\zhang4\u001b\\toi=orth\\个奇怪的东西"
+    }
+  ]
+}
